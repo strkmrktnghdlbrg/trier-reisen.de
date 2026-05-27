@@ -1,9 +1,11 @@
 # trier-reisen.de — STATUS
 
 **Letzter Stand:** 2026-05-27
-**Phase:** 1 — Bootstrap fertig, vor Deployment
+**Phase:** 1 — Bootstrap fertig, vor Cloudflare-Deployment
 **Design:** ElevenLabs
-**Build:** ✅ 107 Pages, 1.81s
+**Build:** ✅ 107 Pages, ~1s
+**Repo:** https://github.com/strkmrktng/trier-reisen.de (private)
+**Tracking:** GTM-PM6JDSW4 · pub-7432388986384363 · Stay22 687913400d1617d25ef77427 · GYG 1UPZQQB
 
 ## ✅ Erledigt (Phase 1)
 - Strategische Positionierung (Reise-Magazin Trier)

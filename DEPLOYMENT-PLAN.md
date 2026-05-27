@@ -54,14 +54,8 @@ operator: {
 
 ### 3.1 GitHub-Repo
 
-```bash
-# Im Projekt-Ordner trier-reisen.de
-git init
-git branch -M main
-git add .
-git commit -m "Initial commit — Phase 1 build"
-gh repo create strkmrktng/trier-reisen.de --private --source=. --remote=origin --push
-```
+✅ **Erledigt**: https://github.com/strkmrktng/trier-reisen.de (private)
+Initial commit auf `main` enthaelt Phase-1-Bootstrap.
 
 ### 3.2 Cloudflare Pages-Projekt anlegen
 
