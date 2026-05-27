@@ -84,11 +84,11 @@ Standard Sitemap + Wein-/Antike-Schwerpunkt:
 | 5 | Datenmodell | ✅ |
 | 6 | Astro-Bootstrap | ✅ |
 | 7 | Detail-Page-Templates | ✅ |
-| 8 | Bilder (Wikimedia: Porta, Dom, Amphitheater) | ⏳ Inputs ausstehend |
+| 8 | Bilder (Wikimedia: Porta, Dom, Amphitheater) | ✅ 25 Bilder, CC-lizenziert |
 | 9 | Content (Reise-Guides, Itineraries) | ✅ 3 Guides, erweiterbar |
-| 10 | SEO-Hygiene | ✅ Sitemap, Canonical, OG, robots.txt |
-| 11 | DEPLOYMENT-PLAN.md | ⏳ vor Step 12 |
-| 12 | Domain + Go-Live | ⏳ Inputs ausstehend |
+| 10 | SEO-Hygiene | ✅ Sitemap, Canonical, OG, robots.txt, ads.txt |
+| 11 | DEPLOYMENT-PLAN.md | ✅ |
+| 12 | Domain + Go-Live | ⏳ CF-Connect = User-Step |
 
 ## 9. Nächste 5 Aktionen
 

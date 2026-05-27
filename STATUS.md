@@ -24,13 +24,19 @@
   Datenschutz + 404 + robots.txt + sitemap
 - 107 statische HTML-Pages bauen erfolgreich
 
-## ⏳ Offen (Phase 1.5 → Phase 2)
-- Wikimedia-Bilder ziehen (mind. UNESCO-Top-8 Sights + 12 Bezirks-Heros)
-- Echte Stay22 lmaID + GTM-ID + AdSense-Aktivierung
-- Impressum-Adresse + Datenschutz-Endkontrolle
-- GitHub-Repo strkmrktng/trier-reisen.de anlegen
-- DEPLOYMENT-PLAN.md (Step 11)
-- Domain-DNS + Cloudflare Pages Connect (Step 12)
+## ✅ Phase 1.5 erledigt
+- Wikimedia-Bilder: 17 Sights + 8 Bezirke, alle CC-lizenziert, 51 WebP-Varianten im Build
+- Stay22 lmaID + GTM + AdSense + GYG aktiv und im HTML verifiziert
+- DEPLOYMENT-PLAN.md geschrieben (Step 11 ✅)
+- GitHub-Repo angelegt + 2 Commits gepusht (Step 12 teilweise ✅)
+- ads.txt + robots.txt + sitemap-index.xml live im Build
+
+## ⏳ Offen (User-Steps)
+- Impressum-Adresse: src/data/legal.ts noch Platzhalter
+- Cloudflare-Pages-Projekt anlegen + an Repo connecten
+- DNS umstellen auf Cloudflare Pages
+- Bezirke euren + biewer: keine Wikimedia-Bilder, fallback bleibt HueGradient
+- Phase 2: Werben-Modul, Premium-Listings, GEO-AI-Optimierung
 
 ## 🔑 Tracking-IDs (zu erstellen)
 - GTM: noch nicht
