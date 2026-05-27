@@ -1,0 +1,98 @@
+/*
+ * trier-reisen.de — Brand Layer
+ * Design: ElevenLabs (Architect's Blueprint Warm)
+ * Quelle: https://styles.refero.design/style/031056ff-7af1-46db-8daa-115f731c5d26
+ * Stadt-Twist: Antike Würde, Cormorant-Serif Heritage, Ember = Römer-Sandstein
+ */
+
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@400&display=swap");
+
+@theme {
+  /* === Akzent (Ember — Römer-Sandstein-Glanz, sparsam) === */
+  --color-accent: #ff4704;
+  --color-accent-hover: #d93b03;
+  --color-accent-tint: #fff1ec;
+  --color-accent-contrast: #ffffff;
+  --color-secondary: #0447ff;     /* Signal Blue — Mosel-Wasser */
+
+  /* === Text === */
+  --color-text: #000000;          /* Obsidian */
+  --color-text-body: #575350;     /* Cinder */
+  --color-text-muted: #777169;    /* Gravel */
+  --color-text-subtle: #a59f97;   /* Slate */
+  --color-text-disabled: #b1b0b0; /* Fog */
+
+  /* === Surfaces === */
+  --color-bg: #fdfcfc;            /* Eggshell — NIE reines Weiß */
+  --color-surface: #f5f3f1;       /* Powder */
+  --color-border: #e5e5e5;        /* Chalk */
+
+  /* === Fonts === */
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Cormorant Garamond", "Waldenburg", ui-serif, serif;
+  --font-label: "Inter", ui-sans-serif, system-ui, sans-serif; /* WaldenburgFH-Ersatz */
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* === Radii === */
+  --radius-input: 0px;            /* PFLICHT: Inputs ohne Radius */
+  --radius-badge: 12px;
+  --radius-card: 16px;
+  --radius-panel: 20px;
+  --radius-modal: 24px;
+  --radius-pill: 9999px;          /* Buttons + Tags */
+
+  /* === Shadows (Hairline only) === */
+  --shadow-card: rgba(0, 0, 0, 0.4) 0px 0px 1px, rgba(0, 0, 0, 0.04) 0px 2px 4px;
+  --shadow-inset: rgba(0, 0, 0, 0.075) 0px 0px 0px 0.5px inset;
+
+  /* === Bezirks-Hues (Trier Sandstein + Mosel) === */
+  --hue-1: linear-gradient(135deg, #fff1ec 0%, #ffbb9c 50%, #ff4704 100%);
+  --hue-2: linear-gradient(135deg, #f0f9ff 0%, #7dd3fc 50%, #0447ff 100%);
+  --hue-3: linear-gradient(135deg, #fef3c7 0%, #fbbf24 50%, #b45309 100%);
+  --hue-4: linear-gradient(135deg, #f5f5f4 0%, #a59f97 50%, #575350 100%);
+  --hue-5: linear-gradient(135deg, #faf5ff 0%, #c084fc 50%, #7e22ce 100%);
+}
+
+@layer components {
+  .btn-primary {
+    background: #000000;
+    color: #fdfcfc;
+    border-radius: var(--radius-pill);
+    padding: 0 16px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 14px;
+    box-shadow: rgba(0,0,0,0.06) 0px 0px 0px 1px, rgba(0,0,0,0.04) 0px 1px 2px;
+  }
+
+  .btn-secondary {
+    background: #ffffff;
+    color: #000000;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-pill);
+    padding: 0 12px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 14px;
+  }
+
+  .btn-compact {
+    background: transparent;
+    color: #000000;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-badge);
+    padding: 8px 12px;
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 14px;
+  }
+
+  .display {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 48px;
+    line-height: 1.08;
+    letter-spacing: -0.96px;
+    color: #000;
+  }
+}

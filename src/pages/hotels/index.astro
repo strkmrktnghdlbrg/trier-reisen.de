@@ -1,0 +1,64 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import HotelCard from "../../components/HotelCard.astro";
+import { city } from "../../data/city";
+import { hotels } from "../../data/hotels";
+
+const sorted = [...hotels].sort((a, b) => b.rating - a.rating);
+const fiveStar = sorted.filter((h) => h.stars === 5);
+const fourStar = sorted.filter((h) => h.stars === 4);
+const threeStar = sorted.filter((h) => h.stars === 3);
+const budget = sorted.filter((h) => h.stars <= 2);
+---
+
+<BaseLayout
+  title={`Hotels in ${city.name}`}
+  description={`${hotels.length} Hotels in ${city.name}: 4-Sterne-Häuser in der Innenstadt, Mosel-Hotels, Weinhäuser in Olewig, Budget-Adressen. Mit Bewertungen und ab-Preisen.`}
+>
+  <section class="container-page py-12">
+    <Breadcrumbs items={[{ href: "/", label: city.name }, { label: "Hotels" }]} />
+    <p class="eyebrow mb-3">{hotels.length} Hotels</p>
+    <h1 class="display-xl">Hotels in {city.name}</h1>
+    <p class="text-body mt-4 max-w-2xl">
+      Von der Adresse direkt an der Porta Nigra bis zum Weinhaus in Olewig.
+      Sortiert nach Sterne-Kategorie, mit Bewertung und Ab-Preis.
+    </p>
+  </section>
+
+  {fourStar.length > 0 && (
+    <section class="container-page section pt-0">
+      <h2 class="display mb-6">4-Sterne-Hotels</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {fourStar.map((h) => <HotelCard hotel={h} />)}
+      </div>
+    </section>
+  )}
+
+  {threeStar.length > 0 && (
+    <section class="container-page section pt-0">
+      <h2 class="display mb-6">3-Sterne-Hotels</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {threeStar.map((h) => <HotelCard hotel={h} />)}
+      </div>
+    </section>
+  )}
+
+  {fiveStar.length > 0 && (
+    <section class="container-page section pt-0">
+      <h2 class="display mb-6">5-Sterne-Hotels</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {fiveStar.map((h) => <HotelCard hotel={h} />)}
+      </div>
+    </section>
+  )}
+
+  {budget.length > 0 && (
+    <section class="container-page section pt-0">
+      <h2 class="display mb-6">Hostels & Budget</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {budget.map((h) => <HotelCard hotel={h} />)}
+      </div>
+    </section>
+  )}
+</BaseLayout>

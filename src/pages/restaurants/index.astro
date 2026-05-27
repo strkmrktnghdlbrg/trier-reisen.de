@@ -1,0 +1,40 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import RestaurantCard from "../../components/RestaurantCard.astro";
+import { city } from "../../data/city";
+import { restaurants } from "../../data/restaurants";
+
+// Cuisine-Gruppierung
+const groups = new Map<string, typeof restaurants>();
+for (const r of restaurants) {
+  const key = r.cuisine;
+  if (!groups.has(key)) groups.set(key, []);
+  groups.get(key)!.push(r);
+}
+const groupList = Array.from(groups.entries()).sort(([a], [b]) => a.localeCompare(b));
+---
+
+<BaseLayout
+  title={`Restaurants in ${city.name}`}
+  description={`${restaurants.length} Restaurants in ${city.name}: Sternekueche, Mosel-Weinstuben, Olewiger Weingüter, Italiener, asiatische Klassiker. Nach Küche sortiert.`}
+>
+  <section class="container-page py-12">
+    <Breadcrumbs items={[{ href: "/", label: city.name }, { label: "Restaurants" }]} />
+    <p class="eyebrow mb-3">{restaurants.length} Restaurants</p>
+    <h1 class="display-xl">Restaurants in {city.name}</h1>
+    <p class="text-body mt-4 max-w-2xl">
+      Vom Sterne-Restaurant Becker's in Olewig bis zur ehrlichen Strausswirtschaft.
+      Mosel-Weinstuben, römische Themen-Menus, mediterrane Küche im Domkeller.
+    </p>
+  </section>
+
+  {groupList.map(([cuisine, items]) => (
+    <section class="container-page section pt-0">
+      <h2 class="display mb-6">{cuisine}</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {items.map((r) => <RestaurantCard restaurant={r} />)}
+      </div>
+    </section>
+  ))}
+</BaseLayout>

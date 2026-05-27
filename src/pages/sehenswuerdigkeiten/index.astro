@@ -1,0 +1,42 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import SightCard from "../../components/SightCard.astro";
+import { city } from "../../data/city";
+import { sights } from "../../data/sights";
+
+const unesco = sights.filter((s) => s.unesco);
+const otherSights = sights.filter((s) => !s.unesco);
+---
+
+<BaseLayout
+  title={`Sehenswürdigkeiten in ${city.name}`}
+  description={`Alle Sehenswürdigkeiten in ${city.name}: UNESCO-Welterbe, römisches Erbe, Museen, Kirchen, Aussichtspunkte. ${sights.length} Highlights mit Adressen und Öffnungszeiten.`}
+>
+  <section class="container-page py-12">
+    <Breadcrumbs items={[{ href: "/", label: city.name }, { label: "Sehenswürdigkeiten" }]} />
+    <p class="eyebrow mb-3">{sights.length} Sehenswürdigkeiten</p>
+    <h1 class="display-xl">Sehenswürdigkeiten in {city.name}</h1>
+    <p class="text-body mt-4 max-w-2xl">
+      Trier verdichtet 2000 Jahre Geschichte auf wenigen Quadratkilometern.
+      Acht UNESCO-Stätten, sieben grosse Kirchen, fünf Museen mit Welt-Format.
+      Hier sind alle Wahrzeichen, sortiert nach Pflicht und Tiefe.
+    </p>
+  </section>
+
+  <section class="container-page section pt-0">
+    <h2 class="display mb-6">UNESCO-Welterbe</h2>
+    <p class="text-body mb-8 max-w-2xl">Seit 1986 stehen Triers römische Baudenkmäler, Dom und Liebfrauenkirche
+      gemeinsam auf der UNESCO-Welterbe-Liste.</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {unesco.map((s) => <SightCard sight={s} />)}
+    </div>
+  </section>
+
+  <section class="container-page section pt-0">
+    <h2 class="display mb-6">Weitere Sehenswürdigkeiten</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {otherSights.map((s) => <SightCard sight={s} />)}
+    </div>
+  </section>
+</BaseLayout>

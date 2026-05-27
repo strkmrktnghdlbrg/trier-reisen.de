@@ -1,0 +1,24 @@
+---
+import HueGradient from "./HueGradient.astro";
+import type { Category } from "../data/categories";
+
+interface Props {
+  category: Category;
+}
+
+const { category } = Astro.props;
+---
+
+<a href={`/kategorien/${category.slug}/`} class="card group block">
+  <div class="aspect-[16/9] relative overflow-hidden">
+    <HueGradient hue={category.hue} label={category.name} class="absolute inset-0" />
+  </div>
+  <div class="p-4">
+    <h3 class="text-lg font-light tracking-tight mb-2 group-hover:text-[var(--color-accent)] transition-colors" style="color: var(--color-text); font-family: var(--font-display);">
+      {category.name}
+    </h3>
+    <p class="text-sm leading-relaxed line-clamp-2" style="color: var(--color-text-body);">
+      {category.shortDesc}
+    </p>
+  </div>
+</a>

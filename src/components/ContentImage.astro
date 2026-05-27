@@ -1,0 +1,45 @@
+---
+import { Image } from "astro:assets";
+import { getImage } from "../data/images";
+import HueGradient from "./HueGradient.astro";
+
+interface Props {
+  imgKey?: string;
+  fallbackHue?: number;
+  fallbackLabel?: string;
+  imgClass?: string;
+  width?: number;
+  height?: number;
+}
+
+const {
+  imgKey,
+  fallbackHue = 1,
+  fallbackLabel,
+  imgClass = "w-full h-full object-cover",
+  width = 800,
+  height = 600,
+} = Astro.props;
+
+const entry = getImage(imgKey);
+---
+
+{entry ? (
+  <figure class="contents">
+    <Image
+      src={entry.src}
+      alt={entry.alt}
+      width={width}
+      height={height}
+      class={imgClass}
+      loading="lazy"
+    />
+    {entry.credit && (
+      <figcaption class="sr-only">
+        Foto: {entry.credit.author}, {entry.credit.license}
+      </figcaption>
+    )}
+  </figure>
+) : (
+  <HueGradient hue={fallbackHue} label={fallbackLabel} class="absolute inset-0" />
+)}

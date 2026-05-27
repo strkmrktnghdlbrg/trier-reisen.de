@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Trier-Reisen Logomark">
+  <title>Trier-Reisen Logomark — Porta Nigra</title>
+  <g fill="currentColor">
+    <!-- Sockel -->
+    <rect x="6" y="54" width="52" height="6"/>
+    <!-- Erdgeschoss + Rundbogen-Tor -->
+    <path d="M6 36 H58 V54 H6 Z M22 54 V44 a10 10 0 0 1 20 0 V54 Z" fill-rule="evenodd"/>
+    <!-- Obergeschoss + zwei Rundbogenfenster -->
+    <path d="M10 18 H54 V36 H10 Z M18 36 V28 a4 4 0 0 1 8 0 V36 Z M38 36 V28 a4 4 0 0 1 8 0 V36 Z" fill-rule="evenodd"/>
+    <!-- Zinnenkrone -->
+    <path d="M10 8 H14 V18 H10 Z M20 8 H24 V18 H20 Z M30 8 H34 V18 H30 Z M40 8 H44 V18 H40 Z M50 8 H54 V18 H50 Z"/>
+  </g>
+</svg>

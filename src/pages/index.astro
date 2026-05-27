@@ -1,0 +1,101 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HueGradient from "../components/HueGradient.astro";
+import SightCard from "../components/SightCard.astro";
+import DistrictCard from "../components/DistrictCard.astro";
+import EventCard from "../components/EventCard.astro";
+import CategoryCard from "../components/CategoryCard.astro";
+import { city } from "../data/city";
+import { sights } from "../data/sights";
+import { districts } from "../data/districts";
+import { categories } from "../data/categories";
+import { events, isUpcoming } from "../data/events";
+import { features } from "../data/features";
+
+const featuredSights = sights.filter((s) => s.unesco).slice(0, 6);
+const featuredDistricts = districts.slice(0, 4);
+const featuredCategories = categories.slice(0, 6);
+const upcomingEvents = events.filter(isUpcoming).slice(0, 3);
+---
+
+<BaseLayout title={`${city.name} entdecken`} description={city.description.long}>
+  <!-- HERO -->
+  <section class="container-page pt-12 pb-16 md:pt-20 md:pb-24">
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
+      <div class="lg:col-span-3">
+        <p class="eyebrow mb-4">Älteste Stadt Deutschlands · UNESCO-Welterbe</p>
+        <h1 class="display-xl">
+          {city.name},<br />
+          <span style="color: var(--color-accent);">antike Würde</span><br />
+          an der Mosel.
+        </h1>
+        <p class="text-body mt-6 max-w-xl">
+          Von der Porta Nigra zum Trierer Dom, vom Amphitheater in die Olewiger Weingüter.
+          Trier-Reisen ist dein Stadtportal für UNESCO-Welterbe, Mosel-Wein und römisches Erbe.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="/sehenswuerdigkeiten/" class="btn-primary">Sehenswürdigkeiten</a>
+          <a href="/reiseplaner/" class="btn-outline">Reiseplaner</a>
+        </div>
+      </div>
+      <div class="lg:col-span-2">
+        <div class="aspect-[4/5] rounded-3xl overflow-hidden">
+          <HueGradient hue={1} label="Porta Nigra Vellum-Stimmung" class="w-full h-full" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UNESCO-PFLICHT -->
+  <section class="container-page section">
+    <div class="flex items-end justify-between mb-8">
+      <div>
+        <p class="eyebrow mb-2">UNESCO-Welterbe</p>
+        <h2 class="display">Die Pflicht-Tour</h2>
+        <p class="text-body mt-3 max-w-xl">Acht UNESCO-Stätten verteilen sich über wenige Quadratkilometer.
+          Hier sind die sechs Wahrzeichen, die jeden Trier-Besuch tragen.</p>
+      </div>
+      <a href="/sehenswuerdigkeiten/" class="hidden md:inline-flex link-accent text-sm">Alle Sehenswürdigkeiten →</a>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {featuredSights.map((s) => <SightCard sight={s} />)}
+    </div>
+  </section>
+
+  <!-- BEZIRKE -->
+  <section class="container-page section">
+    <div class="mb-8">
+      <p class="eyebrow mb-2">Bezirke</p>
+      <h2 class="display">Trier in Vierteln</h2>
+      <p class="text-body mt-3 max-w-xl">Von der UNESCO-Innenstadt zum Weinort Olewig, von der Mosel-Promenade zum Universitätsviertel Kürenz.</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      {featuredDistricts.map((d) => <DistrictCard district={d} />)}
+    </div>
+  </section>
+
+  <!-- THEMEN -->
+  <section class="container-page section">
+    <div class="mb-8">
+      <p class="eyebrow mb-2">Themen</p>
+      <h2 class="display">Trier nach Interesse</h2>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {featuredCategories.map((c) => <CategoryCard category={c} />)}
+    </div>
+  </section>
+
+  <!-- EVENTS -->
+  {features.events.enabled && upcomingEvents.length > 0 && (
+    <section class="container-page section">
+      <div class="mb-8">
+        <p class="eyebrow mb-2">Termine</p>
+        <h2 class="display">Was kommt</h2>
+        <p class="text-body mt-3 max-w-xl">Antikenfestspiele, Olewiger Weinfest, Weihnachtsmarkt — Triers grosse Termine.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        {upcomingEvents.map((e) => <EventCard event={e} />)}
+      </div>
+    </section>
+  )}
+</BaseLayout>

@@ -1,0 +1,90 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import HueGradient from "../../components/HueGradient.astro";
+import RestaurantCard from "../../components/RestaurantCard.astro";
+import { restaurants, type Restaurant } from "../../data/restaurants";
+import { getDistrict } from "../../data/districts";
+import { city } from "../../data/city";
+
+export function getStaticPaths() {
+  return restaurants.map((restaurant) => ({ params: { slug: restaurant.slug }, props: { restaurant } }));
+}
+
+interface Props { restaurant: Restaurant }
+const { restaurant } = Astro.props;
+const district = getDistrict(restaurant.district);
+const related = restaurants.filter((r) => r.slug !== restaurant.slug && r.cuisine === restaurant.cuisine).slice(0, 3);
+---
+
+<BaseLayout title={`${restaurant.name} — ${city.name}`} description={restaurant.shortDesc}>
+  <article class="container-page py-12">
+    <Breadcrumbs items={[
+      { href: "/", label: city.name },
+      { href: "/restaurants/", label: "Restaurants" },
+      { label: restaurant.name },
+    ]} />
+
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 mt-4">
+      <div class="lg:col-span-3">
+        <p class="eyebrow mb-3">{restaurant.cuisine} · {restaurant.priceLevel}</p>
+        <h1 class="display-xl mb-4">{restaurant.name}</h1>
+        <p class="text-sm" style="color: var(--color-text-muted);">
+          {district?.name ?? restaurant.district}
+          {restaurant.openingHours && <> · {restaurant.openingHours}</>}
+        </p>
+        <div class="aspect-[16/10] rounded-2xl overflow-hidden mt-6 relative">
+          <HueGradient hue={restaurant.imageHue} label={restaurant.name} class="w-full h-full" />
+        </div>
+        <p class="text-body mt-8 text-lg leading-relaxed">{restaurant.longDesc}</p>
+      </div>
+
+      <aside class="lg:col-span-2">
+        <div class="card p-6">
+          <h2 class="text-lg font-light mb-4" style="font-family: var(--font-display);">Praktisches</h2>
+          <dl class="text-sm space-y-3">
+            <div>
+              <dt style="color: var(--color-text-muted);">Küche</dt>
+              <dd style="color: var(--color-text);">{restaurant.cuisine}</dd>
+            </div>
+            <div>
+              <dt style="color: var(--color-text-muted);">Preisniveau</dt>
+              <dd style="color: var(--color-text);">{restaurant.priceLevel}</dd>
+            </div>
+            <div>
+              <dt style="color: var(--color-text-muted);">Bezirk</dt>
+              <dd style="color: var(--color-text);">{district?.name ?? restaurant.district}</dd>
+            </div>
+            {restaurant.openingHours && (
+              <div>
+                <dt style="color: var(--color-text-muted);">Öffnungszeiten</dt>
+                <dd style="color: var(--color-text);">{restaurant.openingHours}</dd>
+              </div>
+            )}
+            {restaurant.reservation && (
+              <div>
+                <dt style="color: var(--color-text-muted);">Reservierung</dt>
+                <dd style="color: var(--color-text);">empfohlen</dd>
+              </div>
+            )}
+            {restaurant.websiteUrl && (
+              <div>
+                <dt style="color: var(--color-text-muted);">Website</dt>
+                <dd><a href={restaurant.websiteUrl} target="_blank" rel="noopener" class="link-accent text-sm">Offizielle Seite ↗</a></dd>
+              </div>
+            )}
+          </dl>
+        </div>
+      </aside>
+    </div>
+
+    {related.length > 0 && (
+      <section class="section">
+        <h2 class="display mb-6">Mehr {restaurant.cuisine}</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {related.map((r) => <RestaurantCard restaurant={r} />)}
+        </div>
+      </section>
+    )}
+  </article>
+</BaseLayout>

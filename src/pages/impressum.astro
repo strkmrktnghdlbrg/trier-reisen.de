@@ -1,0 +1,58 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import { city } from "../data/city";
+import { legal } from "../data/legal";
+---
+
+<BaseLayout title="Impressum" description={`Impressum von ${city.brandName}`} noindex={true}>
+  <article class="container-page py-12 max-w-3xl">
+    <Breadcrumbs items={[{ href: "/", label: city.name }, { label: "Impressum" }]} />
+    <h1 class="display-xl mb-8">Impressum</h1>
+
+    <section class="mb-8">
+      <h2 class="heading mb-3">Angaben gemäß § 5 TMG</h2>
+      <p class="text-body">
+        {legal.operator.name}<br />
+        {legal.operator.person}<br />
+        {legal.operator.street}<br />
+        {legal.operator.zip} {legal.operator.city}<br />
+        {legal.operator.country}
+      </p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="heading mb-3">Kontakt</h2>
+      <p class="text-body">
+        E-Mail: <a href={`mailto:${legal.operator.email}`} class="link-accent">{legal.operator.email}</a>
+        {legal.operator.phone && <><br />Telefon: {legal.operator.phone}</>}
+      </p>
+    </section>
+
+    {legal.operator.ustId && (
+      <section class="mb-8">
+        <h2 class="heading mb-3">Umsatzsteuer-ID</h2>
+        <p class="text-body">{legal.operator.ustId}</p>
+      </section>
+    )}
+
+    <section class="mb-8">
+      <h2 class="heading mb-3">Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+      <p class="text-body">{legal.responsible.name}<br />Anschrift: {legal.responsible.address}</p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="heading mb-3">Hosting</h2>
+      <p class="text-body">{legal.hostingProvider.notice}</p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="heading mb-3">Affiliate-Hinweis</h2>
+      <p class="text-body">
+        Diese Website enthält Affiliate-Links zu Buchungsanbietern (u.&nbsp;a. Booking.com via Stay22)
+        und Aktivitäten-Anbietern (GetYourGuide). Beim Klick auf einen solchen Link und Abschluss
+        einer Buchung erhalten wir eine Provision. Der Preis für dich bleibt davon unberührt.
+      </p>
+    </section>
+  </article>
+</BaseLayout>

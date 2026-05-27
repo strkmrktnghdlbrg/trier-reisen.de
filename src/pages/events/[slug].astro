@@ -1,0 +1,49 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { events, type CityEvent } from "../../data/events";
+import { city } from "../../data/city";
+
+export function getStaticPaths() {
+  return events.map((event) => ({ params: { slug: event.slug }, props: { event } }));
+}
+
+interface Props { event: CityEvent }
+const { event } = Astro.props;
+const checkin = new Date(event.checkin);
+const checkout = new Date(event.checkout);
+const dateLabel = `${checkin.toLocaleDateString("de-DE", { day: "numeric", month: "long" })} – ${checkout.toLocaleDateString("de-DE", { day: "numeric", month: "long", year: "numeric" })}`;
+---
+
+<BaseLayout title={event.title} description={event.description}>
+  <article class="container-page py-12">
+    <Breadcrumbs items={[
+      { href: "/", label: city.name },
+      { href: "/events/", label: "Events" },
+      { label: event.title },
+    ]} />
+
+    <div class="max-w-3xl">
+      <p class="eyebrow mb-3">{event.eyebrow}</p>
+      <h1 class="display-xl mb-4">{event.title}</h1>
+      <p class="text-sm mb-6" style="color: var(--color-text-muted);">{dateLabel}</p>
+      <p class="text-body text-lg leading-relaxed">{event.intro}</p>
+      {event.longDesc && <p class="text-body mt-4 leading-relaxed">{event.longDesc}</p>}
+
+      <div class="mt-10 card p-6">
+        <h2 class="text-lg font-light mb-3" style="font-family: var(--font-display);">Hotels für diesen Termin</h2>
+        <p class="text-sm mb-4" style="color: var(--color-text-body);">
+          Verfügbarkeit und Live-Preise auf Booking.com für {dateLabel}.
+        </p>
+        <a
+          href={`https://www.booking.com/searchresults.de.html?ss=${encodeURIComponent(event.address)}&checkin=${event.checkin}&checkout=${event.checkout}`}
+          target="_blank"
+          rel="noopener"
+          class="btn-primary"
+        >
+          Auf Booking.com prüfen
+        </a>
+      </div>
+    </div>
+  </article>
+</BaseLayout>

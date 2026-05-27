@@ -1,0 +1,74 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import HueGradient from "../../components/HueGradient.astro";
+import HotelCard from "../../components/HotelCard.astro";
+import { hotels, type Hotel } from "../../data/hotels";
+import { getDistrict } from "../../data/districts";
+import { city } from "../../data/city";
+
+export function getStaticPaths() {
+  return hotels.map((hotel) => ({ params: { slug: hotel.slug }, props: { hotel } }));
+}
+
+interface Props { hotel: Hotel }
+const { hotel } = Astro.props;
+const district = getDistrict(hotel.district);
+const related = hotels.filter((h) => h.slug !== hotel.slug && h.district === hotel.district).slice(0, 3);
+const stars = "★".repeat(hotel.stars);
+---
+
+<BaseLayout title={`${hotel.name} — ${city.name}`} description={hotel.shortDesc}>
+  <article class="container-page py-12">
+    <Breadcrumbs items={[
+      { href: "/", label: city.name },
+      { href: "/hotels/", label: "Hotels" },
+      { label: hotel.name },
+    ]} />
+
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 mt-4">
+      <div class="lg:col-span-3">
+        <p class="eyebrow mb-3">{stars} · {district?.name ?? hotel.district}</p>
+        <h1 class="display-xl mb-4">{hotel.name}</h1>
+        <p class="text-sm" style="color: var(--color-text-muted);">
+          ⭐ {hotel.rating}/10 · {hotel.reviews} Bewertungen · ab {hotel.priceFrom} €
+        </p>
+        <div class="aspect-[16/10] rounded-2xl overflow-hidden mt-6 relative">
+          <HueGradient hue={hotel.imageHue} label={hotel.name} class="w-full h-full" />
+        </div>
+        <p class="text-body mt-8 text-lg leading-relaxed">{hotel.longDesc}</p>
+
+        <div class="mt-8">
+          <p class="eyebrow mb-3">Ausstattung</p>
+          <div class="flex flex-wrap gap-2">
+            {hotel.amenities.map((a) => <span class="pill">{a}</span>)}
+          </div>
+        </div>
+      </div>
+
+      <aside class="lg:col-span-2">
+        <div class="card p-6">
+          <h2 class="text-lg font-light mb-3" style="font-family: var(--font-display);">Verfügbarkeit</h2>
+          <p class="text-sm mb-5" style="color: var(--color-text-body);">
+            Preise und Verfügbarkeit live auf Booking.com.
+          </p>
+          <a href={hotel.bookingUrl} target="_blank" rel="noopener" class="btn-primary w-full justify-center">
+            Auf Booking.com prüfen
+          </a>
+          <p class="text-xs mt-3" style="color: var(--color-text-muted);">
+            Wir erhalten beim Klick eine Provision — der Preis bleibt für dich gleich.
+          </p>
+        </div>
+      </aside>
+    </div>
+
+    {related.length > 0 && (
+      <section class="section">
+        <h2 class="display mb-6">Weitere Hotels in {district?.name ?? hotel.district}</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {related.map((h) => <HotelCard hotel={h} />)}
+        </div>
+      </section>
+    )}
+  </article>
+</BaseLayout>

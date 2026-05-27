@@ -1,0 +1,34 @@
+---
+import ContentImage from "./ContentImage.astro";
+import type { District } from "../data/districts";
+
+interface Props {
+  district: District;
+}
+
+const { district } = Astro.props;
+---
+
+<a href={`/bezirke/${district.slug}/`} class="card group block">
+  <div class="aspect-[4/3] relative overflow-hidden">
+    <ContentImage
+      imgKey={district.imageKey}
+      fallbackHue={district.hue}
+      fallbackLabel={district.name}
+      imgClass="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+    />
+  </div>
+  <div class="p-4">
+    <h3 class="text-xl font-light tracking-tight leading-tight mb-2 group-hover:text-[var(--color-accent)] transition-colors" style="color: var(--color-text); font-family: var(--font-display);">
+      {district.name}
+    </h3>
+    <p class="text-sm leading-relaxed line-clamp-3 mb-3" style="color: var(--color-text-body);">
+      {district.shortDesc}
+    </p>
+    <div class="flex flex-wrap gap-1.5">
+      {district.characterTags.slice(0, 3).map((tag) => (
+        <span class="pill">{tag}</span>
+      ))}
+    </div>
+  </div>
+</a>

@@ -1,0 +1,22 @@
+---
+import type { CityEvent } from "../data/events";
+
+interface Props {
+  event: CityEvent;
+}
+
+const { event } = Astro.props;
+const checkin = new Date(event.checkin);
+const dateLabel = checkin.toLocaleDateString("de-DE", { day: "numeric", month: "long", year: "numeric" });
+---
+
+<a href={`/events/${event.slug}/`} class="card group block">
+  <div class="p-5">
+    <p class="eyebrow mb-2">{event.eyebrow}</p>
+    <h3 class="text-xl font-light tracking-tight leading-tight mb-2 group-hover:text-[var(--color-accent)] transition-colors" style="color: var(--color-text); font-family: var(--font-display);">
+      {event.title}
+    </h3>
+    <p class="text-sm mb-3" style="color: var(--color-text-muted);">{dateLabel}</p>
+    <p class="text-sm leading-relaxed line-clamp-3" style="color: var(--color-text-body);">{event.intro}</p>
+  </div>
+</a>

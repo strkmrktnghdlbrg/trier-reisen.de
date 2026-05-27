@@ -1,0 +1,30 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import EventCard from "../../components/EventCard.astro";
+import { city } from "../../data/city";
+import { events } from "../../data/events";
+
+const sorted = [...events].sort((a, b) => a.checkin.localeCompare(b.checkin));
+---
+
+<BaseLayout
+  title={`Events in ${city.name}`}
+  description={`Events in ${city.name}: Antikenfestspiele, Olewiger Weinfest, Weihnachtsmarkt, Brot und Spiele, Mosel-Wein-Nachts-Bummel. Termine und Hotel-Tipps.`}
+>
+  <section class="container-page py-12">
+    <Breadcrumbs items={[{ href: "/", label: city.name }, { label: "Events" }]} />
+    <p class="eyebrow mb-3">{events.length} Veranstaltungen</p>
+    <h1 class="display-xl">Events in {city.name}</h1>
+    <p class="text-body mt-4 max-w-2xl">
+      Antikenfestspiele im Amphitheater, Olewiger Weinfest, Weihnachtsmarkt am Hauptmarkt —
+      Triers grosse Termine in der Übersicht.
+    </p>
+  </section>
+
+  <section class="container-page section pt-0">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {sorted.map((e) => <EventCard event={e} />)}
+    </div>
+  </section>
+</BaseLayout>

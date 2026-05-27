@@ -1,0 +1,18 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Seite nicht gefunden" noindex={true}>
+  <section class="container-page py-24 text-center">
+    <p class="eyebrow mb-3">404</p>
+    <h1 class="display-xl mb-4">Hier verläuft sich auch ein Römer</h1>
+    <p class="text-body max-w-xl mx-auto">
+      Diese Seite existiert nicht oder wurde verlegt. Zurück zur Startseite oder direkt
+      zu den Sehenswürdigkeiten.
+    </p>
+    <div class="mt-8 flex flex-wrap justify-center gap-3">
+      <a href="/" class="btn-primary">Zur Startseite</a>
+      <a href="/sehenswuerdigkeiten/" class="btn-outline">Sehenswürdigkeiten</a>
+    </div>
+  </section>
+</BaseLayout>

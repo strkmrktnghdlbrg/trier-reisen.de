@@ -1,0 +1,39 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import HueGradient from "../../components/HueGradient.astro";
+import { guides } from "../../data/guides";
+import { city } from "../../data/city";
+---
+
+<BaseLayout
+  title={`Reiseplaner ${city.name}`}
+  description={`Trier-Reiseplaner: 3 Tage in Trier, Trier mit Kindern, Trier bei Regen. Konkrete Routen, Mittagstipps, Abendprogramm.`}
+>
+  <section class="container-page py-12">
+    <Breadcrumbs items={[{ href: "/", label: city.name }, { label: "Reiseplaner" }]} />
+    <p class="eyebrow mb-3">{guides.length} Reiseplaner</p>
+    <h1 class="display-xl">Reiseplaner {city.name}</h1>
+    <p class="text-body mt-4 max-w-2xl">
+      Drei kuratierte Trier-Routen — von der Wochenend-Pflicht über das
+      Familien-Programm bis zum Schlechtwetter-Plan.
+    </p>
+  </section>
+
+  <section class="container-page section pt-0">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      {guides.map((g) => (
+        <a href={`/reiseplaner/${g.slug}/`} class="card group block">
+          <div class="aspect-[16/10] relative overflow-hidden">
+            <HueGradient hue={g.hue} label={g.title} class="absolute inset-0" />
+          </div>
+          <div class="p-5">
+            <p class="eyebrow mb-2">{g.eyebrow}</p>
+            <h2 class="text-xl font-light tracking-tight leading-tight mb-2 group-hover:text-[var(--color-accent)] transition-colors" style="color: var(--color-text); font-family: var(--font-display);">{g.title}</h2>
+            <p class="text-sm leading-relaxed line-clamp-3" style="color: var(--color-text-body);">{g.intro}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

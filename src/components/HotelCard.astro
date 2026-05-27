@@ -1,0 +1,40 @@
+---
+import HueGradient from "./HueGradient.astro";
+import type { Hotel } from "../data/hotels";
+import { getDistrict } from "../data/districts";
+
+interface Props {
+  hotel: Hotel;
+}
+
+const { hotel } = Astro.props;
+const district = getDistrict(hotel.district);
+const starString = "★".repeat(hotel.stars);
+---
+
+<a href={`/hotels/${hotel.slug}/`} class="card group block">
+  <div class="aspect-[4/3] relative overflow-hidden">
+    <HueGradient hue={hotel.imageHue} label={hotel.name} class="absolute inset-0" />
+    <div class="absolute top-3 left-3">
+      <span class="pill bg-white/95 backdrop-blur-sm">{starString}</span>
+    </div>
+    {hotel.guestFavorite && (
+      <div class="absolute top-3 right-3">
+        <span class="pill-accent">Gast-Favorit</span>
+      </div>
+    )}
+  </div>
+  <div class="p-4">
+    <p class="text-xs font-medium mb-1" style="color: var(--color-text-muted);">
+      {district?.name ?? hotel.district}
+    </p>
+    <h3 class="text-lg font-light tracking-tight leading-tight mb-2 group-hover:text-[var(--color-accent)] transition-colors" style="color: var(--color-text); font-family: var(--font-display);">
+      {hotel.name}
+    </h3>
+    <p class="text-sm leading-relaxed line-clamp-2 mb-3" style="color: var(--color-text-body);">{hotel.shortDesc}</p>
+    <div class="flex items-center justify-between text-xs">
+      <span style="color: var(--color-text-muted);">⭐ {hotel.rating}/10 · {hotel.reviews} Bewertungen</span>
+      <span style="color: var(--color-accent); font-weight: 500;">ab {hotel.priceFrom} €</span>
+    </div>
+  </div>
+</a>

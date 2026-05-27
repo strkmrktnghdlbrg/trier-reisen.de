@@ -1,0 +1,148 @@
+---
+import { Image } from "astro:assets";
+import { city } from "../data/city";
+import { features } from "../data/features";
+import logo from "../assets/branding/logo.svg";
+
+const navItems = [
+  { href: "/sehenswuerdigkeiten/", label: "Sehenswürdigkeiten", enabled: true },
+  { href: "/hotels/", label: "Hotels", enabled: true },
+  { href: "/restaurants/", label: "Restaurants", enabled: true },
+  { href: "/bezirke/", label: "Bezirke", enabled: true },
+  { href: "/reiseplaner/", label: "Reiseplaner", enabled: features.reiseplaner.enabled },
+  { href: "/events/", label: "Events", enabled: features.events.enabled },
+].filter((item) => item.enabled);
+---
+
+<header class="sticky top-0 z-40 backdrop-blur-md border-b" style="background: color-mix(in oklab, var(--color-bg) 92%, transparent); border-color: var(--color-border);">
+  <div class="container-page">
+    <div class="flex items-center justify-between h-16 gap-6">
+      <a href="/" class="flex items-center shrink-0" style="color: var(--color-accent);" aria-label={`${city.brandName} Startseite`}>
+        <Image src={logo} alt={city.brandName} width={320} height={64} class="h-10 w-auto" />
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-1" aria-label="Hauptnavigation">
+        {navItems.map((item) => (
+          <a href={item.href} class="px-3 py-2 text-sm font-medium rounded-full transition-colors hover:bg-[var(--color-surface)]" style="color: var(--color-text);">
+            {item.label}
+          </a>
+        ))}
+      </nav>
+
+      <div class="flex items-center gap-2 shrink-0">
+        {features.werben.enabled && (
+          <a href="/werben/" class="btn-outline hidden lg:inline-flex">Werben</a>
+        )}
+        <button
+          type="button"
+          data-mobile-menu-toggle
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          aria-label="Menü öffnen"
+          class="lg:hidden inline-flex items-center justify-center w-11 h-11 rounded-xl border hover:bg-[var(--color-surface)] transition-colors"
+          style="color: var(--color-text); border-color: var(--color-border);"
+        >
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div data-mobile-menu-backdrop class="lg:hidden mobile-menu-backdrop" aria-hidden="true"></div>
+
+  <aside
+    id="mobile-menu"
+    data-mobile-menu-panel
+    class="lg:hidden mobile-menu-panel"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Mobile Navigation"
+    aria-hidden="true"
+  >
+    <div class="flex items-center justify-between px-5 py-4 border-b shrink-0" style="border-color: var(--color-border);">
+      <a href="/" class="flex items-center shrink-0" style="color: var(--color-accent);" aria-label={`${city.brandName} Startseite`}>
+        <Image src={logo} alt={city.brandName} width={320} height={64} class="h-8 w-auto" />
+      </a>
+      <button
+        type="button"
+        data-mobile-menu-close
+        aria-label="Menü schließen"
+        class="inline-flex items-center justify-center w-10 h-10 rounded-lg hover:bg-[var(--color-surface)] transition-colors"
+        style="color: var(--color-text);"
+      >
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/>
+        </svg>
+      </button>
+    </div>
+
+    <nav class="flex-1 overflow-y-auto px-3 py-4" aria-label="Hauptnavigation mobil">
+      <ul class="space-y-1">
+        {navItems.map((item) => (
+          <li>
+            <a href={item.href} class="flex items-center justify-between px-4 py-3 rounded-xl text-base font-medium transition-colors hover:bg-[var(--color-surface)]" style="color: var(--color-text);">
+              <span>{item.label}</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: var(--color-text-muted);">
+                <polyline points="9 18 15 12 9 6"/>
+              </svg>
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <div class="mt-6 pt-6 border-t" style="border-color: var(--color-border);">
+        <p class="px-4 mb-2 text-xs uppercase tracking-widest font-medium" style="color: var(--color-text-muted);">Service</p>
+        <ul class="space-y-1">
+          <li><a href="/impressum/" class="block px-4 py-2.5 rounded-xl text-sm transition-colors hover:bg-[var(--color-surface)]" style="color: var(--color-text-muted);">Impressum</a></li>
+          <li><a href="/datenschutz/" class="block px-4 py-2.5 rounded-xl text-sm transition-colors hover:bg-[var(--color-surface)]" style="color: var(--color-text-muted);">Datenschutz</a></li>
+        </ul>
+      </div>
+    </nav>
+  </aside>
+</header>
+
+<script is:inline>
+  (function () {
+    function init() {
+      var toggle = document.querySelector('[data-mobile-menu-toggle]');
+      var closeBtn = document.querySelector('[data-mobile-menu-close]');
+      var menu = document.querySelector('[data-mobile-menu-panel]');
+      var backdrop = document.querySelector('[data-mobile-menu-backdrop]');
+      if (!toggle || !menu || !backdrop || !closeBtn) return;
+
+      var openState = false;
+      function setOpen(open) {
+        openState = open;
+        menu.classList.toggle('is-open', open);
+        backdrop.classList.toggle('is-open', open);
+        menu.setAttribute('aria-hidden', open ? 'false' : 'true');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
+        document.body.style.overflow = open ? 'hidden' : '';
+      }
+
+      toggle.addEventListener('click', function () { setOpen(!openState); });
+      closeBtn.addEventListener('click', function () { setOpen(false); toggle.focus(); });
+      backdrop.addEventListener('click', function () { setOpen(false); });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && openState) { setOpen(false); toggle.focus(); }
+      });
+      menu.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () { setOpen(false); });
+      });
+
+      var mq = window.matchMedia('(min-width: 1024px)');
+      function handleResize(e) { if (e.matches && openState) setOpen(false); }
+      if (mq.addEventListener) mq.addEventListener('change', handleResize);
+      else mq.addListener(handleResize);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+</script>

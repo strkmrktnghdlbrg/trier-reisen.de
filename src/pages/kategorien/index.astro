@@ -1,0 +1,28 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import CategoryCard from "../../components/CategoryCard.astro";
+import { city } from "../../data/city";
+import { categories } from "../../data/categories";
+---
+
+<BaseLayout
+  title={`Themen & Kategorien — ${city.name}`}
+  description={`${categories.length} Themen: UNESCO-Welterbe, römisches Erbe, Wein, Mosel-Aktivitäten, Familie, Museen, Aussicht & Wandern. Trier nach Interesse entdecken.`}
+>
+  <section class="container-page py-12">
+    <Breadcrumbs items={[{ href: "/", label: city.name }, { label: "Themen" }]} />
+    <p class="eyebrow mb-3">{categories.length} Themen</p>
+    <h1 class="display-xl">Trier nach Interesse</h1>
+    <p class="text-body mt-4 max-w-2xl">
+      Nicht jeder Trier-Besuch beginnt am Hauptmarkt. Wein-Reisende starten in Olewig,
+      Familien im Spielzeugmuseum, Architektur-Fans an der Konstantinbasilika.
+    </p>
+  </section>
+
+  <section class="container-page section pt-0">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {categories.map((c) => <CategoryCard category={c} />)}
+    </div>
+  </section>
+</BaseLayout>

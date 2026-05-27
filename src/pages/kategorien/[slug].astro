@@ -1,0 +1,60 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import SightCard from "../../components/SightCard.astro";
+import RestaurantCard from "../../components/RestaurantCard.astro";
+import HueGradient from "../../components/HueGradient.astro";
+import { categories, type Category } from "../../data/categories";
+import { sights } from "../../data/sights";
+import { restaurants } from "../../data/restaurants";
+import { city } from "../../data/city";
+
+export function getStaticPaths() {
+  return categories.map((category) => ({ params: { slug: category.slug }, props: { category } }));
+}
+
+interface Props { category: Category }
+const { category } = Astro.props;
+const catSights = sights.filter((s) => s.categories.includes(category.slug));
+const catRestaurants = restaurants.filter((r) => r.categories.includes(category.slug));
+---
+
+<BaseLayout title={`${category.name} in ${city.name}`} description={category.shortDesc}>
+  <article>
+    <div class="container-page py-12">
+      <Breadcrumbs items={[
+        { href: "/", label: city.name },
+        { href: "/kategorien/", label: "Themen" },
+        { label: category.name },
+      ]} />
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 mt-4 items-center">
+        <div class="lg:col-span-3">
+          <p class="eyebrow mb-3">Thema · {city.name}</p>
+          <h1 class="display-xl mb-4">{category.name}</h1>
+          <p class="text-body text-lg leading-relaxed max-w-2xl">{category.longDesc}</p>
+        </div>
+        <div class="lg:col-span-2 aspect-[16/10] rounded-3xl overflow-hidden">
+          <HueGradient hue={category.hue} label={category.name} class="w-full h-full" />
+        </div>
+      </div>
+    </div>
+
+    {catSights.length > 0 && (
+      <section class="container-page section">
+        <h2 class="display mb-6">Sehenswürdigkeiten</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {catSights.map((s) => <SightCard sight={s} />)}
+        </div>
+      </section>
+    )}
+
+    {catRestaurants.length > 0 && (
+      <section class="container-page section pt-0">
+        <h2 class="display mb-6">Restaurants</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {catRestaurants.map((r) => <RestaurantCard restaurant={r} />)}
+        </div>
+      </section>
+    )}
+  </article>
+</BaseLayout>

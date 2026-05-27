@@ -1,0 +1,45 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import HueGradient from "../../components/HueGradient.astro";
+import { guides, type Guide } from "../../data/guides";
+import { city } from "../../data/city";
+
+export function getStaticPaths() {
+  return guides.map((guide) => ({ params: { slug: guide.slug }, props: { guide } }));
+}
+
+interface Props { guide: Guide }
+const { guide } = Astro.props;
+---
+
+<BaseLayout title={guide.title} description={guide.description}>
+  <article class="container-page py-12">
+    <Breadcrumbs items={[
+      { href: "/", label: city.name },
+      { href: "/reiseplaner/", label: "Reiseplaner" },
+      { label: guide.title },
+    ]} />
+
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 mt-4 items-center">
+      <div class="lg:col-span-3">
+        <p class="eyebrow mb-3">{guide.eyebrow}</p>
+        <h1 class="display-xl mb-4">{guide.title}</h1>
+        <p class="text-body text-lg leading-relaxed">{guide.intro}</p>
+      </div>
+      <div class="lg:col-span-2 aspect-[4/3] rounded-3xl overflow-hidden">
+        <HueGradient hue={guide.hue} label={guide.title} class="w-full h-full" />
+      </div>
+    </div>
+
+    <div class="section pt-12 max-w-3xl">
+      {guide.sections.map((sec, i) => (
+        <section class="mb-10">
+          <p class="eyebrow mb-2">Schritt {i + 1}</p>
+          <h2 class="display mb-4">{sec.heading}</h2>
+          <p class="text-body text-lg leading-relaxed">{sec.body}</p>
+        </section>
+      ))}
+    </div>
+  </article>
+</BaseLayout>

@@ -1,0 +1,28 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import DistrictCard from "../../components/DistrictCard.astro";
+import { city } from "../../data/city";
+import { districts } from "../../data/districts";
+---
+
+<BaseLayout
+  title={`Bezirke von ${city.name}`}
+  description={`${districts.length} Bezirke von ${city.name}: Innenstadt, Olewig, Trier-Süd, Kürenz, Ruwer-Eitelsbach. Charakter, Sehenswürdigkeiten und Hotels pro Viertel.`}
+>
+  <section class="container-page py-12">
+    <Breadcrumbs items={[{ href: "/", label: city.name }, { label: "Bezirke" }]} />
+    <p class="eyebrow mb-3">{districts.length} Bezirke</p>
+    <h1 class="display-xl">Bezirke von {city.name}</h1>
+    <p class="text-body mt-4 max-w-2xl">
+      Trier ist mehr als seine UNESCO-Innenstadt. Olewig ist Weinort,
+      Kürenz Uni-Viertel, Ruwer-Eitelsbach Riesling-Steillage. Hier sind alle Bezirke.
+    </p>
+  </section>
+
+  <section class="container-page section pt-0">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {districts.map((d) => <DistrictCard district={d} />)}
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,233 @@
+@import "tailwindcss";
+
+/* ===================================================================
+   GLOBAL.CSS — trier-reisen.de
+   Design: ElevenLabs (Architect's Blueprint Warm)
+   Akzent: Ember #ff4704
+   Tokens werden in brand.css definiert.
+   =================================================================== */
+
+/* === BASE === */
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background: var(--color-bg);
+  font-feature-settings: "salt", "ss01";
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-accent-contrast);
+}
+
+/* === COMPONENT UTILITIES === */
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-1.5 px-5 py-2.5
+           text-sm font-medium transition-colors rounded-full;
+    background: #000000;
+    color: var(--color-bg);
+  }
+  .btn-primary:hover {
+    background: var(--color-accent);
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-1.5 px-4 py-2.5
+           text-sm font-medium transition-colors rounded-full
+           bg-white border;
+    color: #000;
+    border-color: var(--color-border);
+  }
+  .btn-outline:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-1.5 px-3 py-2
+           text-sm font-medium transition-colors rounded-xl
+           bg-transparent border;
+    color: var(--color-text);
+    border-color: var(--color-border);
+  }
+  .btn-ghost:hover {
+    background: var(--color-surface);
+  }
+
+  .pill {
+    @apply inline-flex items-center gap-1 px-2.5 py-1
+           text-xs font-medium rounded-full border;
+    color: var(--color-text);
+    background: #fff;
+    border-color: var(--color-border);
+  }
+
+  .pill-accent {
+    @apply inline-flex items-center gap-1 px-2.5 py-1
+           text-xs font-medium rounded-full;
+    color: var(--color-accent);
+    background: var(--color-accent-tint);
+  }
+
+  .card {
+    @apply bg-white border overflow-hidden transition-all;
+    border-color: var(--color-border);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+  }
+  .card:hover {
+    border-color: #c8c2bd;
+  }
+
+  .eyebrow {
+    @apply text-xs font-medium uppercase tracking-widest;
+    color: var(--color-accent);
+    font-family: var(--font-label);
+    letter-spacing: 0.05em;
+  }
+
+  .container-page {
+    @apply mx-auto px-4 sm:px-6 lg:px-8;
+    max-width: 1200px;
+  }
+
+  .section {
+    @apply py-16 sm:py-24;
+  }
+
+  .link-accent {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+  .link-accent:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .display-xl {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(36px, 5vw, 48px);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    color: var(--color-text);
+  }
+
+  .display {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(28px, 4vw, 36px);
+    line-height: 1.13;
+    letter-spacing: -0.02em;
+    color: var(--color-text);
+  }
+
+  .heading {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(24px, 3vw, 32px);
+    line-height: 1.17;
+    letter-spacing: -0.02em;
+    color: var(--color-text);
+  }
+
+  .text-body {
+    color: var(--color-text-body);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .text-muted {
+    color: var(--color-text-muted);
+  }
+}
+
+/* === HEADER SEARCH === */
+
+.header-search-input {
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text);
+  background: transparent;
+}
+.header-search-input::placeholder {
+  color: var(--color-text-muted);
+}
+.header-search-input:focus {
+  border-color: var(--color-accent);
+}
+
+/* === SR-ONLY === */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* === MOBILE MENU DRAWER (Pattern B) === */
+
+@media (max-width: 1023.98px) {
+  .mobile-menu-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    background: rgba(0, 0, 0, 0.45);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+  .mobile-menu-backdrop.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .mobile-menu-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 70;
+    width: min(88vw, 380px);
+    height: 100vh;
+    height: 100dvh;
+    background: var(--color-bg);
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.28s cubic-bezier(0.32, 0.72, 0, 1);
+    box-shadow: -16px 0 40px -20px rgba(0, 0, 0, 0.35);
+  }
+  .mobile-menu-panel.is-open {
+    transform: translateX(0);
+  }
+}
+
+/* === GYG-Widget Partner-Promo unterdrücken === */
+
+.gyg-widget-host [class*="partner-program"],
+.gyg-widget-host [class*="partnerProgram"],
+.gyg-widget-host [class*="partner-promo"],
+.gyg-widget-host a[href*="/partners/"],
+.gyg-widget-host a[href*="partner-program"] {
+  display: none !important;
+}

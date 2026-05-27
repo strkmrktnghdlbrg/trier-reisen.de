@@ -1,0 +1,67 @@
+---
+import { Image } from "astro:assets";
+import { city } from "../data/city";
+import { features } from "../data/features";
+import { categories } from "../data/categories";
+import { districts } from "../data/districts";
+import logo from "../assets/branding/logo.svg";
+
+const year = new Date().getFullYear();
+const topCategories = categories.slice(0, 6);
+const topDistricts = districts.slice(0, 6);
+---
+
+<footer class="mt-24 border-t" style="background: var(--color-surface); border-color: var(--color-border);">
+  <div class="container-page py-14">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-10">
+      <div class="col-span-2 md:col-span-1">
+        <a href="/" style="color: var(--color-accent);" aria-label={`${city.brandName} Startseite`}>
+          <Image src={logo} alt={city.brandName} width={320} height={64} class="h-10 w-auto" />
+        </a>
+        <p class="mt-4 text-sm" style="color: var(--color-text-muted);">
+          {city.description.short}
+        </p>
+      </div>
+
+      <div>
+        <p class="eyebrow mb-3">Entdecken</p>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/sehenswuerdigkeiten/" class="hover:underline" style="color: var(--color-text-body);">Sehenswürdigkeiten</a></li>
+          <li><a href="/hotels/" class="hover:underline" style="color: var(--color-text-body);">Hotels</a></li>
+          <li><a href="/restaurants/" class="hover:underline" style="color: var(--color-text-body);">Restaurants</a></li>
+          <li><a href="/bezirke/" class="hover:underline" style="color: var(--color-text-body);">Bezirke</a></li>
+          {features.reiseplaner.enabled && <li><a href="/reiseplaner/" class="hover:underline" style="color: var(--color-text-body);">Reiseplaner</a></li>}
+          {features.events.enabled && <li><a href="/events/" class="hover:underline" style="color: var(--color-text-body);">Events</a></li>}
+        </ul>
+      </div>
+
+      <div>
+        <p class="eyebrow mb-3">Themen</p>
+        <ul class="space-y-2 text-sm">
+          {topCategories.map((c) => (
+            <li><a href={`/kategorien/${c.slug}/`} class="hover:underline" style="color: var(--color-text-body);">{c.name}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <p class="eyebrow mb-3">Bezirke</p>
+        <ul class="space-y-2 text-sm">
+          {topDistricts.map((d) => (
+            <li><a href={`/bezirke/${d.slug}/`} class="hover:underline" style="color: var(--color-text-body);">{d.name}</a></li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 pt-6 border-t flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-xs" style="border-color: var(--color-border); color: var(--color-text-muted);">
+      <p>© {year} {city.brandName}. Stadtportal für die älteste Stadt Deutschlands.</p>
+      <nav aria-label="Rechtliches">
+        <ul class="flex flex-wrap gap-4">
+          <li><a href="/impressum/" class="hover:underline">Impressum</a></li>
+          <li><a href="/datenschutz/" class="hover:underline">Datenschutz</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</footer>

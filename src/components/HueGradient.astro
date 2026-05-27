@@ -1,0 +1,19 @@
+---
+interface Props {
+  hue?: number;
+  label?: string;
+  class?: string;
+}
+
+const { hue = 1, label, class: className = "" } = Astro.props;
+const hueIndex = ((hue - 1) % 5) + 1;
+---
+
+<div
+  class={`relative w-full h-full overflow-hidden ${className}`}
+  style={`background: var(--hue-${hueIndex});`}
+  role="img"
+  aria-label={label ?? `Stilisierter Farbverlauf ${hueIndex}`}
+>
+  <div class="absolute inset-0" style="background-image: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.18), transparent 60%);"></div>
+</div>
