@@ -5,6 +5,8 @@ import ContentImage from "../../components/ContentImage.astro";
 import SightCard from "../../components/SightCard.astro";
 import HotelCard from "../../components/HotelCard.astro";
 import RestaurantCard from "../../components/RestaurantCard.astro";
+import Stay22NearbyHotels from "../../components/Stay22NearbyHotels.astro";
+import Stay22Map from "../../components/Stay22Map.astro";
 import { districts, type District } from "../../data/districts";
 import { sights } from "../../data/sights";
 import { hotels } from "../../data/hotels";
@@ -69,6 +71,24 @@ const districtRestaurants = restaurants.filter((r) => r.district === district.sl
         </div>
       </section>
     )}
+
+    <div class="container-page">
+      <Stay22NearbyHotels
+        lat={district.coordinates[0]}
+        lng={district.coordinates[1]}
+        near={district.name}
+        radius={2000}
+        limit={4}
+      />
+
+      <Stay22Map
+        lat={district.coordinates[0]}
+        lng={district.coordinates[1]}
+        zoom={14}
+        title={`Hotels in ${district.name} — Live-Karte`}
+        lead="Aktuelle Preise via Booking. Zoom rein, Marker antippen, buchen."
+      />
+    </div>
 
     {districtRestaurants.length > 0 && (
       <section class="container-page section pt-0">

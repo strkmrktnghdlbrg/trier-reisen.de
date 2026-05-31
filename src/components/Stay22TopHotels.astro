@@ -1,0 +1,59 @@
+---
+/**
+ * Stay22 Top-Hotels Live-Block.
+ * Build-Time-Fetch der aktuell bestbewerteten Hotels einer Adresse.
+ * Graceful degradation wenn STAY22_API_KEY fehlt oder API leer kommt.
+ */
+import { getTopHotels, type Stay22Accommodation } from "../lib/stay22";
+import { affiliate } from "../data/affiliate";
+import { city } from "../data/city";
+import Stay22HotelCard from "./Stay22HotelCard.astro";
+
+interface Props {
+  address?: string;
+  limit?: number;
+  title?: string;
+  lead?: string;
+  minGuestRating?: number;
+}
+
+const {
+  address = `${city.name}, Germany`,
+  limit = 8,
+  title = `Aktuell bestbewertete Hotels in ${city.name}`,
+  lead = "Live von Booking.com — aktuelle Bewertungen und Preise. Aktualisiert beim letzten Build.",
+  minGuestRating = 8.0,
+} = Astro.props;
+
+let hotels: Stay22Accommodation[] | null = null;
+try {
+  hotels = await getTopHotels(address, affiliate.stay22.lmaId, { limit, minguestrating: minGuestRating });
+} catch (err) {
+  console.error("[Stay22TopHotels] Fetch:", err);
+}
+
+const visible = hotels && hotels.length > 0 ? hotels.slice(0, limit) : [];
+const buildTime = new Date().toLocaleDateString("de-DE", { year: "numeric", month: "long", day: "numeric" });
+
+if (visible.length > 0) {
+  Astro.response.headers.set("Cache-Control", "public, max-age=300, s-maxage=3600, stale-while-revalidate=86400");
+}
+---
+
+{visible.length > 0 && (
+  <section class="section">
+    <div class="mb-6 max-w-2xl">
+      <p class="eyebrow mb-2">Live von Stay22</p>
+      <h2 class="display mb-2">{title}</h2>
+      <p class="text-body">{lead}</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      {visible.map((h) => <Stay22HotelCard hotel={h} />)}
+    </div>
+
+    <p class="text-[11px] mt-4 leading-relaxed" style="color: var(--color-text-muted);">
+      * Sponsored — Buchung laeuft ueber Booking.com via Stay22. Stand: {buildTime}. Preise und Verfuegbarkeit aendern sich taeglich.
+    </p>
+  </section>
+)}

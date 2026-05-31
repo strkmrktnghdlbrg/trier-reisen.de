@@ -2,14 +2,19 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import HotelCard from "../../components/HotelCard.astro";
+import Stay22TopHotels from "../../components/Stay22TopHotels.astro";
+import Stay22Map from "../../components/Stay22Map.astro";
+import EventCard from "../../components/EventCard.astro";
 import { city } from "../../data/city";
 import { hotels } from "../../data/hotels";
+import { seasonalStays, isUpcoming } from "../../data/events";
 
 const sorted = [...hotels].sort((a, b) => b.rating - a.rating);
 const fiveStar = sorted.filter((h) => h.stars === 5);
 const fourStar = sorted.filter((h) => h.stars === 4);
 const threeStar = sorted.filter((h) => h.stars === 3);
 const budget = sorted.filter((h) => h.stars <= 2);
+const upcomingSeasonal = seasonalStays.filter(isUpcoming).slice(0, 6);
 ---
 
 <BaseLayout
@@ -25,6 +30,40 @@ const budget = sorted.filter((h) => h.stars <= 2);
       Sortiert nach Sterne-Kategorie, mit Bewertung und Ab-Preis.
     </p>
   </section>
+
+  <section class="container-page pt-0">
+    <Stay22TopHotels limit={8} />
+  </section>
+
+  <section class="container-page">
+    <Stay22Map
+      title="Hotels in Trier — interaktive Karte"
+      lead="Alle Hotels mit Live-Preisen. Heran-zoomen, Pin klicken, Booking-Link folgen."
+    />
+  </section>
+
+  {upcomingSeasonal.length > 0 && (
+    <section class="container-page section">
+      <div class="mb-6 max-w-2xl">
+        <p class="eyebrow mb-2">Saison-Hotels</p>
+        <h2 class="display mb-2">Trier nach Datum</h2>
+        <p class="text-body">
+          Live-Preise fuer konkrete Saisontermine — Silvester, Brueckentage, Pfingsten, Antikenfestspiele.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {upcomingSeasonal.map((e) => (
+          <a href={`/hotels-trier-${e.slug}/`} class="card group block">
+            <div class="p-5">
+              <p class="eyebrow mb-2">{e.eyebrow}</p>
+              <h3 class="text-xl font-light tracking-tight leading-tight mb-2 group-hover:text-[var(--color-accent)] transition-colors" style="color: var(--color-text); font-family: var(--font-display);">{e.title}</h3>
+              <p class="text-sm leading-relaxed line-clamp-3" style="color: var(--color-text-body);">{e.intro}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
 
   {fourStar.length > 0 && (
     <section class="container-page section pt-0">

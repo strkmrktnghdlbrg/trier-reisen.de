@@ -1,0 +1,63 @@
+name: Build with Stay22 Live Data
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    # Alle 6 Stunden Rebuild damit Stay22-Live-Daten (Top-Hotels,
+    # Hotels in der Naehe, Saison-Pages) frisch bleiben.
+    # UTC: 02/08/14/20 = 04/10/16/22 MESZ.
+    # Stay22 ToS erlaubt 60 min Cache; 6 h ist defensiv und reicht fuer
+    # SEO-Crawling ohne API-Quota zu strapazieren.
+    - cron: '0 2,8,14,20 * * *'
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Astro
+        env:
+          # Stay22 Direct Travel API. Wenn Secret fehlt, laeuft Build trotzdem
+          # durch — Helper degraded zu null, statische Hotels bleiben.
+          # gh secret set STAY22_API_KEY --body "stay22_…" --repo strkmrktng/trier-reisen.de
+          STAY22_API_KEY: ${{ secrets.STAY22_API_KEY }}
+        run: npm run build
+
+      - name: Upload build as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+          retention-days: 7
+
+      # ----------------------------------------------------------------
+      # Cloudflare Pages deployt automatisch bei jedem Push auf main
+      # (Git-Integration im CF-Dashboard). Dieser Workflow validiert
+      # nur, dass der Build inkl. Stay22-Live-Daten gruen ist.
+      # Bei Cron-Triggern triggert der Push selbst kein neues Deploy —
+      # dafuer separat in CF-Pages eine Deploy-Hook erstellen und hier
+      # einbinden:
+      #
+      # - name: Trigger Cloudflare Pages rebuild
+      #   if: github.event_name == 'schedule'
+      #   run: curl -X POST "${{ secrets.CF_DEPLOY_HOOK }}"
+      # ----------------------------------------------------------------

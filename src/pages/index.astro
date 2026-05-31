@@ -5,17 +5,18 @@ import SightCard from "../components/SightCard.astro";
 import DistrictCard from "../components/DistrictCard.astro";
 import EventCard from "../components/EventCard.astro";
 import CategoryCard from "../components/CategoryCard.astro";
+import Stay22TopHotels from "../components/Stay22TopHotels.astro";
 import { city } from "../data/city";
 import { sights } from "../data/sights";
 import { districts } from "../data/districts";
 import { categories } from "../data/categories";
-import { events, isUpcoming } from "../data/events";
+import { realEvents, isUpcoming } from "../data/events";
 import { features } from "../data/features";
 
 const featuredSights = sights.filter((s) => s.unesco).slice(0, 6);
 const featuredDistricts = districts.slice(0, 4);
 const featuredCategories = categories.slice(0, 6);
-const upcomingEvents = events.filter(isUpcoming).slice(0, 3);
+const upcomingEvents = realEvents.filter(isUpcoming).slice(0, 3);
 ---
 
 <BaseLayout title={`${city.name} entdecken`} description={city.description.long}>
@@ -60,6 +61,11 @@ const upcomingEvents = events.filter(isUpcoming).slice(0, 3);
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
       {featuredSights.map((s) => <SightCard sight={s} />)}
     </div>
+  </section>
+
+  <!-- STAY22 LIVE TOP HOTELS -->
+  <section class="container-page">
+    <Stay22TopHotels limit={8} />
   </section>
 
   <!-- BEZIRKE -->

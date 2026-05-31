@@ -3,6 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import ContentImage from "../../components/ContentImage.astro";
 import SightCard from "../../components/SightCard.astro";
+import Stay22NearbyHotels from "../../components/Stay22NearbyHotels.astro";
 import { sights, type Sight } from "../../data/sights";
 import { getDistrict } from "../../data/districts";
 import { getCategory } from "../../data/categories";
@@ -90,6 +91,14 @@ const priceLabel = sight.priceFrom === null ? "Eintritt frei" : `ab ${sight.pric
         </div>
       </aside>
     </div>
+
+    <Stay22NearbyHotels
+      lat={sight.coordinates[0]}
+      lng={sight.coordinates[1]}
+      near={sight.name}
+      radius={1500}
+      limit={4}
+    />
 
     {related.length > 0 && (
       <section class="section">

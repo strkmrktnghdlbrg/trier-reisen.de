@@ -3,28 +3,60 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import EventCard from "../../components/EventCard.astro";
 import { city } from "../../data/city";
-import { events } from "../../data/events";
+import { realEvents, seasonalStays, isUpcoming } from "../../data/events";
 
-const sorted = [...events].sort((a, b) => a.checkin.localeCompare(b.checkin));
+const upcomingRealEvents = [...realEvents]
+  .filter(isUpcoming)
+  .sort((a, b) => a.checkin.localeCompare(b.checkin));
+const upcomingSeasonal = [...seasonalStays]
+  .filter(isUpcoming)
+  .sort((a, b) => a.checkin.localeCompare(b.checkin));
 ---
 
 <BaseLayout
   title={`Events in ${city.name}`}
-  description={`Events in ${city.name}: Antikenfestspiele, Olewiger Weinfest, Weihnachtsmarkt, Brot und Spiele, Mosel-Wein-Nachts-Bummel. Termine und Hotel-Tipps.`}
+  description={`Events in ${city.name}: Antikenfestspiele, Olewiger Weinfest, Weihnachtsmarkt, Brot und Spiele, Mosel-Wein-Nachts-Bummel. Plus Saison-Hotels fuer Silvester, Pfingsten, Brueckentage.`}
 >
   <section class="container-page py-12">
     <Breadcrumbs items={[{ href: "/", label: city.name }, { label: "Events" }]} />
-    <p class="eyebrow mb-3">{events.length} Veranstaltungen</p>
-    <h1 class="display-xl">Events in {city.name}</h1>
+    <p class="eyebrow mb-3">{upcomingRealEvents.length + upcomingSeasonal.length} Termine</p>
+    <h1 class="display-xl">Events & Termine in {city.name}</h1>
     <p class="text-body mt-4 max-w-2xl">
       Antikenfestspiele im Amphitheater, Olewiger Weinfest, Weihnachtsmarkt am Hauptmarkt —
-      Triers grosse Termine in der Übersicht.
+      Triers grosse Termine plus Saison-Hotels fuer Silvester und Brueckentage.
     </p>
   </section>
 
-  <section class="container-page section pt-0">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-      {sorted.map((e) => <EventCard event={e} />)}
-    </div>
-  </section>
+  {upcomingRealEvents.length > 0 && (
+    <section class="container-page section pt-0">
+      <h2 class="display mb-6">Festivals und Maerkte</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {upcomingRealEvents.map((e) => <EventCard event={e} />)}
+      </div>
+    </section>
+  )}
+
+  {upcomingSeasonal.length > 0 && (
+    <section class="container-page section pt-0">
+      <div class="mb-6 max-w-2xl">
+        <p class="eyebrow mb-2">Live-Preise</p>
+        <h2 class="display mb-2">Saison-Hotels nach Termin</h2>
+        <p class="text-body">
+          Silvester, Pfingsten, Christi Himmelfahrt, Wochenende — Live-Preise via Booking.com
+          fuer konkrete Reisetermine in Trier.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {upcomingSeasonal.map((e) => (
+          <a href={`/hotels-trier-${e.slug}/`} class="card group block">
+            <div class="p-5">
+              <p class="eyebrow mb-2">{e.eyebrow}</p>
+              <h3 class="text-xl font-light tracking-tight leading-tight mb-2 group-hover:text-[var(--color-accent)] transition-colors" style="color: var(--color-text); font-family: var(--font-display);">{e.title}</h3>
+              <p class="text-sm leading-relaxed line-clamp-3" style="color: var(--color-text-body);">{e.intro}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
 </BaseLayout>

@@ -1,0 +1,48 @@
+---
+/**
+ * Stay22 Hotels in der Naehe — Lat/Lng-basiert.
+ * Eingesetzt auf Sight-/Bezirk-/Event-Detail-Pages.
+ */
+import { getNearbyHotels, type Stay22Accommodation } from "../lib/stay22";
+import { affiliate } from "../data/affiliate";
+import Stay22HotelCard from "./Stay22HotelCard.astro";
+
+interface Props {
+  lat: number;
+  lng: number;
+  near: string;
+  radius?: number;
+  limit?: number;
+}
+
+const { lat, lng, near, radius = 1500, limit = 4 } = Astro.props;
+
+let hotels: Stay22Accommodation[] | null = null;
+try {
+  hotels = await getNearbyHotels(lat, lng, affiliate.stay22.lmaId, { radius, limit });
+} catch (err) {
+  console.error(`[Stay22NearbyHotels] ${near}:`, err);
+}
+
+const visible = hotels && hotels.length > 0 ? hotels.slice(0, limit) : [];
+---
+
+{visible.length > 0 && (
+  <section class="my-12">
+    <div class="mb-5">
+      <p class="eyebrow mb-2">Live von Stay22</p>
+      <h2 class="display mb-2">Hotels in der Naehe von {near}</h2>
+      <p class="text-body">
+        Aktuelle Preise und Verfuegbarkeit. Alle Hotels im Umkreis von {Math.round(radius / 100) * 100} m.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      {visible.map((h) => <Stay22HotelCard hotel={h} showDistance />)}
+    </div>
+
+    <p class="text-[11px] mt-3" style="color: var(--color-text-muted);">
+      * Sponsored — Buchung ueber Booking.com via Stay22-Affiliate.
+    </p>
+  </section>
+)}

@@ -1,0 +1,63 @@
+---
+/**
+ * Stay22-Map iframe-Embed. Lat/Lng + Zoom + Ember-Akzentfarbe.
+ */
+import { affiliate, stay22Enabled } from "../data/affiliate";
+import { city } from "../data/city";
+
+interface Props {
+  lat?: number;
+  lng?: number;
+  zoom?: number;
+  heightClass?: string;
+  title?: string;
+  lead?: string;
+}
+
+const {
+  lat = city.coordinates[0],
+  lng = city.coordinates[1],
+  zoom = 13,
+  heightClass = "h-[480px] sm:h-[560px]",
+  title,
+  lead,
+} = Astro.props;
+
+const embedId = affiliate.stay22.mapEmbedId;
+const accentHex = "ff4704"; // Ember ohne #
+const fallbackParams = new URLSearchParams({
+  aid: affiliate.stay22.lmaId,
+  lat: String(lat),
+  lng: String(lng),
+  zoom: String(zoom),
+  maincolor: accentHex,
+});
+const embedUrl = embedId
+  ? `https://stay22.com/embed/${embedId}`
+  : `https://www.stay22.com/embed/widget?${fallbackParams.toString()}`;
+---
+
+{stay22Enabled && (
+  <section class="my-12">
+    {title && (
+      <div class="mb-6 max-w-2xl">
+        <p class="eyebrow mb-2">Hotel-Karte</p>
+        <h2 class="display mb-2">{title}</h2>
+        {lead && <p class="text-body">{lead}</p>}
+      </div>
+    )}
+
+    <div class={`relative rounded-2xl overflow-hidden border ${heightClass}`} style="border-color: var(--color-border);">
+      <iframe
+        src={embedUrl}
+        width="100%"
+        height="100%"
+        loading="lazy"
+        title="Stay22 Hotel-Karte"
+        style="border:0; width:100%; height:100%; display:block;"
+        referrerpolicy="no-referrer-when-downgrade"
+        allow="geolocation"
+      ></iframe>
+    </div>
+  </section>
+)}

@@ -3,9 +3,10 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import HueGradient from "../../components/HueGradient.astro";
 import HotelCard from "../../components/HotelCard.astro";
+import Stay22NearbyHotels from "../../components/Stay22NearbyHotels.astro";
+import { city } from "../../data/city";
 import { hotels, type Hotel } from "../../data/hotels";
 import { getDistrict } from "../../data/districts";
-import { city } from "../../data/city";
 
 export function getStaticPaths() {
   return hotels.map((hotel) => ({ params: { slug: hotel.slug }, props: { hotel } }));
@@ -61,6 +62,16 @@ const stars = "★".repeat(hotel.stars);
         </div>
       </aside>
     </div>
+
+    {district && (
+      <Stay22NearbyHotels
+        lat={district.coordinates[0]}
+        lng={district.coordinates[1]}
+        near={district.name}
+        radius={1500}
+        limit={4}
+      />
+    )}
 
     {related.length > 0 && (
       <section class="section">
