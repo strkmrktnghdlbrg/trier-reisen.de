@@ -5,6 +5,7 @@ import HueGradient from "../components/HueGradient.astro";
 import GygActivities from "../components/GygActivities.astro";
 import AwinOffer from "../components/AwinOffer.astro";
 import { articles, type Article, articleCategories } from "../data/articles";
+import { articleSchema, breadcrumbSchema } from "../lib/schema";
 import { city } from "../data/city";
 
 export function getStaticPaths() {
@@ -22,7 +23,18 @@ const dateLabel = new Date(article.publishDate).toLocaleDateString("de-DE", {
 });
 ---
 
-<BaseLayout title={article.title} description={article.description}>
+<BaseLayout
+  title={article.title}
+  description={article.description}
+  schema={[
+    articleSchema(article),
+    breadcrumbSchema([
+      { name: city.name, url: "/" },
+      { name: "Magazin", url: "/magazin/" },
+      { name: article.title },
+    ]),
+  ]}
+>
   <article class="container-page py-12">
     <Breadcrumbs items={[
       { href: "/", label: city.name },

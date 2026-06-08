@@ -10,6 +10,7 @@ import { getDistrict } from "../../data/districts";
 import { getCategory } from "../../data/categories";
 import { getGyg, gygCmp } from "../../data/gyg";
 import sightEnrichments from "../../data/sight-enrichments.json";
+import { sightSchema, breadcrumbSchema } from "../../lib/schema";
 import { city } from "../../data/city";
 
 export function getStaticPaths() {
@@ -27,7 +28,18 @@ const gyg = getGyg(gygKey);
 const moreInfo: string[] = (sightEnrichments as Record<string, string[]>)[sight.slug] ?? [];
 ---
 
-<BaseLayout title={sight.name} description={sight.shortDesc}>
+<BaseLayout
+  title={sight.name}
+  description={sight.shortDesc}
+  schema={[
+    sightSchema(sight),
+    breadcrumbSchema([
+      { name: city.name, url: "/" },
+      { name: "Sehenswürdigkeiten", url: "/sehenswuerdigkeiten/" },
+      { name: sight.name },
+    ]),
+  ]}
+>
   <article class="container-page py-12">
     <Breadcrumbs items={[
       { href: "/", label: city.name },

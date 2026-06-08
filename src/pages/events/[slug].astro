@@ -7,6 +7,7 @@ import { events, type CityEvent, isUpcoming } from "../../data/events";
 import { searchAccommodations, type Stay22Accommodation } from "../../lib/stay22";
 import { affiliate } from "../../data/affiliate";
 import { getGyg, gygCmp } from "../../data/gyg";
+import { eventSchema, breadcrumbSchema } from "../../lib/schema";
 import { city } from "../../data/city";
 
 export function getStaticPaths() {
@@ -57,7 +58,18 @@ if (visible.length > 0) {
 }
 ---
 
-<BaseLayout title={event.title} description={event.description}>
+<BaseLayout
+  title={event.title}
+  description={event.description}
+  schema={[
+    eventSchema(event),
+    breadcrumbSchema([
+      { name: city.name, url: "/" },
+      { name: "Events", url: "/events/" },
+      { name: event.title },
+    ]),
+  ]}
+>
   <article class="container-page py-12">
     <Breadcrumbs items={[
       { href: "/", label: city.name },

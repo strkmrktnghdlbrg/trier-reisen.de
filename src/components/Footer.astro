@@ -58,8 +58,10 @@ const topDistricts = districts.slice(0, 6);
       <p>© {year} {city.brandName}. Stadtportal für die älteste Stadt Deutschlands.</p>
       <nav aria-label="Rechtliches">
         <ul class="flex flex-wrap gap-4">
+          <li><a href="/ueber-uns/" class="hover:underline">Über uns</a></li>
           <li><a href="/impressum/" class="hover:underline">Impressum</a></li>
           <li><a href="/datenschutz/" class="hover:underline">Datenschutz</a></li>
+          <li><button type="button" class="hover:underline" onclick="window.openCookieSettings && window.openCookieSettings()">Cookie-Einstellungen</button></li>
         </ul>
       </nav>
     </div>

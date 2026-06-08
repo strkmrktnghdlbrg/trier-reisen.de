@@ -1,0 +1,87 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import { breadcrumbSchema } from "../lib/schema";
+import { city } from "../data/city";
+import { sights } from "../data/sights";
+import { districts } from "../data/districts";
+import { hotels } from "../data/hotels";
+import { restaurants } from "../data/restaurants";
+import { categories } from "../data/categories";
+import { articles } from "../data/articles";
+---
+
+<BaseLayout
+  title={`Über uns - ${city.name}`}
+  description={`Hinter ${city.brandName}: redaktioneller Ansatz, Quellenarbeit und wie sich das Stadtportal finanziert.`}
+  schema={breadcrumbSchema([
+    { name: city.name, url: "/" },
+    { name: "Über uns" },
+  ])}
+>
+  <article class="container-page py-12 max-w-3xl">
+    <Breadcrumbs items={[{ href: "/", label: city.name }, { label: "Über uns" }]} />
+
+    <p class="eyebrow mb-3">{city.brandName}</p>
+    <h1 class="display-xl mb-6">Über {city.brandName}</h1>
+
+    <p class="text-body text-lg leading-relaxed">
+      {city.brandName} ist ein redaktionelles Stadtportal für Trier, die älteste Stadt Deutschlands.
+      Wir kuratieren {sights.length} Sehenswürdigkeiten, {hotels.length} Hotels, {restaurants.length} Restaurants,
+      {districts.length} Bezirke und {categories.length} Themenseiten,
+      ergänzt um ein Magazin mit derzeit {articles.length} Beiträgen zu Mosel-Wein,
+      römischem Erbe und praktischen Reise-Ratgebern.
+    </p>
+
+    <h2 class="display mt-12 mb-3">Was uns leitet</h2>
+    <p class="text-body leading-relaxed">
+      Wir wollen Trier-Reisenden eine schnelle, ehrliche Orientierung geben.
+      Sehenswürdigkeiten sind nach Bedeutung und Bezirk sortiert, Hotels nach realer Lage
+      und Ausstattung, Restaurants nach Küche und Anlass. Wir bevorzugen kurze,
+      einordnende Texte gegenüber Marketingsprache und verzichten auf erfundene Bewertungen
+      oder pauschale Superlative.
+    </p>
+
+    <h2 class="display mt-12 mb-3">Quellen und Faktenstand</h2>
+    <p class="text-body leading-relaxed">
+      Eintrittspreise, Öffnungszeiten und Termine werden auf Basis der offiziellen
+      Quellen (Trier Tourismus, Generaldirektion Kulturelles Erbe Rheinland-Pfalz,
+      Veranstalter, Häuser) erfasst und vor jedem Saisonstart geprüft.
+      Bilder stammen aus Wikimedia Commons unter freier Lizenz, jeweils mit
+      Urheber- und Lizenz-Angabe auf der jeweiligen Detailseite. Hotel- und
+      Tour-Preise werden live über die jeweiligen Buchungspartner geladen und
+      können von den hier gezeigten Anhaltswerten abweichen.
+    </p>
+
+    <h2 class="display mt-12 mb-3">Wie sich das Portal finanziert</h2>
+    <p class="text-body leading-relaxed">
+      {city.brandName} ist werbe- und affiliate-finanziert. Hotelpreise und Buchung
+      laufen über Stay22/Booking.com, Touren und Tickets über GetYourGuide,
+      einzelne Partnerprogramme zusätzlich über AWIN (etwa für Mosel-Wein,
+      Bahn-Anreise oder Reiseversicherung). Bei einer Buchung erhalten wir eine
+      Provision, dem Reisenden entstehen keine Mehrkosten. Empfehlungen erfolgen
+      unabhängig von der Provisionshöhe, und Werbung wird als solche
+      gekennzeichnet.
+    </p>
+
+    <h2 class="display mt-12 mb-3">Kontakt und Rechtliches</h2>
+    <p class="text-body leading-relaxed">
+      Vollständige Anbieterangaben findest du im
+      <a href="/impressum/" class="link-accent">Impressum</a>.
+      Wie wir mit Daten umgehen, steht in der
+      <a href="/datenschutz/" class="link-accent">Datenschutzerklärung</a>.
+      Cookie- und Tracking-Einstellungen kannst du jederzeit über den Link am
+      Seitenende anpassen.
+    </p>
+
+    <h2 class="display mt-12 mb-3">Wo es weitergeht</h2>
+    <ul class="text-body leading-relaxed list-disc pl-6 space-y-1">
+      <li><a href="/sehenswuerdigkeiten/" class="link-accent">Alle Sehenswürdigkeiten</a></li>
+      <li><a href="/hotels/" class="link-accent">Hotels in Trier</a></li>
+      <li><a href="/restaurants/" class="link-accent">Restaurants in Trier</a></li>
+      <li><a href="/bezirke/" class="link-accent">Bezirke und Stadtteile</a></li>
+      <li><a href="/reiseplaner/" class="link-accent">Reiseplaner</a></li>
+      <li><a href="/magazin/" class="link-accent">Magazin</a></li>
+    </ul>
+  </article>
+</BaseLayout>

@@ -14,6 +14,7 @@ import { categories } from "../data/categories";
 import { realEvents, isUpcoming } from "../data/events";
 import { features } from "../data/features";
 import { getGyg, gygCmp } from "../data/gyg";
+import { orgSchema, websiteSchema, touristDestinationSchema } from "../lib/schema";
 
 const featuredSights = sights.filter((s) => s.unesco).slice(0, 6);
 const featuredDistricts = districts.slice(0, 4);
@@ -22,7 +23,11 @@ const upcomingEvents = realEvents.filter(isUpcoming).slice(0, 3);
 const gyg = getGyg("home");
 ---
 
-<BaseLayout title={`${city.name} entdecken`} description={city.description.long}>
+<BaseLayout
+  title={`${city.name} entdecken`}
+  description={city.description.long}
+  schema={[orgSchema(), websiteSchema(), touristDestinationSchema()]}
+>
   <!-- HERO -->
   <section class="container-page pt-12 pb-16 md:pt-20 md:pb-24">
     <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">

@@ -7,6 +7,7 @@ import Stay22NearbyHotels from "../../components/Stay22NearbyHotels.astro";
 import { city } from "../../data/city";
 import { hotels, type Hotel } from "../../data/hotels";
 import { getDistrict } from "../../data/districts";
+import { hotelSchema, breadcrumbSchema } from "../../lib/schema";
 
 export function getStaticPaths() {
   return hotels.map((hotel) => ({ params: { slug: hotel.slug }, props: { hotel } }));
@@ -19,7 +20,18 @@ const related = hotels.filter((h) => h.slug !== hotel.slug && h.district === hot
 const stars = "★".repeat(hotel.stars);
 ---
 
-<BaseLayout title={`${hotel.name} - ${city.name}`} description={hotel.shortDesc}>
+<BaseLayout
+  title={`${hotel.name} - ${city.name}`}
+  description={hotel.shortDesc}
+  schema={[
+    hotelSchema(hotel),
+    breadcrumbSchema([
+      { name: city.name, url: "/" },
+      { name: "Hotels", url: "/hotels/" },
+      { name: hotel.name },
+    ]),
+  ]}
+>
   <article class="container-page py-12">
     <Breadcrumbs items={[
       { href: "/", label: city.name },

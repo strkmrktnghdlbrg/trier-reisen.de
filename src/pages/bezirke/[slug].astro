@@ -13,6 +13,7 @@ import { sights } from "../../data/sights";
 import { hotels } from "../../data/hotels";
 import { restaurants } from "../../data/restaurants";
 import { getGyg, gygCmp } from "../../data/gyg";
+import { districtSchema, breadcrumbSchema } from "../../lib/schema";
 import { city } from "../../data/city";
 
 export function getStaticPaths() {
@@ -28,7 +29,18 @@ const gygKey = `district:${district.slug}`;
 const gyg = getGyg(gygKey);
 ---
 
-<BaseLayout title={`${district.name} - ${city.name}`} description={district.shortDesc}>
+<BaseLayout
+  title={`${district.name} - ${city.name}`}
+  description={district.shortDesc}
+  schema={[
+    districtSchema(district),
+    breadcrumbSchema([
+      { name: city.name, url: "/" },
+      { name: "Bezirke", url: "/bezirke/" },
+      { name: district.name },
+    ]),
+  ]}
+>
   <article>
     <div class="container-page py-12">
       <Breadcrumbs items={[

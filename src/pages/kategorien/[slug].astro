@@ -9,6 +9,7 @@ import { categories, type Category } from "../../data/categories";
 import { sights } from "../../data/sights";
 import { restaurants } from "../../data/restaurants";
 import { getGyg, gygCmp } from "../../data/gyg";
+import { categorySchema, breadcrumbSchema } from "../../lib/schema";
 import { city } from "../../data/city";
 
 export function getStaticPaths() {
@@ -23,7 +24,18 @@ const gygKey = `cat:${category.slug}`;
 const gyg = getGyg(gygKey);
 ---
 
-<BaseLayout title={`${category.name} in ${city.name}`} description={category.shortDesc}>
+<BaseLayout
+  title={`${category.name} in ${city.name}`}
+  description={category.shortDesc}
+  schema={[
+    categorySchema(category),
+    breadcrumbSchema([
+      { name: city.name, url: "/" },
+      { name: "Themen", url: "/kategorien/" },
+      { name: category.name },
+    ]),
+  ]}
+>
   <article>
     <div class="container-page py-12">
       <Breadcrumbs items={[
