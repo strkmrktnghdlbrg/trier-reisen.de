@@ -2,8 +2,12 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import DistrictCard from "../../components/DistrictCard.astro";
+import GygActivities from "../../components/GygActivities.astro";
 import { city } from "../../data/city";
 import { districts } from "../../data/districts";
+import { getGyg, gygCmp } from "../../data/gyg";
+
+const gyg = getGyg("index:bezirke");
 ---
 
 <BaseLayout
@@ -25,4 +29,10 @@ import { districts } from "../../data/districts";
       {districts.map((d) => <DistrictCard district={d} />)}
     </div>
   </section>
+
+  {gyg && (
+    <div class="container-page">
+      <GygActivities q={gyg.q} heading={gyg.heading} intro={gyg.intro} count={gyg.count} cmp={gygCmp("index:bezirke")} />
+    </div>
+  )}
 </BaseLayout>

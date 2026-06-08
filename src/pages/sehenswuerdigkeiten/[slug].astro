@@ -4,9 +4,12 @@ import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import ContentImage from "../../components/ContentImage.astro";
 import SightCard from "../../components/SightCard.astro";
 import Stay22NearbyHotels from "../../components/Stay22NearbyHotels.astro";
+import GygActivities from "../../components/GygActivities.astro";
 import { sights, type Sight } from "../../data/sights";
 import { getDistrict } from "../../data/districts";
 import { getCategory } from "../../data/categories";
+import { getGyg, gygCmp } from "../../data/gyg";
+import sightEnrichments from "../../data/sight-enrichments.json";
 import { city } from "../../data/city";
 
 export function getStaticPaths() {
@@ -19,6 +22,9 @@ const district = getDistrict(sight.district);
 const related = sights.filter((s) => s.slug !== sight.slug && s.district === sight.district).slice(0, 3);
 const cats = sight.categories.map((c) => getCategory(c)).filter(Boolean);
 const priceLabel = sight.priceFrom === null ? "Eintritt frei" : `ab ${sight.priceFrom} €`;
+const gygKey = `sight:${sight.slug}`;
+const gyg = getGyg(gygKey);
+const moreInfo: string[] = (sightEnrichments as Record<string, string[]>)[sight.slug] ?? [];
 ---
 
 <BaseLayout title={sight.name} description={sight.shortDesc}>
@@ -48,6 +54,10 @@ const priceLabel = sight.priceFrom === null ? "Eintritt frei" : `ab ${sight.pric
           />
         </div>
         <p class="text-body mt-8 text-lg leading-relaxed">{sight.longDesc}</p>
+
+        {moreInfo.map((para) => (
+          <p class="text-body mt-4 leading-relaxed">{para}</p>
+        ))}
 
         {cats.length > 0 && (
           <div class="mt-8">
@@ -91,6 +101,16 @@ const priceLabel = sight.priceFrom === null ? "Eintritt frei" : `ab ${sight.pric
         </div>
       </aside>
     </div>
+
+    {gyg && (
+      <GygActivities
+        q={gyg.q}
+        heading={gyg.heading}
+        intro={gyg.intro}
+        count={gyg.count}
+        cmp={gygCmp(gygKey)}
+      />
+    )}
 
     <Stay22NearbyHotels
       lat={sight.coordinates[0]}

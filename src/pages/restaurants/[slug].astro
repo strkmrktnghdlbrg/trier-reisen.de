@@ -17,7 +17,7 @@ const district = getDistrict(restaurant.district);
 const related = restaurants.filter((r) => r.slug !== restaurant.slug && r.cuisine === restaurant.cuisine).slice(0, 3);
 ---
 
-<BaseLayout title={`${restaurant.name} — ${city.name}`} description={restaurant.shortDesc}>
+<BaseLayout title={`${restaurant.name} - ${city.name}`} description={restaurant.shortDesc}>
   <article class="container-page py-12">
     <Breadcrumbs items={[
       { href: "/", label: city.name },

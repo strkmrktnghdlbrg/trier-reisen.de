@@ -1,0 +1,51 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import HueGradient from "../../components/HueGradient.astro";
+import { articles, articleCategories } from "../../data/articles";
+import { city } from "../../data/city";
+
+const grouped = articleCategories
+  .map((c) => ({ ...c, items: articles.filter((a) => a.category === c.key) }))
+  .filter((g) => g.items.length > 0);
+---
+
+<BaseLayout
+  title={`Magazin - ${city.name}`}
+  description={`Reise-Magazin ${city.name}: Moselwein, Weinfeste und Weingüter, Triers Geschichte und praktische Reise-Ratgeber.`}
+>
+  <section class="container-page py-12">
+    <Breadcrumbs items={[{ href: "/", label: city.name }, { label: "Magazin" }]} />
+    <p class="eyebrow mb-3">{articles.length} Beiträge</p>
+    <h1 class="display-xl">Trier-Magazin</h1>
+    <p class="text-body mt-4 max-w-2xl">
+      Moselwein und Weinfeste, römisches Erbe und Stadtgeschichte, dazu praktische
+      Ratgeber für die Reise nach Trier.
+    </p>
+  </section>
+
+  {grouped.map((g) => (
+    <section class="container-page section pt-0">
+      <h2 class="display mb-6">{g.label}</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {g.items.map((a) => (
+          <a href={`/${a.slug}/`} class="card group block">
+            <div class="aspect-[16/10] relative overflow-hidden">
+              <HueGradient hue={a.heroHue} label={a.title} class="absolute inset-0" />
+            </div>
+            <div class="p-5">
+              <h3 class="text-xl font-light tracking-tight leading-tight mb-2 group-hover:text-[var(--color-accent)] transition-colors" style="color: var(--color-text); font-family: var(--font-display);">{a.title}</h3>
+              <p class="text-sm leading-relaxed line-clamp-3" style="color: var(--color-text-body);">{a.description}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+  ))}
+
+  {grouped.length === 0 && (
+    <section class="container-page section pt-0">
+      <p class="text-body">Die Magazin-Beiträge werden gerade aufbereitet.</p>
+    </section>
+  )}
+</BaseLayout>

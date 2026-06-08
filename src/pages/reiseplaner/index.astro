@@ -2,8 +2,12 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import HueGradient from "../../components/HueGradient.astro";
+import GygActivities from "../../components/GygActivities.astro";
 import { guides } from "../../data/guides";
+import { getGyg, gygCmp } from "../../data/gyg";
 import { city } from "../../data/city";
+
+const gyg = getGyg("index:reiseplaner");
 ---
 
 <BaseLayout
@@ -15,7 +19,7 @@ import { city } from "../../data/city";
     <p class="eyebrow mb-3">{guides.length} Reiseplaner</p>
     <h1 class="display-xl">Reiseplaner {city.name}</h1>
     <p class="text-body mt-4 max-w-2xl">
-      Drei kuratierte Trier-Routen — von der Wochenend-Pflicht über das
+      Drei kuratierte Trier-Routen - von der Wochenend-Pflicht über das
       Familien-Programm bis zum Schlechtwetter-Plan.
     </p>
   </section>
@@ -36,4 +40,10 @@ import { city } from "../../data/city";
       ))}
     </div>
   </section>
+
+  {gyg && (
+    <div class="container-page">
+      <GygActivities q={gyg.q} heading={gyg.heading} intro={gyg.intro} count={gyg.count} cmp={gygCmp("index:reiseplaner")} />
+    </div>
+  )}
 </BaseLayout>

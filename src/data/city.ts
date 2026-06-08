@@ -12,7 +12,7 @@ export const city = {
   brandName: "Trier-Reisen",
   description: {
     short:
-      "Trier, älteste Stadt Deutschlands. UNESCO-Welterbe, Mosel-Wein, römisches Erbe — Sehenswürdigkeiten, Hotels, Reise-Guides auf einem Portal.",
+      "Trier, älteste Stadt Deutschlands. UNESCO-Welterbe, Mosel-Wein, römisches Erbe - Sehenswürdigkeiten, Hotels, Reise-Guides auf einem Portal.",
     long: "Trier-Reisen ist dein Stadtportal für die älteste Stadt Deutschlands. Von der Porta Nigra zum Trierer Dom, vom Amphitheater zu den Kaiserthermen, von Olewiger Weingütern bis Mosel-Promenade. Antike Würde, Stein-Wärme, Wein-Kultur.",
   },
   stats: {

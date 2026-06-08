@@ -1,0 +1,72 @@
+---
+/**
+ * GetYourGuide Aktivitaeten-Widget - Keyword-getrieben.
+ * Eingesetzt auf Sight-/Kategorie-/Bezirk-/Reiseplaner-/Event-Pages und Indizes.
+ *
+ * Der Loader-Script (data-gyg-partner-id) liegt global im BaseLayout.
+ * Hier rendern wir nur den Widget-Container; GetYourGuide befuellt ihn client-seitig
+ * anhand der Suchanfrage (data-gyg-q). Partner-Promo-Links werden via .gyg-widget-host
+ * in global.css unterdrueckt.
+ *
+ * Wichtig (recherchiert): Fuer eine deterministische Keyword-Suche pro Seite ist
+ * data-gyg-widget="activities" + data-gyg-q der richtige Weg. data-gyg-widget="auto"
+ * ignoriert die Suchanfrage und leitet die Touren stattdessen aus dem Seitentext ab.
+ */
+import { affiliate, gygEnabled } from "../data/affiliate";
+
+interface Props {
+  /** Freitext-Suchanfrage fuer GetYourGuide, z. B. "Porta Nigra Trier Fuehrung". */
+  q: string;
+  /** Sektion-Ueberschrift. */
+  heading: string;
+  /** Ein-Satz-Einleitung. */
+  intro?: string;
+  /** Anzahl der Aktivitaeten-Karten (3 oder 4). */
+  count?: number;
+  /** Kampagnen-Tag fuer GYG-Analytics (data-gyg-cmp), z. B. "sight-porta-nigra". */
+  cmp?: string;
+  /** Widget-Typ. "activities" matcht per Keyword (Standard). */
+  widget?: "activities" | "auto" | "city";
+  /** Zusaetzliche Klassen fuer den aeusseren <section>-Wrapper. */
+  class?: string;
+}
+
+const {
+  q,
+  heading,
+  intro,
+  count = 4,
+  cmp = "trier-reisen",
+  widget = "activities",
+  class: extraClass = "",
+} = Astro.props;
+
+const { partnerId, locale } = affiliate.getYourGuide;
+const frameHref = "https://widget.getyourguide.com/default/activities.frame";
+---
+
+{gygEnabled && (
+  <section class={`gyg-widget-host my-12 ${extraClass}`}>
+    <div class="mb-5">
+      <p class="eyebrow mb-2">Erlebnisse von GetYourGuide</p>
+      <h2 class="display mb-2">{heading}</h2>
+      {intro && <p class="text-body max-w-2xl">{intro}</p>}
+    </div>
+
+    <div
+      data-gyg-widget={widget}
+      data-gyg-href={frameHref}
+      data-gyg-partner-id={partnerId}
+      data-gyg-locale-code={locale}
+      data-gyg-number-of-items={count}
+      data-gyg-currency="EUR"
+      data-gyg-cmp={cmp}
+      data-gyg-q={q}
+    >
+    </div>
+
+    <p class="text-[11px] mt-3" style="color: var(--color-text-muted);">
+      * Affiliate-Link. Buchung über GetYourGuide, für dich keine Mehrkosten, wir erhalten eine Provision.
+    </p>
+  </section>
+)}

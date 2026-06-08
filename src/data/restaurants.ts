@@ -89,7 +89,7 @@ export const restaurants: Restaurant[] = [
     shortDesc:
       "Restaurant ueber einer roemischen Kelterei. Regional plus historische Roemer-Menues.",
     longDesc:
-      "Zum Domstein steht ueber einer originalen roemischen Kelterei aus dem 4. Jahrhundert — im Keller begehbar. Auf der Karte regionales und auf Wunsch ein historisches Roemer-Menue nach antiken Rezepten von Apicius. Touristisch, aber gut gemacht.",
+      "Zum Domstein steht ueber einer originalen roemischen Kelterei aus dem 4. Jahrhundert - im Keller begehbar. Auf der Karte regionales und auf Wunsch ein historisches Roemer-Menue nach antiken Rezepten von Apicius. Touristisch, aber gut gemacht.",
     imageHue: 1,
     openingHours: "Taegl. 9-23",
     websiteUrl: "https://www.domstein.de",
@@ -280,7 +280,7 @@ export const restaurants: Restaurant[] = [
     shortDesc:
       "Kleines vietnamesisches Restaurant. Pho, Bun Bo Nam Bo, Sommerrollen.",
     longDesc:
-      "Bambus serviert vietnamesische Klassiker — Pho, Bun, Sommerrollen, gegrillte Spiesse — in entspannter Atmosphaere. Faire Preise, hausgemachte Saucen, sympathisch familiengefuehrt.",
+      "Bambus serviert vietnamesische Klassiker - Pho, Bun, Sommerrollen, gegrillte Spiesse - in entspannter Atmosphaere. Faire Preise, hausgemachte Saucen, sympathisch familiengefuehrt.",
     imageHue: 4,
     openingHours: "Di-So 11:30-22",
   },

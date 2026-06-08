@@ -2,8 +2,10 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import EventCard from "../../components/EventCard.astro";
+import GygActivities from "../../components/GygActivities.astro";
 import { city } from "../../data/city";
 import { realEvents, seasonalStays, isUpcoming } from "../../data/events";
+import { getGyg, gygCmp } from "../../data/gyg";
 
 const upcomingRealEvents = [...realEvents]
   .filter(isUpcoming)
@@ -11,6 +13,7 @@ const upcomingRealEvents = [...realEvents]
 const upcomingSeasonal = [...seasonalStays]
   .filter(isUpcoming)
   .sort((a, b) => a.checkin.localeCompare(b.checkin));
+const gyg = getGyg("index:events");
 ---
 
 <BaseLayout
@@ -22,8 +25,7 @@ const upcomingSeasonal = [...seasonalStays]
     <p class="eyebrow mb-3">{upcomingRealEvents.length + upcomingSeasonal.length} Termine</p>
     <h1 class="display-xl">Events & Termine in {city.name}</h1>
     <p class="text-body mt-4 max-w-2xl">
-      Antikenfestspiele im Amphitheater, Olewiger Weinfest, Weihnachtsmarkt am Hauptmarkt —
-      Triers grosse Termine plus Saison-Hotels fuer Silvester und Brueckentage.
+      Antikenfestspiele im Amphitheater, Olewiger Weinfest, Weihnachtsmarkt am Hauptmarkt - Triers grosse Termine plus Saison-Hotels fuer Silvester und Brueckentage.
     </p>
   </section>
 
@@ -42,7 +44,7 @@ const upcomingSeasonal = [...seasonalStays]
         <p class="eyebrow mb-2">Live-Preise</p>
         <h2 class="display mb-2">Saison-Hotels nach Termin</h2>
         <p class="text-body">
-          Silvester, Pfingsten, Christi Himmelfahrt, Wochenende — Live-Preise via Booking.com
+          Silvester, Pfingsten, Christi Himmelfahrt, Wochenende - Live-Preise via Booking.com
           fuer konkrete Reisetermine in Trier.
         </p>
       </div>
@@ -58,5 +60,11 @@ const upcomingSeasonal = [...seasonalStays]
         ))}
       </div>
     </section>
+  )}
+
+  {gyg && (
+    <div class="container-page">
+      <GygActivities q={gyg.q} heading={gyg.heading} intro={gyg.intro} count={gyg.count} cmp={gygCmp("index:events")} />
+    </div>
   )}
 </BaseLayout>

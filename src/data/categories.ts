@@ -14,7 +14,7 @@ export const categories: Category[] = [
     shortDesc:
       "Die acht UNESCO-Staetten von Trier: roemische Baudenkmaeler, Dom und Liebfrauenkirche.",
     longDesc:
-      "Seit 1986 stehen Triers roemische Baudenkmaeler, der Dom St. Peter und die Liebfrauenkirche als Ensemble auf der UNESCO-Welterbe-Liste. Acht Einzelmonumente verteilen sich auf wenige Quadratkilometer — eine Dichte, die in Europa selten ist.",
+      "Seit 1986 stehen Triers roemische Baudenkmaeler, der Dom St. Peter und die Liebfrauenkirche als Ensemble auf der UNESCO-Welterbe-Liste. Acht Einzelmonumente verteilen sich auf wenige Quadratkilometer - eine Dichte, die in Europa selten ist.",
     icon: "landmark",
     hue: 1,
   },
@@ -22,7 +22,7 @@ export const categories: Category[] = [
     slug: "roemisches-erbe",
     name: "Roemisches Erbe",
     shortDesc:
-      "Porta Nigra, Kaiserthermen, Amphitheater, Roemerbruecke — die alte Augusta Treverorum.",
+      "Porta Nigra, Kaiserthermen, Amphitheater, Roemerbruecke - die alte Augusta Treverorum.",
     longDesc:
       "Trier ist das roemische Kaiserresidenz-Erbe noerdlich der Alpen. Gegruendet als Augusta Treverorum 17/16 v. Chr., war die Stadt im 4. Jahrhundert eine der wichtigsten Residenzen des Roemischen Reiches. Heute ist das Stadtbild geradezu durchwirkt von antiken Bauten in beeindruckendem Erhaltungszustand.",
     icon: "columns",
@@ -32,7 +32,7 @@ export const categories: Category[] = [
     slug: "wein",
     name: "Wein & Mosel",
     shortDesc:
-      "Olewig, Ruwer und Mosel — Weingueter, Weinwanderungen, Weinfeste.",
+      "Olewig, Ruwer und Mosel - Weingueter, Weinwanderungen, Weinfeste.",
     longDesc:
       "Trier ist Wein-Stadt. Im Stadtgebiet liegen Olewig und Ruwer mit erstklassigen Riesling-Lagen, die Mosel beginnt direkt vor der Tuer. Weingueter wie Bischoefliche Weingueter, Reverchon, von Schubert oder Karthaeuserhof haben Weltformat. Olewiger Weinfest, Mosel-Wein-Nachts-Bummel.",
     icon: "wine",
@@ -74,7 +74,7 @@ export const categories: Category[] = [
     shortDesc:
       "Moselwein-Stuben, Sterneküche, Weinhaus-Restaurants in Olewig.",
     longDesc:
-      "Kulinarisch wandert Trier zwischen moselländischer Tradition und gehobener Moderne. Weinstuben in Olewig, Sterne bei Becker's, römische Themenmenüs Zum Domstein, mediterrane Schlemmereule im Domkeller — die Bandbreite ist groesser als die Stadtgroesse vermuten laesst.",
+      "Kulinarisch wandert Trier zwischen moselländischer Tradition und gehobener Moderne. Weinstuben in Olewig, Sterne bei Becker's, römische Themenmenüs Zum Domstein, mediterrane Schlemmereule im Domkeller - die Bandbreite ist groesser als die Stadtgroesse vermuten laesst.",
     icon: "utensils",
     hue: 3,
   },
@@ -102,7 +102,7 @@ export const categories: Category[] = [
     slug: "shopping",
     name: "Shopping",
     shortDesc:
-      "Simeonstrasse, Fleischstrasse, Brotstrasse — Triers Fussgaengerzone.",
+      "Simeonstrasse, Fleischstrasse, Brotstrasse - Triers Fussgaengerzone.",
     longDesc:
       "Triers Fussgaengerzone bildet ein T zwischen Porta Nigra, Hauptmarkt und Domfreihof. Filialisten in der Simeonstrasse, kleinere Laeden in den Seitenstrassen, Weinhandlungen rund um den Liebfrauenplatz, Wochenmarkt auf dem Viehmarkt.",
     icon: "shopping-bag",

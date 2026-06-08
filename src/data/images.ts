@@ -1,8 +1,8 @@
 /**
- * Image Registry — trier-reisen.de
+ * Image Registry - trier-reisen.de
  * --------------------------------
  * Bildschluessel -> ImageEntry mit src/alt/credit.
- * Astro 5 verwendet astro:assets — Bilder werden von Vite zu WebP/AVIF
+ * Astro 5 verwendet astro:assets - Bilder werden von Vite zu WebP/AVIF
  * konvertiert und in responsiven Varianten ausgespielt.
  *
  * Lizenz-Disziplin: alle Bilder hier sind Wikimedia Commons mit

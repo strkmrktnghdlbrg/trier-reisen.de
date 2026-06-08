@@ -2,11 +2,14 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import SightCard from "../../components/SightCard.astro";
+import GygActivities from "../../components/GygActivities.astro";
 import { city } from "../../data/city";
 import { sights } from "../../data/sights";
+import { getGyg, gygCmp } from "../../data/gyg";
 
 const unesco = sights.filter((s) => s.unesco);
 const otherSights = sights.filter((s) => !s.unesco);
+const gyg = getGyg("index:sehenswuerdigkeiten");
 ---
 
 <BaseLayout
@@ -39,4 +42,10 @@ const otherSights = sights.filter((s) => !s.unesco);
       {otherSights.map((s) => <SightCard sight={s} />)}
     </div>
   </section>
+
+  {gyg && (
+    <div class="container-page">
+      <GygActivities q={gyg.q} heading={gyg.heading} intro={gyg.intro} count={gyg.count} cmp={gygCmp("index:sehenswuerdigkeiten")} />
+    </div>
+  )}
 </BaseLayout>

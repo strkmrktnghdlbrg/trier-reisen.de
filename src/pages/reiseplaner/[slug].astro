@@ -2,7 +2,9 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import HueGradient from "../../components/HueGradient.astro";
+import GygActivities from "../../components/GygActivities.astro";
 import { guides, type Guide } from "../../data/guides";
+import { getGyg, gygCmp } from "../../data/gyg";
 import { city } from "../../data/city";
 
 export function getStaticPaths() {
@@ -11,6 +13,8 @@ export function getStaticPaths() {
 
 interface Props { guide: Guide }
 const { guide } = Astro.props;
+const gygKey = `guide:${guide.slug}`;
+const gyg = getGyg(gygKey);
 ---
 
 <BaseLayout title={guide.title} description={guide.description}>
@@ -41,5 +45,9 @@ const { guide } = Astro.props;
         </section>
       ))}
     </div>
+
+    {gyg && (
+      <GygActivities q={gyg.q} heading={gyg.heading} intro={gyg.intro} count={gyg.count} cmp={gygCmp(gygKey)} />
+    )}
   </article>
 </BaseLayout>

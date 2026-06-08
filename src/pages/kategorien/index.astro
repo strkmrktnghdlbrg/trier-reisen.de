@@ -2,12 +2,16 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import CategoryCard from "../../components/CategoryCard.astro";
+import GygActivities from "../../components/GygActivities.astro";
 import { city } from "../../data/city";
 import { categories } from "../../data/categories";
+import { getGyg, gygCmp } from "../../data/gyg";
+
+const gyg = getGyg("index:kategorien");
 ---
 
 <BaseLayout
-  title={`Themen & Kategorien — ${city.name}`}
+  title={`Themen & Kategorien - ${city.name}`}
   description={`${categories.length} Themen: UNESCO-Welterbe, römisches Erbe, Wein, Mosel-Aktivitäten, Familie, Museen, Aussicht & Wandern. Trier nach Interesse entdecken.`}
 >
   <section class="container-page py-12">
@@ -25,4 +29,10 @@ import { categories } from "../../data/categories";
       {categories.map((c) => <CategoryCard category={c} />)}
     </div>
   </section>
+
+  {gyg && (
+    <div class="container-page">
+      <GygActivities q={gyg.q} heading={gyg.heading} intro={gyg.intro} count={gyg.count} cmp={gygCmp("index:kategorien")} />
+    </div>
+  )}
 </BaseLayout>

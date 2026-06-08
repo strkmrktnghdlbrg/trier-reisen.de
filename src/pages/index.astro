@@ -6,17 +6,20 @@ import DistrictCard from "../components/DistrictCard.astro";
 import EventCard from "../components/EventCard.astro";
 import CategoryCard from "../components/CategoryCard.astro";
 import Stay22TopHotels from "../components/Stay22TopHotels.astro";
+import GygActivities from "../components/GygActivities.astro";
 import { city } from "../data/city";
 import { sights } from "../data/sights";
 import { districts } from "../data/districts";
 import { categories } from "../data/categories";
 import { realEvents, isUpcoming } from "../data/events";
 import { features } from "../data/features";
+import { getGyg, gygCmp } from "../data/gyg";
 
 const featuredSights = sights.filter((s) => s.unesco).slice(0, 6);
 const featuredDistricts = districts.slice(0, 4);
 const featuredCategories = categories.slice(0, 6);
 const upcomingEvents = realEvents.filter(isUpcoming).slice(0, 3);
+const gyg = getGyg("home");
 ---
 
 <BaseLayout title={`${city.name} entdecken`} description={city.description.long}>
@@ -63,6 +66,13 @@ const upcomingEvents = realEvents.filter(isUpcoming).slice(0, 3);
     </div>
   </section>
 
+  <!-- GETYOURGUIDE TOP-ERLEBNISSE -->
+  {gyg && (
+    <section class="container-page">
+      <GygActivities q={gyg.q} heading={gyg.heading} intro={gyg.intro} count={gyg.count} cmp={gygCmp("home")} />
+    </section>
+  )}
+
   <!-- STAY22 LIVE TOP HOTELS -->
   <section class="container-page">
     <Stay22TopHotels limit={8} />
@@ -97,7 +107,7 @@ const upcomingEvents = realEvents.filter(isUpcoming).slice(0, 3);
       <div class="mb-8">
         <p class="eyebrow mb-2">Termine</p>
         <h2 class="display">Was kommt</h2>
-        <p class="text-body mt-3 max-w-xl">Antikenfestspiele, Olewiger Weinfest, Weihnachtsmarkt — Triers grosse Termine.</p>
+        <p class="text-body mt-3 max-w-xl">Antikenfestspiele, Olewiger Weinfest, Weihnachtsmarkt - Triers grosse Termine.</p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
         {upcomingEvents.map((e) => <EventCard event={e} />)}

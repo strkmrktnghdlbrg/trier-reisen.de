@@ -19,7 +19,7 @@ const related = hotels.filter((h) => h.slug !== hotel.slug && h.district === hot
 const stars = "★".repeat(hotel.stars);
 ---
 
-<BaseLayout title={`${hotel.name} — ${city.name}`} description={hotel.shortDesc}>
+<BaseLayout title={`${hotel.name} - ${city.name}`} description={hotel.shortDesc}>
   <article class="container-page py-12">
     <Breadcrumbs items={[
       { href: "/", label: city.name },
@@ -57,7 +57,7 @@ const stars = "★".repeat(hotel.stars);
             Auf Booking.com prüfen
           </a>
           <p class="text-xs mt-3" style="color: var(--color-text-muted);">
-            Wir erhalten beim Klick eine Provision — der Preis bleibt für dich gleich.
+            Wir erhalten beim Klick eine Provision - der Preis bleibt für dich gleich.
           </p>
         </div>
       </aside>

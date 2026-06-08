@@ -2,9 +2,11 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import Stay22HotelCard from "../../components/Stay22HotelCard.astro";
+import GygActivities from "../../components/GygActivities.astro";
 import { events, type CityEvent, isUpcoming } from "../../data/events";
 import { searchAccommodations, type Stay22Accommodation } from "../../lib/stay22";
 import { affiliate } from "../../data/affiliate";
+import { getGyg, gygCmp } from "../../data/gyg";
 import { city } from "../../data/city";
 
 export function getStaticPaths() {
@@ -14,6 +16,8 @@ export function getStaticPaths() {
 interface Props { event: CityEvent }
 const { event } = Astro.props;
 
+const gygKey = `event:${event.slug}`;
+const gyg = getGyg(gygKey);
 const upcoming = isUpcoming(event);
 const lmaId = affiliate.stay22.lmaId;
 
@@ -73,6 +77,10 @@ if (visible.length > 0) {
       {event.longDesc && <p class="text-body mt-4 leading-relaxed">{event.longDesc}</p>}
     </div>
 
+    {gyg && (
+      <GygActivities q={gyg.q} heading={gyg.heading} intro={gyg.intro} count={gyg.count} cmp={gygCmp(gygKey)} />
+    )}
+
     {!upcoming && (
       <div class="card p-6 max-w-3xl mt-10">
         <p class="text-body">
@@ -95,7 +103,7 @@ if (visible.length > 0) {
     {upcoming && visible.length > 0 && (
       <section class="mt-12">
         <div class="mb-6 max-w-2xl">
-          <p class="eyebrow mb-2">Live von Stay22 — {dateLabel}</p>
+          <p class="eyebrow mb-2">Live von Stay22 - {dateLabel}</p>
           <h2 class="display mb-2">Hotels fuer diesen Termin</h2>
           <p class="text-body">
             Aktuelle Preise via Booking.com fuer {dateLabel}, {nights} {nights === 1 ? "Nacht" : "Naechte"}.
@@ -107,7 +115,7 @@ if (visible.length > 0) {
         </div>
 
         <p class="text-[11px] mt-6 leading-relaxed max-w-2xl" style="color: var(--color-text-muted);">
-          * Preise und Verfuegbarkeit live via Stay22 → Booking.com. Bei Buchung erhalten wir eine Provision — fuer dich keine Mehrkosten.
+          * Preise und Verfuegbarkeit live via Stay22 → Booking.com. Bei Buchung erhalten wir eine Provision - fuer dich keine Mehrkosten.
           Stand: {buildTime}. Preise gelten fuer den Zeitraum {dateLabel}, {nights} {nights === 1 ? "Nacht" : "Naechte"}.
         </p>
       </section>

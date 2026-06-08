@@ -1,5 +1,5 @@
 /**
- * Stay22 Direct Travel API — Helper für trier-reisen.de
+ * Stay22 Direct Travel API - Helper für trier-reisen.de
  * ------------------------------------------------------
  * Build-Time-Fetch von Live-Hotel-Daten via /v1/accommodations.
  *
@@ -9,7 +9,7 @@
  *   - GitHub-Action-Cron alle 6h triggert Rebuild
  *
  * QUIRK: Die API antwortet HTTP 400 bei Umlauten in `address`.
- * Trier hat keine Umlaute — daher fuer Stadt-Searches "Trier, Germany"
+ * Trier hat keine Umlaute - daher fuer Stadt-Searches "Trier, Germany"
  * direkt verwendbar. Bezirke wie "Trier-Süd" werden hier transparent
  * zu "Trier-Sued" gemappt.
  *
@@ -106,7 +106,7 @@ class Semaphore {
     if (next) next();
   }
 }
-// Cloudflare 1015 Rate-Limit ist scharf — 1 Request sequenziell + langes Pacing.
+// Cloudflare 1015 Rate-Limit ist scharf - 1 Request sequenziell + langes Pacing.
 const semaphore = new Semaphore(1);
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
@@ -120,7 +120,7 @@ function roundGeo(value: number | undefined): number | undefined {
 }
 
 function getApiKey(): string | null {
-  // @ts-expect-error — import.meta.env existiert in Astro/Vite
+  // @ts-expect-error - import.meta.env existiert in Astro/Vite
   const viteKey = typeof import.meta !== "undefined" ? import.meta.env?.STAY22_API_KEY : undefined;
   const nodeKey = typeof process !== "undefined" ? process.env?.STAY22_API_KEY : undefined;
   const key = viteKey || nodeKey;
@@ -182,7 +182,7 @@ export async function searchAccommodations(
 ): Promise<Stay22Accommodation[] | null> {
   const apiKey = getApiKey();
   if (!apiKey) {
-    console.warn("[stay22] STAY22_API_KEY env var fehlt — Live-Hotels werden uebersprungen.");
+    console.warn("[stay22] STAY22_API_KEY env var fehlt - Live-Hotels werden uebersprungen.");
     return null;
   }
 
@@ -244,14 +244,14 @@ export async function searchAccommodations(
         });
 
         if (res.status === 429) {
-          // Cloudflare Rate Limit — exponential backoff
+          // Cloudflare Rate Limit - exponential backoff
           const wait = 800 * Math.pow(2, attempt - 1);
           if (attempt < maxAttempts) {
-            console.warn(`[stay22] 429 — Retry in ${wait}ms (Versuch ${attempt}/${maxAttempts})`);
+            console.warn(`[stay22] 429 - Retry in ${wait}ms (Versuch ${attempt}/${maxAttempts})`);
             await sleep(wait);
             continue;
           }
-          console.error(`[stay22] 429 nach ${maxAttempts} Versuchen — gebe auf fuer ${options.address ?? "lat/lng"}`);
+          console.error(`[stay22] 429 nach ${maxAttempts} Versuchen - gebe auf fuer ${options.address ?? "lat/lng"}`);
           return null;
         }
 
@@ -332,7 +332,7 @@ export async function getTopHotels(
 }
 
 /**
- * Nearby-Hotels per Lat/Lng — fuer Sight-/Bezirk-/Event-Detail-Pages.
+ * Nearby-Hotels per Lat/Lng - fuer Sight-/Bezirk-/Event-Detail-Pages.
  */
 export async function getNearbyHotels(
   lat: number,

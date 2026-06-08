@@ -18,7 +18,7 @@ export type Sight = {
 };
 
 export const sights: Sight[] = [
-  // === INNENSTADT — UNESCO-Kern ===
+  // === INNENSTADT - UNESCO-Kern ===
   {
     slug: "porta-nigra",
     imageKey: "sight:porta-nigra",
@@ -29,7 +29,7 @@ export const sights: Sight[] = [
     priceFrom: 4,
     unesco: true,
     shortDesc:
-      "Das schwarze Tor — Triers Wahrzeichen. Das besterhaltene roemische Stadttor noerdlich der Alpen.",
+      "Das schwarze Tor - Triers Wahrzeichen. Das besterhaltene roemische Stadttor noerdlich der Alpen.",
     longDesc:
       "Die Porta Nigra entstand um 170 n. Chr. als Nordtor der roemischen Stadt Augusta Treverorum. Aus rund 7200 Sandsteinquadern errichtet, im Mittelalter zur Doppelkirche umgebaut und unter Napoleon wieder freigelegt. Begehbar in zwei Stockwerken, mit Aussicht auf die Simeonstrasse.",
     imageHue: 1,
@@ -49,7 +49,7 @@ export const sights: Sight[] = [
     shortDesc:
       "Aelteste Bischofskirche Deutschlands. Heiliger Rock, Domschatz, romanische Wucht direkt am Hauptmarkt.",
     longDesc:
-      "Der Trierer Dom geht in seinen Kernmauern auf den konstantinischen Kirchenbau des 4. Jahrhunderts zurueck. Romanische Doppelturmfassade, gotischer Heiltumsumgang und barocke Kapelle des Heiligen Rocks. Die Reliquie wird nur bei seltenen Wallfahrten ausgestellt — die letzte zog 2012 ueber eine halbe Million Pilger an.",
+      "Der Trierer Dom geht in seinen Kernmauern auf den konstantinischen Kirchenbau des 4. Jahrhunderts zurueck. Romanische Doppelturmfassade, gotischer Heiltumsumgang und barocke Kapelle des Heiligen Rocks. Die Reliquie wird nur bei seltenen Wallfahrten ausgestellt - die letzte zog 2012 ueber eine halbe Million Pilger an.",
     imageHue: 1,
     coordinates: [49.7556, 6.6435],
     openingHours: "Apr-Okt 6:30-18, Nov-Mar 6:30-17:30",
@@ -117,7 +117,7 @@ export const sights: Sight[] = [
     shortDesc:
       "Aeltere und groessere Schwester der Kaiserthermen. Ruinenfeld unter freiem Himmel.",
     longDesc:
-      "Die Barbarathermen wurden im 2. Jahrhundert errichtet und zaehlten zu den groessten Thermen des Roemischen Reichs. Heute sind weite Teile der Substruktion zu sehen, der Rundgang ist frei zugaenglich. Weniger touristisch als die Kaiserthermen — und beeindruckender in der Flaeche.",
+      "Die Barbarathermen wurden im 2. Jahrhundert errichtet und zaehlten zu den groessten Thermen des Roemischen Reichs. Heute sind weite Teile der Substruktion zu sehen, der Rundgang ist frei zugaenglich. Weniger touristisch als die Kaiserthermen - und beeindruckender in der Flaeche.",
     imageHue: 1,
     coordinates: [49.7464, 6.6354],
   },
@@ -166,11 +166,11 @@ export const sights: Sight[] = [
     shortDesc:
       "Roemische Grabsaeule im Trierer Ortsteil Igel. 23 m hoch, reich verziert.",
     longDesc:
-      "Die Igeler Saeule ist ein roemisches Grabmal aus dem 3. Jahrhundert, errichtet von der Familie Secundinii. 23 m hoch, vollstaendig erhalten und mit detailliertem Reliefdekor — ein einzigartiges Zeugnis roemischer Grabarchitektur, UNESCO-Welterbe.",
+      "Die Igeler Saeule ist ein roemisches Grabmal aus dem 3. Jahrhundert, errichtet von der Familie Secundinii. 23 m hoch, vollstaendig erhalten und mit detailliertem Reliefdekor - ein einzigartiges Zeugnis roemischer Grabarchitektur, UNESCO-Welterbe.",
     imageHue: 1,
     coordinates: [49.7016, 6.5519],
   },
-  // === Innenstadt — Markt & Buergerstadt ===
+  // === Innenstadt - Markt & Buergerstadt ===
   {
     slug: "hauptmarkt",
     imageKey: "sight:hauptmarkt",
@@ -210,7 +210,7 @@ export const sights: Sight[] = [
     type: "Wahrzeichen",
     priceFrom: null,
     shortDesc:
-      "Mittelalterlicher Wohnturm in der Simeonstrasse. Eingang im ersten Stock — typisch Wehrhaus.",
+      "Mittelalterlicher Wohnturm in der Simeonstrasse. Eingang im ersten Stock - typisch Wehrhaus.",
     longDesc:
       "Das Dreikoenigenhaus von 1230 ist eines der besterhaltenen romanischen Patrizierwohntuerme in Deutschland. Eingang im ersten Obergeschoss, urspruenglich nur ueber eine Hochzieh-Treppe erreichbar. Heute Café im Erdgeschoss, Fassade ein Foto-Hotspot.",
     imageHue: 4,
@@ -261,7 +261,7 @@ export const sights: Sight[] = [
     shortDesc:
       "Domschatz, fruehchristliche Funde, kuratorisch ruhige Inszenierung neben dem Dom.",
     longDesc:
-      "Das Museum am Dom zeigt den Domschatz mit Reliquiaren, liturgischen Geraeten und Manuskripten. Dazu fruehchristliche Funde aus den Grabungen unter dem Dom — Trier ist die aelteste Bischofsstadt noerdlich der Alpen. Ruhige Atmosphaere, ideale Ergaenzung zum Dombesuch.",
+      "Das Museum am Dom zeigt den Domschatz mit Reliquiaren, liturgischen Geraeten und Manuskripten. Dazu fruehchristliche Funde aus den Grabungen unter dem Dom - Trier ist die aelteste Bischofsstadt noerdlich der Alpen. Ruhige Atmosphaere, ideale Ergaenzung zum Dombesuch.",
     imageHue: 4,
     coordinates: [49.7560, 6.6444],
     openingHours: "Mo-Sa 9-17, So 13-17",
@@ -277,7 +277,7 @@ export const sights: Sight[] = [
     shortDesc:
       "Geburtshaus von Karl Marx (1818). Dauerausstellung zu Leben, Werk und Wirkung.",
     longDesc:
-      "Karl Marx wurde 1818 in der Brueckenstrasse 10 geboren. Das spaetbarocke Wohnhaus ist heute Museum mit Dauerausstellung der Friedrich-Ebert-Stiftung. 2018 zum 200. Geburtstag komplett ueberarbeitet — moderne Inszenierung statt Reliquien-Schaukasten.",
+      "Karl Marx wurde 1818 in der Brueckenstrasse 10 geboren. Das spaetbarocke Wohnhaus ist heute Museum mit Dauerausstellung der Friedrich-Ebert-Stiftung. 2018 zum 200. Geburtstag komplett ueberarbeitet - moderne Inszenierung statt Reliquien-Schaukasten.",
     imageHue: 4,
     coordinates: [49.7506, 6.6342],
     openingHours: "Apr-Okt taegl. 10-18, Nov-Mar Di-So 11-17",
@@ -294,7 +294,7 @@ export const sights: Sight[] = [
     shortDesc:
       "Drei Etagen Spielzeug von 1900 bis heute. Familien-Favorit mitten am Hauptmarkt.",
     longDesc:
-      "Das Spielzeugmuseum direkt am Hauptmarkt ist Triers Familien-Hit. Drei Etagen mit Puppenstuben, Eisenbahnen, Plueschtieren, Kaufladen und Computerspielen. Vom Jugendstil bis Game Boy — auch fuer Eltern ein nostalgisches Spaziergang.",
+      "Das Spielzeugmuseum direkt am Hauptmarkt ist Triers Familien-Hit. Drei Etagen mit Puppenstuben, Eisenbahnen, Plueschtieren, Kaufladen und Computerspielen. Vom Jugendstil bis Game Boy - auch fuer Eltern ein nostalgisches Spaziergang.",
     imageHue: 2,
     coordinates: [49.7559, 6.6411],
     openingHours: "Mo-Sa 11-17, So 11-17",
@@ -311,7 +311,7 @@ export const sights: Sight[] = [
     shortDesc:
       "Einziges Apostelgrab noerdlich der Alpen. Aktive Benediktinerabtei mit romanischer Basilika.",
     longDesc:
-      "St. Matthias birgt das einzige Apostelgrab noerdlich der Alpen — der Sage nach wurden die Reliquien des Apostels Matthias durch Kaiserin Helena hierher gebracht. Romanische Basilika, aktive Benediktiner-Abtei, beliebter Etappenort des Jakobswegs.",
+      "St. Matthias birgt das einzige Apostelgrab noerdlich der Alpen - der Sage nach wurden die Reliquien des Apostels Matthias durch Kaiserin Helena hierher gebracht. Romanische Basilika, aktive Benediktiner-Abtei, beliebter Etappenort des Jakobswegs.",
     imageHue: 1,
     coordinates: [49.7385, 6.6365],
   },
@@ -326,7 +326,7 @@ export const sights: Sight[] = [
     shortDesc:
       "Balthasar-Neumann-Rokokokirche von 1734-54. Eine der schoensten Barockkirchen am Mittelrhein.",
     longDesc:
-      "St. Paulin entstand 1734-54 nach Plaenen Balthasar Neumanns. Stuckierte Hochaltarapsis, Deckengemaelde Christoph Thomas Schefflers, Heiligenschrein des Stadtpatrons Paulinus. Etwas abseits, daher ohne Touristenandrang — ein Geheimtipp.",
+      "St. Paulin entstand 1734-54 nach Plaenen Balthasar Neumanns. Stuckierte Hochaltarapsis, Deckengemaelde Christoph Thomas Schefflers, Heiligenschrein des Stadtpatrons Paulinus. Etwas abseits, daher ohne Touristenandrang - ein Geheimtipp.",
     imageHue: 1,
     coordinates: [49.7641, 6.6429],
   },

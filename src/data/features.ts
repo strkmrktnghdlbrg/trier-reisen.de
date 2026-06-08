@@ -4,11 +4,11 @@
  */
 
 export const features = {
-  /** News-Pipeline. Off — Trier ist Reise-Magazin, keine Lokalpresse. */
+  /** News-Pipeline. Off - Trier ist Reise-Magazin, keine Lokalpresse. */
   news: {
     enabled: false,
   },
-  /** Reiseplaner-Guides — primaerer Top-Funnel fuer Trier. */
+  /** Reiseplaner-Guides - primaerer Top-Funnel fuer Trier. */
   reiseplaner: {
     enabled: true,
   },
@@ -16,11 +16,11 @@ export const features = {
   werben: {
     enabled: false,
   },
-  /** Branchen-Verzeichnis (Phase 2 — Premium-Listings 49/149). */
+  /** Branchen-Verzeichnis (Phase 2 - Premium-Listings 49/149). */
   branchen: {
     enabled: false,
   },
-  /** Events-Hub. On — Antikenfestspiele, Olewiger Weinfest, Weihnachtsmarkt. */
+  /** Events-Hub. On - Antikenfestspiele, Olewiger Weinfest, Weihnachtsmarkt. */
   events: {
     enabled: true,
   },

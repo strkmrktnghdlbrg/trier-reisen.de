@@ -1,0 +1,139 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import HueGradient from "../components/HueGradient.astro";
+import GygActivities from "../components/GygActivities.astro";
+import AwinOffer from "../components/AwinOffer.astro";
+import { articles, type Article, articleCategories } from "../data/articles";
+import { city } from "../data/city";
+
+export function getStaticPaths() {
+  return articles.map((article) => ({ params: { artikel: article.slug }, props: { article } }));
+}
+
+interface Props { article: Article }
+const { article } = Astro.props;
+
+const catLabel = articleCategories.find((c) => c.key === article.category)?.label ?? "Magazin";
+const dateLabel = new Date(article.publishDate).toLocaleDateString("de-DE", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+---
+
+<BaseLayout title={article.title} description={article.description}>
+  <article class="container-page py-12">
+    <Breadcrumbs items={[
+      { href: "/", label: city.name },
+      { href: "/magazin/", label: "Magazin" },
+      { label: article.title },
+    ]} />
+
+    <header class="max-w-3xl">
+      <p class="eyebrow mb-3">{catLabel}</p>
+      <h1 class="display-xl mb-4">{article.title}</h1>
+      <p class="text-sm" style="color: var(--color-text-muted);">
+        <time datetime={article.publishDate}>{dateLabel}</time>
+      </p>
+    </header>
+
+    <figure class="mt-8 rounded-2xl overflow-hidden aspect-[16/9]">
+      <HueGradient hue={article.heroHue} label={article.title} class="w-full h-full" />
+    </figure>
+
+    <div class="prose-trier mt-10 max-w-3xl">
+      <p set:html={article.intro} />
+      {article.sections.map((sec) => (
+        <>
+          {sec.heading && <h2>{sec.heading}</h2>}
+          {sec.body.map((p) => <p set:html={p} />)}
+          {sec.list && sec.list.length > 0 && (
+            <ul>
+              {sec.list.map((li) => <li set:html={li} />)}
+            </ul>
+          )}
+        </>
+      ))}
+    </div>
+
+    {/* === Affiliate-Module (datengetrieben) === */}
+    {article.gygQuery && (
+      <div class="max-w-3xl">
+        <GygActivities
+          q={article.gygQuery}
+          heading={article.gygHeading ?? "Passende Touren und Erlebnisse"}
+          intro={article.gygIntro}
+          count={4}
+          cmp={`artikel-${article.slug}`}
+        />
+      </div>
+    )}
+
+    {article.awinMerchants && article.awinMerchants.length > 0 && (
+      <div class="max-w-3xl">
+        <AwinOffer
+          merchants={article.awinMerchants}
+          heading={article.awinHeading ?? "Passende Angebote"}
+          intro={article.awinIntro}
+          clickref={`artikel-${article.slug}`}
+        />
+      </div>
+    )}
+
+    {article.faq && article.faq.length > 0 && (
+      <section class="max-w-3xl mt-14">
+        <h2 class="display mb-6">Häufige Fragen</h2>
+        <div class="space-y-5">
+          {article.faq.map((f) => (
+            <div>
+              <h3 class="text-lg font-medium mb-1" style="color: var(--color-text);">{f.q}</h3>
+              <p class="text-body" set:html={f.a} />
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {article.related && article.related.length > 0 && (
+      <nav class="max-w-3xl mt-16 pt-8 border-t" style="border-color: var(--color-border);" aria-label="Weiterlesen">
+        <p class="eyebrow mb-3">Weiterlesen</p>
+        <ul class="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+          {article.related.map((r) => (
+            <li><a href={r.href} class="link-accent">{r.label} →</a></li>
+          ))}
+        </ul>
+      </nav>
+    )}
+  </article>
+</BaseLayout>
+
+<style>
+  .prose-trier {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--color-text-body);
+  }
+  .prose-trier p { margin-bottom: 1.25em; }
+  .prose-trier h2 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    color: var(--color-text);
+    font-size: clamp(22px, 3vw, 28px);
+    line-height: 1.2;
+    margin-top: 2.5em;
+    margin-bottom: 0.75em;
+  }
+  .prose-trier ul {
+    margin: 0 0 1.25em 1.25em;
+    list-style: disc;
+  }
+  .prose-trier li { margin-bottom: 0.4em; }
+  .prose-trier a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .prose-trier a:hover { text-decoration: none; }
+</style>

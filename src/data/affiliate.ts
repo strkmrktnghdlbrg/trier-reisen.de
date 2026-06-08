@@ -4,7 +4,7 @@
 
 export const affiliate = {
   stay22: {
-    /** Stay22 lmaID — trier-reisen.de */
+    /** Stay22 lmaID - trier-reisen.de */
     lmaId: "687913400d1617d25ef77427",
     enabled: true,
     /** Optional vorkonfiguriertes Stay22-Map-Embed (Dashboard-ID). */
@@ -23,3 +23,11 @@ export const stay22Enabled =
 
 export const gygEnabled =
   affiliate.getYourGuide.enabled && affiliate.getYourGuide.partnerId.length > 0;
+
+/**
+ * AWIN (Deutsche Bahn, FlixBus, Hawesko/Vinos-Wein, Tiqets, HomeToGo,
+ * HanseMerkur u. a.): Konfiguration in `./awin.ts`, Deeplink-Helper in
+ * `../lib/awin.ts`. Nur Publisher-ID dort eintragen, dann Merchants auf
+ * `active: true` setzen, sobald angenommen.
+ */
+export { awin } from "./awin";

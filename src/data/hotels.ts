@@ -158,7 +158,7 @@ export const hotels: Hotel[] = [
     shortDesc:
       "Markenstandard mit fairen Preisen am Hauptbahnhof. Ankommen, einchecken, in die Stadt.",
     longDesc:
-      "Das Ibis Trier liegt direkt am Hauptbahnhof — ideal fuer Bahnreisende. 100 Zimmer im typischen Ibis-Standard, 24/7 Snackbar, Tiefgarage. Zehn Gehminuten in die Innenstadt.",
+      "Das Ibis Trier liegt direkt am Hauptbahnhof - ideal fuer Bahnreisende. 100 Zimmer im typischen Ibis-Standard, 24/7 Snackbar, Tiefgarage. Zehn Gehminuten in die Innenstadt.",
     imageHue: 4,
     bookingUrl: "https://www.booking.com/hotel/de/ibis-trier.de.html",
     amenities: ["Bahnhof", "Tiefgarage", "Snackbar"],
@@ -225,7 +225,7 @@ export const hotels: Hotel[] = [
     shortDesc:
       "Familiengefuehrtes 4-Sterne-Hotel mit Triers bester Aussicht. Hoch oben, ruhig, weinaffin.",
     longDesc:
-      "Das Hotel Petrisberg liegt am Petrisberg oberhalb der Stadt — Aussicht ueber Moseltal und Innenstadt inklusive. 35 Zimmer, hauseigene Weinbar mit Familienweinen, ruhige Wohnlage. Familiengefuehrt seit drei Generationen.",
+      "Das Hotel Petrisberg liegt am Petrisberg oberhalb der Stadt - Aussicht ueber Moseltal und Innenstadt inklusive. 35 Zimmer, hauseigene Weinbar mit Familienweinen, ruhige Wohnlage. Familiengefuehrt seit drei Generationen.",
     imageHue: 2,
     bookingUrl: "https://www.booking.com/hotel/de/petrisberg-trier.de.html",
     amenities: ["Aussicht", "Familiengefuehrt", "Weinbar"],

@@ -7,10 +7,12 @@ import HotelCard from "../../components/HotelCard.astro";
 import RestaurantCard from "../../components/RestaurantCard.astro";
 import Stay22NearbyHotels from "../../components/Stay22NearbyHotels.astro";
 import Stay22Map from "../../components/Stay22Map.astro";
+import GygActivities from "../../components/GygActivities.astro";
 import { districts, type District } from "../../data/districts";
 import { sights } from "../../data/sights";
 import { hotels } from "../../data/hotels";
 import { restaurants } from "../../data/restaurants";
+import { getGyg, gygCmp } from "../../data/gyg";
 import { city } from "../../data/city";
 
 export function getStaticPaths() {
@@ -22,9 +24,11 @@ const { district } = Astro.props;
 const districtSights = sights.filter((s) => s.district === district.slug);
 const districtHotels = hotels.filter((h) => h.district === district.slug);
 const districtRestaurants = restaurants.filter((r) => r.district === district.slug);
+const gygKey = `district:${district.slug}`;
+const gyg = getGyg(gygKey);
 ---
 
-<BaseLayout title={`${district.name} — ${city.name}`} description={district.shortDesc}>
+<BaseLayout title={`${district.name} - ${city.name}`} description={district.shortDesc}>
   <article>
     <div class="container-page py-12">
       <Breadcrumbs items={[
@@ -73,6 +77,10 @@ const districtRestaurants = restaurants.filter((r) => r.district === district.sl
     )}
 
     <div class="container-page">
+      {gyg && (
+        <GygActivities q={gyg.q} heading={gyg.heading} intro={gyg.intro} count={gyg.count} cmp={gygCmp(gygKey)} />
+      )}
+
       <Stay22NearbyHotels
         lat={district.coordinates[0]}
         lng={district.coordinates[1]}
@@ -85,7 +93,7 @@ const districtRestaurants = restaurants.filter((r) => r.district === district.sl
         lat={district.coordinates[0]}
         lng={district.coordinates[1]}
         zoom={14}
-        title={`Hotels in ${district.name} — Live-Karte`}
+        title={`Hotels in ${district.name} - Live-Karte`}
         lead="Aktuelle Preise via Booking. Zoom rein, Marker antippen, buchen."
       />
     </div>
