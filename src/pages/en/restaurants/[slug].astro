@@ -1,0 +1,121 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../../components/Breadcrumbs.astro";
+import HueGradient from "../../../components/HueGradient.astro";
+import RestaurantCard from "../../../components/RestaurantCard.astro";
+import { restaurants, type Restaurant } from "../../../data/restaurants";
+import { getDistrict } from "../../../data/districts";
+import { restaurantSchema, breadcrumbSchema } from "../../../lib/schema";
+import { localize, t } from "../../../lib/i18n";
+import { city } from "../../../data/city";
+
+export function getStaticPaths() {
+  return restaurants.map((restaurant) => ({ params: { slug: restaurant.slug }, props: { restaurant } }));
+}
+
+interface Props { restaurant: Restaurant }
+const { restaurant: src } = Astro.props;
+const lang = "en" as const;
+const restaurant = localize("restaurants", src, lang);
+const district = localize("districts", getDistrict(src.district) ?? ({ slug: src.district } as any), lang);
+const related = restaurants.filter((r) => r.slug !== src.slug && r.cuisine === src.cuisine).slice(0, 3).map((r) => localize("restaurants", r, lang));
+---
+
+<BaseLayout
+  title={`${restaurant.name} - ${city.name}`}
+  description={restaurant.shortDesc}
+  lang={lang}
+  altLangPath={`/restaurants/${restaurant.slug}/`}
+  schema={[
+    restaurantSchema(restaurant),
+    breadcrumbSchema([
+      { name: city.name, url: "/en/" },
+      { name: t(lang, "breadcrumb.restaurants"), url: "/en/restaurants/" },
+      { name: restaurant.name },
+    ]),
+  ]}
+>
+  <article class="container-page py-12">
+    <Breadcrumbs items={[
+      { href: "/en/", label: city.name },
+      { href: "/en/restaurants/", label: t(lang, "breadcrumb.restaurants") },
+      { label: restaurant.name },
+    ]} />
+
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 mt-4">
+      <div class="lg:col-span-3">
+        <p class="eyebrow mb-3">{restaurant.cuisine} · {restaurant.priceLevel}</p>
+        <h1 class="display-xl mb-4">{restaurant.name}</h1>
+        <p class="text-sm" style="color: var(--color-text-muted);">
+          {district?.name ?? src.district}
+          {src.openingHours && <> · {src.openingHours}</>}
+        </p>
+        <div class="aspect-[16/10] rounded-2xl overflow-hidden mt-6 relative">
+          <HueGradient hue={src.imageHue} label={restaurant.name} class="w-full h-full" />
+        </div>
+        <p class="text-body mt-8 text-lg leading-relaxed">{restaurant.longDesc}</p>
+      </div>
+
+      <aside class="lg:col-span-2">
+        <div class="card p-6">
+          <h2 class="text-lg font-light mb-4" style="font-family: var(--font-display);">{t(lang, "sections.practicalInfo")}</h2>
+          <dl class="text-sm space-y-3">
+            <div>
+              <dt style="color: var(--color-text-muted);">Cuisine</dt>
+              <dd style="color: var(--color-text);">{restaurant.cuisine}</dd>
+            </div>
+            <div>
+              <dt style="color: var(--color-text-muted);">Price level</dt>
+              <dd style="color: var(--color-text);">{restaurant.priceLevel}</dd>
+            </div>
+            <div>
+              <dt style="color: var(--color-text-muted);">{t(lang, "sections.district")}</dt>
+              <dd style="color: var(--color-text);">{district?.name ?? src.district}</dd>
+            </div>
+            {src.openingHours && (
+              <div>
+                <dt style="color: var(--color-text-muted);">{t(lang, "sections.openingHours")}</dt>
+                <dd style="color: var(--color-text);">{src.openingHours}</dd>
+              </div>
+            )}
+            {src.reservation && (
+              <div>
+                <dt style="color: var(--color-text-muted);">Reservation</dt>
+                <dd style="color: var(--color-text);">
+                  {src.websiteUrl ? (
+                    <a href={src.websiteUrl} target="_blank" rel="noopener" class="link-accent">
+                      Reserve a table ↗
+                    </a>
+                  ) : (
+                    "recommended (by phone)"
+                  )}
+                </dd>
+              </div>
+            )}
+            {src.websiteUrl && (
+              <div>
+                <dt style="color: var(--color-text-muted);">{t(lang, "sections.website")}</dt>
+                <dd><a href={src.websiteUrl} target="_blank" rel="noopener" class="link-accent text-sm">Official site ↗</a></dd>
+              </div>
+            )}
+          </dl>
+
+          {src.reservation && src.websiteUrl && (
+            <a href={src.websiteUrl} target="_blank" rel="noopener" class="btn-primary w-full justify-center mt-6">
+              Reserve a table at the restaurant ↗
+            </a>
+          )}
+        </div>
+      </aside>
+    </div>
+
+    {related.length > 0 && (
+      <section class="section">
+        <h2 class="display mb-6">More {restaurant.cuisine}</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {related.map((r) => <RestaurantCard restaurant={r} lang={lang} />)}
+        </div>
+      </section>
+    )}
+  </article>
+</BaseLayout>

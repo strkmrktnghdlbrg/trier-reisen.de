@@ -61,6 +61,7 @@ if (visible.length > 0) {
 <BaseLayout
   title={event.title}
   description={event.description}
+  altLangPath={`/en/events/${event.slug}/`}
   schema={[
     eventSchema(event),
     breadcrumbSchema([

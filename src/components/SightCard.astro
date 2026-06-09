@@ -2,18 +2,23 @@
 import ContentImage from "./ContentImage.astro";
 import type { Sight } from "../data/sights";
 import { getDistrict } from "../data/districts";
+import { detailPath, localize, t, type Lang } from "../lib/i18n";
 
 interface Props {
   sight: Sight;
+  lang?: Lang;
 }
 
-const { sight } = Astro.props;
-const district = getDistrict(sight.district);
+const { sight: src, lang = "de" } = Astro.props;
+const sight = localize("sights", src, lang);
+const district = localize("districts", getDistrict(sight.district) ?? ({ slug: sight.district } as any), lang);
 const priceLabel =
-  sight.priceFrom === null ? "Eintritt frei" : `ab ${sight.priceFrom} €`;
+  sight.priceFrom === null
+    ? t(lang, "sections.free")
+    : `${t(lang, "sections.priceFrom")} ${sight.priceFrom} €`;
 ---
 
-<a href={`/sehenswuerdigkeiten/${sight.slug}/`} class="card group block">
+<a href={detailPath(lang, "sights", sight.slug)} class="card group block">
   <div class="aspect-[4/3] relative overflow-hidden">
     <ContentImage
       imgKey={sight.imageKey}

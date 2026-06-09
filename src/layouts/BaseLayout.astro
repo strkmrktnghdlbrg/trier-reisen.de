@@ -5,6 +5,7 @@ import Footer from "../components/Footer.astro";
 import CookieBanner from "../components/CookieBanner.astro";
 import { city } from "../data/city";
 import { analytics, gtmEnabled } from "../data/analytics";
+import type { Lang } from "../lib/i18n";
 
 interface Props {
   title: string;
@@ -14,6 +15,10 @@ interface Props {
   ogImage?: string;
   /** Ein oder mehrere JSON-LD-Schema-Objekte. */
   schema?: object | object[];
+  /** Sprache der aktuellen Seite (de = default, en = /en/...). */
+  lang?: Lang;
+  /** Pfad der jeweils anderen Sprachversion fuer hreflang. */
+  altLangPath?: string;
 }
 
 const {
@@ -23,6 +28,8 @@ const {
   canonical,
   ogImage,
   schema,
+  lang = "de",
+  altLangPath,
 } = Astro.props;
 
 const schemas = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
@@ -32,13 +39,28 @@ const fullTitle = title === city.name ? `${city.name} · ${city.brandName}` : `$
 ---
 
 <!doctype html>
-<html lang="de">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     {noindex && <meta name="robots" content="noindex,nofollow" />}
+
+    {/* hreflang: aktuelle + alternative Sprache + x-default (de) */}
+    <link rel="alternate" hreflang={lang === "de" ? "de" : "en"} href={canonicalUrl} />
+    {altLangPath && (
+      <link
+        rel="alternate"
+        hreflang={lang === "de" ? "en" : "de"}
+        href={new URL(altLangPath, city.domain).toString()}
+      />
+    )}
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href={lang === "de" ? canonicalUrl : (altLangPath ? new URL(altLangPath, city.domain).toString() : canonicalUrl)}
+    />
 
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
@@ -47,7 +69,8 @@ const fullTitle = title === city.name ? `${city.name} · ${city.brandName}` : `$
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
-    <meta property="og:locale" content="de_DE" />
+    <meta property="og:locale" content={lang === "de" ? "de_DE" : "en_US"} />
+    {altLangPath && <meta property="og:locale:alternate" content={lang === "de" ? "en_US" : "de_DE"} />}
     {ogImage && <meta property="og:image" content={ogImage} />}
 
     {/*
@@ -70,11 +93,11 @@ const fullTitle = title === city.name ? `${city.name} · ${city.brandName}` : `$
         ></iframe>
       </noscript>
     )}
-    <Header />
+    <Header lang={lang} altLangPath={altLangPath} />
     <main class="flex-1">
       <slot />
     </main>
-    <Footer />
-    <CookieBanner />
+    <Footer lang={lang} />
+    <CookieBanner lang={lang} />
   </body>
 </html>

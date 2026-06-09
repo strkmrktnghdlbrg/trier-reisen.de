@@ -2,17 +2,21 @@
 import HueGradient from "./HueGradient.astro";
 import type { Hotel } from "../data/hotels";
 import { getDistrict } from "../data/districts";
+import { detailPath, localize, t, type Lang } from "../lib/i18n";
 
 interface Props {
   hotel: Hotel;
+  lang?: Lang;
 }
 
-const { hotel } = Astro.props;
-const district = getDistrict(hotel.district);
+const { hotel: src, lang = "de" } = Astro.props;
+const hotel = localize("hotels", src, lang);
+const district = localize("districts", getDistrict(hotel.district) ?? ({ slug: hotel.district } as any), lang);
 const starString = "★".repeat(hotel.stars);
+const reviewsLabel = lang === "de" ? "Bewertungen" : "reviews";
 ---
 
-<a href={`/hotels/${hotel.slug}/`} class="card group block">
+<a href={detailPath(lang, "hotels", hotel.slug)} class="card group block">
   <div class="aspect-[4/3] relative overflow-hidden">
     <HueGradient hue={hotel.imageHue} label={hotel.name} class="absolute inset-0" />
     <div class="absolute top-3 left-3">
@@ -20,7 +24,7 @@ const starString = "★".repeat(hotel.stars);
     </div>
     {hotel.guestFavorite && (
       <div class="absolute top-3 right-3">
-        <span class="pill-accent">Gast-Favorit</span>
+        <span class="pill-accent">{lang === "de" ? "Gast-Favorit" : "Guest favourite"}</span>
       </div>
     )}
   </div>
@@ -33,8 +37,8 @@ const starString = "★".repeat(hotel.stars);
     </h3>
     <p class="text-sm leading-relaxed line-clamp-2 mb-3" style="color: var(--color-text-body);">{hotel.shortDesc}</p>
     <div class="flex items-center justify-between text-xs">
-      <span style="color: var(--color-text-muted);">⭐ {hotel.rating}/10 · {hotel.reviews} Bewertungen</span>
-      <span style="color: var(--color-accent); font-weight: 500;">ab {hotel.priceFrom} €</span>
+      <span style="color: var(--color-text-muted);">⭐ {hotel.rating}/10 · {hotel.reviews} {reviewsLabel}</span>
+      <span style="color: var(--color-accent); font-weight: 500;">{t(lang, "sections.priceFrom")} {hotel.priceFrom} €</span>
     </div>
   </div>
 </a>

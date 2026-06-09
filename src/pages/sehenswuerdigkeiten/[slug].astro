@@ -31,6 +31,7 @@ const moreInfo: string[] = (sightEnrichments as Record<string, string[]>)[sight.
 <BaseLayout
   title={sight.name}
   description={sight.shortDesc}
+  altLangPath={`/en/sights/${sight.slug}/`}
   schema={[
     sightSchema(sight),
     breadcrumbSchema([

@@ -1,0 +1,89 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { city } from "../../data/city";
+import { t } from "../../lib/i18n";
+
+const lang = "en" as const;
+---
+
+<BaseLayout
+  title={`${t(lang, "search.title")} - ${city.name}`}
+  description={`Search ${city.name}: sights, hotels, restaurants, districts, themes, events and magazine articles.`}
+  noindex={true}
+  lang={lang}
+  altLangPath="/suche/"
+>
+  <section class="container-page py-12">
+    <Breadcrumbs items={[{ href: "/en/", label: city.name }, { label: t(lang, "breadcrumb.search") }]} />
+    <h1 class="display-xl mb-6">{t(lang, "search.title")}</h1>
+
+    <div class="max-w-2xl">
+      <label for="search-input" class="sr-only">{t(lang, "search.srLabel")}</label>
+      <input
+        id="search-input"
+        type="search"
+        autocomplete="off"
+        placeholder={t(lang, "search.placeholder")}
+        class="w-full px-5 py-3.5 rounded-full border text-base outline-none focus:border-[var(--color-accent)] transition-colors"
+        style="background: #fff; border-color: var(--color-border); color: var(--color-text);"
+      />
+      <p id="search-status" class="text-sm mt-3" style="color: var(--color-text-muted);">{t(lang, "search.minChars")}</p>
+    </div>
+
+    <ul id="search-results" class="mt-8 max-w-2xl space-y-3"></ul>
+  </section>
+</BaseLayout>
+
+<script is:inline define:vars={{ indexUrl: "/en/search-index.json", minCharsMsg: t(lang, "search.minChars"), noResultsPrefix: t(lang, "search.noResults"), oneResult: t(lang, "search.oneResult"), nResults: t(lang, "search.nResults") }}>
+  (function () {
+    var input = document.getElementById("search-input");
+    var status = document.getElementById("search-status");
+    var results = document.getElementById("search-results");
+    if (!input || !results || !status) return;
+    var index = [];
+    var loaded = false;
+    function norm(s) { return (s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, ""); }
+    function load() {
+      if (loaded) return Promise.resolve();
+      return fetch(indexUrl).then(function (r) { return r.json(); }).then(function (d) { index = d; loaded = true; });
+    }
+    function render(query) {
+      var q = norm(query).trim();
+      results.innerHTML = "";
+      if (q.length < 2) { status.textContent = minCharsMsg; return; }
+      var terms = q.split(/\s+/);
+      var matches = index.map(function (e) {
+        var hay = norm(e.title + " " + e.type + " " + e.excerpt);
+        var score = 0;
+        for (var i = 0; i < terms.length; i++) {
+          if (hay.indexOf(terms[i]) === -1) return null;
+          if (norm(e.title).indexOf(terms[i]) !== -1) score += 2; else score += 1;
+        }
+        return { e: e, score: score };
+      }).filter(Boolean).sort(function (a, b) { return b.score - a.score; }).slice(0, 40);
+      if (matches.length === 0) { status.textContent = noResultsPrefix + '"' + query + '".'; return; }
+      status.textContent = matches.length === 1 ? oneResult : matches.length + " " + nResults;
+      var html = "";
+      for (var j = 0; j < matches.length; j++) {
+        var e = matches[j].e;
+        html += '<li class="card p-4"><a href="' + e.url + '" class="block">' +
+          '<span class="eyebrow">' + e.type + "</span>" +
+          '<span class="block text-lg mt-1" style="color:var(--color-text);font-family:var(--font-display);font-weight:300;">' + e.title + "</span>" +
+          (e.excerpt ? '<span class="block text-sm mt-1" style="color:var(--color-text-body);">' + e.excerpt + "</span>" : "") +
+          "</a></li>";
+      }
+      results.innerHTML = html;
+    }
+    var t1;
+    input.addEventListener("input", function () {
+      clearTimeout(t1);
+      var val = input.value;
+      t1 = setTimeout(function () { load().then(function () { render(val); }); }, 120);
+    });
+    var params = new URLSearchParams(window.location.search);
+    var initial = params.get("q");
+    if (initial) { input.value = initial; load().then(function () { render(initial); }); }
+    input.focus();
+  })();
+</script>

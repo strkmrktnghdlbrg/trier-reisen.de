@@ -1,0 +1,117 @@
+{
+  "porta-nigra": {
+    "name": "Porta Nigra (the Black Gate)",
+    "shortDesc": "The Black Gate, Trier's landmark and the best-preserved Roman city gate north of the Alps.",
+    "longDesc": "The Porta Nigra was built around 170 AD as the north gate of the Roman city of Augusta Treverorum. Constructed from roughly 7,200 sandstone blocks, it was converted into a double church in the Middle Ages and stripped back to its Roman form under Napoleon. Two upper levels are open to visitors, with views down the Simeonstrasse."
+  },
+  "trierer-dom": {
+    "name": "Trier Cathedral (Dom St. Peter)",
+    "shortDesc": "Germany's oldest bishop's church. Home to the Holy Robe, the cathedral treasury, and Romanesque mass right on the Hauptmarkt (the main market square).",
+    "longDesc": "At its core, Trier Cathedral goes back to the Constantinian church complex of the 4th century. It combines a Romanesque twin-tower facade, a Gothic reliquary ambulatory, and a Baroque chapel housing the Holy Robe. The relic itself is shown only during rare pilgrimages, the most recent of which drew more than half a million pilgrims in 2012."
+  },
+  "liebfrauenkirche": {
+    "name": "Liebfrauenkirche (Church of Our Lady)",
+    "shortDesc": "One of the oldest Gothic churches in Germany, right next to the cathedral.",
+    "longDesc": "Built between 1227 and 1260 on a French Gothic model, the Liebfrauenkirche is considered one of the earliest Gothic churches on German soil. Its central plan rests on a twelve-petal floor plan, and together with the cathedral it forms part of the UNESCO World Heritage site."
+  },
+  "konstantinbasilika": {
+    "name": "Konstantinbasilika (Basilica of Constantine)",
+    "shortDesc": "The ancient throne hall of Emperor Constantine, today the city's main Protestant church. A 27 m high hall with no internal supports.",
+    "longDesc": "The Aula Palatina was the throne hall of the late Roman emperor Constantine. At 67 m long, 27 m wide, and 33 m high, it is one of the largest surviving single-room buildings of antiquity. Today it serves as the Protestant Church of the Redeemer, with services held every Sunday inside the ancient hall."
+  },
+  "kaiserthermen": {
+    "name": "Imperial Baths (Kaiserthermen)",
+    "shortDesc": "Monumental Roman bath ruins. Visitors can explore apses, hypocaust channels, and the underground service tunnels.",
+    "longDesc": "The Imperial Baths were built in the 4th century as the prestige thermae of the imperial residence. They were never completed as a working bath, and later served as barracks and as part of the city wall fortification. Today they are a UNESCO World Heritage site, and the underground service corridors are fully accessible."
+  },
+  "barbarathermen": {
+    "name": "Barbara Baths (Barbarathermen)",
+    "shortDesc": "The older and larger sibling of the Imperial Baths. An open-air field of ruins.",
+    "longDesc": "The Barbara Baths were built in the 2nd century and ranked among the largest thermae in the Roman Empire. Large sections of the substructures remain visible today, and the walking tour is freely accessible. Less touristy than the Imperial Baths, and more impressive in sheer scale."
+  },
+  "amphitheater": {
+    "name": "Trier Amphitheater",
+    "shortDesc": "UNESCO-listed amphitheater with underground lift shafts. In summer it hosts the Antikenfestspiele (ancient world festival).",
+    "longDesc": "The Trier Amphitheater was built around 100 AD and seated roughly 20,000 spectators. The tiered embankments survive, along with the underground cellar with lift shafts through which gladiators and animals were brought into the arena. Each summer it serves as the venue for the Antikenfestspiele."
+  },
+  "roemerbruecke": {
+    "name": "Roman Bridge (Römerbrücke)",
+    "shortDesc": "The oldest bridge in Germany north of the Alps. Its Roman piers date to 144 AD.",
+    "longDesc": "The Römerbrücke is the oldest bridge still in use in Germany. Its five basalt piers date from the 2nd century AD, while the deck has been renewed several times. A UNESCO World Heritage site, it carries traffic every day."
+  },
+  "igeler-saeule": {
+    "name": "Igel Column (Igeler Säule)",
+    "shortDesc": "A Roman funerary column in the Trier suburb of Igel. 23 m tall and richly decorated.",
+    "longDesc": "The Igel Column is a Roman tomb from the 3rd century, built by the Secundinii family. Standing 23 m tall, fully preserved, and covered in detailed relief decoration, it is a unique piece of Roman funerary architecture and a UNESCO World Heritage site."
+  },
+  "hauptmarkt": {
+    "name": "Hauptmarkt (the main market square) with Market Cross",
+    "shortDesc": "Trier's market square since 958. The Steipe, Petrusbrunnen fountain, Market Cross, and Rotes Haus all stand here.",
+    "longDesc": "The Hauptmarkt is one of Germany's most beautiful market squares. The Market Cross from 958 marked the legal center of the city, the Steipe served as a celebration hall, and the Petrusbrunnen is a fine piece of Trier Renaissance work. Today the square hosts the weekly market and the Christmas market."
+  },
+  "kurfuerstliches-palais": {
+    "name": "Electoral Palace (Kurfürstliches Palais)",
+    "shortDesc": "A pink Rococo palace between the Basilica of Constantine and the palace gardens. One of the finest Rococo palaces in Germany.",
+    "longDesc": "The Electoral Palace stands on the foundations of a Renaissance residence of the prince-electors, redesigned in the 18th century by Johannes Seiz in the Rococo style. It now serves as an administrative seat, while the palace gardens are open to the public and host open-air concerts in summer."
+  },
+  "dreikoenigenhaus": {
+    "name": "Dreikönigenhaus (House of the Three Magi)",
+    "shortDesc": "A medieval residential tower on the Simeonstrasse. Entrance on the first floor, a typical defensive house.",
+    "longDesc": "The Dreikönigenhaus, built in 1230, is one of the best-preserved Romanesque patrician tower houses in Germany. Its entrance sits on the first upper floor and was originally reachable only via a retractable staircase. Today a café occupies the ground floor and the facade is a popular photo spot."
+  },
+  "rheinisches-landesmuseum": {
+    "name": "Rheinisches Landesmuseum (Rhineland State Museum)",
+    "shortDesc": "One of Europe's most important museums of antiquity. Mosaics, gold coins, and the model of Roman Trier.",
+    "longDesc": "The Rheinisches Landesmuseum next to the palace gardens holds one of the most significant collections of Roman finds north of the Alps. Highlights include the Neumagen ship, the famous Neumagen wine ship tomb relief, vast mosaic floors, and the gold coin hoard discovered in 1993."
+  },
+  "stadtmuseum-simeonstift": {
+    "name": "Stadtmuseum Simeonstift (Simeonstift City Museum)",
+    "shortDesc": "City history right next to the Porta Nigra. Includes a Romanesque cloister.",
+    "longDesc": "The Simeonstift was founded in the 11th century by Archbishop Poppo and built onto the Porta Nigra, which then served as a double church. Today it houses the city museum, with collections ranging from the Middle Ages to the 20th century. Its inner courtyard is a Romanesque cloister."
+  },
+  "museum-am-dom": {
+    "name": "Museum am Dom (Cathedral Museum)",
+    "shortDesc": "The cathedral treasury, early Christian finds, and a calm curatorial setting next to the cathedral.",
+    "longDesc": "The Museum am Dom displays the cathedral treasury, with reliquaries, liturgical implements, and manuscripts, alongside early Christian finds from the excavations beneath the cathedral. Trier is the oldest episcopal city north of the Alps. A quiet atmosphere makes it an ideal pairing with a visit to the cathedral itself."
+  },
+  "karl-marx-haus": {
+    "name": "Karl Marx House",
+    "shortDesc": "Karl Marx's birthplace (1818). Permanent exhibition on his life, work, and influence.",
+    "longDesc": "Karl Marx was born in 1818 at Brückenstrasse 10. The late Baroque townhouse is now a museum with a permanent exhibition run by the Friedrich Ebert Foundation. It was completely overhauled in 2018 for the bicentenary, replacing a relic-style display with a modern presentation."
+  },
+  "spielzeugmuseum": {
+    "name": "Trier Toy Museum (Spielzeugmuseum)",
+    "shortDesc": "Three floors of toys from 1900 to today. A family favorite right on the Hauptmarkt.",
+    "longDesc": "The Toy Museum on the Hauptmarkt (the main market square) is Trier's family hit. Three floors filled with dollhouses, model trains, plush animals, miniature shops, and computer games. From Art Nouveau to the Game Boy, it's a nostalgic walk for parents too."
+  },
+  "st-matthias": {
+    "name": "St. Matthias Basilica",
+    "shortDesc": "The only apostle's tomb north of the Alps. An active Benedictine abbey with a Romanesque basilica.",
+    "longDesc": "St. Matthias holds the only apostle's tomb north of the Alps. According to tradition, the relics of the apostle Matthias were brought here by the Empress Helena. A Romanesque basilica and an active Benedictine abbey, it is also a popular stop on the Camino de Santiago."
+  },
+  "st-paulin": {
+    "name": "St. Paulin",
+    "shortDesc": "A Balthasar Neumann Rococo church built 1734-54. One of the most beautiful Baroque churches on the Middle Rhine.",
+    "longDesc": "St. Paulin was built between 1734 and 1754 to plans by Balthasar Neumann. It features a stuccoed high-altar apse, ceiling paintings by Christoph Thomas Scheffler, and the shrine of the city's patron saint Paulinus. A little off the beaten path, so without tourist crowds, and very much an insider tip."
+  },
+  "mariensaeule": {
+    "name": "Mariensäule (Marian Column) on the Markusberg",
+    "shortDesc": "A 40 m high column topped with a figure of the Virgin Mary. The plateau offers the best view of Trier's skyline.",
+    "longDesc": "The Mariensäule on the Markusberg was built between 1859 and 1866 in thanks for the city's liberation from the French. Standing 40 m tall and visible from across the Moselle, it sits on a plateau by the old pumping station which gives the classic postcard view of the cathedral, the Liebfrauenkirche, and the Roman Bridge."
+  },
+  "petrisberg": {
+    "name": "Petrisberg",
+    "shortDesc": "A ridge east of the city. Viewpoint, playground, and hiking area on the grounds of the former state garden show.",
+    "longDesc": "The Petrisberg rises east of the old town and hosted the state garden show in 2004. Today it offers a viewing platform over Trier, a large family playground, a sculpture trail, and hiking paths toward Olewig (a wine village within Trier). It's reachable by elevator from Karl-Marx-Strasse."
+  },
+  "weinkulturpfad-olewig": {
+    "name": "Olewig Wine Culture Trail",
+    "shortDesc": "An educational trail through the vineyards of Olewig (a wine village within Trier). 5 km, 14 stations, with rest stops overlooking the Moselle.",
+    "longDesc": "The Olewig Wine Culture Trail is a 5 km loop through the steep vineyards above the wine village. Fourteen stations explain grape varieties, soil types, and the history of winemaking in Trier. Along the way you'll find rest stops, shelters, and a viewpoint looking out over the old town and the Moselle valley."
+  },
+  "mosel-promenade": {
+    "name": "Moselle Promenade",
+    "shortDesc": "Riverside path between Zurlauben and the Roman Bridge. The best walking stretch, with boat docks and restaurants.",
+    "longDesc": "The Moselle Promenade links the old fishing quarter of Zurlauben with the Roman Bridge. It's a walking strip with a farmers' market, the docks of the passenger boat fleet, and a row of riverside restaurants. On summer evenings it's the most relaxed address in Trier."
+  }
+}

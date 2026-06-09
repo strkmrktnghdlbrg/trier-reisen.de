@@ -1,0 +1,32 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../../components/Breadcrumbs.astro";
+import RestaurantCard from "../../../components/RestaurantCard.astro";
+import { city } from "../../../data/city";
+import { restaurants } from "../../../data/restaurants";
+import { localize, t } from "../../../lib/i18n";
+import { breadcrumbSchema } from "../../../lib/schema";
+
+const lang = "en" as const;
+const localized = restaurants.map((r) => localize("restaurants", r, lang));
+---
+
+<BaseLayout
+  title={`Restaurants in ${city.name}`}
+  description={`Restaurants in ${city.name}: from Mosel wine taverns to fine dining, ${restaurants.length} addresses by district and cuisine.`}
+  lang={lang}
+  altLangPath="/restaurants/"
+  schema={breadcrumbSchema([{ name: city.name, url: "/en/" }, { name: t(lang, "breadcrumb.restaurants") }])}
+>
+  <section class="container-page py-12">
+    <Breadcrumbs items={[{ href: "/en/", label: city.name }, { label: t(lang, "breadcrumb.restaurants") }]} />
+    <h1 class="display-xl">{t(lang, "nav.restaurants")} in {city.name}</h1>
+    <p class="text-body mt-4 max-w-2xl">From wine taverns in Olewig to fine-dining tables at the Hauptmarkt, a curated map of where to eat in Trier.</p>
+  </section>
+
+  <section class="container-page section pt-0">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {localized.map((r) => <RestaurantCard restaurant={r} lang={lang} />)}
+    </div>
+  </section>
+</BaseLayout>

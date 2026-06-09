@@ -17,7 +17,7 @@ const gygKey = `guide:${guide.slug}`;
 const gyg = getGyg(gygKey);
 ---
 
-<BaseLayout title={guide.title} description={guide.description}>
+<BaseLayout title={guide.title} description={guide.description} altLangPath={`/en/travel-planner/${guide.slug}/`}>
   <article class="container-page py-12">
     <Breadcrumbs items={[
       { href: "/", label: city.name },

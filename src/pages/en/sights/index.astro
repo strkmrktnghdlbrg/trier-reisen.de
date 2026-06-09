@@ -1,0 +1,55 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../../components/Breadcrumbs.astro";
+import SightCard from "../../../components/SightCard.astro";
+import GygActivities from "../../../components/GygActivities.astro";
+import { city } from "../../../data/city";
+import { sights } from "../../../data/sights";
+import { getGyg, gygCmp } from "../../../data/gyg";
+import { localize, t } from "../../../lib/i18n";
+import { breadcrumbSchema } from "../../../lib/schema";
+
+const lang = "en" as const;
+const localized = sights.map((s) => localize("sights", s, lang));
+const unesco = localized.filter((s) => s.unesco);
+const otherSights = localized.filter((s) => !s.unesco);
+const gyg = getGyg("index:sehenswuerdigkeiten");
+---
+
+<BaseLayout
+  title={`Sights in ${city.name}`}
+  description={`All sights in ${city.name}: UNESCO World Heritage, Roman heritage, museums, churches, viewpoints. ${sights.length} highlights with opening hours and addresses.`}
+  lang={lang}
+  altLangPath="/sehenswuerdigkeiten/"
+  schema={breadcrumbSchema([{ name: city.name, url: "/en/" }, { name: t(lang, "breadcrumb.sights") }])}
+>
+  <section class="container-page py-12">
+    <Breadcrumbs items={[{ href: "/en/", label: city.name }, { label: t(lang, "breadcrumb.sights") }]} />
+    <p class="eyebrow mb-3">{sights.length} {t(lang, "breadcrumb.sights")}</p>
+    <h1 class="display-xl">{t(lang, "nav.sights")} in {city.name}</h1>
+    <p class="text-body mt-4 max-w-2xl">
+      Trier packs 2,000 years of history into a few square kilometres. Eight UNESCO sites, seven major churches, five world-class museums. Here is every landmark, sorted by must-see and depth.
+    </p>
+  </section>
+
+  <section class="container-page section pt-0">
+    <h2 class="display mb-6">{t(lang, "sections.unescoHeritage")}</h2>
+    <p class="text-body mb-8 max-w-2xl">Since 1986 Trier's Roman monuments, the cathedral and the Church of Our Lady stand together on the UNESCO World Heritage list.</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {unesco.map((s) => <SightCard sight={s} lang={lang} />)}
+    </div>
+  </section>
+
+  <section class="container-page section pt-0">
+    <h2 class="display mb-6">More sights</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {otherSights.map((s) => <SightCard sight={s} lang={lang} />)}
+    </div>
+  </section>
+
+  {gyg && (
+    <div class="container-page">
+      <GygActivities q={gyg.q} heading={gyg.heading} intro={gyg.intro} count={gyg.count} cmp={gygCmp("index:sehenswuerdigkeiten")} />
+    </div>
+  )}
+</BaseLayout>

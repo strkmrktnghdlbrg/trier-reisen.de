@@ -1,0 +1,46 @@
+{
+  "title": "About trier-reisen.de",
+  "metaDescription": "Behind trier-reisen.de: our editorial approach, how we source facts, and how this Trier city guide is funded.",
+  "sections": [
+    {
+      "paragraphs": [
+        "trier-reisen.de is an editorial city guide to Trier, the oldest city in Germany. We curate sights, hotels, restaurants, districts (Bezirke) and topic pages, alongside a magazine covering Mosel wine, Trier's Roman heritage and practical travel advice."
+      ]
+    },
+    {
+      "heading": "What guides us",
+      "paragraphs": [
+        "We want to give travelers to Trier a fast, honest orientation. Sights are sorted by significance and district, hotels by actual location and amenities, restaurants by cuisine and occasion. We prefer short, contextual write-ups over marketing copy, and we don't invent ratings or hand out blanket superlatives."
+      ]
+    },
+    {
+      "heading": "Sources and how we check facts",
+      "paragraphs": [
+        "Admission prices, opening hours and event dates come from official sources (Trier Tourismus, Generaldirektion Kulturelles Erbe Rheinland-Pfalz, organizers and the venues themselves) and are reviewed before each season. Images come from Wikimedia Commons under a free license, with the photographer and license credited on each detail page. Hotel and tour prices are pulled live from our booking partners and may differ from the indicative figures shown here."
+      ]
+    },
+    {
+      "heading": "How the site is funded",
+      "paragraphs": [
+        "trier-reisen.de is funded by advertising and affiliate partnerships. Hotel rates and bookings run through Stay22/Booking.com, tours and tickets through GetYourGuide, and selected partner programs through AWIN (for example for Mosel wine, train travel or travel insurance). If you book, we receive a commission at no extra cost to you. Recommendations are made independently of commission rates, and advertising is labeled as such."
+      ]
+    },
+    {
+      "heading": "Contact and legal",
+      "paragraphs": [
+        "Full provider details are in our <a href=\"/impressum/\" class=\"link-accent\">Impressum</a> (legal notice). How we handle your data is set out in the <a href=\"/datenschutz/\" class=\"link-accent\">privacy policy</a>. You can adjust cookie and tracking preferences at any time via the link in the site footer."
+      ]
+    },
+    {
+      "heading": "Where to next",
+      "paragraphs": [
+        "<a href=\"/sehenswuerdigkeiten/\" class=\"link-accent\">All sights</a>",
+        "<a href=\"/hotels/\" class=\"link-accent\">Hotels in Trier</a>",
+        "<a href=\"/restaurants/\" class=\"link-accent\">Restaurants in Trier</a>",
+        "<a href=\"/bezirke/\" class=\"link-accent\">Districts and neighborhoods</a>",
+        "<a href=\"/reiseplaner/\" class=\"link-accent\">Trip planner</a>",
+        "<a href=\"/magazin/\" class=\"link-accent\">Magazine</a>"
+      ]
+    }
+  ]
+}

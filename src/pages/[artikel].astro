@@ -26,6 +26,7 @@ const dateLabel = new Date(article.publishDate).toLocaleDateString("de-DE", {
 <BaseLayout
   title={article.title}
   description={article.description}
+  altLangPath={article.category === "wein" ? `/en/magazine/${article.slug}/` : undefined}
   schema={[
     articleSchema(article),
     breadcrumbSchema([

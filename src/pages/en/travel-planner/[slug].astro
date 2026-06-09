@@ -1,0 +1,67 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../../components/Breadcrumbs.astro";
+import HueGradient from "../../../components/HueGradient.astro";
+import GygActivities from "../../../components/GygActivities.astro";
+import { guides, type Guide } from "../../../data/guides";
+import { getGyg, gygCmp } from "../../../data/gyg";
+import { localize, t } from "../../../lib/i18n";
+import { breadcrumbSchema } from "../../../lib/schema";
+import { city } from "../../../data/city";
+
+export function getStaticPaths() {
+  return guides.map((guide) => ({ params: { slug: guide.slug }, props: { guide } }));
+}
+
+interface Props { guide: Guide }
+const { guide: src } = Astro.props;
+const lang = "en" as const;
+const guide = localize("guides", src as any, lang) as any;
+const gygKey = `guide:${src.slug}`;
+const gyg = getGyg(gygKey);
+---
+
+<BaseLayout
+  title={guide.title}
+  description={guide.description}
+  lang={lang}
+  altLangPath={`/reiseplaner/${src.slug}/`}
+  schema={breadcrumbSchema([
+    { name: city.name, url: "/en/" },
+    { name: t(lang, "breadcrumb.travelPlanner"), url: "/en/travel-planner/" },
+    { name: guide.title },
+  ])}
+>
+  <article class="container-page py-12">
+    <Breadcrumbs items={[
+      { href: "/en/", label: city.name },
+      { href: "/en/travel-planner/", label: t(lang, "breadcrumb.travelPlanner") },
+      { label: guide.title },
+    ]} />
+
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 mt-4 items-center">
+      <div class="lg:col-span-3">
+        <p class="eyebrow mb-3">{guide.eyebrow}</p>
+        <h1 class="display-xl mb-4">{guide.title}</h1>
+        <p class="text-body text-lg leading-relaxed">{guide.intro}</p>
+      </div>
+      <div class="lg:col-span-2 aspect-[4/3] rounded-3xl overflow-hidden">
+        <HueGradient hue={src.hue} label={guide.title} class="w-full h-full" />
+      </div>
+    </div>
+
+    <div class="section pt-12 max-w-3xl">
+      {guide.sections.map((sec: any, i: number) => (
+        <section class="mb-10">
+          <p class="eyebrow mb-2">Step {i + 1}</p>
+          <h2 class="display mb-4">{sec.heading}</h2>
+          <p class="text-body text-lg leading-relaxed">{sec.body}</p>
+        </section>
+      ))}
+    </div>
+
+    {gyg && (
+      <GygActivities q={gyg.q} heading={gyg.heading} intro={gyg.intro} count={gyg.count} cmp={gygCmp(gygKey)} />
+    )}
+  </article>
+</BaseLayout>

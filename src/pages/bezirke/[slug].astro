@@ -32,6 +32,7 @@ const gyg = getGyg(gygKey);
 <BaseLayout
   title={`${district.name} - ${city.name}`}
   description={district.shortDesc}
+  altLangPath={`/en/districts/${district.slug}/`}
   schema={[
     districtSchema(district),
     breadcrumbSchema([

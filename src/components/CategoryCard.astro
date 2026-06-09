@@ -1,15 +1,18 @@
 ---
 import HueGradient from "./HueGradient.astro";
 import type { Category } from "../data/categories";
+import { detailPath, localize, type Lang } from "../lib/i18n";
 
 interface Props {
   category: Category;
+  lang?: Lang;
 }
 
-const { category } = Astro.props;
+const { category: src, lang = "de" } = Astro.props;
+const category = localize("categories", src, lang);
 ---
 
-<a href={`/kategorien/${category.slug}/`} class="card group block">
+<a href={detailPath(lang, "categories", category.slug)} class="card group block">
   <div class="aspect-[16/9] relative overflow-hidden">
     <HueGradient hue={category.hue} label={category.name} class="absolute inset-0" />
   </div>

@@ -1,0 +1,115 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../../components/Breadcrumbs.astro";
+import ContentImage from "../../../components/ContentImage.astro";
+import SightCard from "../../../components/SightCard.astro";
+import HotelCard from "../../../components/HotelCard.astro";
+import RestaurantCard from "../../../components/RestaurantCard.astro";
+import Stay22NearbyHotels from "../../../components/Stay22NearbyHotels.astro";
+import Stay22Map from "../../../components/Stay22Map.astro";
+import GygActivities from "../../../components/GygActivities.astro";
+import { districts, type District } from "../../../data/districts";
+import { sights } from "../../../data/sights";
+import { hotels } from "../../../data/hotels";
+import { restaurants } from "../../../data/restaurants";
+import { getGyg, gygCmp } from "../../../data/gyg";
+import { districtSchema, breadcrumbSchema } from "../../../lib/schema";
+import { localize, t } from "../../../lib/i18n";
+import { city } from "../../../data/city";
+
+export function getStaticPaths() {
+  return districts.map((district) => ({ params: { slug: district.slug }, props: { district } }));
+}
+
+interface Props { district: District }
+const { district: src } = Astro.props;
+const lang = "en" as const;
+const district = localize("districts", src, lang);
+const districtSights = sights.filter((s) => s.district === src.slug).map((s) => localize("sights", s, lang));
+const districtHotels = hotels.filter((h) => h.district === src.slug).map((h) => localize("hotels", h, lang));
+const districtRestaurants = restaurants.filter((r) => r.district === src.slug).map((r) => localize("restaurants", r, lang));
+const gygKey = `district:${src.slug}`;
+const gyg = getGyg(gygKey);
+---
+
+<BaseLayout
+  title={`${district.name} - ${city.name}`}
+  description={district.shortDesc}
+  lang={lang}
+  altLangPath={`/bezirke/${src.slug}/`}
+  schema={[
+    districtSchema(district),
+    breadcrumbSchema([
+      { name: city.name, url: "/en/" },
+      { name: t(lang, "breadcrumb.districts"), url: "/en/districts/" },
+      { name: district.name },
+    ]),
+  ]}
+>
+  <article>
+    <div class="container-page py-12">
+      <Breadcrumbs items={[
+        { href: "/en/", label: city.name },
+        { href: "/en/districts/", label: t(lang, "breadcrumb.districts") },
+        { label: district.name },
+      ]} />
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 mt-4 items-center">
+        <div class="lg:col-span-3">
+          <p class="eyebrow mb-3">{city.name} · District</p>
+          <h1 class="display-xl mb-4">{district.name}</h1>
+          <p class="text-body text-lg leading-relaxed max-w-2xl">{district.longDesc}</p>
+          <div class="mt-6 flex flex-wrap gap-2">
+            {src.characterTags.map((t2) => <span class="pill">{t2}</span>)}
+          </div>
+        </div>
+        <div class="lg:col-span-2 aspect-[4/5] rounded-3xl overflow-hidden relative">
+          <ContentImage
+            imgKey={src.imageKey}
+            fallbackHue={src.hue}
+            fallbackLabel={district.name}
+            imgClass="w-full h-full object-cover"
+            width={800}
+            height={1000}
+          />
+        </div>
+      </div>
+    </div>
+
+    {districtSights.length > 0 && (
+      <section class="container-page section">
+        <h2 class="display mb-6">{t(lang, "nav.sights")} in {district.name}</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {districtSights.map((s) => <SightCard sight={s} lang={lang} />)}
+        </div>
+      </section>
+    )}
+
+    {districtHotels.length > 0 && (
+      <section class="container-page section pt-0">
+        <h2 class="display mb-6">{t(lang, "nav.hotels")} in {district.name}</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {districtHotels.map((h) => <HotelCard hotel={h} lang={lang} />)}
+        </div>
+      </section>
+    )}
+
+    <div class="container-page">
+      {gyg && (
+        <GygActivities q={gyg.q} heading={gyg.heading} intro={gyg.intro} count={gyg.count} cmp={gygCmp(gygKey)} />
+      )}
+
+      <Stay22NearbyHotels lat={src.coordinates[0]} lng={src.coordinates[1]} near={district.name} radius={2000} limit={4} />
+
+      <Stay22Map lat={src.coordinates[0]} lng={src.coordinates[1]} zoom={14} title={`Hotels in ${district.name} - live map`} lead="Live prices via Booking. Zoom in, tap a pin, book." />
+    </div>
+
+    {districtRestaurants.length > 0 && (
+      <section class="container-page section pt-0">
+        <h2 class="display mb-6">{t(lang, "nav.restaurants")} in {district.name}</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {districtRestaurants.map((r) => <RestaurantCard restaurant={r} lang={lang} />)}
+        </div>
+      </section>
+    )}
+  </article>
+</BaseLayout>

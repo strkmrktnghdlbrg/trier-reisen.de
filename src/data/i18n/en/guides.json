@@ -1,0 +1,70 @@
+{
+  "3-tage-trier": {
+    "title": "3 Days in Trier: the UNESCO Itinerary",
+    "eyebrow": "Weekend",
+    "intro": "Three days is enough to cover Trier's UNESCO must-sees without rushing, with an evening in Olewig (a wine village within Trier).",
+    "description": "Itinerary: 3 days in Trier with UNESCO World Heritage sites, the Moselle promenade, Olewig, and practical tips.",
+    "sections": [
+      {
+        "heading": "Day 1: Antiquity",
+        "body": "Porta Nigra (the Black Gate, 1 hour including the climb). Walk down Simeonstrasse to the Hauptmarkt (the main market square): the market cross, Petrusbrunnen fountain, and Steipe. Lunch at Weinstube Kesselstatt on Liebfrauenplatz. Afternoon at the Dom (cathedral) and Liebfrauenkirche (Church of Our Lady), 1.5 hours including the cathedral treasury. In the evening, stroll along the Moselle promenade, then dinner at Pfeffermuehle."
+      },
+      {
+        "heading": "Day 2: The Imperial Era",
+        "body": "Kaiserthermen (the Imperial Baths), then walk to the Amphitheater (1 hour each). Lunch at Zum Domstein with its Roman-themed menu. Afternoon at the Rheinisches Landesmuseum (2 hours, the best museum of antiquities in Europe). In the evening, the Konstantinbasilika (Basilica of Constantine), then dinner at Schlemmereule."
+      },
+      {
+        "heading": "Day 3: Olewig and the Moselle",
+        "body": "Bus 6 to Olewig. The Weinkulturpfad wine trail (5 km, 2 hours) through the steep-slope vineyards. Lunch at the Reverchon winery or at Becker's. In the afternoon, head back to the Roemerbruecke (the Roman Bridge), then up to the Mariensaeule (Marian Column) on bus 8 for the postcard view over the city. Farewell dinner at Becker's."
+      }
+    ]
+  },
+  "trier-mit-kindern": {
+    "title": "Trier with Kids",
+    "eyebrow": "Family",
+    "intro": "How Trier works with school-age children and teenagers, without losing them in front of stone reliefs.",
+    "description": "Itinerary: Trier with kids. Gladiator tour at the Amphitheater, toy museum, Petrisberg, bus tour, and ice cream on the Hauptmarkt.",
+    "sections": [
+      {
+        "heading": "Gladiator Tour at the Amphitheater",
+        "body": "The Roman experience tour with a costumed guide is Trier's family highlight. Book through the Trier tourist info. Works from primary-school age and keeps teenagers engaged too."
+      },
+      {
+        "heading": "Toy Museum on the Hauptmarkt",
+        "body": "Three floors of dollhouses, model trains, and Game Boys. Works from kindergarten age, and for parents it's a nostalgic walk-through. Right on the Hauptmarkt and easy to combine with ice cream."
+      },
+      {
+        "heading": "Petrisberg Lift and Playground",
+        "body": "Take the panoramic lift on Karl-Marx-Strasse up to the Petrisberg for views over the Moselle, the city, and the Hunsrueck hills. There's a huge playground, water gardens, and picnic lawns up top."
+      },
+      {
+        "heading": "The Roman Experience Bus",
+        "body": "In summer an open-top double-decker runs with a costumed Roman guide. The route covers the Porta, the Amphitheater, the Kaiserthermen, and the Roemerbruecke. Book at the tourist info stand next to the Porta Nigra."
+      }
+    ]
+  },
+  "trier-bei-regen": {
+    "title": "Trier in the Rain",
+    "eyebrow": "Weather Plan",
+    "intro": "When the weather doesn't cooperate, here's a Trier plan entirely under cover, without giving up on UNESCO.",
+    "description": "Itinerary: Trier in the rain. UNESCO must-sees indoors, three museums, cafe stops, and traditional wine bars.",
+    "sections": [
+      {
+        "heading": "Morning: the Museum Axis",
+        "body": "The Rheinisches Landesmuseum (2 hours) as the main course. Then the Museum am Dom with the cathedral treasury, a short walk away and also indoors."
+      },
+      {
+        "heading": "Lunch: Schlemmereule or Domstein",
+        "body": "Both are right in the city center, with covered walking routes and a lovely atmosphere of daylight filtering through glass roofs."
+      },
+      {
+        "heading": "Afternoon: Konstantinbasilika and Liebfrauenkirche",
+        "body": "The Konstantinbasilika (a huge hall, almost empty on rainy days, an acoustic experience in itself). Then through the covered cathedral cloister into the Liebfrauenkirche. Afterwards, coffee at Cafe am Dom."
+      },
+      {
+        "heading": "Evening: the Wine Bar",
+        "body": "When evening rolls around: Weinstube Kesselstatt or a Strausswirtschaft (a seasonal winegrower's tavern) in Olewig. Both are indoor, and both are unmistakably Moselle."
+      }
+    ]
+  }
+}

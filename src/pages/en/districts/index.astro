@@ -1,0 +1,41 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../../components/Breadcrumbs.astro";
+import DistrictCard from "../../../components/DistrictCard.astro";
+import GygActivities from "../../../components/GygActivities.astro";
+import { city } from "../../../data/city";
+import { districts } from "../../../data/districts";
+import { getGyg, gygCmp } from "../../../data/gyg";
+import { localize, t } from "../../../lib/i18n";
+import { breadcrumbSchema } from "../../../lib/schema";
+
+const lang = "en" as const;
+const localized = districts.map((d) => localize("districts", d, lang));
+const gyg = getGyg("index:bezirke");
+---
+
+<BaseLayout
+  title={`Districts of ${city.name}`}
+  description={`${districts.length} districts of ${city.name}: from the UNESCO old town to the wine village of Olewig.`}
+  lang={lang}
+  altLangPath="/bezirke/"
+  schema={breadcrumbSchema([{ name: city.name, url: "/en/" }, { name: t(lang, "breadcrumb.districts") }])}
+>
+  <section class="container-page py-12">
+    <Breadcrumbs items={[{ href: "/en/", label: city.name }, { label: t(lang, "breadcrumb.districts") }]} />
+    <h1 class="display-xl">Districts of {city.name}</h1>
+    <p class="text-body mt-4 max-w-2xl">Trier is more than its UNESCO old town. Olewig is the wine village, Kuerenz the university quarter, Ruwer-Eitelsbach Riesling steep-slope country.</p>
+  </section>
+
+  <section class="container-page section pt-0">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {localized.map((d) => <DistrictCard district={d} lang={lang} />)}
+    </div>
+  </section>
+
+  {gyg && (
+    <div class="container-page">
+      <GygActivities q={gyg.q} heading={gyg.heading} intro={gyg.intro} count={gyg.count} cmp={gygCmp("index:bezirke")} />
+    </div>
+  )}
+</BaseLayout>

@@ -1,0 +1,160 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../../components/Breadcrumbs.astro";
+import HueGradient from "../../../components/HueGradient.astro";
+import GygActivities from "../../../components/GygActivities.astro";
+import AwinOffer from "../../../components/AwinOffer.astro";
+import enArticlesData from "../../../data/i18n/en/articles.json";
+import { articles as deArticles } from "../../../data/articles";
+import { articleSchema, breadcrumbSchema } from "../../../lib/schema";
+import { t } from "../../../lib/i18n";
+import { city } from "../../../data/city";
+
+const enArts = enArticlesData as any[];
+
+export function getStaticPaths() {
+  const enArticles = (enArticlesData as any[]);
+  return enArticles.map((article: any) => ({ params: { artikel: article.slug }, props: { article } }));
+}
+
+interface Props { article: any }
+const { article } = Astro.props;
+const lang = "en" as const;
+const de = deArticles.find((a) => a.slug === article.slug);
+// Combine: en text, de affiliate flags + hue + date.
+const merged = {
+  ...article,
+  heroHue: de?.heroHue ?? 30,
+  publishDate: de?.publishDate ?? "2026-06-08",
+  gygQuery: de?.gygQuery,
+  awinMerchants: de?.awinMerchants,
+  category: de?.category ?? "wein",
+};
+
+const dateLabel = new Date(merged.publishDate).toLocaleDateString("en-GB", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+---
+
+<BaseLayout
+  title={merged.title}
+  description={merged.description}
+  lang={lang}
+  altLangPath={`/${merged.slug}/`}
+  schema={[
+    articleSchema(merged),
+    breadcrumbSchema([
+      { name: city.name, url: "/en/" },
+      { name: t(lang, "breadcrumb.magazine"), url: "/en/magazine/" },
+      { name: merged.title },
+    ]),
+  ]}
+>
+  <article class="container-page py-12">
+    <Breadcrumbs items={[
+      { href: "/en/", label: city.name },
+      { href: "/en/magazine/", label: t(lang, "breadcrumb.magazine") },
+      { label: merged.title },
+    ]} />
+
+    <header class="max-w-3xl">
+      <p class="eyebrow mb-3">Magazine</p>
+      <h1 class="display-xl mb-4">{merged.title}</h1>
+      <p class="text-sm" style="color: var(--color-text-muted);">
+        <time datetime={merged.publishDate}>{dateLabel}</time>
+      </p>
+    </header>
+
+    <figure class="mt-8 rounded-2xl overflow-hidden aspect-[16/9]">
+      <HueGradient hue={merged.heroHue} label={merged.title} class="w-full h-full" />
+    </figure>
+
+    <div class="prose-trier mt-10 max-w-3xl">
+      <p set:html={merged.intro} />
+      {merged.sections.map((sec: any) => (
+        <>
+          {sec.heading && <h2>{sec.heading}</h2>}
+          {sec.body.map((p: string) => <p set:html={p} />)}
+          {sec.list && sec.list.length > 0 && (
+            <ul>
+              {sec.list.map((li: string) => <li set:html={li} />)}
+            </ul>
+          )}
+        </>
+      ))}
+    </div>
+
+    {merged.gygQuery && (
+      <div class="max-w-3xl">
+        <GygActivities
+          q={merged.gygQuery}
+          heading={merged.gygHeading ?? "Matching tours and experiences"}
+          intro={merged.gygIntro}
+          count={4}
+          cmp={`en-artikel-${merged.slug}`}
+        />
+      </div>
+    )}
+
+    {merged.awinMerchants && merged.awinMerchants.length > 0 && (
+      <div class="max-w-3xl">
+        <AwinOffer
+          merchants={merged.awinMerchants}
+          heading={merged.awinHeading ?? "Matching offers"}
+          intro={merged.awinIntro}
+          clickref={`en-artikel-${merged.slug}`}
+        />
+      </div>
+    )}
+
+    {merged.faq && merged.faq.length > 0 && (
+      <section class="max-w-3xl mt-14">
+        <h2 class="display mb-6">Frequently asked questions</h2>
+        <div class="space-y-5">
+          {merged.faq.map((f: any) => (
+            <div>
+              <h3 class="text-lg font-medium mb-1" style="color: var(--color-text);">{f.q}</h3>
+              <p class="text-body" set:html={f.a} />
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {merged.related && merged.related.length > 0 && (
+      <nav class="max-w-3xl mt-16 pt-8 border-t" style="border-color: var(--color-border);" aria-label="Continue reading">
+        <p class="eyebrow mb-3">Continue reading</p>
+        <ul class="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+          {merged.related.map((r: any) => (
+            <li><a href={r.href} class="link-accent">{r.label} →</a></li>
+          ))}
+        </ul>
+      </nav>
+    )}
+  </article>
+</BaseLayout>
+
+<style>
+  .prose-trier { font-size: 17px; line-height: 1.7; color: var(--color-text-body); }
+  .prose-trier p { margin-bottom: 1.25em; }
+  .prose-trier h2 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    color: var(--color-text);
+    font-size: clamp(22px, 3vw, 28px);
+    line-height: 1.2;
+    margin-top: 2.5em;
+    margin-bottom: 0.75em;
+  }
+  .prose-trier ul { margin: 0 0 1.25em 1.25em; list-style: disc; }
+  .prose-trier li { margin-bottom: 0.4em; }
+  .prose-trier a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .prose-trier a:hover { text-decoration: none; }
+</style>

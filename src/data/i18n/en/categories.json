@@ -1,0 +1,52 @@
+{
+  "unesco-welterbe": {
+    "name": "UNESCO World Heritage",
+    "shortDesc": "Trier's eight UNESCO sites: Roman monuments, the cathedral, and the Liebfrauenkirche.",
+    "longDesc": "Since 1986, Trier's Roman monuments, the Dom St. Peter (St. Peter's Cathedral), and the Liebfrauenkirche (Church of Our Lady) have been listed together as a UNESCO World Heritage ensemble. Eight individual monuments sit within just a few square kilometers, a concentration that is rare in Europe."
+  },
+  "roemisches-erbe": {
+    "name": "Roman Heritage",
+    "shortDesc": "Porta Nigra, the Imperial Baths, the amphitheater, the Roman Bridge: the old Augusta Treverorum.",
+    "longDesc": "Trier carries the legacy of a Roman imperial residence north of the Alps. Founded as Augusta Treverorum in 17/16 BC, by the 4th century it was one of the most important residences of the Roman Empire. Today the cityscape is woven through with ancient buildings in remarkable condition."
+  },
+  "wein": {
+    "name": "Wine & the Moselle",
+    "shortDesc": "Olewig, Ruwer, and the Moselle: wineries, wine hikes, wine festivals.",
+    "longDesc": "Trier is a wine town. Within the city limits, Olewig and Ruwer hold first-class Riesling vineyards, and the Moselle river runs right past the doorstep. Wineries such as Bischöfliche Weingüter, Reverchon, von Schubert, and Karthäuserhof have a world-class reputation. Highlights include the Olewiger Weinfest (Olewig Wine Festival) and the Mosel-Wein-Nachts-Bummel (Mosel wine evening stroll)."
+  },
+  "museen": {
+    "name": "Museums",
+    "shortDesc": "Rheinisches Landesmuseum, Stadtmuseum Simeonstift, and the Karl-Marx-Haus.",
+    "longDesc": "Trier's museums tell 2,000 years of history. The Rheinisches Landesmuseum (Rhineland State Museum) is considered one of the most important antiquities museums in Europe; the Stadtmuseum Simeonstift sits right next to the Porta Nigra (the Black Gate); the Museum am Dom holds the cathedral treasury; and the Karl-Marx-Haus traces the 19th century from 1818 onward."
+  },
+  "religioese-staetten": {
+    "name": "Churches & Pilgrimage Sites",
+    "shortDesc": "Cathedral, Liebfrauenkirche, Konstantinbasilika, St. Matthias, St. Paulin.",
+    "longDesc": "Trier is a bishop's seat and has been a center of Christianity since the 4th century. The cathedral keeps the Heiliger Rock (Holy Robe), the Basilica of St. Matthias holds the only apostle's grave north of the Alps, St. Paulin is Balthasar Neumann rococo at its finest, and the Konstantinbasilika (Basilica of Constantine) now serves as the main Protestant church."
+  },
+  "familie": {
+    "name": "Trier with Kids",
+    "shortDesc": "Amphitheater tours, the toy museum, the Roman-themed bus, and the Petrisberg.",
+    "longDesc": "Trier is more family-friendly than you might think. The gladiator-themed tour at the amphitheater captivates school-age children, the Spielzeugmuseum (toy museum) right on the Hauptmarkt (the main market square) works from toddler age up, the Roman-themed sightseeing bus rolls through the old town, and the Petrisberg playground has the best view in the city."
+  },
+  "kulinarik": {
+    "name": "Food & Drink",
+    "shortDesc": "Moselle wine taverns, fine dining, and wine-house restaurants in Olewig.",
+    "longDesc": "Trier's food scene moves between Moselle tradition and refined modern cooking. Wine taverns in Olewig (a wine village within Trier), Michelin-starred dishes at Becker's, Roman-themed menus at Zum Domstein, and Mediterranean plates at Schlemmereule in the Domkeller: the range is broader than the city's size would suggest."
+  },
+  "aussicht-wandern": {
+    "name": "Views & Hiking",
+    "shortDesc": "Mariensäule, Petrisberg, the Olewig Wine Trail, and the Moselle promenade.",
+    "longDesc": "Trier sits in the Moselle valley, with ridges rising on both sides. The Mariensäule (Marian Column) on the Markusberg is the city's signature viewpoint, the Petrisberg offers hiking trails above the university, and the Olewiger Weinkulturpfad (Olewig Wine Culture Trail) winds through the steep Riesling slopes."
+  },
+  "mosel-aktivitaeten": {
+    "name": "Moselle Activities",
+    "shortDesc": "The Moselle cycle path, river cruises, and passenger boats to Bernkastel.",
+    "longDesc": "Trier is the starting point for many Moselle activities. The Moselle cycle path runs 248 km from here to Koblenz, passenger boats leave from the Roman Bridge heading toward Schweich and Bernkastel-Kues, and canoe outfitters rent right at the riverbank."
+  },
+  "shopping": {
+    "name": "Shopping",
+    "shortDesc": "Simeonstraße, Fleischstraße, Brotstraße: Trier's pedestrian zone.",
+    "longDesc": "Trier's pedestrian zone forms a T between the Porta Nigra, the Hauptmarkt, and the Domfreihof. Chain stores line the Simeonstraße, smaller shops fill the side streets, wine merchants cluster around the Liebfrauenplatz, and a weekly market sets up on the Viehmarkt."
+  }
+}

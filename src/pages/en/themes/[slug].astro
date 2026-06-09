@@ -1,0 +1,87 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../../components/Breadcrumbs.astro";
+import SightCard from "../../../components/SightCard.astro";
+import RestaurantCard from "../../../components/RestaurantCard.astro";
+import HueGradient from "../../../components/HueGradient.astro";
+import GygActivities from "../../../components/GygActivities.astro";
+import { categories, type Category } from "../../../data/categories";
+import { sights } from "../../../data/sights";
+import { restaurants } from "../../../data/restaurants";
+import { getGyg, gygCmp } from "../../../data/gyg";
+import { categorySchema, breadcrumbSchema } from "../../../lib/schema";
+import { localize, t } from "../../../lib/i18n";
+import { city } from "../../../data/city";
+
+export function getStaticPaths() {
+  return categories.map((category) => ({ params: { slug: category.slug }, props: { category } }));
+}
+
+interface Props { category: Category }
+const { category: src } = Astro.props;
+const lang = "en" as const;
+const category = localize("categories", src, lang);
+const catSights = sights.filter((s) => s.categories.includes(src.slug)).map((s) => localize("sights", s, lang));
+const catRestaurants = restaurants.filter((r) => r.categories.includes(src.slug)).map((r) => localize("restaurants", r, lang));
+const gygKey = `cat:${src.slug}`;
+const gyg = getGyg(gygKey);
+---
+
+<BaseLayout
+  title={`${category.name} in ${city.name}`}
+  description={category.shortDesc}
+  lang={lang}
+  altLangPath={`/kategorien/${src.slug}/`}
+  schema={[
+    categorySchema(category),
+    breadcrumbSchema([
+      { name: city.name, url: "/en/" },
+      { name: t(lang, "breadcrumb.themes"), url: "/en/themes/" },
+      { name: category.name },
+    ]),
+  ]}
+>
+  <article>
+    <div class="container-page py-12">
+      <Breadcrumbs items={[
+        { href: "/en/", label: city.name },
+        { href: "/en/themes/", label: t(lang, "breadcrumb.themes") },
+        { label: category.name },
+      ]} />
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 mt-4 items-center">
+        <div class="lg:col-span-3">
+          <p class="eyebrow mb-3">Theme · {city.name}</p>
+          <h1 class="display-xl mb-4">{category.name}</h1>
+          <p class="text-body text-lg leading-relaxed max-w-2xl">{category.longDesc}</p>
+        </div>
+        <div class="lg:col-span-2 aspect-[16/10] rounded-3xl overflow-hidden">
+          <HueGradient hue={src.hue} label={category.name} class="w-full h-full" />
+        </div>
+      </div>
+    </div>
+
+    {catSights.length > 0 && (
+      <section class="container-page section">
+        <h2 class="display mb-6">{t(lang, "nav.sights")}</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {catSights.map((s) => <SightCard sight={s} lang={lang} />)}
+        </div>
+      </section>
+    )}
+
+    {gyg && (
+      <div class="container-page">
+        <GygActivities q={gyg.q} heading={gyg.heading} intro={gyg.intro} count={gyg.count} cmp={gygCmp(gygKey)} />
+      </div>
+    )}
+
+    {catRestaurants.length > 0 && (
+      <section class="container-page section pt-0">
+        <h2 class="display mb-6">{t(lang, "nav.restaurants")}</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {catRestaurants.map((r) => <RestaurantCard restaurant={r} lang={lang} />)}
+        </div>
+      </section>
+    )}
+  </article>
+</BaseLayout>

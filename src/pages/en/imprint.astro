@@ -1,0 +1,66 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { city } from "../../data/city";
+import { legal } from "../../data/legal";
+import { t } from "../../lib/i18n";
+
+const lang = "en" as const;
+---
+
+<BaseLayout title="Imprint" description={`Imprint of ${city.brandName}`} noindex={true} lang={lang} altLangPath="/impressum/">
+  <article class="container-page py-12 max-w-3xl">
+    <Breadcrumbs items={[{ href: "/en/", label: city.name }, { label: t(lang, "breadcrumb.imprint") }]} />
+    <h1 class="display-xl mb-8">Imprint</h1>
+
+    <p class="text-body mb-6 text-sm" style="color: var(--color-text-muted);">
+      This page corresponds to the legally required "Impressum" under German law (§5 TMG, §18 MStV). The legally binding version is the
+      <a href="/impressum/" class="link-accent">German imprint</a>.
+    </p>
+
+    <section class="mb-8">
+      <h2 class="heading mb-3">Provider</h2>
+      <p class="text-body">
+        {legal.operator.name}<br />
+        {legal.operator.person && <>{legal.operator.person}<br /></>}
+        {legal.operator.street}<br />
+        {legal.operator.zip} {legal.operator.city}<br />
+        {legal.operator.country}
+      </p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="heading mb-3">Contact</h2>
+      <p class="text-body">
+        Email: <a href={`mailto:${legal.operator.email}`} class="link-accent">{legal.operator.email}</a>
+        {legal.operator.phone && <><br />Phone: {legal.operator.phone}</>}
+      </p>
+    </section>
+
+    {legal.operator.ustId && (
+      <section class="mb-8">
+        <h2 class="heading mb-3">VAT ID</h2>
+        <p class="text-body">{legal.operator.ustId}</p>
+      </section>
+    )}
+
+    <section class="mb-8">
+      <h2 class="heading mb-3">Responsible for content (§18 MStV)</h2>
+      <p class="text-body">{legal.responsible.name}<br />Address: {legal.responsible.address}</p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="heading mb-3">Hosting</h2>
+      <p class="text-body">{legal.hostingProvider.notice}</p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="heading mb-3">Affiliate disclosure</h2>
+      <p class="text-body">
+        This site contains affiliate links to booking providers (including Booking.com via Stay22)
+        and activity providers (GetYourGuide, AWIN partners). When you book through such a link we
+        receive a commission. The price for you is not affected.
+      </p>
+    </section>
+  </article>
+</BaseLayout>

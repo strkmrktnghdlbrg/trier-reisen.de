@@ -1,16 +1,19 @@
 ---
 import type { CityEvent } from "../data/events";
+import { detailPath, localize, type Lang } from "../lib/i18n";
 
 interface Props {
   event: CityEvent;
+  lang?: Lang;
 }
 
-const { event } = Astro.props;
+const { event: src, lang = "de" } = Astro.props;
+const event = localize("events", src as any, lang) as any;
 const checkin = new Date(event.checkin);
-const dateLabel = checkin.toLocaleDateString("de-DE", { day: "numeric", month: "long", year: "numeric" });
+const dateLabel = checkin.toLocaleDateString(lang === "de" ? "de-DE" : "en-GB", { day: "numeric", month: "long", year: "numeric" });
 ---
 
-<a href={`/events/${event.slug}/`} class="card group block">
+<a href={detailPath(lang, "events", event.slug)} class="card group block">
   <div class="p-5">
     <p class="eyebrow mb-2">{event.eyebrow}</p>
     <h3 class="text-xl font-light tracking-tight leading-tight mb-2 group-hover:text-[var(--color-accent)] transition-colors" style="color: var(--color-text); font-family: var(--font-display);">

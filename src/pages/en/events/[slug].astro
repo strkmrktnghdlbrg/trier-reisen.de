@@ -1,0 +1,122 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../../components/Breadcrumbs.astro";
+import Stay22HotelCard from "../../../components/Stay22HotelCard.astro";
+import GygActivities from "../../../components/GygActivities.astro";
+import { events, type CityEvent, isUpcoming } from "../../../data/events";
+import { searchAccommodations, type Stay22Accommodation } from "../../../lib/stay22";
+import { affiliate } from "../../../data/affiliate";
+import { getGyg, gygCmp } from "../../../data/gyg";
+import { eventSchema, breadcrumbSchema } from "../../../lib/schema";
+import { localize, t } from "../../../lib/i18n";
+import { city } from "../../../data/city";
+
+export function getStaticPaths() {
+  return events.map((event) => ({ params: { slug: event.slug }, props: { event } }));
+}
+
+interface Props { event: CityEvent }
+const { event: src } = Astro.props;
+const lang = "en" as const;
+const event = localize("events", src as any, lang) as any;
+
+const gygKey = `event:${src.slug}`;
+const gyg = getGyg(gygKey);
+const upcoming = isUpcoming(src);
+const lmaId = affiliate.stay22.lmaId;
+
+let hotels: Stay22Accommodation[] | null = null;
+if (upcoming) {
+  try {
+    hotels = await searchAccommodations({
+      provider: "booking",
+      ...(src.lat && src.lng
+        ? { lat: src.lat, lng: src.lng, radius: src.radius ?? 2500 }
+        : { address: src.address }),
+      type: "hotel",
+      checkin: src.checkin,
+      checkout: src.checkout,
+      minguestrating: 7.5,
+      max: src.maxPricePerNight,
+      limit: src.limit ?? 12,
+      currency: "EUR",
+      lang: "en",
+      aid: lmaId,
+      campaign: lmaId,
+    });
+  } catch (err) {
+    console.error(`[EN Event ${src.slug}] Stay22:`, err);
+  }
+}
+const visible = hotels && hotels.length > 0 ? hotels.slice(0, src.limit ?? 12) : [];
+
+const checkin = new Date(src.checkin);
+const checkout = new Date(src.checkout);
+const dateLabel = `${checkin.toLocaleDateString("en-GB", { day: "numeric", month: "long" })} - ${checkout.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}`;
+const nights = Math.round((checkout.getTime() - checkin.getTime()) / (1000 * 60 * 60 * 24));
+const buildTime = new Date().toLocaleDateString("en-GB", { year: "numeric", month: "long", day: "numeric" });
+---
+
+<BaseLayout
+  title={event.title}
+  description={event.description}
+  lang={lang}
+  altLangPath={`/events/${src.slug}/`}
+  schema={[
+    eventSchema(event),
+    breadcrumbSchema([
+      { name: city.name, url: "/en/" },
+      { name: t(lang, "breadcrumb.events"), url: "/en/events/" },
+      { name: event.title },
+    ]),
+  ]}
+>
+  <article class="container-page py-12">
+    <Breadcrumbs items={[
+      { href: "/en/", label: city.name },
+      { href: "/en/events/", label: t(lang, "breadcrumb.events") },
+      { label: event.title },
+    ]} />
+
+    <div class="max-w-3xl">
+      <p class="eyebrow mb-3">{event.eyebrow}</p>
+      <h1 class="display-xl mb-4">{event.title}</h1>
+      <div class="flex flex-wrap items-center gap-3 text-sm mb-6">
+        <span class="pill">Check-in {checkin.toLocaleDateString("en-GB")}</span>
+        <span class="pill">Check-out {checkout.toLocaleDateString("en-GB")}</span>
+        <span class="pill">{nights} {nights === 1 ? "night" : "nights"}</span>
+      </div>
+      <p class="text-body text-lg leading-relaxed">{event.intro}</p>
+      {event.longDesc && <p class="text-body mt-4 leading-relaxed">{event.longDesc}</p>}
+    </div>
+
+    {gyg && (
+      <GygActivities q={gyg.q} heading={gyg.heading} intro={gyg.intro} count={gyg.count} cmp={gygCmp(gygKey)} />
+    )}
+
+    {!upcoming && (
+      <div class="card p-6 max-w-3xl mt-10">
+        <p class="text-body">
+          This date is in the past. Once the next edition is confirmed we will update prices here.
+          Until then, browse our <a href="/en/hotels/" class="link-accent">hotel index</a>.
+        </p>
+      </div>
+    )}
+
+    {upcoming && visible.length > 0 && (
+      <section class="mt-12">
+        <div class="mb-6 max-w-2xl">
+          <p class="eyebrow mb-2">Live via Stay22 - {dateLabel}</p>
+          <h2 class="display mb-2">Hotels for this date</h2>
+          <p class="text-body">Live prices via Booking.com for {dateLabel}, {nights} {nights === 1 ? "night" : "nights"}.</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {visible.map((h) => <Stay22HotelCard hotel={h} showTotal />)}
+        </div>
+        <p class="text-[11px] mt-6 leading-relaxed max-w-2xl" style="color: var(--color-text-muted);">
+          * Prices and availability live via Stay22 -> Booking.com. We earn a commission on bookings, at no extra cost to you. Updated {buildTime}.
+        </p>
+      </section>
+    )}
+  </article>
+</BaseLayout>

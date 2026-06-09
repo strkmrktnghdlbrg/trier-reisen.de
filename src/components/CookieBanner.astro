@@ -16,11 +16,17 @@
 import { affiliate, stay22Enabled } from "../data/affiliate";
 import { adsense, adsenseEnabled } from "../data/adsense";
 import { analytics, gtmEnabled } from "../data/analytics";
+import { sectionPath, t, type Lang } from "../lib/i18n";
+
+interface Props { lang?: Lang }
+const { lang = "de" } = Astro.props;
 
 const stay22Lma = stay22Enabled ? affiliate.stay22.lmaId : "";
 const gygPartner = affiliate.getYourGuide.enabled ? affiliate.getYourGuide.partnerId : "";
 const adsensePub = adsenseEnabled ? adsense.publisherId : "";
 const gtmId = gtmEnabled ? analytics.gtmId : "";
+
+const privacyHref = sectionPath(lang, "privacy");
 ---
 
 <div
@@ -36,21 +42,17 @@ const gtmId = gtmEnabled ? analytics.gtmId : "";
     style="border-color: var(--color-border);"
   >
     <h2 id="cookie-banner-title" class="text-lg font-medium mb-1" style="color: var(--color-text);">
-      Cookies & Tracking
+      {t(lang, "cookieBanner.title")}
     </h2>
     <p class="text-sm leading-relaxed" style="color: var(--color-text-body);">
-      Wir nutzen Cookies und Drittanbieter-Dienste (Stay22 für Hotelpreise,
-      GetYourGuide für Touren, Google Analytics, Google AdSense), um Inhalte zu
-      laden, die Nutzung zu analysieren und passende Angebote anzuzeigen.
-      Wähle, was du erlauben möchtest. Details in unserer
-      <a href="/datenschutz/" class="link-accent">Datenschutzerklärung</a>.
+      {t(lang, "cookieBanner.body")} <a href={privacyHref} class="link-accent">{t(lang, "cookieBanner.privacyLinkText")}</a>.
     </p>
     <div class="mt-5 flex flex-col sm:flex-row gap-3">
       <button type="button" data-consent="all" class="btn-primary order-1 sm:order-2">
-        Alle akzeptieren
+        {t(lang, "cookieBanner.acceptAll")}
       </button>
       <button type="button" data-consent="essential" class="btn-outline order-2 sm:order-1">
-        Nur essentielle
+        {t(lang, "cookieBanner.essentialOnly")}
       </button>
     </div>
   </div>

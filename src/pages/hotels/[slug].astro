@@ -23,6 +23,7 @@ const stars = "★".repeat(hotel.stars);
 <BaseLayout
   title={`${hotel.name} - ${city.name}`}
   description={hotel.shortDesc}
+  altLangPath={`/en/hotels/${hotel.slug}/`}
   schema={[
     hotelSchema(hotel),
     breadcrumbSchema([

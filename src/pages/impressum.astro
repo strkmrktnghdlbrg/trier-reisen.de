@@ -14,7 +14,7 @@ import { legal } from "../data/legal";
       <h2 class="heading mb-3">Angaben gemäß § 5 TMG</h2>
       <p class="text-body">
         {legal.operator.name}<br />
-        {legal.operator.person}<br />
+        {legal.operator.person && <>{legal.operator.person}<br /></>}
         {legal.operator.street}<br />
         {legal.operator.zip} {legal.operator.city}<br />
         {legal.operator.country}

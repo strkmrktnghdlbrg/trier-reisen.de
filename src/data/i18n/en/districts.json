@@ -1,0 +1,62 @@
+{
+  "innenstadt": {
+    "name": "Innenstadt (Old Town)",
+    "shortDesc": "The ancient heart of Trier, stretching from the Porta Nigra to the Hauptmarkt and the Cathedral. UNESCO World Heritage at every step.",
+    "longDesc": "Trier's Innenstadt is both a concentration of landmarks and a living pedestrian zone. From the Roman gate Porta Nigra (the Black Gate) down Simeonstrasse to the Hauptmarkt (the main market square), and from there on to the Cathedral of St. Peter and the Liebfrauenkirche (Church of Our Lady). Fountains, patrician townhouses, sidewalk cafes, and four UNESCO sites all within a few hundred meters."
+  },
+  "olewig": {
+    "name": "Olewig",
+    "shortDesc": "A wine village within the city limits. Family wineries, the Weinkulturpfad (wine culture trail), and the gateway to the Mosel region.",
+    "longDesc": "Olewig sits in the southeast of Trier. Officially a city district, it has always been a wine village at heart. Family-run wineries cluster around the old village core, the Weinkulturpfad (wine culture trail) winds through the surrounding hillside vineyards, and in early August the Olewiger Weinfest celebrates the Riesling and Elbling harvest."
+  },
+  "trier-sued": {
+    "name": "Trier-Süd",
+    "shortDesc": "South of the city center. Home to the Kaiserthermen, Barbarathermen, and the Basilica of St. Matthias.",
+    "longDesc": "Trier-Süd is the Roman axis of the city: it contains the monumental Kaiserthermen (Imperial Baths), the older Barbarathermen further on, and at its southern edge the Basilica of St. Matthias, which holds the only apostle's tomb north of the Alps. Residential streets blend with ancient topography."
+  },
+  "trier-nord": {
+    "name": "Trier-Nord",
+    "shortDesc": "A residential district north of the Porta Nigra. River port, main train station, and the Nordallee.",
+    "longDesc": "Trier-Nord begins right behind the Porta Nigra and continues north to the city's river port and main train station. Expect Gründerzeit-era streetscapes (late 19th-century architecture) and a mixed neighborhood of students and families."
+  },
+  "trier-west-pallien": {
+    "name": "Trier-West / Pallien",
+    "shortDesc": "The left bank of the Moselle. The Mariensäule (Mary Column), the Markusberg hill, and panoramic views of the old town.",
+    "longDesc": "Trier-West sits across the Moselle from the center. From the Markusberg hill, crowned by the Mariensäule (Mary Column), you get the best view of the old-town skyline. Pallien is the quieter northwestern residential quarter, with vineyard slopes and calm streets."
+  },
+  "trier-ost": {
+    "name": "Trier-Ost",
+    "shortDesc": "Gartenfeld and Heiligkreuz. Residential districts just east of the city center.",
+    "longDesc": "Trier-Ost covers the Gartenfeld and Heiligkreuz neighborhoods and extends to the slopes leading up toward the Petrisberg. Family-friendly quarters, settled neighborhoods, and short distances into the UNESCO core."
+  },
+  "mariahof": {
+    "name": "Mariahof",
+    "shortDesc": "A plateau residential district with wide views and easy access to green space.",
+    "longDesc": "Mariahof sits to the south on the high plateau above the city. A planned residential area with schools and a family-oriented feel, with walking paths leading toward the Petrisberg and Olewig."
+  },
+  "kuerenz": {
+    "name": "Kürenz",
+    "shortDesc": "Trier's university quarter, taking in the Petrisberg, the Tarforster Höhe, and a lively student scene.",
+    "longDesc": "Kürenz is Trier's university district. The University of Trier sits up on the Tarforster plateau, while the Petrisberg offers hiking trails and viewpoints. Student-driven, with a mix of housing types, plenty of cafes, and lots of shared-flat addresses."
+  },
+  "euren": {
+    "name": "Euren",
+    "shortDesc": "Southwest along the Moselle. A family district close to the Moselle bridge and the Igeler Säule (Igel Column) nearby.",
+    "longDesc": "Euren lies southwest on the banks of the Moselle and is a quiet residential neighborhood. From here it is only a few minutes to the UNESCO-listed Igeler Säule (Igel Column), still within easy reach of Trier."
+  },
+  "biewer": {
+    "name": "Biewer",
+    "shortDesc": "Trier's northernmost Moselle district, close to the river port and steeped in wine tradition.",
+    "longDesc": "Biewer is Trier's northernmost neighborhood on the Moselle. A quiet village feel, traces of old winegrowing estates, and direct access to the Moselle cycle path heading toward Schweich and Bernkastel."
+  },
+  "ruwer-eitelsbach": {
+    "name": "Ruwer-Eitelsbach",
+    "shortDesc": "Trier's eastern reach along the Ruwer valley. A wine village known for famously steep vineyard slopes.",
+    "longDesc": "Ruwer-Eitelsbach lies in the narrow Ruwer valley east of the city center. Some of the most celebrated Riesling steep-slope vineyards, such as Eitelsbacher Karthäuserhofberg and Maximin Grünhäuser Abtsberg, are right on its doorstep. A quiet wine village with very big names."
+  },
+  "pfalzel": {
+    "name": "Pfalzel",
+    "shortDesc": "A historic village quarter with the remains of a late-Roman royal palace on the Moselle.",
+    "longDesc": "Pfalzel is a surprise. Tucked into this unassuming village to the north are the walls and towers of a Roman royal palace (Königspfalz) from the 4th century, later incorporated into church buildings. A quiet Moselle setting, and only a short distance from Trier airport."
+  }
+}

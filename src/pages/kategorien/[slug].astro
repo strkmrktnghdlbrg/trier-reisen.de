@@ -27,6 +27,7 @@ const gyg = getGyg(gygKey);
 <BaseLayout
   title={`${category.name} in ${city.name}`}
   description={category.shortDesc}
+  altLangPath={`/en/themes/${category.slug}/`}
   schema={[
     categorySchema(category),
     breadcrumbSchema([

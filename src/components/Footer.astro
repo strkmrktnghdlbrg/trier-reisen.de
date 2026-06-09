@@ -5,17 +5,22 @@ import { features } from "../data/features";
 import { categories } from "../data/categories";
 import { districts } from "../data/districts";
 import logo from "../assets/branding/logo.svg";
+import { sectionPath, detailPath, localize, t, type Lang } from "../lib/i18n";
+
+interface Props { lang?: Lang }
+const { lang = "de" } = Astro.props;
 
 const year = new Date().getFullYear();
-const topCategories = categories.slice(0, 6);
-const topDistricts = districts.slice(0, 6);
+const topCategories = categories.slice(0, 6).map((c) => localize("categories", c, lang));
+const topDistricts = districts.slice(0, 6).map((d) => localize("districts", d, lang));
+const home = lang === "de" ? "/" : "/en/";
 ---
 
 <footer class="mt-24 border-t" style="background: var(--color-surface); border-color: var(--color-border);">
   <div class="container-page py-14">
     <div class="grid grid-cols-2 md:grid-cols-4 gap-10">
       <div class="col-span-2 md:col-span-1">
-        <a href="/" style="color: var(--color-accent);" aria-label={`${city.brandName} Startseite`}>
+        <a href={home} style="color: var(--color-accent);" aria-label={`${city.brandName} Startseite`}>
           <Image src={logo} alt={city.brandName} width={320} height={64} class="h-10 w-auto" />
         </a>
         <p class="mt-4 text-sm" style="color: var(--color-text-muted);">
@@ -24,44 +29,45 @@ const topDistricts = districts.slice(0, 6);
       </div>
 
       <div>
-        <p class="eyebrow mb-3">Entdecken</p>
+        <p class="eyebrow mb-3">{lang === "de" ? "Entdecken" : "Discover"}</p>
         <ul class="space-y-2 text-sm">
-          <li><a href="/sehenswuerdigkeiten/" class="hover:underline" style="color: var(--color-text-body);">Sehenswürdigkeiten</a></li>
-          <li><a href="/hotels/" class="hover:underline" style="color: var(--color-text-body);">Hotels</a></li>
-          <li><a href="/restaurants/" class="hover:underline" style="color: var(--color-text-body);">Restaurants</a></li>
-          <li><a href="/bezirke/" class="hover:underline" style="color: var(--color-text-body);">Bezirke</a></li>
-          {features.reiseplaner.enabled && <li><a href="/reiseplaner/" class="hover:underline" style="color: var(--color-text-body);">Reiseplaner</a></li>}
-          {features.events.enabled && <li><a href="/events/" class="hover:underline" style="color: var(--color-text-body);">Events</a></li>}
+          <li><a href={sectionPath(lang, "sights")} class="hover:underline" style="color: var(--color-text-body);">{t(lang, "nav.sights")}</a></li>
+          <li><a href={sectionPath(lang, "hotels")} class="hover:underline" style="color: var(--color-text-body);">{t(lang, "nav.hotels")}</a></li>
+          <li><a href={sectionPath(lang, "restaurants")} class="hover:underline" style="color: var(--color-text-body);">{t(lang, "nav.restaurants")}</a></li>
+          <li><a href={sectionPath(lang, "districts")} class="hover:underline" style="color: var(--color-text-body);">{t(lang, "nav.districts")}</a></li>
+          {features.reiseplaner.enabled && <li><a href={sectionPath(lang, "travelPlanner")} class="hover:underline" style="color: var(--color-text-body);">{t(lang, "nav.travelPlanner")}</a></li>}
+          {features.events.enabled && <li><a href={sectionPath(lang, "events")} class="hover:underline" style="color: var(--color-text-body);">{t(lang, "nav.events")}</a></li>}
+          <li><a href={sectionPath(lang, "magazine")} class="hover:underline" style="color: var(--color-text-body);">{t(lang, "nav.magazine")}</a></li>
         </ul>
       </div>
 
       <div>
-        <p class="eyebrow mb-3">Themen</p>
+        <p class="eyebrow mb-3">{lang === "de" ? "Themen" : "Themes"}</p>
         <ul class="space-y-2 text-sm">
           {topCategories.map((c) => (
-            <li><a href={`/kategorien/${c.slug}/`} class="hover:underline" style="color: var(--color-text-body);">{c.name}</a></li>
+            <li><a href={detailPath(lang, "categories", c.slug)} class="hover:underline" style="color: var(--color-text-body);">{c.name}</a></li>
           ))}
         </ul>
       </div>
 
       <div>
-        <p class="eyebrow mb-3">Bezirke</p>
+        <p class="eyebrow mb-3">{t(lang, "nav.districts")}</p>
         <ul class="space-y-2 text-sm">
           {topDistricts.map((d) => (
-            <li><a href={`/bezirke/${d.slug}/`} class="hover:underline" style="color: var(--color-text-body);">{d.name}</a></li>
+            <li><a href={detailPath(lang, "districts", d.slug)} class="hover:underline" style="color: var(--color-text-body);">{d.name}</a></li>
           ))}
         </ul>
       </div>
     </div>
 
     <div class="mt-12 pt-6 border-t flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-xs" style="border-color: var(--color-border); color: var(--color-text-muted);">
-      <p>© {year} {city.brandName}. Stadtportal für die älteste Stadt Deutschlands.</p>
-      <nav aria-label="Rechtliches">
+      <p>© {year} {city.brandName}. {t(lang, "footer.tagline")}</p>
+      <nav aria-label={lang === "de" ? "Rechtliches" : "Legal"}>
         <ul class="flex flex-wrap gap-4">
-          <li><a href="/ueber-uns/" class="hover:underline">Über uns</a></li>
-          <li><a href="/impressum/" class="hover:underline">Impressum</a></li>
-          <li><a href="/datenschutz/" class="hover:underline">Datenschutz</a></li>
-          <li><button type="button" class="hover:underline" onclick="window.openCookieSettings && window.openCookieSettings()">Cookie-Einstellungen</button></li>
+          <li><a href={sectionPath(lang, "about")} class="hover:underline">{t(lang, "footer.aboutUs")}</a></li>
+          <li><a href={sectionPath(lang, "imprint")} class="hover:underline">{t(lang, "footer.imprint")}</a></li>
+          <li><a href={sectionPath(lang, "privacy")} class="hover:underline">{t(lang, "footer.privacy")}</a></li>
+          <li><button type="button" class="hover:underline" onclick="window.openCookieSettings && window.openCookieSettings()">{t(lang, "footer.cookieSettings")}</button></li>
         </ul>
       </nav>
     </div>

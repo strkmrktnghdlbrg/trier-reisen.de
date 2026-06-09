@@ -1,0 +1,53 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../../components/Breadcrumbs.astro";
+import HueGradient from "../../../components/HueGradient.astro";
+import GygActivities from "../../../components/GygActivities.astro";
+import { guides } from "../../../data/guides";
+import { getGyg, gygCmp } from "../../../data/gyg";
+import { localize, t, detailPath } from "../../../lib/i18n";
+import { breadcrumbSchema } from "../../../lib/schema";
+import { city } from "../../../data/city";
+
+const lang = "en" as const;
+const localized = guides.map((g) => localize("guides", g as any, lang) as any);
+const gyg = getGyg("index:reiseplaner");
+---
+
+<BaseLayout
+  title={`Travel planner ${city.name}`}
+  description={`Trier travel planner: 3 days in Trier, Trier with kids, Trier on a rainy day - curated routes with concrete tips.`}
+  lang={lang}
+  altLangPath="/reiseplaner/"
+  schema={breadcrumbSchema([{ name: city.name, url: "/en/" }, { name: t(lang, "breadcrumb.travelPlanner") }])}
+>
+  <section class="container-page py-12">
+    <Breadcrumbs items={[{ href: "/en/", label: city.name }, { label: t(lang, "breadcrumb.travelPlanner") }]} />
+    <p class="eyebrow mb-3">{guides.length} planners</p>
+    <h1 class="display-xl">Travel planner {city.name}</h1>
+    <p class="text-body mt-4 max-w-2xl">Three curated Trier itineraries, from the weekend must-do via the family programme to the rainy-day plan.</p>
+  </section>
+
+  <section class="container-page section pt-0">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      {localized.map((g) => (
+        <a href={detailPath(lang, "travelPlanner", g.slug)} class="card group block">
+          <div class="aspect-[16/10] relative overflow-hidden">
+            <HueGradient hue={g.hue} label={g.title} class="absolute inset-0" />
+          </div>
+          <div class="p-5">
+            <p class="eyebrow mb-2">{g.eyebrow}</p>
+            <h2 class="text-xl font-light tracking-tight leading-tight mb-2 group-hover:text-[var(--color-accent)] transition-colors" style="color: var(--color-text); font-family: var(--font-display);">{g.title}</h2>
+            <p class="text-sm leading-relaxed line-clamp-3" style="color: var(--color-text-body);">{g.intro}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  {gyg && (
+    <div class="container-page">
+      <GygActivities q={gyg.q} heading={gyg.heading} intro={gyg.intro} count={gyg.count} cmp={gygCmp("index:reiseplaner")} />
+    </div>
+  )}
+</BaseLayout>

@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import about from "../../data/i18n/en/about.json";
+import { t } from "../../lib/i18n";
+import { breadcrumbSchema } from "../../lib/schema";
+import { city } from "../../data/city";
+
+const lang = "en" as const;
+const data = about as any;
+---
+
+<BaseLayout
+  title={data.title}
+  description={data.metaDescription}
+  lang={lang}
+  altLangPath="/ueber-uns/"
+  schema={breadcrumbSchema([{ name: city.name, url: "/en/" }, { name: t(lang, "breadcrumb.about") }])}
+>
+  <article class="container-page py-12 max-w-3xl">
+    <Breadcrumbs items={[{ href: "/en/", label: city.name }, { label: t(lang, "breadcrumb.about") }]} />
+
+    <p class="eyebrow mb-3">{city.brandName}</p>
+    <h1 class="display-xl mb-6">{data.title}</h1>
+
+    {data.sections.map((sec: any, i: number) => (
+      <>
+        {sec.heading && <h2 class="display mt-12 mb-3">{sec.heading}</h2>}
+        {sec.paragraphs.map((p: string) => <p class="text-body leading-relaxed" set:html={p} />)}
+      </>
+    ))}
+  </article>
+</BaseLayout>

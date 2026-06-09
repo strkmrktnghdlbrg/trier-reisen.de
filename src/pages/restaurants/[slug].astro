@@ -21,6 +21,7 @@ const related = restaurants.filter((r) => r.slug !== restaurant.slug && r.cuisin
 <BaseLayout
   title={`${restaurant.name} - ${city.name}`}
   description={restaurant.shortDesc}
+  altLangPath={`/en/restaurants/${restaurant.slug}/`}
   schema={[
     restaurantSchema(restaurant),
     breadcrumbSchema([

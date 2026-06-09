@@ -1,0 +1,50 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../../components/Breadcrumbs.astro";
+import EventCard from "../../../components/EventCard.astro";
+import GygActivities from "../../../components/GygActivities.astro";
+import { city } from "../../../data/city";
+import { realEvents, isUpcoming } from "../../../data/events";
+import { getGyg, gygCmp } from "../../../data/gyg";
+import { localize, t } from "../../../lib/i18n";
+import { breadcrumbSchema } from "../../../lib/schema";
+
+const lang = "en" as const;
+const upcoming = [...realEvents]
+  .filter(isUpcoming)
+  .sort((a, b) => a.checkin.localeCompare(b.checkin))
+  .map((e) => localize("events", e as any, lang) as any);
+const gyg = getGyg("index:events");
+---
+
+<BaseLayout
+  title={`Events in ${city.name}`}
+  description={`Events in ${city.name}: Antikenfestspiele, Olewiger Weinfest, Christmas market, Brot und Spiele, Mosel Wine Night Stroll.`}
+  lang={lang}
+  altLangPath="/events/"
+  schema={breadcrumbSchema([{ name: city.name, url: "/en/" }, { name: t(lang, "breadcrumb.events") }])}
+>
+  <section class="container-page py-12">
+    <Breadcrumbs items={[{ href: "/en/", label: city.name }, { label: t(lang, "breadcrumb.events") }]} />
+    <p class="eyebrow mb-3">{upcoming.length} dates</p>
+    <h1 class="display-xl">Events in {city.name}</h1>
+    <p class="text-body mt-4 max-w-2xl">
+      Antikenfestspiele in the amphitheater, Olewiger Weinfest, the Christmas market on the Hauptmarkt - Trier's major events at a glance.
+    </p>
+  </section>
+
+  {upcoming.length > 0 && (
+    <section class="container-page section pt-0">
+      <h2 class="display mb-6">Festivals and markets</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {upcoming.map((e) => <EventCard event={e} lang={lang} />)}
+      </div>
+    </section>
+  )}
+
+  {gyg && (
+    <div class="container-page">
+      <GygActivities q={gyg.q} heading={gyg.heading} intro={gyg.intro} count={gyg.count} cmp={gygCmp("index:events")} />
+    </div>
+  )}
+</BaseLayout>

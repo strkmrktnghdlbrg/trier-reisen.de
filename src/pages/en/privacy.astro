@@ -1,0 +1,41 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { city } from "../../data/city";
+import { t } from "../../lib/i18n";
+
+const lang = "en" as const;
+---
+
+<BaseLayout title="Privacy" description={`Privacy at ${city.brandName}`} noindex={true} lang={lang} altLangPath="/datenschutz/">
+  <article class="container-page py-12 max-w-3xl">
+    <Breadcrumbs items={[{ href: "/en/", label: city.name }, { label: t(lang, "breadcrumb.privacy") }]} />
+    <h1 class="display-xl mb-8">Privacy</h1>
+
+    <p class="text-body leading-relaxed mb-6">
+      The legally binding privacy policy is the German
+      <a href="/datenschutz/" class="link-accent">Datenschutzerklärung</a>. This page summarises the key points for English-speaking visitors.
+    </p>
+
+    <h2 class="display mt-10 mb-3">What we load</h2>
+    <p class="text-body leading-relaxed">
+      We only load third-party services (Stay22 for hotel prices, GetYourGuide for tours,
+      Google Analytics, Google AdSense) after you click "Accept all" in the cookie banner.
+      With "Essential only" no third-party scripts are loaded. You can change your choice
+      at any time via the "Cookie settings" link in the footer.
+    </p>
+
+    <h2 class="display mt-10 mb-3">Affiliate links</h2>
+    <p class="text-body leading-relaxed">
+      Hotel and activity bookings made through links on this site are tracked by Stay22,
+      GetYourGuide and AWIN partners so that we can be credited a commission. The price
+      for you is not affected.
+    </p>
+
+    <h2 class="display mt-10 mb-3">Contact</h2>
+    <p class="text-body leading-relaxed">
+      For any privacy-related question please contact us via the address listed in the
+      <a href="/en/imprint/" class="link-accent">imprint</a>.
+    </p>
+  </article>
+</BaseLayout>

@@ -3,16 +3,30 @@ import { Image } from "astro:assets";
 import { city } from "../data/city";
 import { features } from "../data/features";
 import logo from "../assets/branding/logo.svg";
+import { sectionPath, t, type Lang } from "../lib/i18n";
+
+interface Props {
+  lang?: Lang;
+  /** Pfad der jeweils anderen Sprachversion fuer den Sprach-Switcher. */
+  altLangPath?: string;
+}
+
+const { lang = "de", altLangPath } = Astro.props;
 
 const navItems = [
-  { href: "/sehenswuerdigkeiten/", label: "Sehenswürdigkeiten", enabled: true },
-  { href: "/hotels/", label: "Hotels", enabled: true },
-  { href: "/restaurants/", label: "Restaurants", enabled: true },
-  { href: "/bezirke/", label: "Bezirke", enabled: true },
-  { href: "/reiseplaner/", label: "Reiseplaner", enabled: features.reiseplaner.enabled },
-  { href: "/events/", label: "Events", enabled: features.events.enabled },
-  { href: "/magazin/", label: "Magazin", enabled: true },
+  { href: sectionPath(lang, "sights"),        label: t(lang, "nav.sights"),        enabled: true },
+  { href: sectionPath(lang, "hotels"),        label: t(lang, "nav.hotels"),        enabled: true },
+  { href: sectionPath(lang, "restaurants"),   label: t(lang, "nav.restaurants"),   enabled: true },
+  { href: sectionPath(lang, "districts"),     label: t(lang, "nav.districts"),     enabled: true },
+  { href: sectionPath(lang, "travelPlanner"), label: t(lang, "nav.travelPlanner"), enabled: features.reiseplaner.enabled },
+  { href: sectionPath(lang, "events"),        label: t(lang, "nav.events"),        enabled: features.events.enabled },
+  { href: sectionPath(lang, "magazine"),      label: t(lang, "nav.magazine"),      enabled: true },
 ].filter((item) => item.enabled);
+
+const searchPath = sectionPath(lang, "search");
+const otherLang: Lang = lang === "de" ? "en" : "de";
+// Fallback: zur Startseite der anderen Sprache, wenn kein Mapping uebergeben wurde.
+const switcherHref = altLangPath ?? (otherLang === "de" ? "/" : "/en/");
 ---
 
 <header class="sticky top-0 z-40 backdrop-blur-md border-b" style="background: color-mix(in oklab, var(--color-bg) 92%, transparent); border-color: var(--color-border);">
@@ -32,8 +46,17 @@ const navItems = [
 
       <div class="flex items-center gap-2 shrink-0">
         <a
-          href="/suche/"
-          aria-label="Suche"
+          href={switcherHref}
+          aria-label={otherLang === "en" ? "Switch to English" : "Auf Deutsch wechseln"}
+          hreflang={otherLang}
+          class="inline-flex items-center justify-center h-11 px-3 rounded-xl border text-sm font-medium hover:bg-[var(--color-surface)] transition-colors"
+          style="color: var(--color-text); border-color: var(--color-border);"
+        >
+          {otherLang === "en" ? "EN" : "DE"}
+        </a>
+        <a
+          href={searchPath}
+          aria-label={t(lang, "search.title")}
           class="inline-flex items-center justify-center w-11 h-11 rounded-xl border hover:bg-[var(--color-surface)] transition-colors"
           style="color: var(--color-text); border-color: var(--color-border);"
         >

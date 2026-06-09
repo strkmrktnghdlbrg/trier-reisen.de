@@ -1,0 +1,139 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../../components/Breadcrumbs.astro";
+import ContentImage from "../../../components/ContentImage.astro";
+import SightCard from "../../../components/SightCard.astro";
+import Stay22NearbyHotels from "../../../components/Stay22NearbyHotels.astro";
+import GygActivities from "../../../components/GygActivities.astro";
+import { sights, type Sight } from "../../../data/sights";
+import { getDistrict } from "../../../data/districts";
+import { getCategory } from "../../../data/categories";
+import { getGyg, gygCmp } from "../../../data/gyg";
+import { sightSchema, breadcrumbSchema } from "../../../lib/schema";
+import { localize, sightEnrichmentsByLang, t } from "../../../lib/i18n";
+import { city } from "../../../data/city";
+
+export function getStaticPaths() {
+  return sights.map((sight) => ({ params: { slug: sight.slug }, props: { sight } }));
+}
+
+interface Props { sight: Sight }
+const { sight: src } = Astro.props;
+const lang = "en" as const;
+const sight = localize("sights", src, lang);
+const district = localize("districts", getDistrict(src.district) ?? ({ slug: src.district } as any), lang);
+const related = sights
+  .filter((s) => s.slug !== src.slug && s.district === src.district)
+  .slice(0, 3)
+  .map((s) => localize("sights", s, lang));
+const cats = src.categories.map((c) => getCategory(c)).filter(Boolean).map((c) => localize("categories", c as any, lang));
+const priceLabel = sight.priceFrom === null ? t(lang, "sections.free") : `${t(lang, "sections.priceFrom")} ${sight.priceFrom} €`;
+const gygKey = `sight:${sight.slug}`;
+const gyg = getGyg(gygKey);
+const moreInfo: string[] = (sightEnrichmentsByLang(lang) ?? {})[sight.slug] ?? [];
+---
+
+<BaseLayout
+  title={sight.name}
+  description={sight.shortDesc}
+  lang={lang}
+  altLangPath={`/sehenswuerdigkeiten/${sight.slug}/`}
+  schema={[
+    sightSchema(sight),
+    breadcrumbSchema([
+      { name: city.name, url: "/en/" },
+      { name: t(lang, "breadcrumb.sights"), url: "/en/sights/" },
+      { name: sight.name },
+    ]),
+  ]}
+>
+  <article class="container-page py-12">
+    <Breadcrumbs items={[
+      { href: "/en/", label: city.name },
+      { href: "/en/sights/", label: t(lang, "breadcrumb.sights") },
+      { label: sight.name },
+    ]} />
+
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 mt-4">
+      <div class="lg:col-span-3">
+        <p class="eyebrow mb-3">{src.type}{src.unesco ? " - UNESCO World Heritage" : ""}</p>
+        <h1 class="display-xl mb-4">{sight.name}</h1>
+        <p class="text-sm" style="color: var(--color-text-muted);">
+          {district?.name ?? src.district} · {priceLabel}
+          {src.openingHours && <> · {src.openingHours}</>}
+        </p>
+        <div class="aspect-[16/10] rounded-2xl overflow-hidden mt-6 relative">
+          <ContentImage
+            imgKey={src.imageKey}
+            fallbackHue={src.imageHue}
+            fallbackLabel={sight.name}
+            imgClass="w-full h-full object-cover"
+            width={1200}
+            height={750}
+          />
+        </div>
+        <p class="text-body mt-8 text-lg leading-relaxed">{sight.longDesc}</p>
+
+        {moreInfo.map((para) => (
+          <p class="text-body mt-4 leading-relaxed">{para}</p>
+        ))}
+
+        {cats.length > 0 && (
+          <div class="mt-8">
+            <p class="eyebrow mb-3">Themes</p>
+            <div class="flex flex-wrap gap-2">
+              {cats.map((c) => c && <a href={`/en/themes/${c.slug}/`} class="pill hover:border-[var(--color-accent)] transition-colors">{c.name}</a>)}
+            </div>
+          </div>
+        )}
+      </div>
+
+      <aside class="lg:col-span-2">
+        <div class="card p-6">
+          <h2 class="text-lg font-light mb-4" style="font-family: var(--font-display);">{t(lang, "sections.practicalInfo")}</h2>
+          <dl class="text-sm space-y-3">
+            <div>
+              <dt style="color: var(--color-text-muted);">{t(lang, "sections.district")}</dt>
+              <dd style="color: var(--color-text);">{district?.name ?? src.district}</dd>
+            </div>
+            <div>
+              <dt style="color: var(--color-text-muted);">{t(lang, "sections.admission")}</dt>
+              <dd style="color: var(--color-text);">{priceLabel}</dd>
+            </div>
+            {src.openingHours && (
+              <div>
+                <dt style="color: var(--color-text-muted);">{t(lang, "sections.openingHours")}</dt>
+                <dd style="color: var(--color-text);">{src.openingHours}</dd>
+              </div>
+            )}
+            {src.websiteUrl && (
+              <div>
+                <dt style="color: var(--color-text-muted);">{t(lang, "sections.website")}</dt>
+                <dd><a href={src.websiteUrl} target="_blank" rel="noopener" class="link-accent text-sm">Official site ↗</a></dd>
+              </div>
+            )}
+            <div>
+              <dt style="color: var(--color-text-muted);">{t(lang, "sections.coordinates")}</dt>
+              <dd style="color: var(--color-text);" class="font-mono text-xs">{src.coordinates[0].toFixed(4)}, {src.coordinates[1].toFixed(4)}</dd>
+            </div>
+          </dl>
+        </div>
+      </aside>
+    </div>
+
+    {gyg && (
+      <GygActivities q={gyg.q} heading={gyg.heading} intro={gyg.intro} count={gyg.count} cmp={gygCmp(gygKey)} />
+    )}
+
+    <Stay22NearbyHotels lat={src.coordinates[0]} lng={src.coordinates[1]} near={sight.name} radius={1500} limit={4} />
+
+    {related.length > 0 && (
+      <section class="section">
+        <h2 class="display mb-6">More in {district?.name ?? src.district}</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {related.map((s) => <SightCard sight={s} lang={lang} />)}
+        </div>
+      </section>
+    )}
+  </article>
+</BaseLayout>

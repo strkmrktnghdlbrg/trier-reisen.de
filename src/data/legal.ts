@@ -1,22 +1,23 @@
 /**
  * Rechtliche Stammdaten fuer Impressum und Datenschutz.
+ * Betreibergesellschaft: Webmagics Ltd. (Zypern).
  */
 
 export const legal = {
   operator: {
-    name: "Stark Marketing",
-    person: "Joshua Stark",
-    street: "Adresse hier eintragen",
-    zip: "PLZ",
-    city: "Stadt",
-    country: "Deutschland",
+    name: "Webmagics Ltd.",
+    person: "",
+    street: "Gladstonos, 12-14",
+    zip: "8046",
+    city: "Paphos",
+    country: "Zypern",
     email: "kontakt@trier-reisen.de",
     phone: "",
     ustId: "",
   },
   responsible: {
-    name: "Joshua Stark",
-    address: "siehe Operator",
+    name: "Webmagics Ltd.",
+    address: "Gladstonos, 12-14, 8046 Paphos, Zypern",
   },
   hostingProvider: {
     name: "Cloudflare Pages",

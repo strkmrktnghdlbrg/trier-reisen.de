@@ -2,16 +2,19 @@
 import HueGradient from "./HueGradient.astro";
 import type { Restaurant } from "../data/restaurants";
 import { getDistrict } from "../data/districts";
+import { detailPath, localize, type Lang } from "../lib/i18n";
 
 interface Props {
   restaurant: Restaurant;
+  lang?: Lang;
 }
 
-const { restaurant } = Astro.props;
-const district = getDistrict(restaurant.district);
+const { restaurant: src, lang = "de" } = Astro.props;
+const restaurant = localize("restaurants", src, lang);
+const district = localize("districts", getDistrict(restaurant.district) ?? ({ slug: restaurant.district } as any), lang);
 ---
 
-<a href={`/restaurants/${restaurant.slug}/`} class="card group block">
+<a href={detailPath(lang, "restaurants", restaurant.slug)} class="card group block">
   <div class="aspect-[4/3] relative overflow-hidden">
     <HueGradient hue={restaurant.imageHue} label={restaurant.name} class="absolute inset-0" />
     <div class="absolute top-3 left-3">

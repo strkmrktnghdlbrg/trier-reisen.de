@@ -1,0 +1,115 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import HueGradient from "../../components/HueGradient.astro";
+import SightCard from "../../components/SightCard.astro";
+import DistrictCard from "../../components/DistrictCard.astro";
+import EventCard from "../../components/EventCard.astro";
+import CategoryCard from "../../components/CategoryCard.astro";
+import Stay22TopHotels from "../../components/Stay22TopHotels.astro";
+import GygActivities from "../../components/GygActivities.astro";
+import { city } from "../../data/city";
+import { sights } from "../../data/sights";
+import { districts } from "../../data/districts";
+import { categories } from "../../data/categories";
+import { realEvents, isUpcoming } from "../../data/events";
+import { features } from "../../data/features";
+import { getGyg, gygCmp } from "../../data/gyg";
+import { orgSchema, websiteSchema, touristDestinationSchema } from "../../lib/schema";
+import { localize, sectionPath, t } from "../../lib/i18n";
+
+const lang = "en" as const;
+const featuredSights = sights.filter((s) => s.unesco).slice(0, 6).map((s) => localize("sights", s, lang));
+const featuredDistricts = districts.slice(0, 4).map((d) => localize("districts", d, lang));
+const featuredCategories = categories.slice(0, 6).map((c) => localize("categories", c, lang));
+const upcomingEvents = realEvents.filter(isUpcoming).slice(0, 3).map((e) => localize("events", e as any, lang) as any);
+const gyg = getGyg("home");
+---
+
+<BaseLayout
+  title={`Discover ${city.name}`}
+  description={`Travel guide to ${city.name}, the oldest city in Germany. UNESCO sites, Mosel wine, Roman heritage, hotels, restaurants and trip planning.`}
+  schema={[orgSchema(), websiteSchema(), touristDestinationSchema()]}
+  lang={lang}
+  altLangPath="/"
+>
+  <section class="container-page pt-12 pb-16 md:pt-20 md:pb-24">
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
+      <div class="lg:col-span-3">
+        <p class="eyebrow mb-4">{t(lang, "home.eyebrow")}</p>
+        <h1 class="display-xl">
+          {t(lang, "home.heroLine1")}<br />
+          <span style="color: var(--color-accent);">{t(lang, "home.heroAccent")}</span><br />
+          {t(lang, "home.heroLine3")}
+        </h1>
+        <p class="text-body mt-6 max-w-xl">{t(lang, "home.heroBody")}</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href={sectionPath(lang, "sights")} class="btn-primary">{t(lang, "home.ctaSights")}</a>
+          <a href={sectionPath(lang, "travelPlanner")} class="btn-outline">{t(lang, "home.ctaPlanner")}</a>
+        </div>
+      </div>
+      <div class="lg:col-span-2">
+        <div class="aspect-[4/5] rounded-3xl overflow-hidden">
+          <HueGradient hue={1} label="Porta Nigra" class="w-full h-full" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-page section">
+    <div class="flex items-end justify-between mb-8">
+      <div>
+        <p class="eyebrow mb-2">{t(lang, "home.unescoEyebrow")}</p>
+        <h2 class="display">{t(lang, "home.unescoTitle")}</h2>
+        <p class="text-body mt-3 max-w-xl">{t(lang, "home.unescoBody")}</p>
+      </div>
+      <a href={sectionPath(lang, "sights")} class="hidden md:inline-flex link-accent text-sm">{t(lang, "home.allSights")} →</a>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {featuredSights.map((s) => <SightCard sight={s} lang={lang} />)}
+    </div>
+  </section>
+
+  {gyg && (
+    <section class="container-page">
+      <GygActivities q={gyg.q} heading={gyg.heading} intro={gyg.intro} count={gyg.count} cmp={gygCmp("home")} />
+    </section>
+  )}
+
+  <section class="container-page">
+    <Stay22TopHotels limit={8} />
+  </section>
+
+  <section class="container-page section">
+    <div class="mb-8">
+      <p class="eyebrow mb-2">{t(lang, "nav.districts")}</p>
+      <h2 class="display">{t(lang, "home.districtsTitle")}</h2>
+      <p class="text-body mt-3 max-w-xl">{t(lang, "home.districtsBody")}</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      {featuredDistricts.map((d) => <DistrictCard district={d} lang={lang} />)}
+    </div>
+  </section>
+
+  <section class="container-page section">
+    <div class="mb-8">
+      <p class="eyebrow mb-2">Themes</p>
+      <h2 class="display">{t(lang, "home.themesTitle")}</h2>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {featuredCategories.map((c) => <CategoryCard category={c} lang={lang} />)}
+    </div>
+  </section>
+
+  {features.events.enabled && upcomingEvents.length > 0 && (
+    <section class="container-page section">
+      <div class="mb-8">
+        <p class="eyebrow mb-2">{t(lang, "sections.upcoming")}</p>
+        <h2 class="display">{t(lang, "home.upcomingTitle")}</h2>
+        <p class="text-body mt-3 max-w-xl">{t(lang, "home.upcomingBody")}</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        {upcomingEvents.map((e) => <EventCard event={e} lang={lang} />)}
+      </div>
+    </section>
+  )}
+</BaseLayout>

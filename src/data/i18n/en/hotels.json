@@ -1,0 +1,87 @@
+{
+  "park-plaza-trier": {
+    "name": "Park Plaza Trier",
+    "shortDesc": "Comfortable 4-star hotel on the Kornmarkt, three minutes from the Porta Nigra (the Black Gate) and the cathedral.",
+    "longDesc": "The Park Plaza Trier sits directly on the Kornmarkt in the middle of the pedestrian zone. 150 rooms, an indoor pool and sauna in the spa area, and the Levanto restaurant. A classic business-comfort mix with short walking distances to all UNESCO sites."
+  },
+  "mercure-trier-porta-nigra": {
+    "name": "Mercure Hotel Trier Porta Nigra",
+    "shortDesc": "4-star hotel right next to the Porta Nigra. The location lives up to the name.",
+    "longDesc": "The Mercure Hotel Porta Nigra stands directly opposite the Black Gate. 105 rooms, some with views of the ancient facade, a rooftop restaurant and an underground garage. The best possible address for sightseeing on foot."
+  },
+  "hotel-villa-huegel": {
+    "name": "Hotel Villa Huegel",
+    "shortDesc": "Boutique hotel in an Art Nouveau villa above the city. Spa, fine-dining level, and great views.",
+    "longDesc": "The Villa Huegel occupies an Art Nouveau villa above Trier's southern district. 32 individually designed rooms, a spa with pool, and a restaurant under the watchful eye of a star chef. Views over the city rooftops included."
+  },
+  "best-western-plus-trier-city": {
+    "name": "Best Western Plus Hotel Trier City",
+    "shortDesc": "Modern 4-star hotel on the edge of the old town. Fresh rooms, breakfast buffet, fitness room.",
+    "longDesc": "The Best Western Plus Trier City offers 99 rooms in a modern standard, a well-regarded breakfast buffet, a fitness room and an underground garage. The location is slightly outside the pedestrian zone but well connected."
+  },
+  "domhotel-trier": {
+    "name": "Domhotel Trier",
+    "shortDesc": "Family-run 4-star hotel directly on the Hauptmarkt (the main market square). Classic Trier charm.",
+    "longDesc": "The Domhotel is a Trier institution: family-run, right on the Hauptmarkt, with views of the Steipe and the market cross. 60 rooms in solid 4-star standard and a restaurant serving regional cuisine."
+  },
+  "hotel-roemischer-kaiser": {
+    "name": "Hotel Roemischer Kaiser",
+    "shortDesc": "Traditional house right next to the Porta Nigra. Cozy, regional, no frills.",
+    "longDesc": "The Hotel Roemischer Kaiser sits directly at the Porta Nigra and ranks among Trier's traditional houses. 43 rooms, an in-house restaurant with Moselle cuisine and a cozy bar. Perfect for sightseeing travelers."
+  },
+  "hotel-zur-glocke": {
+    "name": "Hotel zur Glocke",
+    "shortDesc": "Small city hotel on Glockenstrasse. Personally run, fair prices, central location.",
+    "longDesc": "Hotel zur Glocke is Trier's little secret: 18 rooms on a quiet side street between the Hauptmarkt and the cathedral. Personal service, homemade breakfast and fair prices."
+  },
+  "aurelius-am-dom": {
+    "name": "Aurelius am Dom",
+    "shortDesc": "Modern boutique hotel right behind the cathedral. Clean lines, fair prices, prime location.",
+    "longDesc": "The Aurelius am Dom combines minimalist design with a prime location. 24 rooms in a modern standard, directly behind the cathedral, with a breakfast room looking onto the historic wall. A good choice for design-conscious travelers on a modest budget."
+  },
+  "ibis-trier": {
+    "name": "Ibis Trier",
+    "shortDesc": "Reliable brand standard at fair prices next to the main train station. Arrive, check in, head into town.",
+    "longDesc": "The Ibis Trier sits directly at the Hauptbahnhof (main train station), ideal for rail travelers. 100 rooms in the typical Ibis standard, a 24/7 snack bar and an underground garage. Ten minutes on foot into the old town."
+  },
+  "hostel-hille": {
+    "name": "Hostel Hille",
+    "shortDesc": "Budget address with dorms and private rooms, five minutes on foot from the Porta Nigra.",
+    "longDesc": "Hostel Hille is Trier's popular backpacker address. Dorms and private rooms, a shared kitchen and a living room with a piano. Family-run, five minutes on foot from the Porta Nigra."
+  },
+  "moselpark-trier": {
+    "name": "Moselpark Trier",
+    "shortDesc": "Large 4-star hotel on the Moselle riverbank. Pool, spa, conference rooms, family rooms.",
+    "longDesc": "The Moselpark sits on the northern bank of the Moselle in Trier and is the city's main conference hotel with 144 rooms. Pool, sauna, a restaurant with a Moselle terrace, family rooms and an underground garage."
+  },
+  "hotel-deutscher-hof": {
+    "name": "Hotel Deutscher Hof",
+    "shortDesc": "Long-established address on the southern edge of the old town. Solid 4-star comfort, restaurant, bar.",
+    "longDesc": "The Deutscher Hof has been a fixture in Trier for decades. 105 rooms, a restaurant serving Moselle cuisine, a wellness area and an underground garage. Located on the southern edge of the old town, with a 10-minute walk to the Hauptmarkt."
+  },
+  "hotel-petrisberg": {
+    "name": "Hotel Petrisberg",
+    "shortDesc": "Family-run 4-star hotel with Trier's best views. High up, quiet, and wine-friendly.",
+    "longDesc": "The Hotel Petrisberg sits on the Petrisberg hill above the city, with views over the Moselle valley and the old town included. 35 rooms, an in-house wine bar pouring the family's own wines, and a quiet residential setting. Family-run for three generations."
+  },
+  "hotel-eurener-hof": {
+    "name": "Hotel Eurener Hof",
+    "shortDesc": "Venerable inn in Euren (a district of Trier). Wellness, restaurant, family-friendly.",
+    "longDesc": "The Eurener Hof in Trier's southwestern district is a traditional address: 80 rooms, a large wellness area, a pool and a restaurant. Slightly outside the center but close to the Moselle and pleasantly quiet."
+  },
+  "hotel-casa-chiara": {
+    "name": "Hotel Casa Chiara",
+    "shortDesc": "Small B&B-style hotel on the Moselle riverbank. Personal, fair, with a fresh breakfast.",
+    "longDesc": "Casa Chiara is a 20-room B&B-style hotel (Hotel garni) on Trier's Moselle bank. Family-run, with a fresh breakfast and fair prices. Very quiet, yet only ten minutes on foot from the Porta Nigra."
+  },
+  "weinhaus-becker": {
+    "name": "Weinhaus Becker",
+    "shortDesc": "Boutique wine house with the Michelin-starred Becker's restaurant in Olewig (a wine village within Trier). Cuisine and wine at the highest level.",
+    "longDesc": "The Weinhaus Becker in Olewig is a familiar name among wine travelers: run by the Becker family, home to the Michelin-starred Becker's restaurant, with wine-themed suites and views into the vineyards. A top address for connoisseurs."
+  },
+  "hotel-weinhaus-haag": {
+    "name": "Hotel-Weinhaus Haag",
+    "shortDesc": "Family-run wine house in the heart of Olewig. House wines, a traditional tavern room, and short walks home.",
+    "longDesc": "The Hotel-Weinhaus Haag is classic Olewig: a family operation with its own vineyards, a wine tavern with regulars, and simple but well-kept rooms. Ideal for wine hikers who want a short walk back to bed after the Riesling."
+  }
+}

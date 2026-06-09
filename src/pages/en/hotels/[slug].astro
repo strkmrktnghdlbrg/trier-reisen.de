@@ -1,0 +1,102 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../../components/Breadcrumbs.astro";
+import HueGradient from "../../../components/HueGradient.astro";
+import HotelCard from "../../../components/HotelCard.astro";
+import Stay22NearbyHotels from "../../../components/Stay22NearbyHotels.astro";
+import { city } from "../../../data/city";
+import { hotels, type Hotel } from "../../../data/hotels";
+import { getDistrict } from "../../../data/districts";
+import { hotelSchema, breadcrumbSchema } from "../../../lib/schema";
+import { localize, t } from "../../../lib/i18n";
+
+export function getStaticPaths() {
+  return hotels.map((hotel) => ({ params: { slug: hotel.slug }, props: { hotel } }));
+}
+
+interface Props { hotel: Hotel }
+const { hotel: src } = Astro.props;
+const lang = "en" as const;
+const hotel = localize("hotels", src, lang);
+const district = localize("districts", getDistrict(src.district) ?? ({ slug: src.district } as any), lang);
+const related = hotels.filter((h) => h.slug !== src.slug && h.district === src.district).slice(0, 3).map((h) => localize("hotels", h, lang));
+const stars = "★".repeat(hotel.stars);
+---
+
+<BaseLayout
+  title={`${hotel.name} - ${city.name}`}
+  description={hotel.shortDesc}
+  lang={lang}
+  altLangPath={`/hotels/${hotel.slug}/`}
+  schema={[
+    hotelSchema(hotel),
+    breadcrumbSchema([
+      { name: city.name, url: "/en/" },
+      { name: t(lang, "breadcrumb.hotels"), url: "/en/hotels/" },
+      { name: hotel.name },
+    ]),
+  ]}
+>
+  <article class="container-page py-12">
+    <Breadcrumbs items={[
+      { href: "/en/", label: city.name },
+      { href: "/en/hotels/", label: t(lang, "breadcrumb.hotels") },
+      { label: hotel.name },
+    ]} />
+
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 mt-4">
+      <div class="lg:col-span-3">
+        <p class="eyebrow mb-3">{stars} · {district?.name ?? src.district}</p>
+        <h1 class="display-xl mb-4">{hotel.name}</h1>
+        <p class="text-sm" style="color: var(--color-text-muted);">
+          ⭐ {hotel.rating}/10 · {hotel.reviews} reviews · {t(lang, "sections.priceFrom")} {hotel.priceFrom} €
+        </p>
+        <div class="aspect-[16/10] rounded-2xl overflow-hidden mt-6 relative">
+          <HueGradient hue={hotel.imageHue} label={hotel.name} class="w-full h-full" />
+        </div>
+        <p class="text-body mt-8 text-lg leading-relaxed">{hotel.longDesc}</p>
+
+        <div class="mt-8">
+          <p class="eyebrow mb-3">Amenities</p>
+          <div class="flex flex-wrap gap-2">
+            {hotel.amenities.map((a) => <span class="pill">{a}</span>)}
+          </div>
+        </div>
+      </div>
+
+      <aside class="lg:col-span-2">
+        <div class="card p-6">
+          <h2 class="text-lg font-light mb-3" style="font-family: var(--font-display);">Availability</h2>
+          <p class="text-sm mb-5" style="color: var(--color-text-body);">
+            Live prices and availability on Booking.com.
+          </p>
+          <a href={hotel.bookingUrl} target="_blank" rel="noopener" class="btn-primary w-full justify-center">
+            Check on Booking.com
+          </a>
+          <p class="text-xs mt-3" style="color: var(--color-text-muted);">
+            We earn a commission, at no extra cost to you.
+          </p>
+        </div>
+      </aside>
+    </div>
+
+    {getDistrict(src.district) && (
+      <Stay22NearbyHotels
+        lat={getDistrict(src.district)!.coordinates[0]}
+        lng={getDistrict(src.district)!.coordinates[1]}
+        near={district?.name ?? src.district}
+        radius={1500}
+        limit={4}
+      />
+    )}
+
+    {related.length > 0 && (
+      <section class="section">
+        <h2 class="display mb-6">More hotels in {district?.name ?? src.district}</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {related.map((h) => <HotelCard hotel={h} lang={lang} />)}
+        </div>
+      </section>
+    )}
+  </article>
+</BaseLayout>

@@ -1,0 +1,49 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../../components/Breadcrumbs.astro";
+import HueGradient from "../../../components/HueGradient.astro";
+import enArticlesData from "../../../data/i18n/en/articles.json";
+import { articles as deArticles } from "../../../data/articles";
+import { t, articlePath } from "../../../lib/i18n";
+import { breadcrumbSchema } from "../../../lib/schema";
+import { city } from "../../../data/city";
+
+const lang = "en" as const;
+const enArts = enArticlesData as any[];
+// Take publishDate + heroHue from DE source, EN copy on top.
+const items = enArts.map((en) => {
+  const de = deArticles.find((a) => a.slug === en.slug);
+  return { ...en, heroHue: de?.heroHue ?? 30, publishDate: de?.publishDate ?? "2026-06-08" };
+});
+---
+
+<BaseLayout
+  title={`Magazine - ${city.name}`}
+  description={`Travel magazine for ${city.name}: Mosel wine, wine festivals, wineries and travel guides.`}
+  lang={lang}
+  altLangPath="/magazin/"
+  schema={breadcrumbSchema([{ name: city.name, url: "/en/" }, { name: t(lang, "breadcrumb.magazine") }])}
+>
+  <section class="container-page py-12">
+    <Breadcrumbs items={[{ href: "/en/", label: city.name }, { label: t(lang, "breadcrumb.magazine") }]} />
+    <p class="eyebrow mb-3">{items.length} articles</p>
+    <h1 class="display-xl">Trier Magazine</h1>
+    <p class="text-body mt-4 max-w-2xl">Mosel wine, wine festivals and wineries, with travel context for the Trier region.</p>
+  </section>
+
+  <section class="container-page section pt-0">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {items.map((a) => (
+        <a href={articlePath(lang, a.slug)} class="card group block">
+          <div class="aspect-[16/10] relative overflow-hidden">
+            <HueGradient hue={a.heroHue} label={a.title} class="absolute inset-0" />
+          </div>
+          <div class="p-5">
+            <h3 class="text-xl font-light tracking-tight leading-tight mb-2 group-hover:text-[var(--color-accent)] transition-colors" style="color: var(--color-text); font-family: var(--font-display);">{a.title}</h3>
+            <p class="text-sm leading-relaxed line-clamp-3" style="color: var(--color-text-body);">{a.description}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
