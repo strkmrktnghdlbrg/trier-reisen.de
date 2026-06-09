@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://trier-reisen.de/sitemap-index.xml

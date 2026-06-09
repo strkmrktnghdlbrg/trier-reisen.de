@@ -1,0 +1,20 @@
+# 301-Redirects trier-reisen.de (Cloudflare Pages)
+# ============================================================
+# Alte WP-Artikel, deren Thema bereits durch eine Sehenswuerdigkeit-Seite
+# abgedeckt ist: 301 auf die jeweilige Seite (Inhalt dort eingearbeitet).
+# Nicht-ueberlappende Alt-Artikel behalten ihre exakte URL und brauchen
+# KEINEN Redirect (werden 1:1 als /magazin-Artikel neu gebaut).
+
+/porta-nigra/              /sehenswuerdigkeiten/porta-nigra/        301
+/kaiserthermen/            /sehenswuerdigkeiten/kaiserthermen/      301
+/kaiserthermen/*           /sehenswuerdigkeiten/kaiserthermen/      301
+/trierer-dom/              /sehenswuerdigkeiten/trierer-dom/        301
+/amphitheater-trier/       /sehenswuerdigkeiten/amphitheater/       301
+/barbarathermen/           /sehenswuerdigkeiten/barbarathermen/     301
+/liebfrauenkirche-gotisch/ /sehenswuerdigkeiten/liebfrauenkirche/   301
+/palastgarten/             /sehenswuerdigkeiten/kurfuerstliches-palais/ 301
+/marktkreuz/               /sehenswuerdigkeiten/hauptmarkt/          301
+/petrusbrunnen/            /sehenswuerdigkeiten/hauptmarkt/          301
+
+# Dublette zur Viehmarktthermen-Seite (Alt-Artikel /viehmarktthermen/ bleibt)
+/thermen-am-viehmarkt/     /viehmarktthermen/                       301
