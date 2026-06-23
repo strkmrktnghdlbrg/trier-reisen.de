@@ -21,6 +21,13 @@ const dateLabel = new Date(article.publishDate).toLocaleDateString("de-DE", {
   month: "long",
   day: "numeric",
 });
+
+// Map article categories to their /kategorien/<slug>/ hub pages
+const categoryToKategorie: Record<string, string> = {
+  wein: "/kategorien/wein/",
+  historie: "/kategorien/roemisches-erbe/",
+};
+const catHref = categoryToKategorie[article.category] ?? null;
 ---
 
 <BaseLayout
@@ -44,7 +51,11 @@ const dateLabel = new Date(article.publishDate).toLocaleDateString("de-DE", {
     ]} />
 
     <header class="max-w-3xl">
-      <p class="eyebrow mb-3">{catLabel}</p>
+      {catHref ? (
+        <p class="eyebrow mb-3"><a href={catHref} class="hover:underline">{catLabel}</a></p>
+      ) : (
+        <p class="eyebrow mb-3">{catLabel}</p>
+      )}
       <h1 class="display-xl mb-4">{article.title}</h1>
       <p class="text-sm" style="color: var(--color-text-muted);">
         <time datetime={article.publishDate}>{dateLabel}</time>

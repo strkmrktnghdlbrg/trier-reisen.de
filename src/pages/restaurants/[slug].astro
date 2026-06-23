@@ -3,7 +3,9 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import HueGradient from "../../components/HueGradient.astro";
 import RestaurantCard from "../../components/RestaurantCard.astro";
+import SightCard from "../../components/SightCard.astro";
 import { restaurants, type Restaurant } from "../../data/restaurants";
+import { sights } from "../../data/sights";
 import { getDistrict } from "../../data/districts";
 import { restaurantSchema, breadcrumbSchema } from "../../lib/schema";
 import { city } from "../../data/city";
@@ -16,6 +18,7 @@ interface Props { restaurant: Restaurant }
 const { restaurant } = Astro.props;
 const district = getDistrict(restaurant.district);
 const related = restaurants.filter((r) => r.slug !== restaurant.slug && r.cuisine === restaurant.cuisine).slice(0, 3);
+const nearbySights = sights.filter((s) => s.district === restaurant.district).slice(0, 3);
 ---
 
 <BaseLayout
@@ -66,7 +69,13 @@ const related = restaurants.filter((r) => r.slug !== restaurant.slug && r.cuisin
             </div>
             <div>
               <dt style="color: var(--color-text-muted);">Bezirk</dt>
-              <dd style="color: var(--color-text);">{district?.name ?? restaurant.district}</dd>
+              <dd style="color: var(--color-text);">
+                {district ? (
+                  <a href={`/bezirke/${district.slug}/`} class="link-accent">{district.name}</a>
+                ) : (
+                  restaurant.district
+                )}
+              </dd>
             </div>
             {restaurant.openingHours && (
               <div>
@@ -109,6 +118,15 @@ const related = restaurants.filter((r) => r.slug !== restaurant.slug && r.cuisin
         </div>
       </aside>
     </div>
+
+    {nearbySights.length > 0 && (
+      <section class="section">
+        <h2 class="display mb-6">Sehenswürdigkeiten in der Nähe</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {nearbySights.map((s) => <SightCard sight={s} />)}
+        </div>
+      </section>
+    )}
 
     {related.length > 0 && (
       <section class="section">

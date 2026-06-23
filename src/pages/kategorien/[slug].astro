@@ -8,6 +8,7 @@ import GygActivities from "../../components/GygActivities.astro";
 import { categories, type Category } from "../../data/categories";
 import { sights } from "../../data/sights";
 import { restaurants } from "../../data/restaurants";
+import { articles } from "../../data/articles";
 import { getGyg, gygCmp } from "../../data/gyg";
 import { categorySchema, breadcrumbSchema } from "../../lib/schema";
 import { city } from "../../data/city";
@@ -20,6 +21,7 @@ interface Props { category: Category }
 const { category } = Astro.props;
 const catSights = sights.filter((s) => s.categories.includes(category.slug));
 const catRestaurants = restaurants.filter((r) => r.categories.includes(category.slug));
+const catArticles = articles.filter((a) => a.category === category.slug);
 const gygKey = `cat:${category.slug}`;
 const gyg = getGyg(gygKey);
 ---
@@ -77,6 +79,25 @@ const gyg = getGyg(gygKey);
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {catRestaurants.map((r) => <RestaurantCard restaurant={r} />)}
         </div>
+      </section>
+    )}
+
+    {catArticles.length > 0 && (
+      <section class="container-page section pt-0">
+        <h2 class="display mb-6">Magazin-Artikel</h2>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {catArticles.map((a) => (
+            <li>
+              <a href={`/${a.slug}/`} class="card group block p-5 h-full">
+                <p class="eyebrow mb-2">{category.name}</p>
+                <h3 class="text-base font-light leading-snug mb-2 group-hover:text-[var(--color-accent)] transition-colors" style="color: var(--color-text); font-family: var(--font-display);">
+                  {a.title}
+                </h3>
+                <p class="text-sm leading-relaxed line-clamp-3" style="color: var(--color-text-body);">{a.description}</p>
+              </a>
+            </li>
+          ))}
+        </ul>
       </section>
     )}
   </article>

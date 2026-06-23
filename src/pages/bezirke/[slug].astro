@@ -12,6 +12,7 @@ import { districts, type District } from "../../data/districts";
 import { sights } from "../../data/sights";
 import { hotels } from "../../data/hotels";
 import { restaurants } from "../../data/restaurants";
+import { articles } from "../../data/articles";
 import { getGyg, gygCmp } from "../../data/gyg";
 import { districtSchema, breadcrumbSchema } from "../../lib/schema";
 import { city } from "../../data/city";
@@ -25,6 +26,14 @@ const { district } = Astro.props;
 const districtSights = sights.filter((s) => s.district === district.slug);
 const districtHotels = hotels.filter((h) => h.district === district.slug);
 const districtRestaurants = restaurants.filter((r) => r.district === district.slug);
+// Related articles: match if intro or any section body paragraph mentions the district slug
+const districtArticles = articles.filter((a) => {
+  const haystack = [
+    a.intro,
+    ...a.sections.flatMap((s) => s.body),
+  ].join(" ");
+  return haystack.includes(district.slug);
+}).slice(0, 6);
 const gygKey = `district:${district.slug}`;
 const gyg = getGyg(gygKey);
 ---
@@ -117,6 +126,19 @@ const gyg = getGyg(gygKey);
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {districtRestaurants.map((r) => <RestaurantCard restaurant={r} />)}
         </div>
+      </section>
+    )}
+
+    {districtArticles.length >= 2 && (
+      <section class="container-page section pt-0">
+        <h2 class="display mb-6">Magazin-Tipps zu {district.name}</h2>
+        <ul class="flex flex-col gap-3">
+          {districtArticles.map((a) => (
+            <li>
+              <a href={`/${a.slug}/`} class="link-accent text-base">{a.title} &rarr;</a>
+            </li>
+          ))}
+        </ul>
       </section>
     )}
   </article>
