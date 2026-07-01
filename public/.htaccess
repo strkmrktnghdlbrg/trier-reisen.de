@@ -1,0 +1,8 @@
+# WWW-CANONICAL-BEGIN (auto) - www -> Apex (kanonisch, 301)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L,NE]
+</IfModule>
+# WWW-CANONICAL-END
+
