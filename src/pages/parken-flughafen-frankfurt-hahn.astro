@@ -1,0 +1,134 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Wie viel kostet Parken am Flughafen Frankfurt-Hahn?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Direkt am Terminal kostet ein Tag im Parkhaus schnell 20 bis 30 Euro. Externe Parkplätze mit Shuttle sind vorab gebucht oft ab wenigen Euro pro Tag zu haben, gerade bei längeren Aufenthalten lohnt sich der Vergleich.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Gibt es einen Shuttle zum Terminal?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Bei den meisten externen Anbietern am Flughafen Frankfurt-Hahn ist ein Shuttle inklusive. Die Fahrt zum Terminal dauert in der Regel nur wenige Minuten.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Muss ich einen Gutscheincode eingeben?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Nein. Der Rabatt ist im Buchungslink hinterlegt und wird bei der Abfrage für Ihren Reisezeitraum automatisch angewendet.",
+      },
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Parken am Flughafen Frankfurt-Hahn: günstig buchen und Rabatt sichern"
+  description="Parken am Flughafen Frankfurt-Hahn (HHN) günstig vorab buchen: Parkplätze, Parkhäuser und Valet mit Shuttle im Vergleich. Rabatt wird automatisch angewendet."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />
+  <div class="pf-wrap">
+    <div class="pf-surface">
+      <h1>Parken am Flughafen Frankfurt-Hahn: günstig buchen und Rabatt sichern</h1>
+      <p class="pf-lead">Der Flughafen Frankfurt-Hahn (HHN) im Hunsrück ist ein wichtiger Ryanair-Standort und von Trier aus über die A1 und B50 in etwa einer Stunde erreichbar. Als klassischer Ferienflieger-Airport ist er besonders in den Sommermonaten gefragt, ein Stellplatz sollte vorab reserviert werden. Wer seinen Stellplatz vorab online bucht, spart deutlich und hat den Platz sicher. Hier finden Sie die wichtigsten Parkoptionen im Überblick, dazu einen Anbieter, bei dem der Rabatt automatisch angewendet wird.</p>
+
+      <div style="background: linear-gradient(135deg,#365DA3 0%, #24406f 100%); color:#fff; border-radius:16px; padding:26px 28px; margin: 22px 0 30px; box-shadow:0 10px 28px rgba(54,93,163,0.28);">
+        <div style="display:flex; flex-wrap:wrap; gap:6px 14px; align-items:baseline;">
+          <span style="background:#FFA830; color:#020304; font-size:11px; font-weight:800; padding:4px 12px; border-radius:20px; letter-spacing:0.5px;">RABATT AUTOMATISCH</span>
+          <span style="font-size:13px; opacity:0.9;">Flughafen Frankfurt-Hahn (HHN) &middot; Shuttle inklusive</span>
+        </div>
+        <div style="font-size:23px; font-weight:800; margin:14px 0 6px; line-height:1.25;">Parkplatz am Flughafen Frankfurt-Hahn vorab sichern</div>
+        <p style="margin:0 0 18px; font-size:15.5px; opacity:0.97; color:#fff;">Freie Stellplätze für Ihren Reisezeitraum vergleichen, feste Preise sichern und in wenigen Minuten zum Terminal shutteln. Der Rabatt ist im Link hinterlegt und wird bei der Abfrage automatisch angewendet, ganz ohne Gutscheincode.</p>
+        <span class="pf-cta"><a href="/r/parken-fliegen/" rel="sponsored nofollow" target="_blank" style="display:inline-block; background:#FFA830; color:#020304; padding:14px 30px; border-radius:10px; font-weight:800; text-decoration:none; font-size:15.5px;">Preise &amp; freie Plätze prüfen &rarr;</a></span>
+        <p style="margin:14px 0 0; font-size:12px; opacity:0.8; color:#fff;">* Affiliate-Link. Sie buchen zum selben Preis, wir erhalten eine kleine Provision.</p>
+      </div>
+
+      <h2>Warum den Parkplatz am Flughafen Frankfurt-Hahn vorbuchen?</h2>
+      <p>Wer früh morgens oder spät abends fliegt, ist auf einen verlässlichen Stellplatz angewiesen. Wer vorab bucht, profitiert gleich mehrfach:</p>
+      <ul>
+        <li><strong>Günstiger als spontan parken:</strong> Vorab gebuchte Plätze kosten oft nur einen Bruchteil des Terminal-Tarifs.</li>
+        <li><strong>Feste Preise:</strong> Sie zahlen einen kalkulierbaren Tages- oder Wochenpreis, keine Überraschung bei der Ausfahrt.</li>
+        <li><strong>Platzgarantie:</strong> Der Stellplatz ist für Ihren Reisezeitraum reserviert, gerade in den rheinland-pfälzischen Schulferien ein Vorteil.</li>
+        <li><strong>Shuttle inklusive:</strong> Ein Shuttle bringt Sie zum Terminal und nach der Landung wieder zurück.</li>
+      </ul>
+
+      <h2>So funktioniert die Buchung</h2>
+      <ol>
+        <li><strong>Reisezeitraum eingeben.</strong> Datum und Uhrzeit für Hin- und Rückreise angeben.</li>
+        <li><strong>Angebote vergleichen.</strong> Freie Parkplätze, Parkhäuser und Valet-Optionen mit Preis und Bewertung ansehen.</li>
+        <li><strong>Buchen und losfahren.</strong> Bestätigung erhalten, am Reisetag zum Parkplatz fahren, Shuttle zum Terminal nehmen.</li>
+      </ol>
+
+      <div class="callout">
+        <p><strong>Rabatt-Hinweis:</strong> Der Rabatt wird automatisch angewendet. Machen Sie einfach eine Abfrage für Ihren Reisezeitraum, um zu sehen, welche Rabatte gelten. Einen Code müssen Sie nicht eingeben.</p>
+      </div>
+
+      <h2>Welche Parkoptionen gibt es am Flughafen Frankfurt-Hahn?</h2>
+      <ul>
+        <li><strong>Parkplatz im Freien:</strong> Die günstigste Variante, ideal für kurze bis mittlere Reisen.</li>
+        <li><strong>Parkhaus oder Tiefgarage:</strong> Etwas teurer, dafür geschützt vor Wetter.</li>
+        <li><strong>Valet-Parking:</strong> Schlüssel am Terminal abgeben, das Fahrzeug wird für Sie geparkt. Maximaler Komfort für Geschäftsreisende.</li>
+        <li><strong>Park, Sleep &amp; Fly:</strong> Hotel am Flughafen mit Parkplatz für die gesamte Reisedauer, praktisch bei frühen Abflügen. Passende Adressen finden Sie in unserer <a href="/">Übersicht für Trier</a>.</li>
+      </ul>
+
+      <div style="background:#f6f6fb; border:1px solid #e6e6ef; border-radius:16px; padding:24px 26px; margin: 28px 0;">
+        <div style="font-size:19px; font-weight:800; color:#20233a; margin-bottom:8px;">Jetzt Stellplatz am Flughafen Frankfurt-Hahn sichern</div>
+        <p style="margin:0 0 16px; font-size:15px; color:#6b7280;">Freie Plätze für Ihren Reisezeitraum prüfen, der Rabatt ist bereits hinterlegt.</p>
+        <span class="pf-cta"><a href="/r/parken-fliegen/" rel="sponsored nofollow" target="_blank" style="display:inline-block; background:#365DA3; color:#fff; padding:13px 28px; border-radius:10px; font-weight:700; text-decoration:none; font-size:15px;">Parken und Fliegen ansehen &rarr;</a></span>
+      </div>
+
+      <h2>Häufige Fragen zum Parken am Flughafen Frankfurt-Hahn</h2>
+      <div class="faq-item">
+        <h3>Wie viel günstiger ist das Vorbuchen?</h3>
+        <p>Je nach Reisezeitraum und Anbieter sparen Sie gegenüber dem Terminal-Tarif deutlich, besonders bei längeren Aufenthalten.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Ist ein Shuttle zum Terminal inklusive?</h3>
+        <p>Bei den meisten externen Parkplätzen ja. Die Fahrt zum Terminal dauert in der Regel nur wenige Minuten.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Muss ich einen Gutscheincode eingeben?</h3>
+        <p>Nein. Der Rabatt ist im Link hinterlegt und wird bei der Abfrage automatisch angewendet.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Wie früh sollte ich buchen?</h3>
+        <p>Gerade in den Ferien lohnt es sich, den Stellplatz einige Tage im Voraus zu reservieren, um Platz und Bestpreis zu sichern.</p>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .pf-wrap { max-width: 900px; margin: 0 auto; padding: 2.5rem 1rem 3rem; }
+  .pf-surface {
+    background: #ffffff; color: #33313f; border-radius: 16px;
+    padding: clamp(20px, 4vw, 40px);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 8px 30px rgba(0,0,0,0.05);
+    font-size: 16.5px; line-height: 1.7;
+  }
+  .pf-surface h1 { color: #20233a; font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.5px; margin: 0 0 1rem; }
+  .pf-surface .pf-lead { font-size: 1.12rem; color: #4a4858; margin: 0 0 1.6rem; }
+  .pf-surface h2 { color: #20233a; font-size: 1.55rem; font-weight: 800; line-height: 1.25; letter-spacing: -0.3px; margin: 2.2rem 0 0.8rem; }
+  .pf-surface h3 { color: #20233a; font-size: 1.2rem; font-weight: 700; line-height: 1.3; margin: 1.5rem 0 0.5rem; }
+  .pf-surface p { margin: 0 0 1.05rem; }
+  .pf-surface ul, .pf-surface ol { margin: 0 0 1.15rem; padding-left: 1.4rem; }
+  .pf-surface li { margin-bottom: 0.4rem; }
+  .pf-surface strong { color: #20233a; font-weight: 700; }
+  .pf-surface a { color: #365DA3; text-decoration: underline; text-underline-offset: 3px; }
+  .pf-surface .callout { background: #fff8ec; border-left: 4px solid #FFA830; padding: 14px 18px; border-radius: 0 10px 10px 0; margin: 1.4rem 0; }
+  .pf-surface .callout p:last-child { margin-bottom: 0; }
+  .pf-surface .faq-item { border-top: 1px solid #e6e6ef; padding-top: 1.1rem; margin-top: 1.1rem; }
+  .pf-surface .faq-item h3 { margin-top: 0; font-size: 18px; }
+  .pf-surface .pf-cta a { text-decoration: none; }
+</style>
