@@ -39,6 +39,9 @@ const home = lang === "de" ? "/" : "/en/";
           {features.events.enabled && <li><a href={sectionPath(lang, "events")} class="hover:underline" style="color: var(--color-text-body);">{t(lang, "nav.events")}</a></li>}
           <li><a href={sectionPath(lang, "magazine")} class="hover:underline" style="color: var(--color-text-body);">{t(lang, "nav.magazine")}</a></li>
           {lang === "de" && (
+            <li><a href="/promis-in-trier/" class="hover:underline" style="color: var(--color-text-body);">Promis in Trier</a></li>
+          )}
+          {lang === "de" && (
             <li><a href="/parken-flughafen-frankfurt-hahn/" class="hover:underline" style="color: var(--color-text-body);">Parken am Flughafen Frankfurt-Hahn</a></li>
           )}
         </ul>
