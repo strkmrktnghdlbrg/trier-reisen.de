@@ -1,0 +1,178 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const title = "Parken in Trier: Parkhäuser, Tarife & Tipps";
+const description = "Parken in Trier: alle Parkhäuser und Tiefgaragen mit Lage, Stellplätzen und Tarifen, kostenlose Parkplätze, Park & Ride und Tipps für Besucher der Altstadt.";
+const faqLd = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Was kostet Parken in Trier?","acceptedAnswer":{"@type":"Answer","text":"In den zentralen SWT-Parkhäusern zahlt man ca. 1,20 € je angefangene 30 Minuten, also rund 2,40 € pro Stunde. Das Tagesmaximum liegt montags bis samstags bei ca. 18 € und sonn- sowie feiertags bei nur ca. 3,60 €. Das Parkhaus Ostallee im Alleencenter hat ein günstigeres Tagesmaximum von ca. 15 € (Mo-Sa) bzw. ca. 3,40 € (So). Straßenparken per Handy kostet innerhalb des Alleenrings ca. 2,70 € pro Stunde."}},{"@type":"Question","name":"Wo kann man in Trier kostenlos parken?","acceptedAnswer":{"@type":"Answer","text":"Kostenfrei sind die Park-&-Ride-Plätze Messepark (Moselauen) und Verteilerkreis Trier-Nord, von denen regelmäßig Busse in die Innenstadt fahren. Zusätzlich gibt es einige begrenzte offene Plätze am Rand der Altstadt, etwa am Palastgarten, Irminenfreihof und in der Feldstraße. Diese sind jedoch oft schnell belegt, sodass sich für längere Besuche meist Park & Ride oder ein Parkhaus lohnt."}},{"@type":"Question","name":"Wo parkt man am besten für Porta Nigra und die Innenstadt?","acceptedAnswer":{"@type":"Answer","text":"Am nächsten an der Porta Nigra liegen das Parkhaus Hauptmarkt und der offene Parkplatz Porta-Nigra-Platz, von dem aus man nur die Nordallee überqueren muss. Auch das große City-Parkhaus an der Böhmerstraße und das Plaza-Carrée bieten kurze Wege in die Fußgängerzone. Für die römischen Denkmäler wie Kaiserthermen und Konstantinbasilika ist die Tiefgarage Basilika die beste Wahl."}},{"@type":"Question","name":"Gibt es in Trier Park & Ride?","acceptedAnswer":{"@type":"Answer","text":"Ja. Trier bietet zwei kostenfreie Park-&-Ride-Plätze: den Messepark in den Moselauen an der Konrad-Adenauer-Brücke und den Verteilerkreis Trier-Nord. Vom Messepark fahren montags bis freitags die Buslinien 13 und 1 im 15- bis 20-Minuten-Takt in die Innenstadt, vom Trier-Nord aus die Linien 30 und 9. An Aktionstagen wie Adventssamstagen und verkaufsoffenen Sonntagen gibt es zusätzlich kostenlose Shuttle-Busse."}},{"@type":"Question","name":"Wie funktioniert das Bewohnerparken in Trier?","acceptedAnswer":{"@type":"Answer","text":"In vielen Wohnvierteln rund um die Trierer Altstadt gibt es Bewohnerparkzonen. Dort dürfen tagsüber nur Anwohner mit gültigem Bewohnerparkausweis dauerhaft parken; Besucher benötigen in diesen Zonen einen Parkschein oder nutzen besser ein Parkhaus. Den Bewohnerparkausweis beantragt man bei der Stadt Trier für die jeweilige Zone am Wohnort."}}]};
+const itemListLd = {"@context":"https://schema.org","@type":"ItemList","name":"Parkhäuser in Trier","itemListElement":[{"@type":"ListItem","position":1,"name":"City-Parkhaus"},{"@type":"ListItem","position":2,"name":"Tiefgarage Basilika"},{"@type":"ListItem","position":3,"name":"Parkhaus Hauptmarkt"},{"@type":"ListItem","position":4,"name":"Tiefgarage Viehmarkt"},{"@type":"ListItem","position":5,"name":"Tiefgarage Konstantin"},{"@type":"ListItem","position":6,"name":"Parkhaus Plaza-Carrée"},{"@type":"ListItem","position":7,"name":"Parkhaus Ostallee (Alleencenter)"},{"@type":"ListItem","position":8,"name":"Parkplatz Porta-Nigra-Platz"},{"@type":"ListItem","position":9,"name":"Parkhaus am Bahnhof"}]};
+---
+
+<BaseLayout title={title} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(itemListLd)} />
+  <div class="pf-wrap">
+    <div class="pf-surface">
+      <h1>Parken in Trier: Parkhäuser, Tarife und Tipps</h1>
+      <p class="pf-lead">Trier, die älteste Stadt Deutschlands, zieht mit Porta Nigra, Kaiserthermen und Konstantinbasilika viele Besucher an. Wer mit dem Auto anreist, findet rund um die Innenstadt sieben zentrale Parkhäuser und Tiefgaragen mit insgesamt rund 3.330 Stellplätzen, alle rund um die Uhr geöffnet. Ein digitales Parkleitsystem zeigt schon bei der Anfahrt die aktuell freien Plätze an: Zunächst den Schildern Richtung Centrum folgen, dann weisen große Anzeigetafeln zum nächsten Parkhaus. In allen städtischen Parkhäusern kann man ticketlos parken und bequem per Smartphone bezahlen. Dieser Überblick zeigt, wo Sie zentral, günstig oder sogar kostenlos parken und wie Sie mit Park &amp; Ride entspannt in die Innenstadt kommen.</p>
+
+      <h2>Das Wichtigste in Kürze</h2>
+      <ul>
+        <li>Sieben zentrale Parkhäuser und Tiefgaragen mit rund 3.330 Stellplätzen, alle 24 Stunden geöffnet</li>
+        <li>Einheitstarif der SWT-Häuser: ca. 1,20 € je angefangene 30 Minuten (ca. 2,40 €/Stunde)</li>
+        <li>Tagesmaximum Mo bis Sa ca. 18 €, sonn- und feiertags nur ca. 3,60 € (Ostallee abweichend)</li>
+        <li>Für Porta Nigra und Hauptmarkt sind Parkhaus Hauptmarkt und der Parkplatz Porta-Nigra-Platz am nächsten</li>
+        <li>Kostenlos parken auf den Park-&amp;-Ride-Plätzen Messepark und Verteilerkreis Trier-Nord mit Busanschluss</li>
+      </ul>
+
+      <h2>Parkhäuser und Tiefgaragen in Trier im Überblick</h2>
+      <p>Die folgende Auswahl zeigt zentrale Parkhäuser und Tiefgaragen in Trier mit Lage, ungefährer Stellplatzzahl und Tarif. Preise und Öffnungszeiten können sich ändern, prüfen Sie im Zweifel kurz die Website des Betreibers.</p>
+      <ul class="ph-list">
+        <li class="ph">
+          <span class="ph-name">City-Parkhaus</span>
+          <span class="ph-lage">Böhmerstraße/Zuckerberg, westlicher Innenstadtrand nahe Fußgängerzone</span>
+          <span class="ph-meta"><strong>Plätze:</strong> ca. 950 &middot; <strong>Tarif:</strong> ca. 2,40 €/h (1,20 € je 30 Min), Tagesmax Mo-Sa ca. 18 €, So/Feiertag ca. 3,60 €</span>
+          <span class="ph-hint">Größtes Parkhaus der Stadt, kurze Wege zur Simeonstraße und Porta Nigra; Komfort-Parken ca. 1,92 €/h</span>
+        </li>
+        <li class="ph">
+          <span class="ph-name">Tiefgarage Basilika</span>
+          <span class="ph-lage">Mustorstraße, direkt an Konstantinbasilika, Kaiserthermen, Landesmuseum und Kurfürstlichem Palais</span>
+          <span class="ph-meta"><strong>Plätze:</strong> ca. 467 &middot; <strong>Tarif:</strong> ca. 2,40 €/h (1,20 € je 30 Min), Tagesmax Mo-Sa ca. 18 €, So/Feiertag ca. 3,60 €</span>
+          <span class="ph-hint">Ideal für den Besuch der römischen Denkmäler und des Palastgartens; Behindertenparkplätze vorhanden</span>
+        </li>
+        <li class="ph">
+          <span class="ph-name">Parkhaus Hauptmarkt</span>
+          <span class="ph-lage">Walramsneustraße, mitten in der Fußgängerzone nahe Hauptmarkt und Dom</span>
+          <span class="ph-meta"><strong>Plätze:</strong> ca. 344 &middot; <strong>Tarif:</strong> ca. 2,40 €/h (1,20 € je 30 Min), Tagesmax Mo-Sa ca. 18 €, So/Feiertag ca. 3,60 €</span>
+          <span class="ph-hint">Nächstgelegenes Parkhaus zu Porta Nigra und zum Einkaufszentrum der Altstadt</span>
+        </li>
+        <li class="ph">
+          <span class="ph-name">Tiefgarage Viehmarkt</span>
+          <span class="ph-lage">Viehmarktplatz, südliche Altstadt bei den römischen Viehmarktthermen</span>
+          <span class="ph-meta"><strong>Plätze:</strong> ca. 336 &middot; <strong>Tarif:</strong> ca. 2,40 €/h (1,20 € je 30 Min), Tagesmax Mo-Sa ca. 18 €, So/Feiertag ca. 3,60 €</span>
+          <span class="ph-hint">Zentral zwischen Fußgängerzone und Palastgarten; Behindertenparkplätze vorhanden</span>
+        </li>
+        <li class="ph">
+          <span class="ph-name">Tiefgarage Konstantin</span>
+          <span class="ph-lage">Konstantinstraße, nahe Konstantinbasilika und Kurfürstlichem Palais</span>
+          <span class="ph-meta"><strong>Plätze:</strong> ca. 233 &middot; <strong>Tarif:</strong> ca. 2,40 €/h (1,20 € je 30 Min), Tagesmax Mo-Sa ca. 18 €, So/Feiertag ca. 3,60 €</span>
+          <span class="ph-hint">Einfahrtshöhe ca. 1,90 m; gute Alternative zur Basilika-Garage im Behördenviertel</span>
+        </li>
+        <li class="ph">
+          <span class="ph-name">Parkhaus Plaza-Carrée</span>
+          <span class="ph-lage">Am Frankenturm 2, nördliche Altstadt nahe Simeonstraße und Porta Nigra</span>
+          <span class="ph-meta"><strong>Plätze:</strong> ca. 300 &middot; <strong>Tarif:</strong> ca. 2,40 €/h (1,20 € je 30 Min), Tagesmax Mo-Sa ca. 18 €, So/Feiertag ca. 3,60 €</span>
+          <span class="ph-hint">Kurzer Weg zur Fußgängerzone; Komfort-Parken mit ca. 20 % Rabatt möglich</span>
+        </li>
+        <li class="ph">
+          <span class="ph-name">Parkhaus Ostallee (Alleencenter)</span>
+          <span class="ph-lage">Ostallee, am Alleencenter östlich der Altstadt</span>
+          <span class="ph-meta"><strong>Plätze:</strong> ca. 860 &middot; <strong>Tarif:</strong> ca. 2,40 €/h, Tagesmax Mo-Sa ca. 15 €, So/Feiertag ca. 3,40 €</span>
+          <span class="ph-hint">Abweichender Tarif gegenüber den übrigen SWT-Häusern; günstigeres Tagesmaximum</span>
+        </li>
+        <li class="ph">
+          <span class="ph-name">Parkplatz Porta-Nigra-Platz</span>
+          <span class="ph-lage">Porta-Nigra-Platz, direkt nördlich der Porta Nigra (offener Parkplatz)</span>
+          <span class="ph-meta"><strong>Plätze:</strong> ca. 90 &middot; <strong>Tarif:</strong> ca. 2,40 €/h nach Parkschein/Handyparken</span>
+          <span class="ph-hint">Nur die Nordallee überqueren und man steht vor dem Wahrzeichen; oft schnell belegt</span>
+        </li>
+        <li class="ph">
+          <span class="ph-name">Parkhaus am Bahnhof</span>
+          <span class="ph-lage">Am Hauptbahnhof Trier, östlicher Innenstadtrand</span>
+          <span class="ph-meta"><strong>Plätze:</strong> ca. 300 &middot; <strong>Tarif:</strong> ca. 2,00 bis 2,50 €/h je nach Zeit, Tagespauschale beachten</span>
+          <span class="ph-hint">Praktisch für Bahnreisende und Anreise über den Bahnhofsvorplatz; Tarife am Automaten prüfen</span>
+        </li>
+      </ul>
+
+      <h2>Parkzonen und Bewohnerparken in Trier</h2>
+      <p>Am Straßenrand innerhalb des Alleenrings gilt überwiegend gebührenpflichtiges Kurzzeitparken per Parkscheinautomat oder Handyparken (mobiles Parken ca. 2,70 €/h innerhalb des Alleenrings). In den Wohnvierteln rund um die Altstadt gibt es Bewohnerparkzonen, in denen tagsüber nur Anwohner mit gültigem Bewohnerparkausweis dauerhaft stehen dürfen; Besucher benötigen dort einen Parkschein. Für längere Aufenthalte lohnt sich fast immer ein Parkhaus mit Tagesmaximum statt Straßenparken.</p>
+
+      <h2>Kostenlos und günstig parken in Trier</h2>
+      <p>Kostenfrei parken kann man auf den Park-&amp;-Ride-Plätzen Messepark (Moselauen) und Verteilerkreis Trier-Nord sowie auf einigen offenen Plätzen am Rand der Innenstadt, etwa am Palastgarten, Irminenfreihof und in der Feldstraße. Diese offenen Plätze sind allerdings begrenzt und schnell belegt. Wer flexibel ist, parkt kostenlos am Stadtrand und fährt mit dem Bus in die Altstadt. In den kostenpflichtigen Parkhäusern gilt sonn- und feiertags mit ca. 3,60 € (Ostallee ca. 3,40 €) ein sehr günstiges Tagesmaximum.</p>
+
+      <h2>Park and Ride in Trier</h2>
+      <p>Wer dem Verkehr und den Parkgebühren in der Innenstadt entgehen möchte, parkt am Stadtrand und fährt mit Bus oder Bahn ins Zentrum. Diese Park-and-Ride-Anlagen sind praktisch:</p>
+      <ul>
+        <li><strong>P&amp;R Messepark (Moselauen):</strong> Trier-West an der Konrad-Adenauer-Brücke; Mo-Fr 6:30-18:00 mit Linie 13 (alle 15 Min) und Linie 1 (alle 20 Min) in die Innenstadt. 24 Stunden kostenfrei (außer bei Messen/Events); ideal für Tagesausflüge in die Altstadt</li>
+        <li><strong>P&amp;R Verteilerkreis Trier-Nord:</strong> Trier-Nord; über die Haltestelle P&amp;R Trier-Nord (Loebstraße) mit Linie 30 (2-3x/h) und Linie 9 (stündlich) in die Innenstadt. Kostenfrei, geöffnet ca. 6:00-19:00 Uhr</li>
+        <li><strong>Kostenlose Shuttle-Busse an Aktionstagen:</strong> An verkaufsoffenen Sonntagen, Adventssamstagen und Großveranstaltungen kostenlose Sonderbusse von beiden P&amp;R-Plätzen. Entlastet die Innenstadt in der Vorweihnachtszeit und bei Festen; aktuelle Termine bei der SWT beachten</li>
+      </ul>
+
+      <h2>Tipps fürs Parken in Trier</h2>
+      <ul>
+        <li>Dem digitalen Parkleitsystem folgen: erst Richtung Centrum, dann zeigen Anzeigetafeln freie Plätze im nächsten Parkhaus</li>
+        <li>Für Porta Nigra und Altstadt Parkhaus Hauptmarkt oder Parkplatz Porta-Nigra-Platz ansteuern, für die römischen Denkmäler die Tiefgarage Basilika</li>
+        <li>Sonn- und feiertags im Parkhaus parken: Tagesmaximum von nur ca. 3,60 € macht Straßenparken meist unnötig</li>
+        <li>Bei längerem Aufenthalt lohnt das Parkhaus mit Tagesmaximum (Ostallee ca. 15 € Mo-Sa) statt teurem Straßenparken</li>
+        <li>Für entspanntes Sightseeing kostenlos an P&amp;R Messepark parken und mit Bus 13 oder 1 in die Altstadt fahren</li>
+        <li>In allen städtischen Parkhäusern ticketlos parken und bequem per Handy oder Portazon-App bezahlen; Komfort-Parken spart ca. 20 %</li>
+      </ul>
+
+      <div class="pf-cta-box">
+        <div class="pf-cta-head">
+          <span class="pf-badge">RABATT AUTOMATISCH</span>
+          <span class="pf-air">Frankfurt-Hahn &middot; Shuttle inklusive</span>
+        </div>
+        <div class="pf-cta-title">Sie fliegen ab Frankfurt-Hahn? Parkplatz vorab sichern</div>
+        <p class="pf-cta-text">Wer nicht in der Stadt parkt, sondern in den Urlaub startet, spart am Flughafen mit einem vorab gebuchten Stellplatz deutlich gegenüber dem Terminaltarif. Freie Plätze für Ihren Reisezeitraum vergleichen, fester Preis, Shuttle inklusive. Der Rabatt ist im Link hinterlegt und wird bei der Abfrage automatisch angewendet, ganz ohne Gutscheincode. Passende Adressen mit Parkplatz finden Sie in unserer <a href="/hotels/">Hotelübersicht für Trier</a>.</p>
+        <span class="pf-cta"><a href="/r/parken-fliegen/" rel="sponsored nofollow" target="_blank">Preise &amp; freie Plätze prüfen &rarr;</a></span>
+        <p class="pf-cta-note">* Affiliate-Link. Sie buchen zum selben Preis, wir erhalten eine kleine Provision.</p>
+      </div>
+
+      <h2>Häufige Fragen zum Parken in Trier</h2>
+      <div class="faq-item">
+        <h3>Was kostet Parken in Trier?</h3>
+        <p>In den zentralen SWT-Parkhäusern zahlt man ca. 1,20 € je angefangene 30 Minuten, also rund 2,40 € pro Stunde. Das Tagesmaximum liegt montags bis samstags bei ca. 18 € und sonn- sowie feiertags bei nur ca. 3,60 €. Das Parkhaus Ostallee im Alleencenter hat ein günstigeres Tagesmaximum von ca. 15 € (Mo-Sa) bzw. ca. 3,40 € (So). Straßenparken per Handy kostet innerhalb des Alleenrings ca. 2,70 € pro Stunde.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Wo kann man in Trier kostenlos parken?</h3>
+        <p>Kostenfrei sind die Park-&amp;-Ride-Plätze Messepark (Moselauen) und Verteilerkreis Trier-Nord, von denen regelmäßig Busse in die Innenstadt fahren. Zusätzlich gibt es einige begrenzte offene Plätze am Rand der Altstadt, etwa am Palastgarten, Irminenfreihof und in der Feldstraße. Diese sind jedoch oft schnell belegt, sodass sich für längere Besuche meist Park &amp; Ride oder ein Parkhaus lohnt.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Wo parkt man am besten für Porta Nigra und die Innenstadt?</h3>
+        <p>Am nächsten an der Porta Nigra liegen das Parkhaus Hauptmarkt und der offene Parkplatz Porta-Nigra-Platz, von dem aus man nur die Nordallee überqueren muss. Auch das große City-Parkhaus an der Böhmerstraße und das Plaza-Carrée bieten kurze Wege in die Fußgängerzone. Für die römischen Denkmäler wie Kaiserthermen und Konstantinbasilika ist die Tiefgarage Basilika die beste Wahl.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Gibt es in Trier Park &amp; Ride?</h3>
+        <p>Ja. Trier bietet zwei kostenfreie Park-&amp;-Ride-Plätze: den Messepark in den Moselauen an der Konrad-Adenauer-Brücke und den Verteilerkreis Trier-Nord. Vom Messepark fahren montags bis freitags die Buslinien 13 und 1 im 15- bis 20-Minuten-Takt in die Innenstadt, vom Trier-Nord aus die Linien 30 und 9. An Aktionstagen wie Adventssamstagen und verkaufsoffenen Sonntagen gibt es zusätzlich kostenlose Shuttle-Busse.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Wie funktioniert das Bewohnerparken in Trier?</h3>
+        <p>In vielen Wohnvierteln rund um die Trierer Altstadt gibt es Bewohnerparkzonen. Dort dürfen tagsüber nur Anwohner mit gültigem Bewohnerparkausweis dauerhaft parken; Besucher benötigen in diesen Zonen einen Parkschein oder nutzen besser ein Parkhaus. Den Bewohnerparkausweis beantragt man bei der Stadt Trier für die jeweilige Zone am Wohnort.</p>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .pf-wrap { max-width: 900px; margin: 0 auto; padding: 2.5rem 1rem 3rem; }
+  .pf-surface {
+    background: #ffffff; color: #33313f; border-radius: 16px;
+    padding: clamp(20px, 4vw, 40px);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 8px 30px rgba(0,0,0,0.05);
+    font-size: 16.5px; line-height: 1.7;
+  }
+  .pf-surface h1 { color: #20233a; font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.5px; margin: 0 0 1rem; }
+  .pf-surface .pf-lead { font-size: 1.12rem; color: #4a4858; margin: 0 0 1.6rem; }
+  .pf-surface h2 { color: #20233a; font-size: 1.55rem; font-weight: 800; line-height: 1.25; letter-spacing: -0.3px; margin: 2.2rem 0 0.8rem; }
+  .pf-surface h3 { color: #20233a; font-size: 1.2rem; font-weight: 700; line-height: 1.3; margin: 1.5rem 0 0.5rem; }
+  .pf-surface p { margin: 0 0 1.05rem; }
+  .pf-surface ul, .pf-surface ol { margin: 0 0 1.15rem; padding-left: 1.4rem; }
+  .pf-surface li { margin-bottom: 0.5rem; }
+  .pf-surface strong { color: #20233a; font-weight: 700; }
+  .pf-surface a { color: #365DA3; text-decoration: underline; text-underline-offset: 3px; }
+  .pf-surface .ph-list { list-style: none; padding-left: 0; }
+  .pf-surface .ph { display: block; border: 1px solid #e6e6ef; border-radius: 12px; padding: 14px 16px; margin-bottom: 12px; background: #fafafd; }
+  .pf-surface .ph-name { display: block; font-weight: 800; color: #20233a; font-size: 1.05rem; }
+  .pf-surface .ph-lage { display: block; color: #4a4858; margin-top: 2px; }
+  .pf-surface .ph-meta { display: block; color: #33313f; margin-top: 6px; font-size: 0.97rem; }
+  .pf-surface .ph-hint { display: block; color: #6b7280; margin-top: 4px; font-size: 0.94rem; }
+  .pf-cta-box { background: linear-gradient(135deg,#365DA3 0%, #24406f 100%); color:#fff; border-radius:16px; padding:26px 28px; margin: 30px 0; box-shadow:0 10px 28px rgba(54,93,163,0.28); }
+  .pf-cta-head { display:flex; flex-wrap:wrap; gap:6px 14px; align-items:baseline; }
+  .pf-badge { background:#FFA830; color:#020304; font-size:11px; font-weight:800; padding:4px 12px; border-radius:20px; letter-spacing:0.5px; }
+  .pf-air { font-size:13px; opacity:0.9; }
+  .pf-cta-title { font-size:22px; font-weight:800; margin:14px 0 6px; line-height:1.25; color:#fff; }
+  .pf-cta-text { margin:0 0 18px; font-size:15.5px; opacity:0.97; color:#fff; }
+  .pf-cta a { display:inline-block; background:#FFA830; color:#020304; padding:14px 30px; border-radius:10px; font-weight:800; text-decoration:none; font-size:15.5px; }
+  .pf-cta-note { margin:14px 0 0; font-size:12px; opacity:0.8; color:#fff; }
+  .pf-surface .faq-item { border-top: 1px solid #e6e6ef; padding-top: 1.1rem; margin-top: 1.1rem; }
+  .pf-surface .faq-item h3 { margin-top: 0; font-size: 18px; }
+</style>
