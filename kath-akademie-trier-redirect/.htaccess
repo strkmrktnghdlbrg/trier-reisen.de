@@ -1,0 +1,31 @@
+# ============================================================
+# 301-Weiterleitung  kath-akademie-trier.de  ->  trier-reisen.de
+# ============================================================
+# Der bisherige Inhalt von kath-akademie-trier.de ist hinfaellig.
+# Saemtliche eingehenden Backlinks (Root, www, http/https, alte
+# WP-Pfade wie /excel-summe-berechnen/ oder beliebige .html-URLs)
+# werden dauerhaft (301) auf den konsolidierten Fachtagungs-Artikel
+# auf trier-reisen.de umgeleitet. So fliesst der Link-Juice der
+# alten Domain gebuendelt auf eine thematisch passende Zielseite.
+#
+# EINSATZ: Diese Datei in das Document-Root der Domain
+# kath-akademie-trier.de legen (z. B. als Addon-Domain im cPanel).
+# Sie gehoert NICHT in das trier-reisen.de-Verzeichnis.
+# ------------------------------------------------------------
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # HTTPS erzwingen (bereinigt gemischte http-Backlinks)
+  RewriteCond %{HTTPS} off
+  RewriteCond %{HTTP_HOST} ^(www\.)?kath-akademie-trier\.de$ [NC]
+  RewriteRule ^ https://trier-reisen.de/fachtagung-diversity-management-antidiskriminierung/ [R=301,L,NE]
+
+  # Alles Weitere (jeder Pfad, mit oder ohne www) -> Fachtagungs-Artikel
+  RewriteRule ^ https://trier-reisen.de/fachtagung-diversity-management-antidiskriminierung/ [R=301,L,NE]
+</IfModule>
+
+# Fallback ohne mod_rewrite (leitet nur das Root-Dokument um)
+<IfModule !mod_rewrite.c>
+  Redirect 301 / https://trier-reisen.de/fachtagung-diversity-management-antidiskriminierung/
+</IfModule>
