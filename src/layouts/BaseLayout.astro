@@ -2,8 +2,9 @@
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import CookieBanner from "../components/CookieBanner.astro";
 import { city } from "../data/city";
+import { affiliate, stay22Enabled, gygEnabled } from "../data/affiliate";
+import { adsense, adsenseEnabled } from "../data/adsense";
 import { analytics, gtmEnabled } from "../data/analytics";
 import type { Lang } from "../lib/i18n";
 
@@ -73,10 +74,36 @@ const fullTitle = title === city.name ? `${city.name} · ${city.brandName}` : `$
     {altLangPath && <meta property="og:locale:alternate" content={lang === "de" ? "en_US" : "de_DE"} />}
     {ogImage && <meta property="og:image" content={ogImage} />}
 
-    {/*
-      Drittanbieter-Scripts (Stay22, GetYourGuide, AdSense, GTM) werden
-      ausschliesslich nach Einwilligung vom CookieBanner geladen.
-    */}
+    {stay22Enabled && (
+      <script
+        is:inline
+        async
+        src={`https://snippet.stay22.com/allez/script?lmaid=${affiliate.stay22.lmaId}`}
+      ></script>
+    )}
+    {gygEnabled && (
+      <script
+        is:inline
+        async
+        defer
+        src="https://widget.getyourguide.com/dist/pa.umd.production.min.js"
+        data-gyg-partner-id={affiliate.getYourGuide.partnerId}
+      ></script>
+    )}
+    {adsenseEnabled && !noindex && (
+      <script
+        is:inline
+        async
+        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsense.publisherId}`}
+        crossorigin="anonymous"
+      ></script>
+    )}
+    {gtmEnabled && (
+      <script
+        is:inline
+        set:html={`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${analytics.gtmId}');`}
+      />
+    )}
 
     {schemas.map((s) => (
       <script type="application/ld+json" set:html={JSON.stringify(s)} />
@@ -98,6 +125,5 @@ const fullTitle = title === city.name ? `${city.name} · ${city.brandName}` : `$
       <slot />
     </main>
     <Footer lang={lang} />
-    <CookieBanner lang={lang} />
   </body>
 </html>
