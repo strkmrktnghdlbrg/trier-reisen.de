@@ -3,6 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import HueGradient from "../../components/HueGradient.astro";
 import GygActivities from "../../components/GygActivities.astro";
+import AwinOffer from "../../components/AwinOffer.astro";
 import { guides, type Guide } from "../../data/guides";
 import { getGyg, gygCmp } from "../../data/gyg";
 import { city } from "../../data/city";
@@ -44,6 +45,15 @@ const gyg = getGyg(gygKey);
           <p class="text-body text-lg leading-relaxed">{sec.body}</p>
         </section>
       ))}
+    </div>
+
+    <div class="max-w-3xl">
+      <AwinOffer
+        merchants={["deutsche-bahn", "flixbus"]}
+        heading="Anreise nach Trier"
+        intro="Planen Sie die Fahrt in die älteste Stadt Deutschlands: Mit der Bahn direkt zum Hauptbahnhof oder günstig per Fernbus. Tickets bei unseren Reisepartnern buchen."
+        clickref="reiseplaner"
+      />
     </div>
 
     {gyg && (
