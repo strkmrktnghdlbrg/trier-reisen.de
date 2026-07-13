@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import HueGradient from "../../components/HueGradient.astro";
+import ContentImage from "../../components/ContentImage.astro";
 import SightCard from "../../components/SightCard.astro";
 import DistrictCard from "../../components/DistrictCard.astro";
 import EventCard from "../../components/EventCard.astro";
@@ -48,8 +49,15 @@ const gyg = getGyg("home");
         </div>
       </div>
       <div class="lg:col-span-2">
-        <div class="aspect-[4/5] rounded-3xl overflow-hidden">
-          <HueGradient hue={1} label="Porta Nigra" class="w-full h-full" />
+        <div class="aspect-[4/5] rounded-3xl overflow-hidden relative">
+          <ContentImage
+            imgKey="hero:porta-nigra"
+            fallbackHue={1}
+            fallbackLabel="Porta Nigra"
+            width={900}
+            height={1125}
+            imgClass="w-full h-full object-cover"
+          />
         </div>
       </div>
     </div>

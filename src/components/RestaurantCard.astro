@@ -1,5 +1,6 @@
 ---
-import HueGradient from "./HueGradient.astro";
+import ContentImage from "./ContentImage.astro";
+import { restaurantPoolKey } from "../data/images";
 import type { Restaurant } from "../data/restaurants";
 import { getDistrict } from "../data/districts";
 import { detailPath, localize, type Lang } from "../lib/i18n";
@@ -16,7 +17,12 @@ const district = localize("districts", getDistrict(restaurant.district) ?? ({ sl
 
 <a href={detailPath(lang, "restaurants", restaurant.slug)} class="card group block">
   <div class="aspect-[4/3] relative overflow-hidden">
-    <HueGradient hue={restaurant.imageHue} label={restaurant.name} class="absolute inset-0" />
+    <ContentImage
+      imgKey={restaurant.imageKey ?? restaurantPoolKey(restaurant.slug)}
+      fallbackHue={restaurant.imageHue}
+      fallbackLabel={restaurant.name}
+      imgClass="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+    />
     <div class="absolute top-3 left-3">
       <span class="pill bg-white/95 backdrop-blur-sm">{restaurant.cuisine}</span>
     </div>

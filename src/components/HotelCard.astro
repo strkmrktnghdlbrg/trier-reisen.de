@@ -1,5 +1,6 @@
 ---
-import HueGradient from "./HueGradient.astro";
+import ContentImage from "./ContentImage.astro";
+import { hotelPoolKey } from "../data/images";
 import type { Hotel } from "../data/hotels";
 import { getDistrict } from "../data/districts";
 import { detailPath, localize, t, type Lang } from "../lib/i18n";
@@ -18,7 +19,12 @@ const reviewsLabel = lang === "de" ? "Bewertungen" : "reviews";
 
 <a href={detailPath(lang, "hotels", hotel.slug)} class="card group block">
   <div class="aspect-[4/3] relative overflow-hidden">
-    <HueGradient hue={hotel.imageHue} label={hotel.name} class="absolute inset-0" />
+    <ContentImage
+      imgKey={hotel.imageKey ?? hotelPoolKey(hotel.slug)}
+      fallbackHue={hotel.imageHue}
+      fallbackLabel={hotel.name}
+      imgClass="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+    />
     <div class="absolute top-3 left-3">
       <span class="pill bg-white/95 backdrop-blur-sm">{starString}</span>
     </div>

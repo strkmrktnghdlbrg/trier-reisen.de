@@ -4,6 +4,7 @@ import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import SightCard from "../../components/SightCard.astro";
 import RestaurantCard from "../../components/RestaurantCard.astro";
 import HueGradient from "../../components/HueGradient.astro";
+import ContentImage from "../../components/ContentImage.astro";
 import GygActivities from "../../components/GygActivities.astro";
 import { categories, type Category } from "../../data/categories";
 import { sights } from "../../data/sights";
@@ -52,8 +53,15 @@ const gyg = getGyg(gygKey);
           <h1 class="display-xl mb-4">{category.name}</h1>
           <p class="text-body text-lg leading-relaxed max-w-2xl">{category.longDesc}</p>
         </div>
-        <div class="lg:col-span-2 aspect-[16/10] rounded-3xl overflow-hidden">
-          <HueGradient hue={category.hue} label={category.name} class="w-full h-full" />
+        <div class="lg:col-span-2 aspect-[16/10] rounded-3xl overflow-hidden relative">
+          <ContentImage
+            imgKey={`category:${category.slug}`}
+            fallbackHue={category.hue}
+            fallbackLabel={category.name}
+            width={960}
+            height={600}
+            imgClass="w-full h-full object-cover"
+          />
         </div>
       </div>
     </div>

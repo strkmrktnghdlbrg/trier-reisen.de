@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
-import HueGradient from "../../components/HueGradient.astro";
+import ContentImage from "../../components/ContentImage.astro";
 import { articles, articleCategories } from "../../data/articles";
 import { city } from "../../data/city";
 
@@ -31,7 +31,12 @@ const grouped = articleCategories
         {g.items.map((a) => (
           <a href={`/${a.slug}/`} class="card group block">
             <div class="aspect-[16/10] relative overflow-hidden">
-              <HueGradient hue={a.heroHue} label={a.title} class="absolute inset-0" />
+              <ContentImage
+                imgKey={`article:${a.slug}`}
+                fallbackHue={a.heroHue}
+                fallbackLabel={a.title}
+                imgClass="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
             </div>
             <div class="p-5">
               <h3 class="text-xl font-light tracking-tight leading-tight mb-2 group-hover:text-[var(--color-accent)] transition-colors" style="color: var(--color-text); font-family: var(--font-display);">{a.title}</h3>
