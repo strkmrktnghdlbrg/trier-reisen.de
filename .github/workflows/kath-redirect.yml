@@ -1,0 +1,63 @@
+name: Kath-Akademie Redirect (manual)
+
+# Manuell ausloesbar. mode=inspect (Standard) listet nur die Kontostruktur
+# und sucht den kath-akademie-trier.de-Docroot. mode=place legt die catch-all
+# 301-.htaccess NUR dann ab, wenn ein Ordner gefunden wird, dessen Name
+# "kath-akademie" enthaelt (und niemals in einem trier-reisen-Pfad).
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "inspect (nur suchen) oder place (htaccess ablegen)"
+        required: true
+        default: "inspect"
+        type: choice
+        options: [inspect, place]
+
+jobs:
+  kath-redirect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: SSH inspect / place
+        uses: appleboy/ssh-action@v1.0.3
+        env:
+          MODE: ${{ inputs.mode }}
+          HT_B64: "IyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0KIyAzMDEtV2VpdGVybGVpdHVuZyAga2F0aC1ha2FkZW1pZS10cmllci5kZSAgLT4gIHRyaWVyLXJlaXNlbi5kZQojID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PQojIERlciBiaXNoZXJpZ2UgSW5oYWx0IHZvbiBrYXRoLWFrYWRlbWllLXRyaWVyLmRlIGlzdCBoaW5mYWVsbGlnLgojIFNhZW10bGljaGUgZWluZ2VoZW5kZW4gQmFja2xpbmtzIChSb290LCB3d3csIGh0dHAvaHR0cHMsIGFsdGUKIyBXUC1QZmFkZSB3aWUgL2V4Y2VsLXN1bW1lLWJlcmVjaG5lbi8gb2RlciBiZWxpZWJpZ2UgLmh0bWwtVVJMcykKIyB3ZXJkZW4gZGF1ZXJoYWZ0ICgzMDEpIGF1ZiBkZW4ga29uc29saWRpZXJ0ZW4gRmFjaHRhZ3VuZ3MtQXJ0aWtlbAojIGF1ZiB0cmllci1yZWlzZW4uZGUgdW1nZWxlaXRldC4gU28gZmxpZXNzdCBkZXIgTGluay1KdWljZSBkZXIKIyBhbHRlbiBEb21haW4gZ2VidWVuZGVsdCBhdWYgZWluZSB0aGVtYXRpc2NoIHBhc3NlbmRlIFppZWxzZWl0ZS4KIwojIEVJTlNBVFo6IERpZXNlIERhdGVpIGluIGRhcyBEb2N1bWVudC1Sb290IGRlciBEb21haW4KIyBrYXRoLWFrYWRlbWllLXRyaWVyLmRlIGxlZ2VuICh6LiBCLiBhbHMgQWRkb24tRG9tYWluIGltIGNQYW5lbCkuCiMgU2llIGdlaG9lcnQgTklDSFQgaW4gZGFzIHRyaWVyLXJlaXNlbi5kZS1WZXJ6ZWljaG5pcy4KIyAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KCjxJZk1vZHVsZSBtb2RfcmV3cml0ZS5jPgogIFJld3JpdGVFbmdpbmUgT24KCiAgIyBIVFRQUyBlcnp3aW5nZW4gKGJlcmVpbmlndCBnZW1pc2NodGUgaHR0cC1CYWNrbGlua3MpCiAgUmV3cml0ZUNvbmQgJXtIVFRQU30gb2ZmCiAgUmV3cml0ZUNvbmQgJXtIVFRQX0hPU1R9IF4od3d3XC4pP2thdGgtYWthZGVtaWUtdHJpZXJcLmRlJCBbTkNdCiAgUmV3cml0ZVJ1bGUgXiBodHRwczovL3RyaWVyLXJlaXNlbi5kZS9mYWNodGFndW5nLWRpdmVyc2l0eS1tYW5hZ2VtZW50LWFudGlkaXNrcmltaW5pZXJ1bmcvIFtSPTMwMSxMLE5FXQoKICAjIEFsbGVzIFdlaXRlcmUgKGplZGVyIFBmYWQsIG1pdCBvZGVyIG9obmUgd3d3KSAtPiBGYWNodGFndW5ncy1BcnRpa2VsCiAgUmV3cml0ZVJ1bGUgXiBodHRwczovL3RyaWVyLXJlaXNlbi5kZS9mYWNodGFndW5nLWRpdmVyc2l0eS1tYW5hZ2VtZW50LWFudGlkaXNrcmltaW5pZXJ1bmcvIFtSPTMwMSxMLE5FXQo8L0lmTW9kdWxlPgoKIyBGYWxsYmFjayBvaG5lIG1vZF9yZXdyaXRlIChsZWl0ZXQgbnVyIGRhcyBSb290LURva3VtZW50IHVtKQo8SWZNb2R1bGUgIW1vZF9yZXdyaXRlLmM+CiAgUmVkaXJlY3QgMzAxIC8gaHR0cHM6Ly90cmllci1yZWlzZW4uZGUvZmFjaHRhZ3VuZy1kaXZlcnNpdHktbWFuYWdlbWVudC1hbnRpZGlza3JpbWluaWVydW5nLwo8L0lmTW9kdWxlPgo="
+        with:
+          host: nl1-ts109.a2hosting.com
+          username: ${{ secrets.CPANEL_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          envs: MODE,HT_B64
+          script: |
+            set -e
+            echo "===== MODE: $MODE ====="
+            echo "===== HOME ($HOME) ====="
+            ls -la "$HOME" | grep '^d' || true
+            echo "===== public_html (eine Ebene) ====="
+            ls -la "$HOME/public_html" 2>/dev/null | grep '^d' || echo "(kein public_html)"
+            echo "===== Suche nach *kath* Verzeichnissen (max Tiefe 3) ====="
+            find "$HOME" -maxdepth 3 -type d -iname '*kath*' 2>/dev/null || true
+            echo "===== cPanel Addon-/Docroot-Hinweise ====="
+            grep -riE 'kath-akademie' "$HOME/.cpanel" 2>/dev/null | head -20 || echo "(keine .cpanel-Treffer)"
+
+            # Kandidaten-Docroot bestimmen: erster *kath-akademie* Ordner, der NICHT
+            # zu trier-reisen gehoert.
+            CAND="$(find "$HOME" -maxdepth 3 -type d -iname '*kath-akademie*' 2>/dev/null | grep -vi 'trier-reisen' | head -1 || true)"
+            echo "===== Kandidat-Docroot: '${CAND:-<keiner>}' ====="
+
+            if [ "$MODE" = "place" ]; then
+              if [ -z "$CAND" ]; then
+                echo "ABBRUCH: Kein kath-akademie-Docroot gefunden. Es wurde NICHTS geschrieben."
+                exit 1
+              fi
+              case "$CAND" in
+                *trier-reisen*) echo "SICHERHEITS-ABBRUCH: Pfad enthaelt trier-reisen. Kein Schreiben."; exit 1 ;;
+              esac
+              echo "$HT_B64" | base64 -d > "$CAND/.htaccess"
+              chmod 644 "$CAND/.htaccess"
+              echo "===== GESCHRIEBEN nach $CAND/.htaccess ====="
+              cat "$CAND/.htaccess"
+            else
+              echo "Inspect-Modus: keine Aenderung vorgenommen."
+            fi
