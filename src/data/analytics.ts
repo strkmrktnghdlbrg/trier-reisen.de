@@ -1,6 +1,6 @@
 export const analytics = {
   gtmId: "GTM-PM6JDSW4",
-  ga4Id: "",
+  ga4Id: "G-HGVKGWF37N",
   enabled: true,
 };
 
