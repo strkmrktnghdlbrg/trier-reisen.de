@@ -66,4 +66,14 @@ jobs:
               cat "$CAND/.htaccess"
             else
               echo "Inspect-Modus: keine Aenderung vorgenommen."
+              if [ -n "$CAND" ]; then
+                echo "===== Inhalt $CAND ====="
+                ls -la "$CAND"
+                if [ -f "$CAND/.htaccess" ]; then
+                  echo "===== AKTUELLE $CAND/.htaccess ====="
+                  cat "$CAND/.htaccess"
+                else
+                  echo "(noch keine .htaccess im Docroot)"
+                fi
+              fi
             fi
