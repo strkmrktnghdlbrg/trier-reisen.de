@@ -32,15 +32,6 @@ jobs:
           script: |
             set -e
             echo "===== MODE: $MODE ====="
-            echo "===== HOME ($HOME) ====="
-            ls -la "$HOME" | grep '^d' || true
-            echo "===== public_html (eine Ebene) ====="
-            ls -la "$HOME/public_html" 2>/dev/null | grep '^d' || echo "(kein public_html)"
-            echo "===== Suche nach *kath* Verzeichnissen (max Tiefe 3) ====="
-            find "$HOME" -maxdepth 3 -type d -iname '*kath*' 2>/dev/null || true
-            echo "===== cPanel Addon-/Docroot-Hinweise ====="
-            grep -riE 'kath-akademie' "$HOME/.cpanel" 2>/dev/null | head -20 || echo "(keine .cpanel-Treffer)"
-
             # Kandidaten-Docroot bestimmen: erster *kath-akademie* Ordner, der NICHT
             # zu trier-reisen gehoert.
             CAND="$(find "$HOME" -maxdepth 3 -type d -iname '*kath-akademie*' 2>/dev/null | grep -vi 'trier-reisen' | head -1 || true)"
