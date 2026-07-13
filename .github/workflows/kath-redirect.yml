@@ -54,6 +54,12 @@ jobs:
               case "$CAND" in
                 *trier-reisen*) echo "SICHERHEITS-ABBRUCH: Pfad enthaelt trier-reisen. Kein Schreiben."; exit 1 ;;
               esac
+              echo "===== Inhalt Ziel-Docroot VOR dem Schreiben ====="
+              ls -la "$CAND"
+              if [ -f "$CAND/.htaccess" ]; then
+                echo "===== Vorhandene .htaccess -> Backup .htaccess.bak-kath ====="
+                cp -p "$CAND/.htaccess" "$CAND/.htaccess.bak-kath"
+              fi
               echo "$HT_B64" | base64 -d > "$CAND/.htaccess"
               chmod 644 "$CAND/.htaccess"
               echo "===== GESCHRIEBEN nach $CAND/.htaccess ====="
