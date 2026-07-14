@@ -29,7 +29,7 @@ const related = sights
 const cats = src.categories.map((c) => getCategory(c)).filter(Boolean).map((c) => localize("categories", c as any, lang));
 const priceLabel = sight.priceFrom === null ? t(lang, "sections.free") : `${t(lang, "sections.priceFrom")} ${sight.priceFrom} €`;
 const gygKey = `sight:${sight.slug}`;
-const gyg = getGyg(gygKey);
+const gyg = getGyg(gygKey, "en");
 const moreInfo: string[] = (sightEnrichmentsByLang(lang) ?? {})[sight.slug] ?? [];
 ---
 
@@ -122,10 +122,10 @@ const moreInfo: string[] = (sightEnrichmentsByLang(lang) ?? {})[sight.slug] ?? [
     </div>
 
     {gyg && (
-      <GygActivities q={gyg.q} heading={gyg.heading} intro={gyg.intro} count={gyg.count} cmp={gygCmp(gygKey)} />
+      <GygActivities q={gyg.q} heading={gyg.heading} intro={gyg.intro} count={gyg.count} cmp={gygCmp(gygKey)} lang="en" />
     )}
 
-    <Stay22NearbyHotels lat={src.coordinates[0]} lng={src.coordinates[1]} near={sight.name} radius={1500} limit={4} />
+    <Stay22NearbyHotels lat={src.coordinates[0]} lng={src.coordinates[1]} near={sight.name} radius={1500} limit={4} lang="en" />
 
     {related.length > 0 && (
       <section class="section">

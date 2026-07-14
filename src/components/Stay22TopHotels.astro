@@ -15,15 +15,27 @@ interface Props {
   title?: string;
   lead?: string;
   minGuestRating?: number;
+  lang?: "de" | "en";
 }
 
 const {
   address = `${city.name}, Germany`,
   limit = 8,
-  title = `Aktuell bestbewertete Hotels in ${city.name}`,
-  lead = "Live von Booking.com - aktuelle Bewertungen und Preise. Aktualisiert beim letzten Build.",
   minGuestRating = 8.0,
+  lang = "de",
 } = Astro.props;
+
+const title =
+  Astro.props.title ??
+  (lang === "en"
+    ? `Top-rated hotels in ${city.name} right now`
+    : `Aktuell bestbewertete Hotels in ${city.name}`);
+const lead =
+  Astro.props.lead ??
+  (lang === "en"
+    ? "Live from Booking.com - current ratings and prices. Updated at the last build."
+    : "Live von Booking.com - aktuelle Bewertungen und Preise. Aktualisiert beim letzten Build.");
+const eyebrowLabel = lang === "en" ? "Live from Stay22" : "Live von Stay22";
 
 let hotels: Stay22Accommodation[] | null = null;
 try {
@@ -33,7 +45,11 @@ try {
 }
 
 const visible = hotels && hotels.length > 0 ? hotels.slice(0, limit) : [];
-const buildTime = new Date().toLocaleDateString("de-DE", { year: "numeric", month: "long", day: "numeric" });
+const buildTime = new Date().toLocaleDateString(lang === "en" ? "en-US" : "de-DE", { year: "numeric", month: "long", day: "numeric" });
+const disclaimer =
+  lang === "en"
+    ? `* Sponsored - booking runs via Booking.com through Stay22. As of: ${buildTime}. Prices and availability change daily.`
+    : `* Sponsored - Buchung laeuft ueber Booking.com via Stay22. Stand: ${buildTime}. Preise und Verfuegbarkeit aendern sich taeglich.`;
 
 if (visible.length > 0) {
   Astro.response.headers.set("Cache-Control", "public, max-age=300, s-maxage=3600, stale-while-revalidate=86400");
@@ -43,7 +59,7 @@ if (visible.length > 0) {
 {visible.length > 0 && (
   <section class="section">
     <div class="mb-6 max-w-2xl">
-      <p class="eyebrow mb-2">Live von Stay22</p>
+      <p class="eyebrow mb-2">{eyebrowLabel}</p>
       <h2 class="display mb-2">{title}</h2>
       <p class="text-body">{lead}</p>
     </div>
@@ -53,7 +69,7 @@ if (visible.length > 0) {
     </div>
 
     <p class="text-[11px] mt-4 leading-relaxed" style="color: var(--color-text-muted);">
-      * Sponsored - Buchung laeuft ueber Booking.com via Stay22. Stand: {buildTime}. Preise und Verfuegbarkeit aendern sich taeglich.
+      {disclaimer}
     </p>
   </section>
 )}

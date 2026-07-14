@@ -99,5 +99,16 @@ export const gygPlacements: Record<string, GygPlacement> = {
 /** Kampagnen-Tag (data-gyg-cmp) aus dem Key ableiten, z. B. "sight:porta-nigra" -> "sight-porta-nigra". */
 export const gygCmp = (key: string) => key.replace(/:/g, "-");
 
-/** Platzierung zum Key holen (null, wenn kein Eintrag existiert). */
-export const getGyg = (key: string): GygPlacement | null => gygPlacements[key] ?? null;
+import enGyg from "./i18n/en/gyg.json";
+
+/**
+ * Platzierung zum Key holen (null, wenn kein Eintrag existiert).
+ * Bei lang="en" werden heading/intro aus der englischen Overlay ueberlagert
+ * (q, count, relevant bleiben unveraendert).
+ */
+export const getGyg = (key: string, lang: "de" | "en" = "de"): GygPlacement | null => {
+  const base = gygPlacements[key] ?? null;
+  if (!base || lang === "de") return base;
+  const tr = (enGyg as Record<string, { heading: string; intro: string }>)[key];
+  return tr ? { ...base, ...tr } : base;
+};

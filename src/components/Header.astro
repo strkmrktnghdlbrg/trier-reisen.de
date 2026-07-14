@@ -130,8 +130,8 @@ const switcherHref = altLangPath ?? (otherLang === "de" ? "/" : "/en/");
       <div class="mt-6 pt-6 border-t" style="border-color: var(--color-border);">
         <p class="px-4 mb-2 text-xs uppercase tracking-widest font-medium" style="color: var(--color-text-muted);">Service</p>
         <ul class="space-y-1">
-          <li><a href="/impressum/" class="block px-4 py-2.5 rounded-xl text-sm transition-colors hover:bg-[var(--color-surface)]" style="color: var(--color-text-muted);">Impressum</a></li>
-          <li><a href="/datenschutz/" class="block px-4 py-2.5 rounded-xl text-sm transition-colors hover:bg-[var(--color-surface)]" style="color: var(--color-text-muted);">Datenschutz</a></li>
+          <li><a href={sectionPath(lang, "imprint")} class="block px-4 py-2.5 rounded-xl text-sm transition-colors hover:bg-[var(--color-surface)]" style="color: var(--color-text-muted);">{t(lang, "footer.imprint")}</a></li>
+          <li><a href={sectionPath(lang, "privacy")} class="block px-4 py-2.5 rounded-xl text-sm transition-colors hover:bg-[var(--color-surface)]" style="color: var(--color-text-muted);">{t(lang, "footer.privacy")}</a></li>
         </ul>
       </div>
     </nav>

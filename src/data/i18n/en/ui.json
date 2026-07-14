@@ -39,7 +39,7 @@
   },
   "cookieBanner": {
     "title": "Cookies & tracking",
-    "body": "We use cookies and third-party services (Stay22 for hotel prices, GetYourGuide for tours, Google Analytics, Google AdSense) to load content, analyse usage and show relevant offers. Choose what you want to allow. Details in our privacy policy.",
+    "body": "We use cookies and third-party services (Stay22 for hotel prices, GetYourGuide for tours, Google Analytics, Google AdSense) to load content, analyze usage and show relevant offers. Choose what you want to allow. Details in our privacy policy.",
     "acceptAll": "Accept all",
     "essentialOnly": "Essential only",
     "privacyLinkText": "privacy policy"
@@ -75,18 +75,18 @@
     "heroLine1": "Trier,",
     "heroAccent": "ancient grandeur",
     "heroLine3": "on the Moselle.",
-    "heroBody": "From Porta Nigra (the Black Gate) to Trier Cathedral, from the Roman Amphitheatre to the Olewig (a wine village within Trier) vineyards. Trier-Reisen is your city guide for UNESCO World Heritage, Mosel wine and Roman heritage.",
+    "heroBody": "From Porta Nigra (the Black Gate) to Trier Cathedral, from the Roman Amphitheater to the Olewig (a wine village within Trier) vineyards. Trier-Reisen is your city guide for UNESCO World Heritage, Mosel wine and Roman heritage.",
     "ctaSights": "Sights",
     "ctaPlanner": "Travel planner",
     "unescoEyebrow": "UNESCO World Heritage",
     "unescoTitle": "The essential tour",
-    "unescoBody": "Eight UNESCO sites within a few square kilometres. These six landmarks anchor every trip to Trier.",
+    "unescoBody": "Eight UNESCO sites within a few square kilometers. These six landmarks anchor every trip to Trier.",
     "allSights": "All sights",
-    "districtsTitle": "Trier by neighbourhood",
+    "districtsTitle": "Trier by neighborhood",
     "districtsBody": "From the UNESCO old town to the wine village of Olewig, from the Moselle promenade to the university district of Kürenz.",
     "themesTitle": "Trier by interest",
     "upcomingTitle": "Coming up",
-    "upcomingBody": "Antikenfestspiele (Roman theatre festival), Olewiger Weinfest (wine festival) and the Christmas market: Trier's major events."
+    "upcomingBody": "Antikenfestspiele (Roman theater festival), Olewiger Weinfest (wine festival) and the Christmas market: Trier's major events."
   },
   "breadcrumb": {
     "home": "Home",

@@ -13,9 +13,26 @@ interface Props {
   near: string;
   radius?: number;
   limit?: number;
+  lang?: "de" | "en";
 }
 
-const { lat, lng, near, radius = 1500, limit = 4 } = Astro.props;
+const { lat, lng, near, radius = 1500, limit = 4, lang = "de" } = Astro.props;
+
+const roundedRadius = Math.round(radius / 100) * 100;
+const labels =
+  lang === "en"
+    ? {
+        eyebrow: "Live from Stay22",
+        heading: `Hotels near ${near}`,
+        body: `Current prices and availability. All hotels within ${roundedRadius} m.`,
+        disclaimer: "* Sponsored - booking via Booking.com through the Stay22 affiliate.",
+      }
+    : {
+        eyebrow: "Live von Stay22",
+        heading: `Hotels in der Naehe von ${near}`,
+        body: `Aktuelle Preise und Verfuegbarkeit. Alle Hotels im Umkreis von ${roundedRadius} m.`,
+        disclaimer: "* Sponsored - Buchung ueber Booking.com via Stay22-Affiliate.",
+      };
 
 let hotels: Stay22Accommodation[] | null = null;
 try {
@@ -30,11 +47,9 @@ const visible = hotels && hotels.length > 0 ? hotels.slice(0, limit) : [];
 {visible.length > 0 && (
   <section class="my-12">
     <div class="mb-5">
-      <p class="eyebrow mb-2">Live von Stay22</p>
-      <h2 class="display mb-2">Hotels in der Naehe von {near}</h2>
-      <p class="text-body">
-        Aktuelle Preise und Verfuegbarkeit. Alle Hotels im Umkreis von {Math.round(radius / 100) * 100} m.
-      </p>
+      <p class="eyebrow mb-2">{labels.eyebrow}</p>
+      <h2 class="display mb-2">{labels.heading}</h2>
+      <p class="text-body">{labels.body}</p>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -42,7 +57,7 @@ const visible = hotels && hotels.length > 0 ? hotels.slice(0, limit) : [];
     </div>
 
     <p class="text-[11px] mt-3" style="color: var(--color-text-muted);">
-      * Sponsored - Buchung ueber Booking.com via Stay22-Affiliate.
+      {labels.disclaimer}
     </p>
   </section>
 )}

@@ -19,7 +19,7 @@ const { guide: src } = Astro.props;
 const lang = "en" as const;
 const guide = localize("guides", src as any, lang) as any;
 const gygKey = `guide:${src.slug}`;
-const gyg = getGyg(gygKey);
+const gyg = getGyg(gygKey, "en");
 ---
 
 <BaseLayout
@@ -67,11 +67,12 @@ const gyg = getGyg(gygKey);
         heading="Getting to Trier"
         intro="Plan your trip to Germany's oldest city: by train straight to the main station or by long-distance coach on a budget. Book your tickets with our travel partners."
         clickref="travel-planner-en"
+        lang="en"
       />
     </div>
 
     {gyg && (
-      <GygActivities q={gyg.q} heading={gyg.heading} intro={gyg.intro} count={gyg.count} cmp={gygCmp(gygKey)} />
+      <GygActivities q={gyg.q} heading={gyg.heading} intro={gyg.intro} count={gyg.count} cmp={gygCmp(gygKey)} lang="en" />
     )}
   </article>
 </BaseLayout>

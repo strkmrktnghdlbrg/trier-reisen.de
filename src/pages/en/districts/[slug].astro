@@ -29,7 +29,7 @@ const districtSights = sights.filter((s) => s.district === src.slug).map((s) => 
 const districtHotels = hotels.filter((h) => h.district === src.slug).map((h) => localize("hotels", h, lang));
 const districtRestaurants = restaurants.filter((r) => r.district === src.slug).map((r) => localize("restaurants", r, lang));
 const gygKey = `district:${src.slug}`;
-const gyg = getGyg(gygKey);
+const gyg = getGyg(gygKey, "en");
 ---
 
 <BaseLayout
@@ -95,10 +95,10 @@ const gyg = getGyg(gygKey);
 
     <div class="container-page">
       {gyg && (
-        <GygActivities q={gyg.q} heading={gyg.heading} intro={gyg.intro} count={gyg.count} cmp={gygCmp(gygKey)} />
+        <GygActivities q={gyg.q} heading={gyg.heading} intro={gyg.intro} count={gyg.count} cmp={gygCmp(gygKey)} lang="en" />
       )}
 
-      <Stay22NearbyHotels lat={src.coordinates[0]} lng={src.coordinates[1]} near={district.name} radius={2000} limit={4} />
+      <Stay22NearbyHotels lat={src.coordinates[0]} lng={src.coordinates[1]} near={district.name} radius={2000} limit={4} lang="en" />
 
       <Stay22Map lat={src.coordinates[0]} lng={src.coordinates[1]} zoom={14} title={`Hotels in ${district.name} - live map`} lead="Live prices via Booking. Zoom in, tap a pin, book." />
     </div>

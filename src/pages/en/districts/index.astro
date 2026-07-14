@@ -11,7 +11,7 @@ import { breadcrumbSchema } from "../../../lib/schema";
 
 const lang = "en" as const;
 const localized = districts.map((d) => localize("districts", d, lang));
-const gyg = getGyg("index:bezirke");
+const gyg = getGyg("index:bezirke", "en");
 ---
 
 <BaseLayout
@@ -35,7 +35,7 @@ const gyg = getGyg("index:bezirke");
 
   {gyg && (
     <div class="container-page">
-      <GygActivities q={gyg.q} heading={gyg.heading} intro={gyg.intro} count={gyg.count} cmp={gygCmp("index:bezirke")} />
+      <GygActivities q={gyg.q} heading={gyg.heading} intro={gyg.intro} count={gyg.count} cmp={gygCmp("index:bezirke")} lang="en" />
     </div>
   )}
 </BaseLayout>

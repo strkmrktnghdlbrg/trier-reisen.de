@@ -23,7 +23,7 @@ const featuredSights = sights.filter((s) => s.unesco).slice(0, 6).map((s) => loc
 const featuredDistricts = districts.slice(0, 4).map((d) => localize("districts", d, lang));
 const featuredCategories = categories.slice(0, 6).map((c) => localize("categories", c, lang));
 const upcomingEvents = realEvents.filter(isUpcoming).slice(0, 3).map((e) => localize("events", e as any, lang) as any);
-const gyg = getGyg("home");
+const gyg = getGyg("home", "en");
 ---
 
 <BaseLayout
@@ -79,12 +79,12 @@ const gyg = getGyg("home");
 
   {gyg && (
     <section class="container-page">
-      <GygActivities q={gyg.q} heading={gyg.heading} intro={gyg.intro} count={gyg.count} cmp={gygCmp("home")} />
+      <GygActivities q={gyg.q} heading={gyg.heading} intro={gyg.intro} count={gyg.count} cmp={gygCmp("home")} lang="en" />
     </section>
   )}
 
   <section class="container-page">
-    <Stay22TopHotels limit={8} />
+    <Stay22TopHotels limit={8} lang="en" />
   </section>
 
   <section class="container-page section">

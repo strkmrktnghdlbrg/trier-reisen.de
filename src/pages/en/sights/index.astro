@@ -13,7 +13,7 @@ const lang = "en" as const;
 const localized = sights.map((s) => localize("sights", s, lang));
 const unesco = localized.filter((s) => s.unesco);
 const otherSights = localized.filter((s) => !s.unesco);
-const gyg = getGyg("index:sehenswuerdigkeiten");
+const gyg = getGyg("index:sehenswuerdigkeiten", "en");
 ---
 
 <BaseLayout
@@ -28,7 +28,7 @@ const gyg = getGyg("index:sehenswuerdigkeiten");
     <p class="eyebrow mb-3">{sights.length} {t(lang, "breadcrumb.sights")}</p>
     <h1 class="display-xl">{t(lang, "nav.sights")} in {city.name}</h1>
     <p class="text-body mt-4 max-w-2xl">
-      Trier packs 2,000 years of history into a few square kilometres. Eight UNESCO sites, seven major churches, five world-class museums. Here is every landmark, sorted by must-see and depth.
+      Trier packs 2,000 years of history into a few square kilometers. Eight UNESCO sites, seven major churches, five world-class museums. Here is every landmark, sorted by must-see and depth.
     </p>
   </section>
 
@@ -49,7 +49,7 @@ const gyg = getGyg("index:sehenswuerdigkeiten");
 
   {gyg && (
     <div class="container-page">
-      <GygActivities q={gyg.q} heading={gyg.heading} intro={gyg.intro} count={gyg.count} cmp={gygCmp("index:sehenswuerdigkeiten")} />
+      <GygActivities q={gyg.q} heading={gyg.heading} intro={gyg.intro} count={gyg.count} cmp={gygCmp("index:sehenswuerdigkeiten")} lang="en" />
     </div>
   )}
 </BaseLayout>

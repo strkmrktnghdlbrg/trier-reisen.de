@@ -11,7 +11,7 @@ import { breadcrumbSchema } from "../../../lib/schema";
 
 const lang = "en" as const;
 const localized = categories.map((c) => localize("categories", c, lang));
-const gyg = getGyg("index:kategorien");
+const gyg = getGyg("index:kategorien", "en");
 ---
 
 <BaseLayout
@@ -24,7 +24,7 @@ const gyg = getGyg("index:kategorien");
   <section class="container-page py-12">
     <Breadcrumbs items={[{ href: "/en/", label: city.name }, { label: t(lang, "breadcrumb.themes") }]} />
     <h1 class="display-xl">Trier by interest</h1>
-    <p class="text-body mt-4 max-w-2xl">Not every Trier trip starts at the Hauptmarkt. Wine travellers start in Olewig, families at the Toy Museum, architecture fans at the Basilica of Constantine.</p>
+    <p class="text-body mt-4 max-w-2xl">Not every Trier trip starts at the Hauptmarkt. Wine travelers start in Olewig, families at the Toy Museum, architecture fans at the Basilica of Constantine.</p>
   </section>
 
   <section class="container-page section pt-0">
@@ -35,7 +35,7 @@ const gyg = getGyg("index:kategorien");
 
   {gyg && (
     <div class="container-page">
-      <GygActivities q={gyg.q} heading={gyg.heading} intro={gyg.intro} count={gyg.count} cmp={gygCmp("index:kategorien")} />
+      <GygActivities q={gyg.q} heading={gyg.heading} intro={gyg.intro} count={gyg.count} cmp={gygCmp("index:kategorien")} lang="en" />
     </div>
   )}
 </BaseLayout>

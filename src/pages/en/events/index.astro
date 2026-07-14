@@ -14,7 +14,7 @@ const upcoming = [...realEvents]
   .filter(isUpcoming)
   .sort((a, b) => a.checkin.localeCompare(b.checkin))
   .map((e) => localize("events", e as any, lang) as any);
-const gyg = getGyg("index:events");
+const gyg = getGyg("index:events", "en");
 ---
 
 <BaseLayout
@@ -44,7 +44,7 @@ const gyg = getGyg("index:events");
 
   {gyg && (
     <div class="container-page">
-      <GygActivities q={gyg.q} heading={gyg.heading} intro={gyg.intro} count={gyg.count} cmp={gygCmp("index:events")} />
+      <GygActivities q={gyg.q} heading={gyg.heading} intro={gyg.intro} count={gyg.count} cmp={gygCmp("index:events")} lang="en" />
     </div>
   )}
 </BaseLayout>

@@ -29,6 +29,8 @@ interface Props {
   widget?: "activities" | "auto" | "city";
   /** Zusaetzliche Klassen fuer den aeusseren <section>-Wrapper. */
   class?: string;
+  /** Sprache der aktuellen Seite (steuert Labels + GYG-Locale). */
+  lang?: "de" | "en";
 }
 
 const {
@@ -39,16 +41,23 @@ const {
   cmp = "trier-reisen",
   widget = "activities",
   class: extraClass = "",
+  lang = "de",
 } = Astro.props;
 
 const { partnerId, locale } = affiliate.getYourGuide;
+const gygLocale = lang === "en" ? "en-US" : locale;
+const eyebrowLabel = lang === "en" ? "Experiences by GetYourGuide" : "Erlebnisse von GetYourGuide";
+const disclaimer =
+  lang === "en"
+    ? "* Affiliate link. Booking via GetYourGuide at no extra cost to you; we earn a commission."
+    : "* Affiliate-Link. Buchung über GetYourGuide, für dich keine Mehrkosten, wir erhalten eine Provision.";
 const frameHref = "https://widget.getyourguide.com/default/activities.frame";
 ---
 
 {gygEnabled && (
   <section class={`gyg-widget-host my-12 ${extraClass}`}>
     <div class="mb-5">
-      <p class="eyebrow mb-2">Erlebnisse von GetYourGuide</p>
+      <p class="eyebrow mb-2">{eyebrowLabel}</p>
       <h2 class="display mb-2">{heading}</h2>
       {intro && <p class="text-body max-w-2xl">{intro}</p>}
     </div>
@@ -57,7 +66,7 @@ const frameHref = "https://widget.getyourguide.com/default/activities.frame";
       data-gyg-widget={widget}
       data-gyg-href={frameHref}
       data-gyg-partner-id={partnerId}
-      data-gyg-locale-code={locale}
+      data-gyg-locale-code={gygLocale}
       data-gyg-number-of-items={count}
       data-gyg-currency="EUR"
       data-gyg-cmp={cmp}
@@ -66,7 +75,7 @@ const frameHref = "https://widget.getyourguide.com/default/activities.frame";
     </div>
 
     <p class="text-[11px] mt-3" style="color: var(--color-text-muted);">
-      * Affiliate-Link. Buchung über GetYourGuide, für dich keine Mehrkosten, wir erhalten eine Provision.
+      {disclaimer}
     </p>
   </section>
 )}

@@ -21,7 +21,7 @@ const lang = "en" as const;
 const event = localize("events", src as any, lang) as any;
 
 const gygKey = `event:${src.slug}`;
-const gyg = getGyg(gygKey);
+const gyg = getGyg(gygKey, "en");
 const upcoming = isUpcoming(src);
 const lmaId = affiliate.stay22.lmaId;
 
@@ -91,7 +91,7 @@ const buildTime = new Date().toLocaleDateString("en-GB", { year: "numeric", mont
     </div>
 
     {gyg && (
-      <GygActivities q={gyg.q} heading={gyg.heading} intro={gyg.intro} count={gyg.count} cmp={gygCmp(gygKey)} />
+      <GygActivities q={gyg.q} heading={gyg.heading} intro={gyg.intro} count={gyg.count} cmp={gygCmp(gygKey)} lang="en" />
     )}
 
     {!upcoming && (

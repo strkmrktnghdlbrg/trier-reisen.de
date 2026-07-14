@@ -11,7 +11,7 @@ import { city } from "../../../data/city";
 
 const lang = "en" as const;
 const localized = guides.map((g) => localize("guides", g as any, lang) as any);
-const gyg = getGyg("index:reiseplaner");
+const gyg = getGyg("index:reiseplaner", "en");
 ---
 
 <BaseLayout
@@ -25,7 +25,7 @@ const gyg = getGyg("index:reiseplaner");
     <Breadcrumbs items={[{ href: "/en/", label: city.name }, { label: t(lang, "breadcrumb.travelPlanner") }]} />
     <p class="eyebrow mb-3">{guides.length} planners</p>
     <h1 class="display-xl">Travel planner {city.name}</h1>
-    <p class="text-body mt-4 max-w-2xl">Three curated Trier itineraries, from the weekend must-do via the family programme to the rainy-day plan.</p>
+    <p class="text-body mt-4 max-w-2xl">Three curated Trier itineraries, from the weekend must-do via the family program to the rainy-day plan.</p>
   </section>
 
   <section class="container-page section pt-0">
@@ -47,7 +47,7 @@ const gyg = getGyg("index:reiseplaner");
 
   {gyg && (
     <div class="container-page">
-      <GygActivities q={gyg.q} heading={gyg.heading} intro={gyg.intro} count={gyg.count} cmp={gygCmp("index:reiseplaner")} />
+      <GygActivities q={gyg.q} heading={gyg.heading} intro={gyg.intro} count={gyg.count} cmp={gygCmp("index:reiseplaner")} lang="en" />
     </div>
   )}
 </BaseLayout>
