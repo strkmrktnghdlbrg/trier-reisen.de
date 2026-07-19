@@ -44,8 +44,11 @@
   /* === Shadows (Hairline only) === */
   --shadow-card: rgba(0, 0, 0, 0.4) 0px 0px 1px, rgba(0, 0, 0, 0.04) 0px 2px 4px;
   --shadow-inset: rgba(0, 0, 0, 0.075) 0px 0px 0px 0.5px inset;
+}
 
+:root {
   /* === Bezirks-Hues (Trier Sandstein + Mosel) === */
+  /* Nur per Runtime-Inline-Style referenziert, daher ausserhalb von @theme (Tailwind-4-Pruning) */
   --hue-1: linear-gradient(135deg, #fff1ec 0%, #ffbb9c 50%, #ff4704 100%);
   --hue-2: linear-gradient(135deg, #f0f9ff 0%, #7dd3fc 50%, #0447ff 100%);
   --hue-3: linear-gradient(135deg, #fef3c7 0%, #fbbf24 50%, #b45309 100%);
