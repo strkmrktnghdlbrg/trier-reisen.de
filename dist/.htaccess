@@ -9,6 +9,20 @@ RewriteRule ^r/mediherz(-gutscheine)?/?$ https://www.awin1.com/cread.php?s=22692
 RewriteRule ^r/medpex(-zuzahlungsfrei)?/?$ https://www.awin1.com/awclick.php?gid=447437&mid=36320&awinaffid=514869&linkid=3237938&clickref=trier-reisen.de [R=302,L,NE]
 RewriteRule ^r/fliegende-pillen/?$ https://t.adcell.com/p/click?promoId=120221&slotId=78194&subId=trier-reisen.de&param0=https://www.fliegende-pillen.de/ [R=302,L,NE]
 RewriteRule ^r/parken-fliegen/?$ https://www.awin1.com/cread.php?awinmid=14793&awinaffid=514869&clickref=trier-reisen.de [R=302,L,NE]
+
+# ---- 301-Redirects Alt-WP-Artikel -> Sehenswuerdigkeiten-Seiten ----
+# Quelle: public/_redirects (CF-Pages-Syntax, von LiteSpeed ignoriert)
+RewriteRule ^porta-nigra/?$ https://trier-reisen.de/sehenswuerdigkeiten/porta-nigra/ [R=301,L]
+RewriteRule ^kaiserthermen(/.*)?$ https://trier-reisen.de/sehenswuerdigkeiten/kaiserthermen/ [R=301,L]
+RewriteRule ^trierer-dom/?$ https://trier-reisen.de/sehenswuerdigkeiten/trierer-dom/ [R=301,L]
+RewriteRule ^amphitheater-trier/?$ https://trier-reisen.de/sehenswuerdigkeiten/amphitheater/ [R=301,L]
+RewriteRule ^barbarathermen/?$ https://trier-reisen.de/sehenswuerdigkeiten/barbarathermen/ [R=301,L]
+RewriteRule ^liebfrauenkirche-gotisch/?$ https://trier-reisen.de/sehenswuerdigkeiten/liebfrauenkirche/ [R=301,L]
+RewriteRule ^palastgarten/?$ https://trier-reisen.de/sehenswuerdigkeiten/kurfuerstliches-palais/ [R=301,L]
+RewriteRule ^marktkreuz/?$ https://trier-reisen.de/sehenswuerdigkeiten/hauptmarkt/ [R=301,L]
+RewriteRule ^petrusbrunnen/?$ https://trier-reisen.de/sehenswuerdigkeiten/hauptmarkt/ [R=301,L]
+RewriteRule ^thermen-am-viehmarkt/?$ https://trier-reisen.de/viehmarktthermen/ [R=301,L]
+
   RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
   RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L,NE]
 </IfModule>
