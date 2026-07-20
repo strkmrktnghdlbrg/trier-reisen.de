@@ -39,7 +39,7 @@ export const websiteSchema = () => ({
   },
 });
 
-/** Touristisches Reiseziel — Startseite. */
+/** Touristisches Reiseziel - Startseite. */
 export const touristDestinationSchema = () => ({
   "@context": "https://schema.org",
   "@type": "TouristDestination",
@@ -187,6 +187,20 @@ export const categorySchema = (c: Category) => ({
   description: c.longDesc ?? c.shortDesc,
   url: abs(`/kategorien/${c.slug}/`),
   inLanguage: "de-DE",
+});
+
+/** FAQPage aus Frage/Antwort-Paaren. HTML in Antworten wird zu Klartext gestrippt. */
+export const faqSchema = (faqs: { q: string; a: string }[]) => ({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: f.a.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim(),
+    },
+  })),
 });
 
 export const breadcrumbSchema = (items: { name: string; url?: string }[]) => ({

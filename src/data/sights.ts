@@ -15,6 +15,8 @@ export type Sight = {
   /** Optional: GetYourGuide-Activity-ID(s) fuer Direkt-Buchungs-Widget. */
   gygActivityId?: string;
   unesco?: boolean;
+  /** Optionale FAQ (Frage/Antwort) fuer Besucher, rendert Sektion + FAQPage-Schema. */
+  faq?: { q: string; a: string }[];
 };
 
 export const sights: Sight[] = [
@@ -36,6 +38,24 @@ export const sights: Sight[] = [
     coordinates: [49.7597, 6.6440],
     openingHours: "Apr-Sep 9-18, Mar/Okt 9-17, Nov-Feb 9-16",
     websiteUrl: "https://www.zentrum-der-antike.de/porta-nigra",
+    faq: [
+      {
+        q: "Was kostet der Eintritt zur Porta Nigra?",
+        a: "Der Innenbesuch mit Aufstieg über zwei Stockwerke kostet ab 4 Euro. Von außen ist das Wahrzeichen jederzeit kostenlos zu sehen. Wer mehrere römische Baudenkmäler besichtigen möchte, fährt mit einem Kombiticket für die Trierer Antikenstätten günstiger.",
+      },
+      {
+        q: "Wann hat die Porta Nigra geöffnet?",
+        a: "Die Porta Nigra ist ganzjährig geöffnet: von April bis September täglich 9 bis 18 Uhr, im März und Oktober bis 17 Uhr, von November bis Februar bis 16 Uhr. Die aktuellen Zeiten stehen auf der offiziellen Seite.",
+      },
+      {
+        q: "Warum heißt das Bauwerk Porta Nigra?",
+        a: "Porta Nigra ist Latein für schwarzes Tor und geht auf die dunkle Verwitterung des Sandsteins zurück. Errichtet wurde das Tor um 170 n. Chr. als Nordtor der römischen Stadt Augusta Treverorum aus rund 7200 Steinquadern.",
+      },
+      {
+        q: "Ist die Porta Nigra ein UNESCO-Welterbe?",
+        a: "Ja. Die Porta Nigra gehört seit 1986 zum UNESCO-Welterbe der römischen Baudenkmäler von Trier und gilt als das besterhaltene römische Stadttor nördlich der Alpen. Nur wenige Gehminuten entfernt liegen die <a href=\"/sehenswuerdigkeiten/kaiserthermen/\">Kaiserthermen</a> und das <a href=\"/sehenswuerdigkeiten/amphitheater/\">Amphitheater</a>.",
+      },
+    ],
   },
   {
     slug: "trierer-dom",
@@ -54,6 +74,24 @@ export const sights: Sight[] = [
     coordinates: [49.7556, 6.6435],
     openingHours: "Apr-Okt 6:30-18, Nov-Mar 6:30-17:30",
     websiteUrl: "https://www.dominformation.de",
+    faq: [
+      {
+        q: "Kostet der Besuch des Trierer Doms Eintritt?",
+        a: "Der Trierer Dom St. Peter ist frei zugänglich, der Eintritt ist kostenlos. Für den Domschatz kann ein separates Eintrittsgeld anfallen. Um Rücksicht auf Gottesdienste wird gebeten.",
+      },
+      {
+        q: "Wann hat der Trierer Dom geöffnet?",
+        a: "Der Dom ist von April bis Oktober täglich von 6:30 bis 18 Uhr geöffnet, in den Wintermonaten von 6:30 bis 17:30 Uhr. Während der Gottesdienste ist eine Besichtigung nur eingeschränkt möglich.",
+      },
+      {
+        q: "Was ist der Heilige Rock im Trierer Dom?",
+        a: "Der Heilige Rock gilt als das Gewand Christi und ist die bedeutendste Reliquie des Doms. Er wird nur bei seltenen Wallfahrten öffentlich gezeigt; die letzte im Jahr 2012 zog über eine halbe Million Pilger nach Trier.",
+      },
+      {
+        q: "Ist der Trierer Dom ein UNESCO-Welterbe?",
+        a: "Ja. Der Dom St. Peter zählt seit 1986 zum UNESCO-Welterbe von Trier und ist die älteste Bischofskirche Deutschlands. Direkt daneben steht die frühgotische <a href=\"/sehenswuerdigkeiten/liebfrauenkirche/\">Liebfrauenkirche</a>.",
+      },
+    ],
   },
   {
     slug: "liebfrauenkirche",
@@ -104,6 +142,24 @@ export const sights: Sight[] = [
     imageHue: 1,
     coordinates: [49.7497, 6.6437],
     openingHours: "Apr-Sep 9-18, Mar/Okt 9-17, Nov-Feb 9-16",
+    faq: [
+      {
+        q: "Was kosten die Kaiserthermen in Trier?",
+        a: "Der Eintritt zu den Kaiserthermen beginnt bei 4 Euro. Für mehrere römische Stätten in Trier ist ein Kombiticket erhältlich, das den Besuch günstiger macht.",
+      },
+      {
+        q: "Wann sind die Kaiserthermen geöffnet?",
+        a: "Die Kaiserthermen sind von April bis September täglich 9 bis 18 Uhr geöffnet, im März und Oktober bis 17 Uhr und von November bis Februar bis 16 Uhr.",
+      },
+      {
+        q: "Was gibt es in den Kaiserthermen zu sehen?",
+        a: "Zu sehen sind die mächtigen Apsiden der Repräsentationsthermen aus dem 4. Jahrhundert sowie die vollständig begehbaren unterirdischen Servicegänge. Die Anlage wurde nie als Badebetrieb vollendet und diente später als Kaserne und Festung. Weniger besucht, aber flächenmäßig beeindruckend sind die nahen <a href=\"/sehenswuerdigkeiten/barbarathermen/\">Barbarathermen</a>.",
+      },
+      {
+        q: "Sind die Kaiserthermen UNESCO-Welterbe?",
+        a: "Ja. Die Kaiserthermen gehören seit 1986 zum UNESCO-Welterbe der römischen Baudenkmäler von Trier.",
+      },
+    ],
   },
   {
     slug: "barbarathermen",
@@ -137,6 +193,24 @@ export const sights: Sight[] = [
     imageHue: 1,
     coordinates: [49.7464, 6.6479],
     openingHours: "Apr-Sep 9-18, Mar/Okt 9-17, Nov-Feb 9-16",
+    faq: [
+      {
+        q: "Was kostet der Eintritt ins Amphitheater Trier?",
+        a: "Der Eintritt ins römische Amphitheater beginnt bei 4 Euro. Ein Kombiticket für mehrere Trierer Antikenstätten senkt den Preis pro Sehenswürdigkeit.",
+      },
+      {
+        q: "Wann ist das Amphitheater Trier geöffnet?",
+        a: "Das Amphitheater ist von April bis September täglich 9 bis 18 Uhr geöffnet, im März und Oktober bis 17 Uhr und von November bis Februar bis 16 Uhr.",
+      },
+      {
+        q: "Für wie viele Zuschauer wurde das Amphitheater gebaut?",
+        a: "Das um 100 n. Chr. errichtete Amphitheater bot rund 20.000 Zuschauern Platz. Erhalten sind die Tribünenböschungen und die unterirdischen Keller mit Hebebühnen, über die Gladiatoren und Tiere in die Arena gelangten.",
+      },
+      {
+        q: "Finden im Amphitheater Veranstaltungen statt?",
+        a: "Ja. Jeden Sommer ist das Amphitheater Spielort der Antikenfestspiele Trier. Es zählt seit 1986 zum UNESCO-Welterbe der römischen Baudenkmäler von Trier.",
+      },
+    ],
   },
   {
     slug: "roemerbruecke",

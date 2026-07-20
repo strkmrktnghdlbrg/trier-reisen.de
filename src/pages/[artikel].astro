@@ -6,7 +6,7 @@ import ContentImage from "../components/ContentImage.astro";
 import GygActivities from "../components/GygActivities.astro";
 import AwinOffer from "../components/AwinOffer.astro";
 import { articles, type Article, articleCategories } from "../data/articles";
-import { articleSchema, breadcrumbSchema } from "../lib/schema";
+import { articleSchema, breadcrumbSchema, faqSchema } from "../lib/schema";
 import { city } from "../data/city";
 
 export function getStaticPaths() {
@@ -42,6 +42,7 @@ const catHref = categoryToKategorie[article.category] ?? null;
       { name: "Magazin", url: "/magazin/" },
       { name: article.title },
     ]),
+    ...(article.faq && article.faq.length > 0 ? [faqSchema(article.faq)] : []),
   ]}
 >
   <article class="container-page py-12">

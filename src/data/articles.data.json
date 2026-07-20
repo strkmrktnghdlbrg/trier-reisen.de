@@ -272,7 +272,7 @@
   {
     "slug": "besten-vinotheken",
     "title": "Die besten Vinotheken in Trier: Wo Moselwein zum Erlebnis wird",
-    "description": "Die schönsten Vinotheken in Trier und Umgebung: Wo Sie Riesling von Mosel, Saar und Ruwer probieren, kaufen und genießen können.",
+    "description": "Die schönsten Vinotheken und Weinbars in Trier: Wo Sie Riesling von Mosel, Saar und Ruwer probieren, kaufen und genießen können.",
     "category": "wein",
     "publishDate": "2024-10-13",
     "heroHue": 325,
@@ -338,6 +338,10 @@
       {
         "q": "Kann ich einen Vinotheken-Besuch mit Sightseeing verbinden?",
         "a": "Ja, die Innenstadt-Vinotheken liegen unmittelbar bei den römischen Sehenswürdigkeiten. Ein Spaziergang von der Porta Nigra über den Hauptmarkt lässt sich gut mit einer abschließenden Weinverkostung kombinieren."
+      },
+      {
+        "q": "Wo finde ich in Trier eine gute Weinbar?",
+        "a": "Als Weinbar in Trier eignen sich die Vinotheken der Innenstadt ebenso wie die gemütlichen <a href=\"/weinstuben-beste-adressen/\">Weinstuben</a> rund um Hauptmarkt und Olewig. Dort werden Rieslinge von Mosel, Saar und Ruwer glasweise ausgeschenkt, häufig ergänzt durch regionale Kleinigkeiten."
       }
     ],
     "related": [
@@ -563,7 +567,7 @@
   {
     "slug": "weinstuben-beste-adressen",
     "title": "Weinstuben in Trier: Die besten Adressen für Moselwein",
-    "description": "Die schönsten Weinstuben in Trier: gemütliche Adressen für Riesling, Tapas und regionale Küche zwischen Innenstadt und Olewig. Tipps für Ihren Weinabend.",
+    "description": "Die besten Weinstuben und Weinlokale in Trier: gemütliche Adressen für Riesling, regionale Küche und einen entspannten Weinabend zwischen Innenstadt und Olewig.",
     "category": "wein",
     "publishDate": "2024-10-01",
     "heroHue": 325,
@@ -628,6 +632,10 @@
       {
         "q": "Muss ich in Trierer Weinstuben reservieren?",
         "a": "An Wochenenden und während der Weinfeste empfiehlt sich eine Reservierung. Viele Häuser öffnen zudem erst nachmittags oder abends und haben einen Ruhetag."
+      },
+      {
+        "q": "Was ist ein typisches Weinlokal in Trier?",
+        "a": "Ein klassisches Weinlokal in Trier ist eine Weinstube, in der überwiegend Weine aus dem Anbaugebiet Mosel-Saar-Ruwer glasweise ausgeschenkt werden, dazu regionale Küche. Viele dieser Adressen liegen in der Innenstadt und im Weinort Olewig; eine Auswahl zum Kaufen und Probieren zeigen die <a href=\"/besten-vinotheken/\">besten Vinotheken in Trier</a>."
       }
     ],
     "related": [
