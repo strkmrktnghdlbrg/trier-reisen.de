@@ -332,7 +332,8 @@
         "heading": "Praktische Tipps für den Vinotheken-Besuch",
         "body": [
           "Die Öffnungszeiten der Vinotheken und Weingüter variieren stark, gerade die Betriebe außerhalb der Stadt öffnen oft nur an bestimmten Tagen oder nach Voranmeldung. Es lohnt sich, vorab telefonisch oder online zu prüfen, ob eine Verkostung möglich ist.",
-          "Für Touren in die Weinorte des Mosellandes ist ein Auto praktisch, allerdings gilt beim Weingenuss Vorsicht: Wer verkosten möchte, plant am besten eine Fahrgemeinschaft, öffentliche Verkehrsmittel oder eine geführte Tour ein. Innerhalb Triers sind die Innenstadt-Adressen beqüm zu Fuß erreichbar."
+          "Für Touren in die Weinorte des Mosellandes ist ein Auto praktisch, allerdings gilt beim Weingenuss Vorsicht: Wer verkosten möchte, plant am besten eine Fahrgemeinschaft, öffentliche Verkehrsmittel oder eine geführte Tour ein. Innerhalb Triers sind die Innenstadt-Adressen beqüm zu Fuß erreichbar.",
+          "Wer den Wein lieber bei Tisch genießt, findet passende Adressen in unserem Überblick zu den <a href=\"/weinstuben-beste-adressen/\">besten Weinstuben Triers</a> und im <a href=\"/restaurants/\">Restaurantführer</a>."
         ],
         "list": [
           "Vorab Öffnungszeiten prüfen, besonders bei Weingüter außerhalb der Stadt",
@@ -386,7 +387,8 @@
     ],
     "gygHeading": "Weinerlebnisse in Trier buchen",
     "gygIntro": "Verkostungen, Kellertouren und geführte Weinerlebnisse rund um Trier und die Mosel lassen sich vorab online reservieren.",
-    "gygQuery": "Trier Mosel Weinprobe"
+    "gygQuery": "Trier Mosel Weinprobe",
+    "dateModified": "2026-07-22"
   },
   {
     "slug": "weinproben-historische-keller",
@@ -603,7 +605,7 @@
       {
         "heading": "Die besten Weinstuben in der Innenstadt",
         "body": [
-          "In der Triererer Innenstadt liegen mehrere Adressen fußläufig beieinander, ideal für einen Bummel durch die Altstadt. Das Weinhaus in der Brückenstraße führt eine große Auswahl an Weiß- und Rotweinen aus Mosel, Ruwer und Saar und ergänzt das Angebot um Schaumweine. Ju Zwölf in der Palaststraße verbindet eine internationale Weinkarte mit einer Gin-Auswahl sowie Snacks und Flammkuchen.",
+          "In der Trierer Innenstadt liegen mehrere Adressen fußläufig beieinander, ideal für einen Bummel durch die Altstadt. Das Weinhaus in der Brückenstraße führt eine große Auswahl an Weiß- und Rotweinen aus Mosel, Ruwer und Saar und ergänzt das Angebot um Schaumweine. Ju Zwölf in der Palaststraße verbindet eine internationale Weinkarte mit einer Gin-Auswahl sowie Snacks und Flammkuchen.",
           "Wer es mediterran mag, ist bei Tapavino mit spanischer Küche und Tapas gut aufgehoben. Robertinos Vinothek und Tapasbar in der Karl-Marx-Straße setzt ebenfalls auf spanische Tapas und passende Weine. Die Kost-Bar punktet mit moderner Einrichtung, Moselriesling und internationalen Weinen, dazu Käseplatten und Tapas."
         ],
         "list": [
@@ -632,7 +634,8 @@
         "heading": "Tipps für den perfekten Weinabend in Trier",
         "body": [
           "Die meisten Weinstuben öffnen erst am späten Nachmittag oder Abend, einige haben an Wochenanfang Ruhetag. Eine Reservierung lohnt sich besonders an Wochenenden und während der Weinfeste. Aktuelle Öffnungszeiten und Preise sollten Sie vor dem Besuch direkt beim jeweiligen Haus prüfen, da sich diese saisonal ändern können.",
-          "Wer mehr über die Region erfahren möchte, kombiniert den Besuch mit einer Weinprobe oder einer geführten Tour. Passend dazu sind unsere Tipps zu <a href=\"/weinfeste/\">Weinfesten</a> und <a href=\"/moselwein-touren/\">Moselwein-Touren</a>. So wird aus einem Glas Riesling schnell ein ganzer Genuss-Tag entlang der Mosel."
+          "Wer mehr über die Region erfahren möchte, kombiniert den Besuch mit einer Weinprobe oder einer geführten Tour. Passend dazu sind unsere Tipps zu <a href=\"/weinfeste/\">Weinfesten</a> und <a href=\"/moselwein-touren/\">Moselwein-Touren</a>. So wird aus einem Glas Riesling schnell ein ganzer Genuss-Tag entlang der Mosel.",
+          "Bekannte weinorientierte Häuser stellen wir außerdem in unserem <a href=\"/restaurants/\">Restaurantführer</a> im Detail vor, darunter die <a href=\"/restaurants/weinstube-kesselstatt/\">Weinstube Kesselstatt</a>, das <a href=\"/restaurants/zum-domstein/\">Zum Domstein</a> am Hauptmarkt und das <a href=\"/restaurants/trierer-weinhaus/\">Trierer Weinhaus</a>."
         ]
       }
     ],
@@ -680,7 +683,8 @@
     ],
     "gygHeading": "Weinerlebnisse in Trier und an der Mosel",
     "gygIntro": "Ergänzen Sie Ihren Weinabend mit einer geführten Weinprobe oder Tour durch die Weinberge rund um Trier.",
-    "gygQuery": "Mosel Weinprobe Trier"
+    "gygQuery": "Mosel Weinprobe Trier",
+    "dateModified": "2026-07-22"
   },
   {
     "slug": "weintouren-fahrrad-mosel",
@@ -1067,7 +1071,7 @@
       {
         "heading": "Olewig und der Weinkulturpfad",
         "body": [
-          "Der Weinkulturpfad oberhalb des Amphitheaters ist die wohl beqümste Weinwanderung Triers. Auf rund 1,6 Kilometern informiert der kostenlose Rundweg über Rebsorten und den für die Mosel typischen Devonschiefer. Belohnt wird man mit Ausblicken auf die Rebstöcke, das Olewiger Tal und die Trierer Innenstadt, besonders stimmungsvoll bei Sonnenuntergang.",
+          "Der Weinkulturpfad oberhalb des Amphitheaters ist die wohl bequemste Weinwanderung Triers. Auf rund 1,6 Kilometern informiert der kostenlose Rundweg über Rebsorten und den für die Mosel typischen Devonschiefer. Belohnt wird man mit Ausblicken auf die Rebstöcke, das Olewiger Tal und die Trierer Innenstadt, besonders stimmungsvoll bei Sonnenuntergang.",
           "Olewig ist Triers Winzervorort schlechthin. Zahlreiche Weingüter bieten hier Verkostungen an, bei denen lokale Winzer ihr Wissen über Anbau und Ausbau weitergeben. Wer mehr über den Stadtteil erfahren möchte, findet im Profil zu <a href=\"/bezirke/olewig/\">Olewig</a> weitere Anregungen rund um Weingüter und Weinfeste."
         ]
       },
