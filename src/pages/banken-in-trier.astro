@@ -1,0 +1,161 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+// Faktische Google-Standort-Aggregate (gewichteter Durchschnitt, Anzahl
+// Bewertungen) und öffentliche Filialadressen, erhoben über die Google
+// Places API. Es werden ausschließlich Kennzahlen und Adressen dargestellt,
+// keine Rezensionstexte. Quelle je Bank: die verlinkte bankscore.de-Seite.
+const stadt = "Trier";
+const banken = [
+  { name: "Sparkasse Trier", rating: 3.5, count: 300, adresse: "Theodor-Heuss-Allee 1, 54292 Trier-Nord", stadtteil: "Trier-Nord / stadtweit", url: "https://bankscore.de/filialen/trier/sparkasse/",
+    text: "Die Sparkasse Trier betreibt mit rund 13 Standorten das mit Abstand dichteste Filialnetz der Stadt und reicht von der Innenstadt über Trier-Nord und Trier-Süd bis in die Höhenstadtteile und die Umlandgemeinden. Der Hauptsitz an der Theodor-Heuss-Allee liegt verkehrsgünstig nahe dem Nordbad und der Ausfallstraße Richtung Ehrang. Der Durchschnitt von 3,5 aus 300 Bewertungen ist für ein so großes Netz solide, wenn auch kein Spitzenwert, verbreitete Kritikpunkte an Sparkassen sind Kontogebühren und Wartezeiten an Stoßzeiten." },
+  { name: "Volksbank Trier Eifel", rating: 3.6, count: 79, adresse: "Viehmarktplatz 7, 54290 Trier", stadtteil: "Innenstadt (Viehmarkt)", url: "https://bankscore.de/filialen/trier/volksbank-raiffeisenbank/",
+    text: "Die genossenschaftliche Volksbank Trier Eifel ist das zweite regionale Institut mit einem breiten Netz von rund sieben Filialen in Stadt und Umland. Ihr Regionalzentrum am Viehmarkt sitzt zentral zwischen den Thermen am Viehmarkt und der Fußgängerzone. Das Genossenschaftsmodell heißt: als Mitglied bist du Miteigentümer und stimmst mit ab. Die Bewertung von 3,6 aus 79 Stimmen liegt im soliden Mittelfeld." },
+  { name: "Deutsche Bank", rating: 4.3, count: 58, adresse: "Hosenstraße 20, 54290 Trier", stadtteil: "Innenstadt", url: "https://bankscore.de/filialen/trier/deutsche-bank/",
+    text: "Die Deutsche Bank bündelt ihr Trierer Geschäft in der Hosenstraße, wenige Schritte vom Hauptmarkt und der Fußgängerzone entfernt. Mit 4,3 von 5 Sternen erreicht der Standort eine der besseren Filialbewertungen der Stadt. Als einzelne Filiale ist er auf zentrale Lauf- und Beratungskundschaft ausgelegt, nicht auf ein flächendeckendes Netz." },
+  { name: "Commerzbank", rating: 3.8, count: 67, adresse: "Brotstraße 24, 54290 Trier", stadtteil: "Innenstadt", url: "https://bankscore.de/filialen/trier/commerzbank/",
+    text: "Die Commerzbank sitzt in der Brotstraße, die direkt am Hauptmarkt beginnt und ins Herz der Altstadt führt, eine Top-Lage für Laufkundschaft. Die Bewertung von 3,8 aus 67 Stimmen liegt im oberen Mittelfeld. Für Filialkundschaft, die Wert auf ein bundesweites Netz und eine bei Gehaltseingang oft kostenfreie Kontoführung legt, eine gängige Wahl." },
+  { name: "Postbank", rating: 4.0, count: 262, adresse: "Simeonstraße 11, 54290 Trier", stadtteil: "Innenstadt (nahe Porta Nigra)", url: "https://bankscore.de/filialen/trier/postbank/",
+    text: "Die Postbank-Filiale in der Simeonstraße liegt an der belebten Achse zwischen Porta Nigra und Hauptmarkt und verbindet meist Bank- und Postschalter, entsprechend hoch ist die Frequenz. Mit 4,0 aus 262 Bewertungen schneidet sie überraschend gut ab. Praktisch für alle, die Bankgeschäft und Paketservice in einem Gang erledigen wollen, mit den bei Schalterandrang üblichen Wartezeiten." },
+  { name: "Targobank", rating: 4.8, count: 281, adresse: "Grabenstraße 12, 54290 Trier", stadtteil: "Innenstadt", url: "https://bankscore.de/filialen/trier/targobank/",
+    text: "Die Targobank in der Grabenstraße erreicht mit 4,8 von 5 Sternen aus 281 Bewertungen die stärkste Filialbewertung der Stadt, ein bemerkenswert breiter und positiver Stimmungswert. Ihr Schwerpunkt liegt traditionell auf Konsumentenkrediten und Ratenfinanzierung, dazu Giro- und Anlageberatung mitten in der Innenstadt nahe der Fußgängerzone." },
+  { name: "HypoVereinsbank", rating: 3.7, count: 25, adresse: "Sichelstraße 2A, 54290 Trier", stadtteil: "Innenstadt", url: "https://bankscore.de/filialen/trier/hypovereinsbank/",
+    text: "Die HypoVereinsbank (UniCredit) ist in Trier mit einem Standort in der Sichelstraße nahe dem Kornmarkt vertreten. Mit nur 25 Bewertungen ist die Datenbasis dünn, die Note von 3,7 daher weniger belastbar als bei den großen Häusern. Wer die HVB gezielt sucht, findet hier den zentralen Anlaufpunkt für die Beratung." },
+  { name: "Santander", rating: 4.8, count: 221, adresse: "Konstantinstraße 8-10, 54290 Trier", stadtteil: "Innenstadt", url: "https://bankscore.de/filialen/trier/santander/",
+    text: "Santander sitzt in der Konstantinstraße unweit der Konstantin-Basilika und des Palastgartens. Mit 4,8 aus 221 Bewertungen liegt der Standort auf Augenhöhe mit der Targobank an der Spitze. Die Bank richtet sich mit Krediten, Kreditkarten und einem gebührenfreien Girokonto vor allem an preisbewusste Kundschaft." },
+];
+
+const fmt = (n) => n.toLocaleString("de-DE");
+const komma = (n) => n.toFixed(1).replace(".", ",");
+const ratingSum = banken.reduce((s, b) => s + b.count, 0);
+
+const faqs = [
+  { q: "Welche Bank hat in Trier die beste Bewertung?", a: "Unter den Filialbanken liegen die Targobank in der Grabenstraße und Santander in der Konstantinstraße mit jeweils 4,8 von 5 Sternen an der Spitze, beide auf einer breiten Basis von über 200 Bewertungen. Es folgt die Deutsche Bank mit 4,3. Die Werte sind nach Bewertungsanzahl gewichtete Durchschnitte der öffentlich bei Google gelisteten Standorte." },
+  { q: "Welche Bank hat in Trier die meisten Filialen?", a: "Das mit Abstand dichteste Netz hat die Sparkasse Trier mit rund 13 Standorten über die Stadtteile und das Umland verteilt, gefolgt von der Volksbank Trier Eifel mit rund sieben Filialen. Deutsche Bank, Commerzbank, Postbank, Targobank, HypoVereinsbank und Santander konzentrieren ihr Geschäft dagegen auf jeweils eine zentrale Filiale in der Innenstadt." },
+  { q: "Wo finde ich in der Trierer Innenstadt eine Bankfiliale?", a: "Die meisten überregionalen Banken sitzen im Kern der Altstadt rund um Hauptmarkt, Simeonstraße und Porta Nigra: Deutsche Bank (Hosenstraße), Commerzbank (Brotstraße), Postbank (Simeonstraße), Targobank (Grabenstraße), HypoVereinsbank (Sichelstraße) und Santander (Konstantinstraße). Die Volksbank hat ihr Regionalzentrum am Viehmarkt, die Sparkasse ihren Hauptsitz in Trier-Nord." },
+  { q: "Lohnt sich neben dem Filialkonto ein kostenloses Online-Konto?", a: "Für viele ja. Die klassischen Filialkonten von Sparkasse und Volksbank kosten je nach Modell eine monatliche Grundgebühr. Wer die Filiale nur noch selten braucht, kann ein gebührenfreies Online-Girokonto parallel führen und die laufenden Kosten sparen, ohne die Hausbank ganz aufzugeben." },
+  { q: "Woher stammen die Bewertungen und Adressen?", a: "Die Sterne-Werte sind nach Bewertungsanzahl gewichtete Durchschnitte der öffentlich bei Google gelisteten Standorte der jeweiligen Marke in Trier. Die Adressen stammen aus den öffentlichen Standortdaten. Es werden ausschließlich Kennzahlen und Adressen dargestellt, keine Rezensionstexte. Die vollständige Filialübersicht je Bank findest du auf der jeweils verlinkten bankscore.de-Seite." },
+];
+
+const itemListLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: `Banken in ${stadt}`,
+  itemListElement: banken.map((b, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: b.name,
+    url: b.url,
+  })),
+};
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+};
+const articleLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: `Banken in ${stadt}: Filialen, Adressen und Bewertungen`,
+  about: `Filialbanken in ${stadt}`,
+  author: { "@type": "Organization", name: "Trier-Reisen" },
+  publisher: { "@type": "Organization", name: "Trier-Reisen" },
+};
+---
+
+<BaseLayout title="Banken in Trier: Filialen, Adressen & Bewertungen" description="Die Filialbanken in Trier im Überblick: Sparkasse, Volksbank Trier Eifel, Deutsche Bank, Commerzbank, Postbank, Targobank, HypoVereinsbank und Santander mit zentraler Adresse, Google-Bewertung und Filialnetz. Ratgeber von Trier-Reisen." schema={[articleLd, itemListLd, faqLd]}>
+  <div class="bnk-wrap">
+    <div class="bnk-surface" style="--color-accent:#ff4704;--color-accent-hover:#d93b03;">
+      <h1>Banken in Trier: Filialen, Adressen &amp; Bewertungen</h1>
+      <p class="bnk-lead">Welche Filialbank passt in Trier zu dir? Von der Sparkasse mit dem dichtesten Netz bis zu den bestbewerteten Häusern Targobank und Santander: Hier findest du die großen Banken der Stadt mit zentraler Adresse, Google-Bewertung und einer ehrlichen Einordnung, sortiert nach Bekanntheit.</p>
+      <p class="bnk-meta">Redaktion Trier-Reisen</p>
+
+      <p>Trier, die älteste Stadt Deutschlands, bündelt fast ihr gesamtes Bankgeschäft im römisch geprägten Zentrum zwischen Porta Nigra, Simeonstraße und Hauptmarkt. Die beiden regionalen Institute, Sparkasse Trier und Volksbank Trier Eifel, teilen sich das dichteste Filialnetz und reichen bis in die Stadtteile und das Umland an Mosel und Eifel. Die überregionalen Häuser konzentrieren ihr Geschäft dagegen auf jeweils eine zentrale Filiale in der Altstadt. Die folgende Übersicht beruht auf {fmt(ratingSum)} öffentlichen Google-Bewertungen und den öffentlich gelisteten Filialadressen.</p>
+
+      <h2>Die Banken in Trier auf einen Blick</h2>
+      <div class="bnk-tablewrap">
+        <table>
+          <thead>
+            <tr><th>Bank</th><th>Ø Google</th><th>Bewertungen</th><th>Zentrale Adresse</th><th>Details</th></tr>
+          </thead>
+          <tbody>
+            {banken.map((b) => (
+              <tr>
+                <td data-l="Bank"><strong>{b.name}</strong></td>
+                <td data-l="Ø Google"><span class="bnk-star">{komma(b.rating)}</span></td>
+                <td data-l="Bewertungen">{fmt(b.count)}</td>
+                <td data-l="Adresse">{b.adresse}</td>
+                <td data-l="Details"><a href={b.url} target="_blank" rel="noopener">Filialen &amp; Bewertungen &rarr;</a></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="bnk-note">Ø Google = nach Bewertungsanzahl gewichteter Durchschnitt der öffentlich gelisteten Standorte der Marke in Trier. Stand der Erhebung: Juli 2026. Es werden nur Kennzahlen und Adressen dargestellt, keine Rezensionstexte.</p>
+
+      <h2>Die Banken im Einzelnen</h2>
+      {banken.map((b) => (
+        <div class="bnk-card">
+          <div class="bnk-cardhead">
+            <h3>{b.name}</h3>
+            <span class="bnk-badge">{komma(b.rating)} &#9733; · {fmt(b.count)} Bew.</span>
+          </div>
+          <p class="bnk-addr">{b.adresse} · Stadtteil: {b.stadtteil}</p>
+          <p>{b.text}</p>
+          <p class="bnk-src">Quelle und vollständige Filialübersicht: <a href={b.url} target="_blank" rel="noopener">{b.name} in Trier auf bankscore.de</a></p>
+        </div>
+      ))}
+
+      <h2>Filialbank oder kostenloses Online-Konto?</h2>
+      <p>Die klassischen Filialkonten von Sparkasse und Volksbank punkten mit Beratung vor Ort und einem Automaten um die Ecke, kosten je nach Modell aber eine monatliche Grundgebühr. Wer ohnehin fast alles per App erledigt, kombiniert die Trierer Hausbank häufig mit einem gebührenfreien Online-Girokonto und spart so die laufenden Kosten. Einen neutralen Vergleich der Konditionen samt Bewertungsmethodik findest du im <a href="https://bankscore.de/girokonto/" target="_blank" rel="noopener">Girokonto-Vergleich auf bankscore.de</a>.</p>
+
+      <h2>Häufige Fragen zu Banken in Trier</h2>
+      {faqs.map((f) => (
+        <div class="faq-item">
+          <h3>{f.q}</h3>
+          <p>{f.a}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .bnk-wrap { max-width: 900px; margin: 0 auto; padding: 2.5rem 1rem 3rem; }
+  .bnk-surface {
+    background: #ffffff; color: #33313f; border-radius: 16px;
+    padding: clamp(20px, 4vw, 40px);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 8px 30px rgba(0,0,0,0.05);
+    font-size: 16.5px; line-height: 1.7;
+  }
+  .bnk-surface h1 { color: #20233a; font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.5px; margin: 0 0 1rem; }
+  .bnk-lead { font-size: 1.12rem; color: #4a4858; margin: 0 0 1.6rem; }
+  .bnk-meta { font-size: 13px; color: #8a8896; margin: 0 0 1.6rem; }
+  .bnk-surface h2 { color: #20233a; font-size: 1.55rem; font-weight: 800; line-height: 1.25; letter-spacing: -0.3px; margin: 2.2rem 0 0.8rem; }
+  .bnk-surface h3 { color: #20233a; font-size: 1.2rem; font-weight: 700; line-height: 1.3; margin: 0; }
+  .bnk-surface p { margin: 0 0 1.05rem; }
+  .bnk-surface strong { color: #20233a; font-weight: 700; }
+  .bnk-surface a { color: var(--color-accent); text-decoration: underline; text-underline-offset: 3px; }
+  .bnk-note { font-size: 13px; color: #8a8896; margin: 0.6rem 0 0; }
+  .bnk-tablewrap { overflow-x: auto; margin: 0 0 0.4rem; }
+  .bnk-surface table { border-collapse: collapse; width: 100%; font-size: 15px; }
+  .bnk-surface th, .bnk-surface td { text-align: left; padding: 10px 12px; border-bottom: 1px solid #ececf3; vertical-align: top; }
+  .bnk-surface th { color: #6b7280; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.03em; }
+  .bnk-star { display: inline-block; background: #eef7ee; color: #237a37; font-weight: 800; border-radius: 6px; padding: 1px 8px; }
+  .bnk-card { border: 1px solid #ececf3; border-radius: 12px; padding: 18px 20px; margin: 1rem 0; }
+  .bnk-cardhead { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-bottom: 0.3rem; }
+  .bnk-badge { background: #f6f6fb; color: #20233a; font-weight: 700; font-size: 13px; border-radius: 999px; padding: 3px 12px; white-space: nowrap; }
+  .bnk-addr { font-size: 14px; color: #6b7280; margin: 0 0 0.7rem; }
+  .bnk-src { font-size: 14px; color: #6b7280; margin: 0.6rem 0 0; }
+  .faq-item { border-top: 1px solid #e6e6ef; padding-top: 1.1rem; margin-top: 1.1rem; }
+  .faq-item:first-of-type { border-top: none; }
+  .faq-item h3 { font-size: 18px; }
+  @media (max-width: 640px) {
+    .bnk-surface table, .bnk-surface thead, .bnk-surface tbody, .bnk-surface tr, .bnk-surface th, .bnk-surface td { display: block; }
+    .bnk-surface thead { display: none; }
+    .bnk-surface tr { border: 1px solid #ececf3; border-radius: 10px; margin-bottom: 10px; padding: 6px 4px; }
+    .bnk-surface td { border: none; padding: 5px 12px; }
+    .bnk-surface td::before { content: attr(data-l) ": "; color: #8a8896; font-size: 12px; font-weight: 700; }
+    .bnk-surface td[data-l="Bank"]::before { content: ""; }
+  }
+</style>
