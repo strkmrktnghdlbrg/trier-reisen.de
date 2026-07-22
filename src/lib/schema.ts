@@ -157,7 +157,7 @@ export const articleSchema = (a: MagazinArticle) => ({
   url: abs(`/${a.slug}/`),
   inLanguage: "de-DE",
   datePublished: a.publishDate,
-  dateModified: a.publishDate,
+  dateModified: a.dateModified ?? a.publishDate,
   author: { "@type": "Organization", name: city.brandName, url: SITE },
   publisher: {
     "@type": "Organization",

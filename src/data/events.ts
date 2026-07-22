@@ -69,8 +69,8 @@ export const events: CityEvent[] = [
       "Olewiger Weinfest 2026 - Termine, Programm, Hotel-Verfuegbarkeit in Olewig und Innenstadt. Festumzug am Sonntag, Weinkoenigin-Kroenung.",
     longDesc:
       "Das Olewiger Weinfest ist das groesste Weinfest des Trierer Landes. Eine Woche lang stehen die Winzerhoefe offen, am ersten Sonntag im August zieht der grosse Festumzug durch Olewig, und die Trierer Weinkoenigin wird gekroent. Tausende Besucher trinken sich durch die Olewiger Riesling-Lagen.",
-    checkin: "2026-08-07",
-    checkout: "2026-08-10",
+    checkin: "2026-07-31",
+    checkout: "2026-08-03",
     address: "Olewig, Trier",
     lat: 49.7427,
     lng: 6.6705,

@@ -40,6 +40,8 @@ export type Article = {
   category: ArticleCategory;
   /** ISO-Datum (uebernommen vom alten Beitrag, sonst Migrationsdatum). */
   publishDate: string;
+  /** ISO-Datum der letzten inhaltlichen Aktualisierung (optional, fuer dateModified). */
+  dateModified?: string;
   /** Hue fuer den HueGradient-Hero (0-360). */
   heroHue: number;
   /** Lead-Absatz (HTML erlaubt). */

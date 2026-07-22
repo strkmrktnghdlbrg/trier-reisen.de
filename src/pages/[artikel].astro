@@ -22,6 +22,13 @@ const dateLabel = new Date(article.publishDate).toLocaleDateString("de-DE", {
   month: "long",
   day: "numeric",
 });
+const modLabel = article.dateModified
+  ? new Date(article.dateModified).toLocaleDateString("de-DE", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    })
+  : null;
 
 // Map article categories to their /kategorien/<slug>/ hub pages
 const categoryToKategorie: Record<string, string> = {
@@ -61,6 +68,9 @@ const catHref = categoryToKategorie[article.category] ?? null;
       <h1 class="display-xl mb-4">{article.title}</h1>
       <p class="text-sm" style="color: var(--color-text-muted);">
         <time datetime={article.publishDate}>{dateLabel}</time>
+        {modLabel && modLabel !== dateLabel && (
+          <> · Aktualisiert am <time datetime={article.dateModified}>{modLabel}</time></>
+        )}
       </p>
     </header>
 

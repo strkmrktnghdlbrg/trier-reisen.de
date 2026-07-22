@@ -28,7 +28,7 @@ export const sights: Sight[] = [
     categories: ["unesco-welterbe", "roemisches-erbe"],
     district: "innenstadt",
     type: "Antike",
-    priceFrom: 4,
+    priceFrom: 6,
     unesco: true,
     shortDesc:
       "Das schwarze Tor - Triers Wahrzeichen. Das besterhaltene roemische Stadttor noerdlich der Alpen.",
@@ -41,7 +41,7 @@ export const sights: Sight[] = [
     faq: [
       {
         q: "Was kostet der Eintritt zur Porta Nigra?",
-        a: "Der Innenbesuch mit Aufstieg über zwei Stockwerke kostet ab 4 Euro. Von außen ist das Wahrzeichen jederzeit kostenlos zu sehen. Wer mehrere römische Baudenkmäler besichtigen möchte, fährt mit einem Kombiticket für die Trierer Antikenstätten günstiger.",
+        a: "Der Innenbesuch mit Aufstieg über zwei Stockwerke kostet für Erwachsene 6 Euro (ermäßigt 5 Euro, Kinder und Jugendliche von 6 bis 18 Jahren 3 Euro). Von außen ist das Wahrzeichen jederzeit kostenlos zu sehen. Wer mehrere römische Baudenkmäler besichtigen möchte, fährt mit der AntikenCard günstiger: Die Basic-Karte (18 Euro) umfasst zwei Römerbauten plus das Rheinische Landesmuseum, die Premium-Karte (28 Euro) alle vier Römerbauten und das Museum.",
       },
       {
         q: "Wann hat die Porta Nigra geöffnet?",
@@ -133,7 +133,7 @@ export const sights: Sight[] = [
     categories: ["unesco-welterbe", "roemisches-erbe"],
     district: "trier-sued",
     type: "Antike",
-    priceFrom: 4,
+    priceFrom: 6,
     unesco: true,
     shortDesc:
       "Monumentale roemische Thermenruine. Apsiden, Heizkanaele, unterirdische Bediengaenge begehbar.",
@@ -145,7 +145,7 @@ export const sights: Sight[] = [
     faq: [
       {
         q: "Was kosten die Kaiserthermen in Trier?",
-        a: "Der Eintritt zu den Kaiserthermen beginnt bei 4 Euro. Für mehrere römische Stätten in Trier ist ein Kombiticket erhältlich, das den Besuch günstiger macht.",
+        a: "Der Eintritt zu den Kaiserthermen kostet für Erwachsene 6 Euro (ermäßigt 5 Euro, Kinder und Jugendliche 3 Euro). Für mehrere römische Stätten lohnt die AntikenCard: Basic (18 Euro) für zwei Römerbauten plus Rheinisches Landesmuseum, Premium (28 Euro) für alle vier Römerbauten und das Museum.",
       },
       {
         q: "Wann sind die Kaiserthermen geöffnet?",
@@ -173,9 +173,24 @@ export const sights: Sight[] = [
     shortDesc:
       "Aeltere und groessere Schwester der Kaiserthermen. Ruinenfeld unter freiem Himmel.",
     longDesc:
-      "Die Barbarathermen wurden im 2. Jahrhundert errichtet und zaehlten zu den groessten Thermen des Roemischen Reichs. Heute sind weite Teile der Substruktion zu sehen, der Rundgang ist frei zugaenglich. Weniger touristisch als die Kaiserthermen - und beeindruckender in der Flaeche.",
+      "Die Barbarathermen wurden im 2. Jahrhundert errichtet und zaehlten zu den groessten Thermen des Roemischen Reichs. Heute sind weite Teile der Substruktion zu sehen, ein Besuchersteg fuehrt in neun Stationen ueber die Anlage. Weniger touristisch als die Kaiserthermen - und beeindruckender in der Flaeche.",
     imageHue: 1,
     coordinates: [49.7464, 6.6354],
+    openingHours: "Apr-Sep 9-18, Mar/Okt 9-17, Nov-Feb 9-16",
+    faq: [
+      {
+        q: "Kosten die Barbarathermen Eintritt?",
+        a: "Nein. Der Besuchersteg über die Barbarathermen ist während der Öffnungszeiten kostenfrei zugänglich. In neun Stationen erklärt er Architektur, Ausstattung und den römischen Badebetrieb. Die Anlage liegt in der Südallee, wenige Gehminuten von den <a href=\"/sehenswuerdigkeiten/kaiserthermen/\">Kaiserthermen</a> entfernt.",
+      },
+      {
+        q: "Wann sind die Barbarathermen geöffnet?",
+        a: "Die Barbarathermen sind von April bis September täglich 9 bis 18 Uhr geöffnet, im März und Oktober bis 17 Uhr und von November bis Februar bis 16 Uhr. Der letzte Einlass ist jeweils 30 Minuten vor Schließung.",
+      },
+      {
+        q: "Was ist der Unterschied zwischen Barbarathermen und Kaiserthermen?",
+        a: "Die Barbarathermen sind die ältere und flächenmäßig größere Anlage aus dem 2. Jahrhundert und heute ein frei zugängliches Ruinenfeld. Die <a href=\"/sehenswuerdigkeiten/kaiserthermen/\">Kaiserthermen</a> stammen aus dem 4. Jahrhundert, sind besser erhalten und kostenpflichtig. Beide gehören seit 1986 zum UNESCO-Welterbe der römischen Baudenkmäler von Trier.",
+      },
+    ],
   },
   {
     slug: "amphitheater",
@@ -184,7 +199,7 @@ export const sights: Sight[] = [
     categories: ["unesco-welterbe", "roemisches-erbe"],
     district: "trier-sued",
     type: "Antike",
-    priceFrom: 4,
+    priceFrom: 6,
     unesco: true,
     shortDesc:
       "UNESCO-Amphitheater mit Keller-Hebebuehnen. Im Sommer Buehne der Antikenfestspiele.",
@@ -196,7 +211,7 @@ export const sights: Sight[] = [
     faq: [
       {
         q: "Was kostet der Eintritt ins Amphitheater Trier?",
-        a: "Der Eintritt ins römische Amphitheater beginnt bei 4 Euro. Ein Kombiticket für mehrere Trierer Antikenstätten senkt den Preis pro Sehenswürdigkeit.",
+        a: "Der Eintritt ins römische Amphitheater kostet für Erwachsene 6 Euro (ermäßigt 5 Euro, Kinder und Jugendliche 3 Euro). Die AntikenCard senkt den Preis pro Sehenswürdigkeit: Basic (18 Euro) für zwei Römerbauten plus Rheinisches Landesmuseum, Premium (28 Euro) für alle vier Römerbauten und das Museum. Im Sommer 2026 haben Kinder und Jugendliche unter 18 Jahren vom 26. Juni bis 9. August freien Eintritt.",
       },
       {
         q: "Wann ist das Amphitheater Trier geöffnet?",
@@ -298,7 +313,7 @@ export const sights: Sight[] = [
     categories: ["museen", "roemisches-erbe"],
     district: "innenstadt",
     type: "Museum",
-    priceFrom: 8,
+    priceFrom: 10,
     shortDesc:
       "Eines der wichtigsten Antikenmuseen Europas. Mosaike, Goldmuenzen, Trierer Stadtmodell.",
     longDesc:
