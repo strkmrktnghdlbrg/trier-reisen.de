@@ -109,8 +109,14 @@ function trackerSnippet(eventName, goPath) {
     `document.addEventListener('click',t,true);document.addEventListener('auxclick',function(e){if(e.button===1)t(e)},true);})();</script>`;
 }
 
-function gatePage(hosts, goPath, siteName) {
+/**
+ * @param {string} [fallback] base64url-kodiertes Ziel fuer Aufrufe ohne `?u=`.
+ *   Slug-Gates (/r/<slug>/) brauchen das: externe Backlinks und Bookmarks zeigen
+ *   auf die nackte URL. Ohne Fallback landen sie auf `/` und die Provision ist weg.
+ */
+function gatePage(hosts, goPath, siteName, fallback) {
   const allow = JSON.stringify(hosts);
+  const fb = fallback ? JSON.stringify(fallback) : "''";
   return `<!doctype html>
 <html lang="de">
 <head>
@@ -133,7 +139,7 @@ function ok(u){try{var x=new URL(u);if(x.protocol!=='https:'&&x.protocol!=='http
 var h=x.hostname.replace(/^www\\./,'');
 for(var i=0;i<H.length;i++){if(h===H[i]||h.endsWith('.'+H[i]))return true;}
 if(AMZ.test(x.hostname)&&x.searchParams.get('tag'))return true;}catch(e){}return false;}
-var raw=new URLSearchParams(location.search).get('u'),t='';
+var raw=new URLSearchParams(location.search).get('u')||${fb},t='';
 try{t=raw?d(raw):'';}catch(e){t='';}
 if(t&&ok(t)){location.replace(t);}else{document.getElementById('m').textContent='Ungültiger Link – zurück zur Startseite …';location.replace('/');}
 })();
@@ -184,7 +190,7 @@ export default function outboundGate(options = {}) {
           if (!isAffiliate(target)) continue;
           const slug = rel.replace(/\/index\.html$/, '/').replace(/\.html$/, '');
           legacy.set(slug, target);
-          fs.writeFileSync(f, gatePage(hosts, goPath, options.siteName), 'utf8');
+          fs.writeFileSync(f, gatePage(hosts, goPath, options.siteName, encodeTarget(target)), 'utf8');
         }
 
         // --- 2. Affiliate-hrefs (und Links auf alte Slug-Gates) umschreiben.
