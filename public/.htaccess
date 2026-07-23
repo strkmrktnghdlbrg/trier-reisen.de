@@ -6,7 +6,7 @@
 # Bot-Block auf den Affiliate-Redirects (/r/)
 # Bots folgen die 302 auf awin1.com; AWIN zaehlt JEDEN Hit als Klick.
 # Messung 01.-23.07.2026: bis 66 % Klicks je GA4-Session, 5 Sales auf 2.052 Klicks.
-# Greift NUR auf /r/ - der Content bleibt fuer alle Crawler erreichbar,
+# Greift NUR auf /r/ und /go/ (Outbound-Gate) - der Content bleibt fuer alle Crawler erreichbar,
 # ein False-Positive kostet also hoechstens einen Partnerlink, nie Indexierung.
 # ============================================================
 RewriteCond %{HTTP_USER_AGENT} (crawl|spider|slurp|scraper|archiver|indexer) [NC,OR]
@@ -18,7 +18,7 @@ RewriteCond %{HTTP_USER_AGENT} (ahrefsbot|semrushbot|mj12bot|dotbot|blexbot|peta
 RewriteCond %{HTTP_USER_AGENT} (gptbot|chatgpt|oai-searchbot|ccbot|claudebot|claude-web|anthropic|perplexity|amazonbot|bytespider|meta-externalagent|google-extended|diffbot|omgili|timpibot|youbot|imagesift|cohere) [NC,OR]
 RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit|twitterbot|linkedinbot|whatsapp|telegrambot|slackbot|discordbot|pinterest|redditbot) [NC,OR]
 RewriteCond %{HTTP_USER_AGENT} ^$
-RewriteRule ^r/ - [F,L]
+RewriteRule ^(r|go)/ - [F,L]
 
 # ---- Affiliate-Redirects (/r/...) 302, clickref = trier-reisen.de (AWIN 514869) ----
 RewriteRule ^r/docmorris(-10euro)?/?$ https://www.awin1.com/cread.php?s=2490784&v=14485&q=372737&r=514869&clickref=trier-reisen.de [R=302,L,NE]
