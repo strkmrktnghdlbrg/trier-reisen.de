@@ -21,12 +21,12 @@ export const restaurants: Restaurant[] = [
     name: "Becker's Restaurant",
     categories: ["kulinarik", "wein"],
     district: "olewig",
-    cuisine: "Sternekueche",
+    cuisine: "Sterneküche",
     priceLevel: "€€€€",
     shortDesc:
-      "Sterne-Restaurant der Familie Becker in Olewig. Moderne Kueche, eigene Weine, weinaffine Pairings.",
+      "Sterne-Restaurant der Familie Becker in Olewig. Moderne Küche, eigene Weine, weinaffine Pairings.",
     longDesc:
-      "Becker's Restaurant gehoert zur Spitze der deutschen Sterne-Gastronomie und residiert im Weinhaus Becker in Olewig. Wolfgang Becker komponiert moderne Geniesser-Menues, die eng mit der Wein-Selektion des Hauses verzahnt sind. Reservierung Pflicht.",
+      "Becker's Restaurant gehört zur Spitze der deutschen Sterne-Gastronomie und residiert im Weinhaus Becker in Olewig. Wolfgang Becker komponiert moderne Geniesser-Menüs, die eng mit der Wein-Selektion des Hauses verzahnt sind. Reservierung Pflicht.",
     imageHue: 3,
     openingHours: "Di-Sa ab 18:30",
     websiteUrl: "https://www.beckers-trier.de",
@@ -42,7 +42,7 @@ export const restaurants: Restaurant[] = [
     shortDesc:
       "Im Domkeller in der Domfreihof. Mediterrane Akzente auf regionalem Fundament.",
     longDesc:
-      "Die Schlemmereule liegt im historischen Gewoelbekeller am Domfreihof. Petra und Hubert Scheid kochen mediterran-regional auf konstantem Niveau seit Jahrzehnten. Hervorragende Weinkarte mit Mosel-Schwerpunkt, ruhige Atmosphaere.",
+      "Die Schlemmereule liegt im historischen Gewölbekeller am Domfreihof. Petra und Hubert Scheid kochen mediterran-regional auf konstantem Niveau seit Jahrzehnten. Hervorragende Weinkarte mit Mosel-Schwerpunkt, ruhige Atmosphäre.",
     imageHue: 4,
     openingHours: "Di-Sa 12-14, 18-22",
     websiteUrl: "https://www.schlemmereule.de",
@@ -58,7 +58,7 @@ export const restaurants: Restaurant[] = [
     shortDesc:
       "Charmantes Bistro mit franzoesischem Einschlag in der Zuckerbergstrasse.",
     longDesc:
-      "Die Bagatelle ist Triers Top-Adresse fuer Bistro-Kueche: kleine Karte, sorgfaeltige Saucen, Wein-Empfehlung pro Gang. Schoene Sommer-Terrasse, intimer Innenraum. Reservierung empfohlen.",
+      "Die Bagatelle ist Triers Top-Adresse für Bistro-Küche: kleine Karte, sorgfältige Saucen, Wein-Empfehlung pro Gang. Schöne Sommer-Terrasse, intimer Innenraum. Reservierung empfohlen.",
     imageHue: 4,
     openingHours: "Di-Sa 18-23",
     reservation: true,
@@ -72,9 +72,9 @@ export const restaurants: Restaurant[] = [
     cuisine: "Regional / Weinstube",
     priceLevel: "€€",
     shortDesc:
-      "Klassische Weinstube am Liebfrauenplatz. Regionale Kueche, Mosel-Weine, herrliche Terrasse.",
+      "Klassische Weinstube am Liebfrauenplatz. Regionale Küche, Mosel-Weine, herrliche Terrasse.",
     longDesc:
-      "Die Weinstube Kesselstatt im Palais Kesselstatt am Liebfrauenplatz ist Trier pur: Innenhof-Terrasse mit Blick auf Dom und Liebfrauenkirche, regionale Karte mit moselländischen Klassikern, Weine von Reichsgraf Kesselstatt. Bei Sonne Triers schoenste Adresse.",
+      "Die Weinstube Kesselstatt im Palais Kesselstatt am Liebfrauenplatz ist Trier pur: Innenhof-Terrasse mit Blick auf Dom und Liebfrauenkirche, regionale Karte mit moselländischen Klassikern, Weine von Reichsgraf Kesselstatt. Bei Sonne Triers schönste Adresse.",
     imageHue: 3,
     openingHours: "Taegl. 11-23",
     reservation: true,
@@ -84,12 +84,12 @@ export const restaurants: Restaurant[] = [
     name: "Zum Domstein",
     categories: ["kulinarik", "roemisches-erbe"],
     district: "innenstadt",
-    cuisine: "Regional / Roemisch",
+    cuisine: "Regional / Römisch",
     priceLevel: "€€",
     shortDesc:
-      "Restaurant ueber einer roemischen Kelterei. Regional plus historische Roemer-Menues.",
+      "Restaurant über einer römischen Kelterei. Regional plus historische Roemer-Menüs.",
     longDesc:
-      "Zum Domstein steht ueber einer originalen roemischen Kelterei aus dem 4. Jahrhundert - im Keller begehbar. Auf der Karte regionales und auf Wunsch ein historisches Roemer-Menue nach antiken Rezepten von Apicius. Touristisch, aber gut gemacht.",
+      "Zum Domstein steht über einer originalen römischen Kelterei aus dem 4. Jahrhundert - im Keller begehbar. Auf der Karte regionales und auf Wunsch ein historisches Roemer-Menü nach antiken Rezepten von Apicius. Touristisch, aber gut gemacht.",
     imageHue: 1,
     openingHours: "Taegl. 9-23",
     websiteUrl: "https://www.domstein.de",
@@ -103,9 +103,9 @@ export const restaurants: Restaurant[] = [
     cuisine: "Regional",
     priceLevel: "€€",
     shortDesc:
-      "Trierer Klassiker mit Kartoffel-Themenkueche. Familienfreundlich, ueberportioniert, gemuetlich.",
+      "Trierer Klassiker mit Kartoffel-Themenkueche. Familienfreundlich, ueberportioniert, gemütlich.",
     longDesc:
-      "Die Kartoffelkiste am Hauptmarkt ist ein Trierer Klassiker fuer alle, die Kartoffel in jeder Form moegen: vom Reibekuchen bis zur Folienkartoffel, mit moselländischen Beilagen. Familienfreundlich, faire Portionen.",
+      "Die Kartoffelkiste am Hauptmarkt ist ein Trierer Klassiker für alle, die Kartoffel in jeder Form mögen: vom Reibekuchen bis zur Folienkartoffel, mit moselländischen Beilagen. Familienfreundlich, faire Portionen.",
     imageHue: 4,
     openingHours: "Taegl. 11:30-23",
     reservation: false,
@@ -118,9 +118,9 @@ export const restaurants: Restaurant[] = [
     cuisine: "Regional-modern",
     priceLevel: "€€€",
     shortDesc:
-      "Restaurant mit moderner Interpretation moselländischer Kueche im Zurlaubener Fischerviertel.",
+      "Restaurant mit moderner Interpretation moselländischer Küche im Zurlaubener Fischerviertel.",
     longDesc:
-      "Die Pfeffermuehle im Zurlaubener Ufer kombiniert die romantische Mosel-Lage mit moderner Regionalkueche. Schoene Terrasse direkt am Wasser, saisonale Karte, gehobene Weinkarte. Auch ein Kandidat fuer den Geburtstags-Tisch.",
+      "Die Pfeffermuehle im Zurlaubener Ufer kombiniert die romantische Mosel-Lage mit moderner Regionalkueche. Schöne Terrasse direkt am Wasser, saisonale Karte, gehobene Weinkarte. Auch ein Kandidat für den Geburtstags-Tisch.",
     imageHue: 2,
     openingHours: "Di-So 12-14, 18-22",
     reservation: true,
@@ -133,7 +133,7 @@ export const restaurants: Restaurant[] = [
     cuisine: "Modern",
     priceLevel: "€€€",
     shortDesc:
-      "Junges Restaurant mit moderner Kueche, kleine Karte, schoene Weinauswahl.",
+      "Junges Restaurant mit moderner Küche, kleine Karte, schöne Weinauswahl.",
     longDesc:
       "Bei Joh und Otto ist Triers junge Spitzenkueche: kleine, oft wechselnde Karte, modern interpretierte Klassiker, kuratierte Wein-Selektion. Wer Trier kulinarisch jenseits der Touristen-Achse erleben will, kommt hierher.",
     imageHue: 4,
@@ -151,7 +151,7 @@ export const restaurants: Restaurant[] = [
     shortDesc:
       "Weingut mit Hof-Weinstube. Eigene Weine plus Mosel-Vesper, Flammkuchen, Winzer-Brot.",
     longDesc:
-      "Das Weingut Reverchon in Olewig oeffnet seine Hof-Weinstube fuer Gaeste. Auf der Karte eigene Weine im Glas und in der Flasche, Mosel-Vesper, Flammkuchen, hausgemachte Winzer-Salate. Sommer-Terrasse, Wein-Verkauf.",
+      "Das Weingut Reverchon in Olewig öffnet seine Hof-Weinstube für Gäste. Auf der Karte eigene Weine im Glas und in der Flasche, Mosel-Vesper, Flammkuchen, hausgemachte Winzer-Salate. Sommer-Terrasse, Wein-Verkauf.",
     imageHue: 3,
     openingHours: "Mi-So 16-23 (Saison)",
   },
@@ -163,7 +163,7 @@ export const restaurants: Restaurant[] = [
     cuisine: "Weingut / Strausswirtschaft",
     priceLevel: "€",
     shortDesc:
-      "Klassische Olewiger Strausswirtschaft. Eigener Wein, einfache Karte, lokale Atmosphaere.",
+      "Klassische Olewiger Strausswirtschaft. Eigener Wein, einfache Karte, lokale Atmosphäre.",
     longDesc:
       "Das Weingut Rummel ist Olewig in Reinform: Strausswirtschaft im Innenhof, eigene Riesling- und Elbling-Weine, Karte mit Vesper, Winzersuppe, Bratkartoffeln. Lokal, ehrlich, fairer Preis.",
     imageHue: 3,
@@ -179,7 +179,7 @@ export const restaurants: Restaurant[] = [
     shortDesc:
       "Weinstube des Weingut Kesselstatt mit Verkostungen und kleiner Karte.",
     longDesc:
-      "Das Weingut Reichsgraf Kesselstatt bietet in Olewig Verkostungen und Weinstuben-Service. Riesling von Spaetlese bis Trocken, Vesper, Kaese-Auswahl, Wein-Verkauf. Stiller Geheimtipp.",
+      "Das Weingut Reichsgraf Kesselstatt bietet in Olewig Verkostungen und Weinstuben-Service. Riesling von Spaetlese bis Trocken, Vesper, Käse-Auswahl, Wein-Verkauf. Stiller Geheimtipp.",
     imageHue: 3,
     openingHours: "Saison Mi-So 14-22",
   },
@@ -193,7 +193,7 @@ export const restaurants: Restaurant[] = [
     shortDesc:
       "Lokal-Klassiker in Olewig. Gut sortierte Mosel-Karte, einfache regionale Speisen.",
     longDesc:
-      "Das Trierer Weinhaus in Olewig ist eine der aelteren Olewiger Adressen. Karte mit Vesper, Schnitzel, Forelle, dazu eine sehr gut sortierte Mosel-Weinkarte mit Winzern aus der Region. Klassisch, ehrlich.",
+      "Das Trierer Weinhaus in Olewig ist eine der älteren Olewiger Adressen. Karte mit Vesper, Schnitzel, Forelle, dazu eine sehr gut sortierte Mosel-Weinkarte mit Winzern aus der Region. Klassisch, ehrlich.",
     imageHue: 3,
   },
   // === ITALIENISCH ===
@@ -207,7 +207,7 @@ export const restaurants: Restaurant[] = [
     shortDesc:
       "Italienische Kette mit Riesen-Pizzen am Hauptmarkt. Verlaesslich, familienfreundlich.",
     longDesc:
-      "L'Osteria am Trierer Hauptmarkt bedient verlaesslich grosse Pizzen, Pasta-Klassiker und eine kleine Wein-Karte. Familienfreundlich, schnell, Reservierung am Wochenende sinnvoll.",
+      "L'Osteria am Trierer Hauptmarkt bedient verlässlich grosse Pizzen, Pasta-Klassiker und eine kleine Wein-Karte. Familienfreundlich, schnell, Reservierung am Wochenende sinnvoll.",
     imageHue: 4,
     openingHours: "Taegl. 11:30-23",
     reservation: true,
@@ -222,7 +222,7 @@ export const restaurants: Restaurant[] = [
     shortDesc:
       "Italiener mit Anspruch in der Glockenstrasse. Saisonale Karte, gute Weine.",
     longDesc:
-      "La Bottega ist Triers ambitionierter Italiener. Hausgemachte Pasta, frische Antipasti, saisonale Spezialitaeten und eine sehr respektable italienische Wein-Karte. Kleines Restaurant, Reservierung sinnvoll.",
+      "La Bottega ist Triers ambitionierter Italiener. Hausgemachte Pasta, frische Antipasti, saisonale Spezialitäten und eine sehr respektable italienische Wein-Karte. Kleines Restaurant, Reservierung sinnvoll.",
     imageHue: 4,
     openingHours: "Mo-Sa 12-14, 18-23",
     reservation: true,
@@ -251,7 +251,7 @@ export const restaurants: Restaurant[] = [
     shortDesc:
       "Italienische Kette mit Live-Cooking-Stationen am Viehmarkt.",
     longDesc:
-      "Vapiano am Viehmarkt bietet das bekannte Konzept mit Live-Cooking-Stationen fuer Pasta, Pizza und Salat. Modernes Interieur, gut fuer schnelle Mittagspausen und Gruppen.",
+      "Vapiano am Viehmarkt bietet das bekannte Konzept mit Live-Cooking-Stationen für Pasta, Pizza und Salat. Modernes Interieur, gut für schnelle Mittagspausen und Gruppen.",
     imageHue: 4,
     openingHours: "Taegl. 11-23",
   },
@@ -264,7 +264,7 @@ export const restaurants: Restaurant[] = [
     cuisine: "Japanisch / Sushi",
     priceLevel: "€€",
     shortDesc:
-      "Sushi-Adresse in der Bruchhausenstrasse. Frische Ware, faire Preise, Lieferung moeglich.",
+      "Sushi-Adresse in der Bruchhausenstrasse. Frische Ware, faire Preise, Lieferung möglich.",
     longDesc:
       "Akito Sushi ist Triers etablierte Sushi-Adresse. Klassische Maki, Nigiri und Bowls, Mittagsmenue gut kalkuliert, abends gut sortierte japanische Bier- und Sake-Auswahl.",
     imageHue: 4,
@@ -280,7 +280,7 @@ export const restaurants: Restaurant[] = [
     shortDesc:
       "Kleines vietnamesisches Restaurant. Pho, Bun Bo Nam Bo, Sommerrollen.",
     longDesc:
-      "Bambus serviert vietnamesische Klassiker - Pho, Bun, Sommerrollen, gegrillte Spiesse - in entspannter Atmosphaere. Faire Preise, hausgemachte Saucen, sympathisch familiengefuehrt.",
+      "Bambus serviert vietnamesische Klassiker - Pho, Bun, Sommerrollen, gegrillte Spiesse - in entspannter Atmosphäre. Faire Preise, hausgemachte Saucen, sympathisch familiengefuehrt.",
     imageHue: 4,
     openingHours: "Di-So 11:30-22",
   },
@@ -294,7 +294,7 @@ export const restaurants: Restaurant[] = [
     shortDesc:
       "Thaikueche in der Brueckenstrasse. Currys, Glasnudeln, scharf nach Wunsch.",
     longDesc:
-      "Saigon kocht thailaendisch klassisch: Rote und gruene Currys, Pad Thai, Glasnudelsalate. Schaerfegrad nach Wunsch, schoene Mittagskarte, gut gepflegtes Ambiente.",
+      "Saigon kocht thailaendisch klassisch: Rote und grüne Currys, Pad Thai, Glasnudelsalate. Schaerfegrad nach Wunsch, schöne Mittagskarte, gut gepflegtes Ambiente.",
     imageHue: 4,
     openingHours: "Mo-Sa 11:30-22",
   },
@@ -309,7 +309,7 @@ export const restaurants: Restaurant[] = [
     shortDesc:
       "Bistro mit wechselnder Tageskarte und solider Weinkarte am Stockplatz.",
     longDesc:
-      "Quo Vadis ist eine ehrliche Bistro-Adresse fuer den Mittagstisch und entspannte Abende. Tageskarte mit drei bis vier Hauptgerichten, immer fair gepreist, solide Weinkarte.",
+      "Quo Vadis ist eine ehrliche Bistro-Adresse für den Mittagstisch und entspannte Abende. Tageskarte mit drei bis vier Hauptgerichten, immer fair gepreist, solide Weinkarte.",
     imageHue: 4,
     openingHours: "Mo-Sa 11:30-22",
   },
@@ -321,9 +321,9 @@ export const restaurants: Restaurant[] = [
     cuisine: "Café & Bistro",
     priceLevel: "€€",
     shortDesc:
-      "Café-Bistro mit Fruehstueck den ganzen Tag. Hausgemachte Kuchen, kleine warme Karte.",
+      "Café-Bistro mit Frühstück den ganzen Tag. Hausgemachte Kuchen, kleine warme Karte.",
     longDesc:
-      "Die Lieblingsstube ist Treffpunkt fuer Trierer, die ein gutes Fruehstueck ueber den Mittag hinaus moegen. Hausgemachte Kuchen, Sandwich-Karte, kleine warme Tageskarte, schoene Atmosphaere.",
+      "Die Lieblingsstube ist Treffpunkt für Trierer, die ein gutes Frühstück über den Mittag hinaus mögen. Hausgemachte Kuchen, Sandwich-Karte, kleine warme Tageskarte, schöne Atmosphäre.",
     imageHue: 4,
     openingHours: "Taegl. 9-19",
   },
@@ -349,9 +349,9 @@ export const restaurants: Restaurant[] = [
     cuisine: "Modern",
     priceLevel: "€€€",
     shortDesc:
-      "Junges modernes Restaurant mit wechselnden Menues und mutiger Aromatik.",
+      "Junges modernes Restaurant mit wechselnden Menüs und mutiger Aromatik.",
     longDesc:
-      "Tabula Rasa ist eines der jueneren Trierer Restaurants mit klarem modernem Profil: wechselndes 4- bis 6-Gang-Menue, mutige Aromen, schoene Naturwein-Karte. Reservierung empfohlen.",
+      "Tabula Rasa ist eines der jueneren Trierer Restaurants mit klarem modernem Profil: wechselndes 4- bis 6-Gang-Menue, mutige Aromen, schöne Naturwein-Karte. Reservierung empfohlen.",
     imageHue: 4,
     openingHours: "Mi-Sa 18:30-22:30",
     reservation: true,

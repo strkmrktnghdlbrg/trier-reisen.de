@@ -6,13 +6,13 @@
  *
  *  1) Publisher-ID eintragen:  awin.publisherId = "DEINE_AWIN_AFFID"
  *     (zu finden im AWIN-Dashboard unter Account -> Publisher-ID / "awinaffid").
- *     Solange leer, geben alle Helfer den unveraenderten Ziel-Link zurueck
+ *     Solange leer, geben alle Helfer den unveraenderten Ziel-Link zurück
  *     (Links funktionieren also schon vor der Annahme, tracken nur noch nicht).
  *
  *  2) Pro Merchant, bei dem du ANGENOMMEN wurdest: `active: true` setzen.
  *     Die Merchant-IDs (awinmid) sind bereits vorausgefuellt - sie entsprechen
  *     der Nummer in der AWIN-Merchant-Profil-URL (ui.awin.com/merchant-profile/<ID>).
- *     Bitte im Dashboard gegenpruefen, falls AWIN eine ID aendert.
+ *     Bitte im Dashboard gegenpruefen, falls AWIN eine ID ändert.
  *
  * Deeplink-Format (Helper in src/lib/awin.ts):
  *   https://www.awin1.com/cread.php?awinmid=<MID>&awinaffid=<AFFID>&ued=<ZIEL-URL>&clickref=<REF>
@@ -23,7 +23,7 @@ export type AwinMerchant = {
   name: string;
   /** AWIN-Advertiser-ID (awinmid). Aus der Merchant-Profil-URL. */
   mid: string;
-  /** Merchant-Startseite (Default-Deeplink-Ziel, falls kein url uebergeben wird). */
+  /** Merchant-Startseite (Default-Deeplink-Ziel, falls kein url übergeben wird). */
   homepage: string;
   /** Reise-Intent / Kategorie auf der Seite. */
   intent:
@@ -38,7 +38,7 @@ export type AwinMerchant = {
   active: boolean;
   /** Provisions-Notiz (Stand Recherche, im Dashboard verbindlich). */
   commission: string;
-  /** Relevanz fuer ein Trier/Mosel-Portal. */
+  /** Relevanz für ein Trier/Mosel-Portal. */
   relevance: "high" | "medium" | "low";
   /** AWIN-Profil zum Bewerben. */
   applyUrl: string;
@@ -49,7 +49,7 @@ export const awin = {
   publisherId: "",
   /** Master-Schalter. */
   enabled: true,
-  /** Standard-clickref fuer Sub-Tracking (pro Platzierung ueberschreibbar). */
+  /** Standard-clickref für Sub-Tracking (pro Platzierung ueberschreibbar). */
   defaultClickref: "trier-reisen",
 
   /**

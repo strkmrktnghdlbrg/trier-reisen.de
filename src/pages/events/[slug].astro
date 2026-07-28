@@ -84,7 +84,7 @@ if (visible.length > 0) {
       <div class="flex flex-wrap items-center gap-3 text-sm mb-6">
         <span class="pill">Anreise {checkin.toLocaleDateString("de-DE")}</span>
         <span class="pill">Abreise {checkout.toLocaleDateString("de-DE")}</span>
-        <span class="pill">{nights} {nights === 1 ? "Nacht" : "Naechte"}</span>
+        <span class="pill">{nights} {nights === 1 ? "Nacht" : "Nächte"}</span>
       </div>
       <p class="text-body text-lg leading-relaxed">{event.intro}</p>
       {event.longDesc && <p class="text-body mt-4 leading-relaxed">{event.longDesc}</p>}
@@ -97,7 +97,7 @@ if (visible.length > 0) {
     {!upcoming && (
       <div class="card p-6 max-w-3xl mt-10">
         <p class="text-body">
-          Dieses Datum liegt in der Vergangenheit. Sobald der Termin fuer die naechste Saison feststeht, aktualisieren wir die Preise hier.
+          Dieses Datum liegt in der Vergangenheit. Sobald der Termin für die nächste Saison feststeht, aktualisieren wir die Preise hier.
           Schau dir solange unseren <a href="/hotels/" class="link-accent">Hotel-Index</a> an.
         </p>
       </div>
@@ -106,8 +106,8 @@ if (visible.length > 0) {
     {upcoming && visible.length === 0 && (
       <div class="card p-6 max-w-3xl mt-10">
         <p class="text-body">
-          Aktuell zeigt Stay22 keine verfuegbaren Hotels fuer diesen Zeitraum. Probier unseren
-          <a href="/hotels/" class="link-accent"> vollstaendigen Hotel-Index</a> oder die
+          Aktuell zeigt Stay22 keine verfügbaren Hotels für diesen Zeitraum. Probier unseren
+          <a href="/hotels/" class="link-accent"> vollständigen Hotel-Index</a> oder die
           <a href="/events/" class="link-accent"> anderen Saison-Pages</a>.
         </p>
       </div>
@@ -117,9 +117,9 @@ if (visible.length > 0) {
       <section class="mt-12">
         <div class="mb-6 max-w-2xl">
           <p class="eyebrow mb-2">Live von Stay22 - {dateLabel}</p>
-          <h2 class="display mb-2">Hotels fuer diesen Termin</h2>
+          <h2 class="display mb-2">Hotels für diesen Termin</h2>
           <p class="text-body">
-            Aktuelle Preise via Booking.com fuer {dateLabel}, {nights} {nights === 1 ? "Nacht" : "Naechte"}.
+            Aktuelle Preise via Booking.com für {dateLabel}, {nights} {nights === 1 ? "Nacht" : "Nächte"}.
           </p>
         </div>
 
@@ -128,8 +128,8 @@ if (visible.length > 0) {
         </div>
 
         <p class="text-[11px] mt-6 leading-relaxed max-w-2xl" style="color: var(--color-text-muted);">
-          * Preise und Verfuegbarkeit live via Stay22 → Booking.com. Bei Buchung erhalten wir eine Provision - fuer dich keine Mehrkosten.
-          Stand: {buildTime}. Preise gelten fuer den Zeitraum {dateLabel}, {nights} {nights === 1 ? "Nacht" : "Naechte"}.
+          * Preise und Verfügbarkeit live via Stay22 → Booking.com. Bei Buchung erhalten wir eine Provision - für dich keine Mehrkosten.
+          Stand: {buildTime}. Preise gelten für den Zeitraum {dateLabel}, {nights} {nights === 1 ? "Nacht" : "Nächte"}.
         </p>
       </section>
     )}

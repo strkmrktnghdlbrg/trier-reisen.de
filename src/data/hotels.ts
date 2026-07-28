@@ -29,7 +29,7 @@ export const hotels: Hotel[] = [
     shortDesc:
       "Komfortables 4-Sterne-Hotel am Kornmarkt, drei Minuten zur Porta Nigra und zum Dom.",
     longDesc:
-      "Das Park Plaza Trier liegt direkt am Kornmarkt mitten in der Fussgaengerzone. 150 Zimmer, Hallenbad und Sauna im Spa-Bereich, Restaurant Levanto. Klassische Business-Komfort-Mischung mit kurzem Weg zu allen UNESCO-Staetten.",
+      "Das Park Plaza Trier liegt direkt am Kornmarkt mitten in der Fussgaengerzone. 150 Zimmer, Hallenbad und Sauna im Spa-Bereich, Restaurant Levanto. Klassische Business-Komfort-Mischung mit kurzem Weg zu allen UNESCO-Stätten.",
     imageHue: 4,
     bookingUrl: "https://www.booking.com/hotel/de/park-plaza-trier.de.html",
     amenities: ["Spa", "Hallenbad", "Restaurant", "Innenstadt"],
@@ -45,14 +45,14 @@ export const hotels: Hotel[] = [
     shortDesc:
       "4-Sterne-Hotel direkt an der Porta Nigra. Lage genauso gut wie der Name verspricht.",
     longDesc:
-      "Das Mercure Hotel Porta Nigra liegt direkt gegenueber dem schwarzen Tor. 105 Zimmer, einige mit Blick auf die antike Fassade, Roof-Top-Restaurant, Tiefgarage. Bestmoegliche Adresse fuer Sightseeing zu Fuss.",
+      "Das Mercure Hotel Porta Nigra liegt direkt gegenüber dem schwarzen Tor. 105 Zimmer, einige mit Blick auf die antike Fassade, Roof-Top-Restaurant, Tiefgarage. Bestmoegliche Adresse für Sightseeing zu Fuss.",
     imageHue: 1,
     bookingUrl: "https://www.booking.com/hotel/de/mercure-trier-porta-nigra.de.html",
     amenities: ["Porta-Blick", "Restaurant", "Tiefgarage", "Bar"],
   },
   {
     slug: "hotel-villa-huegel",
-    name: "Hotel Villa Huegel",
+    name: "Hotel Villa Hügel",
     district: "trier-sued",
     stars: 4,
     priceFrom: 165,
@@ -62,7 +62,7 @@ export const hotels: Hotel[] = [
     shortDesc:
       "Boutique-Hotel in einer Jugendstilvilla oberhalb der Stadt. Spa, Sterne-Niveau, Aussicht.",
     longDesc:
-      "Die Villa Huegel residiert in einer Jugendstil-Villa oberhalb der Trierer Suedstadt. 32 individuell gestaltete Zimmer, Spa mit Pool, Restaurant unter Sternen-Beobachtung. Aussicht ueber die Stadt-Daecher inklusive.",
+      "Die Villa Hügel residiert in einer Jugendstil-Villa oberhalb der Trierer Südstadt. 32 individuell gestaltete Zimmer, Spa mit Pool, Restaurant unter Sternen-Beobachtung. Aussicht über die Stadt-Dächer inklusive.",
     imageHue: 4,
     bookingUrl: "https://www.booking.com/hotel/de/villa-hugel.de.html",
     amenities: ["Spa", "Pool", "Restaurant", "Aussicht"],
@@ -76,12 +76,12 @@ export const hotels: Hotel[] = [
     rating: 8.5,
     reviews: 1290,
     shortDesc:
-      "Modernes 4-Sterne-Hotel am Rand der Innenstadt. Frische Zimmer, Fruehstuecksbuffet, Fitness.",
+      "Modernes 4-Sterne-Hotel am Rand der Innenstadt. Frische Zimmer, Frühstücksbuffet, Fitness.",
     longDesc:
-      "Das Best Western Plus Trier City bietet 99 Zimmer in modernem Standard, ein gut beleumdetes Fruehstuecksbuffet, Fitnessraum und Tiefgarage. Lage etwas ausserhalb der Fussgaengerzone, aber gut angebunden.",
+      "Das Best Western Plus Trier City bietet 99 Zimmer in modernem Standard, ein gut beleumdetes Frühstücksbuffet, Fitnessraum und Tiefgarage. Lage etwas ausserhalb der Fussgaengerzone, aber gut angebunden.",
     imageHue: 4,
     bookingUrl: "https://www.booking.com/hotel/de/best-western-plus-trier-city.de.html",
-    amenities: ["Fitness", "Fruehstueck", "Tiefgarage", "WLAN"],
+    amenities: ["Fitness", "Frühstück", "Tiefgarage", "WLAN"],
   },
   {
     slug: "domhotel-trier",
@@ -94,7 +94,7 @@ export const hotels: Hotel[] = [
     shortDesc:
       "Familiengefuehrtes 4-Sterne-Hotel direkt am Hauptmarkt. Klassischer Trierer Charme.",
     longDesc:
-      "Das Domhotel ist eine Trierer Institution: familiengefuehrt, direkt am Hauptmarkt, mit Blick auf Steipe und Marktkreuz. 60 Zimmer in solidem 4-Sterne-Standard, Restaurant mit regionaler Kueche.",
+      "Das Domhotel ist eine Trierer Institution: familiengefuehrt, direkt am Hauptmarkt, mit Blick auf Steipe und Marktkreuz. 60 Zimmer in solidem 4-Sterne-Standard, Restaurant mit regionaler Küche.",
     imageHue: 4,
     bookingUrl: "https://www.booking.com/hotel/de/domhotel-trier.de.html",
     amenities: ["Hauptmarkt-Lage", "Restaurant", "Familiengefuehrt"],
@@ -108,9 +108,9 @@ export const hotels: Hotel[] = [
     rating: 8.5,
     reviews: 850,
     shortDesc:
-      "Traditionshaus direkt an der Porta Nigra. Gemuetlich, regional, ohne Schickimicki.",
+      "Traditionshaus direkt an der Porta Nigra. Gemütlich, regional, ohne Schickimicki.",
     longDesc:
-      "Das Hotel Roemischer Kaiser liegt direkt an der Porta Nigra und gehoert zu Triers Traditionshaeusern. 43 Zimmer, hauseigenes Restaurant mit moselländischer Kueche, gemuetliche Bar. Perfekt fuer Sightseeing-Reisende.",
+      "Das Hotel Roemischer Kaiser liegt direkt an der Porta Nigra und gehört zu Triers Traditionshaeusern. 43 Zimmer, hauseigenes Restaurant mit moselländischer Küche, gemütliche Bar. Perfekt für Sightseeing-Reisende.",
     imageHue: 1,
     bookingUrl: "https://www.booking.com/hotel/de/romischer-kaiser-trier.de.html",
     amenities: ["Porta-Lage", "Restaurant", "Bar"],
@@ -124,12 +124,12 @@ export const hotels: Hotel[] = [
     rating: 8.4,
     reviews: 720,
     shortDesc:
-      "Kleines Stadthotel in der Glockenstrasse. Persoenlich gefuehrt, fairer Preis, Innenstadt-Lage.",
+      "Kleines Stadthotel in der Glockenstrasse. Persoenlich geführt, fairer Preis, Innenstadt-Lage.",
     longDesc:
-      "Hotel zur Glocke ist Triers kleines Geheimnis: 18 Zimmer in einer ruhigen Seitenstrasse zwischen Hauptmarkt und Dom. Persoenlicher Service, hausgemachtes Fruehstueck, faire Preise.",
+      "Hotel zur Glocke ist Triers kleines Geheimnis: 18 Zimmer in einer ruhigen Seitenstrasse zwischen Hauptmarkt und Dom. Persönlicher Service, hausgemachtes Frühstück, faire Preise.",
     imageHue: 4,
     bookingUrl: "https://www.booking.com/hotel/de/zur-glocke-trier.de.html",
-    amenities: ["Familiengefuehrt", "Fruehstueck", "Zentral"],
+    amenities: ["Familiengefuehrt", "Frühstück", "Zentral"],
   },
   {
     slug: "aurelius-am-dom",
@@ -142,10 +142,10 @@ export const hotels: Hotel[] = [
     shortDesc:
       "Modernes Boutique-Hotel direkt hinter dem Dom. Klare Linien, fairer Preis, Top-Lage.",
     longDesc:
-      "Das Aurelius am Dom kombiniert puristisches Design mit Top-Lage. 24 Zimmer in modernem Standard, direkt hinter dem Dom, Fruehstuecksraum mit Blick auf historische Mauer. Gut fuer Design-Reisende mit kleinem Budget.",
+      "Das Aurelius am Dom kombiniert puristisches Design mit Top-Lage. 24 Zimmer in modernem Standard, direkt hinter dem Dom, Fruehstuecksraum mit Blick auf historische Mauer. Gut für Design-Reisende mit kleinem Budget.",
     imageHue: 4,
     bookingUrl: "https://www.booking.com/hotel/de/aurelius-am-dom.de.html",
-    amenities: ["Boutique", "Dom-Lage", "Fruehstueck"],
+    amenities: ["Boutique", "Dom-Lage", "Frühstück"],
   },
   {
     slug: "ibis-trier",
@@ -158,7 +158,7 @@ export const hotels: Hotel[] = [
     shortDesc:
       "Markenstandard mit fairen Preisen am Hauptbahnhof. Ankommen, einchecken, in die Stadt.",
     longDesc:
-      "Das Ibis Trier liegt direkt am Hauptbahnhof - ideal fuer Bahnreisende. 100 Zimmer im typischen Ibis-Standard, 24/7 Snackbar, Tiefgarage. Zehn Gehminuten in die Innenstadt.",
+      "Das Ibis Trier liegt direkt am Hauptbahnhof - ideal für Bahnreisende. 100 Zimmer im typischen Ibis-Standard, 24/7 Snackbar, Tiefgarage. Zehn Gehminuten in die Innenstadt.",
     imageHue: 4,
     bookingUrl: "https://www.booking.com/hotel/de/ibis-trier.de.html",
     amenities: ["Bahnhof", "Tiefgarage", "Snackbar"],
@@ -173,12 +173,12 @@ export const hotels: Hotel[] = [
     reviews: 1980,
     guestFavorite: true,
     shortDesc:
-      "Budget-Adresse mit Mehrbettzimmern und Privatzimmern, fuenf Gehminuten zur Porta.",
+      "Budget-Adresse mit Mehrbettzimmern und Privatzimmern, fünf Gehminuten zur Porta.",
     longDesc:
-      "Das Hostel Hille ist Triers beliebte Backpacker-Adresse. Mehrbettzimmer und Privatzimmer, Gemeinschaftskueche, Wohnzimmer mit Klavier. Familiengefuehrt, fuenf Gehminuten zur Porta Nigra.",
+      "Das Hostel Hille ist Triers beliebte Backpacker-Adresse. Mehrbettzimmer und Privatzimmer, Gemeinschaftskueche, Wohnzimmer mit Klavier. Familiengefuehrt, fünf Gehminuten zur Porta Nigra.",
     imageHue: 4,
     bookingUrl: "https://www.booking.com/hotel/de/hostel-hille.de.html",
-    amenities: ["Backpacker", "Kueche", "Privatzimmer"],
+    amenities: ["Backpacker", "Küche", "Privatzimmer"],
   },
   // === MOSEL-UFER / AUSSEN ===
   {
@@ -190,9 +190,9 @@ export const hotels: Hotel[] = [
     rating: 8.3,
     reviews: 1620,
     shortDesc:
-      "Grosses 4-Sterne-Hotel am Mosel-Ufer. Pool, Spa, Konferenzraeume, Familienzimmer.",
+      "Grosses 4-Sterne-Hotel am Mosel-Ufer. Pool, Spa, Konferenzräume, Familienzimmer.",
     longDesc:
-      "Das Moselpark liegt am noerdlichen Mosel-Ufer Triers und ist mit 144 Zimmern das Tagungs-Hotel der Stadt. Pool, Sauna, Restaurant mit Mosel-Terrasse, Familienzimmer und Tiefgarage.",
+      "Das Moselpark liegt am nördlichen Mosel-Ufer Triers und ist mit 144 Zimmern das Tagungs-Hotel der Stadt. Pool, Sauna, Restaurant mit Mosel-Terrasse, Familienzimmer und Tiefgarage.",
     imageHue: 2,
     bookingUrl: "https://www.booking.com/hotel/de/moselpark-trier.de.html",
     amenities: ["Pool", "Spa", "Mosel-Lage", "Konferenz"],
@@ -208,7 +208,7 @@ export const hotels: Hotel[] = [
     shortDesc:
       "Traditionsadresse am Suedrand der Innenstadt. Solider 4-Sterne-Komfort, Restaurant, Bar.",
     longDesc:
-      "Der Deutsche Hof ist seit Jahrzehnten eine feste Groesse in Trier. 105 Zimmer, Restaurant mit moselländischer Kueche, Wellness-Bereich, Tiefgarage. Lage am Suedrand der Innenstadt, Fussweg zum Hauptmarkt 10 Minuten.",
+      "Der Deutsche Hof ist seit Jahrzehnten eine feste Groesse in Trier. 105 Zimmer, Restaurant mit moselländischer Küche, Wellness-Bereich, Tiefgarage. Lage am Suedrand der Innenstadt, Fussweg zum Hauptmarkt 10 Minuten.",
     imageHue: 4,
     bookingUrl: "https://www.booking.com/hotel/de/deutscher-hof-trier.de.html",
     amenities: ["Restaurant", "Wellness", "Tiefgarage"],
@@ -225,7 +225,7 @@ export const hotels: Hotel[] = [
     shortDesc:
       "Familiengefuehrtes 4-Sterne-Hotel mit Triers bester Aussicht. Hoch oben, ruhig, weinaffin.",
     longDesc:
-      "Das Hotel Petrisberg liegt am Petrisberg oberhalb der Stadt - Aussicht ueber Moseltal und Innenstadt inklusive. 35 Zimmer, hauseigene Weinbar mit Familienweinen, ruhige Wohnlage. Familiengefuehrt seit drei Generationen.",
+      "Das Hotel Petrisberg liegt am Petrisberg oberhalb der Stadt - Aussicht über Moseltal und Innenstadt inklusive. 35 Zimmer, hauseigene Weinbar mit Familienweinen, ruhige Wohnlage. Familiengefuehrt seit drei Generationen.",
     imageHue: 2,
     bookingUrl: "https://www.booking.com/hotel/de/petrisberg-trier.de.html",
     amenities: ["Aussicht", "Familiengefuehrt", "Weinbar"],
@@ -241,7 +241,7 @@ export const hotels: Hotel[] = [
     shortDesc:
       "Ehrwuerdiger Gasthof in Euren. Wellness, Restaurant, Familienorientiert.",
     longDesc:
-      "Der Eurener Hof in Triers suedwestlichem Stadtteil ist eine Traditionsadresse: 80 Zimmer, grosser Wellness-Bereich, Pool, Restaurant. Etwas ausserhalb, dafuer mit Mosel-Naehe und Ruhe.",
+      "Der Eurener Hof in Triers suedwestlichem Stadtteil ist eine Traditionsadresse: 80 Zimmer, grosser Wellness-Bereich, Pool, Restaurant. Etwas ausserhalb, dafür mit Mosel-Nähe und Ruhe.",
     imageHue: 2,
     bookingUrl: "https://www.booking.com/hotel/de/eurener-hof.de.html",
     amenities: ["Wellness", "Pool", "Restaurant", "Familie"],
@@ -255,9 +255,9 @@ export const hotels: Hotel[] = [
     rating: 8.5,
     reviews: 720,
     shortDesc:
-      "Kleines Hotel garni am Moselufer. Persoenlich, fair, frisches Fruehstueck.",
+      "Kleines Hotel garni am Moselufer. Persoenlich, fair, frisches Frühstück.",
     longDesc:
-      "Die Casa Chiara ist ein 20-Zimmer-Hotel garni am Trierer Mosel-Ufer. Familiengefuehrt, frisches Fruehstueck, fairer Preis. Sehr ruhig und doch nur zehn Gehminuten zur Porta Nigra.",
+      "Die Casa Chiara ist ein 20-Zimmer-Hotel garni am Trierer Mosel-Ufer. Familiengefuehrt, frisches Frühstück, fairer Preis. Sehr ruhig und doch nur zehn Gehminuten zur Porta Nigra.",
     imageHue: 2,
     bookingUrl: "https://www.booking.com/hotel/de/casa-chiara.de.html",
     amenities: ["Hotel garni", "Mosel-Lage", "Familiengefuehrt"],
@@ -273,12 +273,12 @@ export const hotels: Hotel[] = [
     reviews: 480,
     guestFavorite: true,
     shortDesc:
-      "Boutique-Weinhaus mit Sterne-Restaurant Becker's in Olewig. Kulinarik und Wein auf hoechstem Niveau.",
+      "Boutique-Weinhaus mit Sterne-Restaurant Becker's in Olewig. Kulinarik und Wein auf höchstem Niveau.",
     longDesc:
-      "Das Weinhaus Becker in Olewig ist Wein-Reisenden ein Begriff: gefuehrt von der Familie Becker, mit dem Sterne-Restaurant Becker's, weinaffiner Suite-Ausstattung und Blick in die Weinberge. Top-Adresse fuer Geniesser.",
+      "Das Weinhaus Becker in Olewig ist Wein-Reisenden ein Begriff: geführt von der Familie Becker, mit dem Sterne-Restaurant Becker's, weinaffiner Suite-Ausstattung und Blick in die Weinberge. Top-Adresse für Geniesser.",
     imageHue: 3,
     bookingUrl: "https://www.booking.com/hotel/de/weinhaus-becker.de.html",
-    amenities: ["Sternekueche", "Wein", "Boutique", "Olewig"],
+    amenities: ["Sterneküche", "Wein", "Boutique", "Olewig"],
   },
   {
     slug: "hotel-weinhaus-haag",
@@ -291,7 +291,7 @@ export const hotels: Hotel[] = [
     shortDesc:
       "Familiengefuehrtes Weinhaus mitten in Olewig. Eigene Weine, traditionelle Stube, kurze Wege.",
     longDesc:
-      "Das Hotel-Weinhaus Haag ist klassisch Olewig: Familie, eigene Weinberge, Weinstube mit Stammgaesten, einfache aber gut gepflegte Zimmer. Ideal fuer Wein-Wanderer, die nach dem Riesling kurze Wege zum Bett wollen.",
+      "Das Hotel-Weinhaus Haag ist klassisch Olewig: Familie, eigene Weinberge, Weinstube mit Stammgaesten, einfache aber gut gepflegte Zimmer. Ideal für Wein-Wanderer, die nach dem Riesling kurze Wege zum Bett wollen.",
     imageHue: 3,
     bookingUrl: "https://www.booking.com/hotel/de/weinhaus-haag-trier.de.html",
     amenities: ["Familiengefuehrt", "Eigene Weine", "Weinstube"],

@@ -20,7 +20,7 @@ function ok(u){try{var x=new URL(u);if(x.protocol!=='https:'&&x.protocol!=='http
 var h=x.hostname.replace(/^www\./,'');
 for(var i=0;i<H.length;i++){if(h===H[i]||h.endsWith('.'+H[i]))return true;}
 if(AMZ.test(x.hostname)&&x.searchParams.get('tag'))return true;}catch(e){}return false;}
-var raw=new URLSearchParams(location.search).get('u'),t='';
+var raw=new URLSearchParams(location.search).get('u')||'',t='';
 try{t=raw?d(raw):'';}catch(e){t='';}
 if(t&&ok(t)){location.replace(t);}else{document.getElementById('m').textContent='Ungültiger Link – zurück zur Startseite …';location.replace('/');}
 })();

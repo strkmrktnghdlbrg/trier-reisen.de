@@ -1,5 +1,5 @@
 /**
- * Feature-Flags fuer trier-reisen.de
+ * Feature-Flags für trier-reisen.de
  * Off = Nav blendet aus, Pages werden ausgespart, Sitemap-Filter greift.
  */
 
@@ -8,7 +8,7 @@ export const features = {
   news: {
     enabled: false,
   },
-  /** Reiseplaner-Guides - primaerer Top-Funnel fuer Trier. */
+  /** Reiseplaner-Guides - primaerer Top-Funnel für Trier. */
   reiseplaner: {
     enabled: true,
   },

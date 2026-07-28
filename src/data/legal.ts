@@ -1,5 +1,5 @@
 /**
- * Rechtliche Stammdaten fuer Impressum und Datenschutz.
+ * Rechtliche Stammdaten für Impressum und Datenschutz.
  * Betreibergesellschaft: Webmagics Ltd. (Zypern).
  */
 

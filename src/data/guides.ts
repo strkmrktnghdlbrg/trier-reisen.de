@@ -33,7 +33,7 @@ export const guides: Guide[] = [
       {
         heading: "Tag 3 - Olewig & Mosel",
         body:
-          "Bus 6 nach Olewig. Weinkulturpfad (5 km, 2 h) durch die Steillagen. Mittag im Weingut Reverchon oder bei Becker's. Nachmittag zurueck zur Roemerbruecke, Mariensaeule (Bus 8) fuer den Postkartenblick auf die Stadt. Abschluss-Dinner in Becker's.",
+          "Bus 6 nach Olewig. Weinkulturpfad (5 km, 2 h) durch die Steillagen. Mittag im Weingut Reverchon oder bei Becker's. Nachmittag zurück zur Roemerbruecke, Mariensaeule (Bus 8) für den Postkartenblick auf die Stadt. Abschluss-Dinner in Becker's.",
       },
     ],
   },
@@ -48,19 +48,19 @@ export const guides: Guide[] = [
     hue: 2,
     sections: [
       {
-        heading: "Gladiatoren-Fuehrung im Amphitheater",
+        heading: "Gladiatoren-Führung im Amphitheater",
         body:
-          "Die Roemer-Erlebnistour mit verkleideter Fuehrung ist Triers Familien-Hit. Buchung ueber Trier-Tourist-Info. Funktioniert ab Grundschulalter, fesselt auch Teenager.",
+          "Die Roemer-Erlebnistour mit verkleideter Führung ist Triers Familien-Hit. Buchung über Trier-Tourist-Info. Funktioniert ab Grundschulalter, fesselt auch Teenager.",
       },
       {
         heading: "Spielzeugmuseum am Hauptmarkt",
         body:
-          "Drei Etagen, Puppenstuben, Eisenbahnen, Game Boy. Funktioniert ab Kindergartenalter, fuer Eltern ein nostalgischer Spaziergang. Direkt am Hauptmarkt, kombinierbar mit Eis.",
+          "Drei Etagen, Puppenstuben, Eisenbahnen, Game Boy. Funktioniert ab Kindergartenalter, für Eltern ein nostalgischer Spaziergang. Direkt am Hauptmarkt, kombinierbar mit Eis.",
       },
       {
         heading: "Petrisberg-Aufzug + Spielplatz",
         body:
-          "Vom Sicht-Aufzug an der Karl-Marx-Strasse auf den Petrisberg - Aussicht ueber Mosel, Stadt, Hunsrueck. Riesenspielplatz, Wassergaerten, Picknickwiesen.",
+          "Vom Sicht-Aufzug an der Karl-Marx-Strasse auf den Petrisberg - Aussicht über Mosel, Stadt, Hunsrück. Riesenspielplatz, Wassergaerten, Picknickwiesen.",
       },
       {
         heading: "Roemer-Erlebnisbus",
@@ -87,12 +87,12 @@ export const guides: Guide[] = [
       {
         heading: "Mittag - Schlemmereule oder Domstein",
         body:
-          "Beide direkt in der Innenstadt, ueberdachte Wege, schoene Atmosphaere mit Tageslicht ueber Glasdaechern.",
+          "Beide direkt in der Innenstadt, überdachte Wege, schöne Atmosphäre mit Tageslicht über Glasdaechern.",
       },
       {
         heading: "Nachmittag - Konstantinbasilika + Liebfrauen",
         body:
-          "Konstantinbasilika (riesiger Saal, fast leer im Regen - Akustik-Erlebnis). Dann durch den ueberdachten Domkreuzgang in die Liebfrauenkirche. Anschliessend Kaffee im Café am Dom.",
+          "Konstantinbasilika (riesiger Saal, fast leer im Regen - Akustik-Erlebnis). Dann durch den überdachten Domkreuzgang in die Liebfrauenkirche. Anschliessend Kaffee im Café am Dom.",
       },
       {
         heading: "Abend - Weinstube",

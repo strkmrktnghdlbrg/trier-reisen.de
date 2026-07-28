@@ -214,5 +214,5 @@ export const breadcrumbSchema = (items: { name: string; url?: string }[]) => ({
   })),
 });
 
-/** Convenience: serialisiere ein einzelnes Schema oder Array fuer ein <script type="application/ld+json"> Tag. */
+/** Convenience: serialisiere ein einzelnes Schema oder Array für ein <script type="application/ld+json"> Tag. */
 export const serializeSchema = (s: object | object[]) => JSON.stringify(s);

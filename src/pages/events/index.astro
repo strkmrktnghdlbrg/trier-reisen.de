@@ -19,20 +19,20 @@ const gyg = getGyg("index:events");
 <BaseLayout
   title={`Events in ${city.name}`}
   altLangPath="/en/events/"
-  description={`Events in ${city.name}: Antikenfestspiele, Olewiger Weinfest, Weihnachtsmarkt, Brot und Spiele, Mosel-Wein-Nachts-Bummel. Plus Saison-Hotels fuer Silvester, Pfingsten, Brueckentage.`}
+  description={`Events in ${city.name}: Antikenfestspiele, Olewiger Weinfest, Weihnachtsmarkt, Brot und Spiele, Mosel-Wein-Nachts-Bummel. Plus Saison-Hotels für Silvester, Pfingsten, Brueckentage.`}
 >
   <section class="container-page py-12">
     <Breadcrumbs items={[{ href: "/", label: city.name }, { label: "Events" }]} />
     <p class="eyebrow mb-3">{upcomingRealEvents.length + upcomingSeasonal.length} Termine</p>
     <h1 class="display-xl">Events & Termine in {city.name}</h1>
     <p class="text-body mt-4 max-w-2xl">
-      Antikenfestspiele im Amphitheater, Olewiger Weinfest, Weihnachtsmarkt am Hauptmarkt - Triers grosse Termine plus Saison-Hotels fuer Silvester und Brueckentage.
+      Antikenfestspiele im Amphitheater, Olewiger Weinfest, Weihnachtsmarkt am Hauptmarkt - Triers grosse Termine plus Saison-Hotels für Silvester und Brueckentage.
     </p>
   </section>
 
   {upcomingRealEvents.length > 0 && (
     <section class="container-page section pt-0">
-      <h2 class="display mb-6">Festivals und Maerkte</h2>
+      <h2 class="display mb-6">Festivals und Märkte</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {upcomingRealEvents.map((e) => <EventCard event={e} />)}
       </div>
@@ -46,7 +46,7 @@ const gyg = getGyg("index:events");
         <h2 class="display mb-2">Saison-Hotels nach Termin</h2>
         <p class="text-body">
           Silvester, Pfingsten, Christi Himmelfahrt, Wochenende - Live-Preise via Booking.com
-          fuer konkrete Reisetermine in Trier.
+          für konkrete Reisetermine in Trier.
         </p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">

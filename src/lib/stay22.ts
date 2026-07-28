@@ -9,12 +9,12 @@
  *   - GitHub-Action-Cron alle 6h triggert Rebuild
  *
  * QUIRK: Die API antwortet HTTP 400 bei Umlauten in `address`.
- * Trier hat keine Umlaute - daher fuer Stadt-Searches "Trier, Germany"
+ * Trier hat keine Umlaute - daher für Stadt-Searches "Trier, Germany"
  * direkt verwendbar. Bezirke wie "Trier-Süd" werden hier transparent
- * zu "Trier-Sued" gemappt.
+ * zu "Trier-Süd" gemappt.
  *
  * Env-Var: STAY22_API_KEY
- *   Wenn nicht gesetzt: Helper gibt null zurueck (graceful degradation).
+ *   Wenn nicht gesetzt: Helper gibt null zurück (graceful degradation).
  *
  * Schema-Normalisierung:
  *   Die Roh-Antwort hat verschachtelte Felder. Wir flachen das im Helper
@@ -26,7 +26,7 @@ export interface Stay22Accommodation {
   name: string;
   type?: string;
   image?: string;
-  /** Vollstaendige Affiliate-URL inkl. lmaID. */
+  /** Vollständige Affiliate-URL inkl. lmaID. */
   link?: string;
   rating?: {
     /** 0-10. */
@@ -182,7 +182,7 @@ export async function searchAccommodations(
 ): Promise<Stay22Accommodation[] | null> {
   const apiKey = getApiKey();
   if (!apiKey) {
-    console.warn("[stay22] STAY22_API_KEY env var fehlt - Live-Hotels werden uebersprungen.");
+    console.warn("[stay22] STAY22_API_KEY env var fehlt - Live-Hotels werden übersprungen.");
     return null;
   }
 
@@ -251,14 +251,14 @@ export async function searchAccommodations(
             await sleep(wait);
             continue;
           }
-          console.error(`[stay22] 429 nach ${maxAttempts} Versuchen - gebe auf fuer ${options.address ?? "lat/lng"}`);
+          console.error(`[stay22] 429 nach ${maxAttempts} Versuchen - gebe auf für ${options.address ?? "lat/lng"}`);
           return null;
         }
 
         if (!res.ok) {
           const body = await res.text().catch(() => "");
           console.error(
-            `[stay22] API ${res.status} fuer ${options.address ?? "lat/lng-search"}: ${body.slice(0, 200)}`,
+            `[stay22] API ${res.status} für ${options.address ?? "lat/lng-search"}: ${body.slice(0, 200)}`,
           );
           return null;
         }
@@ -332,7 +332,7 @@ export async function getTopHotels(
 }
 
 /**
- * Nearby-Hotels per Lat/Lng - fuer Sight-/Bezirk-/Event-Detail-Pages.
+ * Nearby-Hotels per Lat/Lng - für Sight-/Bezirk-/Event-Detail-Pages.
  */
 export async function getNearbyHotels(
   lat: number,

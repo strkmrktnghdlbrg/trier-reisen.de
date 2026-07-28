@@ -3,12 +3,12 @@
  * ============================================================
  *
  * Aus der alten WordPress-Seite zurueckgeholte, faktengepruefte und
- * angepasste Artikel. Jeder Artikel behaelt seine EXAKTE alte Root-URL
+ * angepasste Artikel. Jeder Artikel behält seine EXAKTE alte Root-URL
  * (z. B. /weinfeste/), damit die bestehenden Google-Rankings erhalten
  * bleiben. Gerendert von `src/pages/[artikel].astro`.
  *
  * Affiliate wird vom Template anhand der Felder injiziert:
- *   - gygQuery   -> GetYourGuide-Aktivitaeten-Widget
+ *   - gygQuery   -> GetYourGuide-Aktivitäten-Widget
  *   - awinMerchants -> AWIN-Angebots-Buttons (HanseMerkur, Hawesko, ...)
  *
  * Interne Links stehen direkt als <a href="/..."> im Fliesstext (set:html).
@@ -21,7 +21,7 @@ import articleData from "./articles.data.json";
 export type ArticleSection = {
   /** Optionale H2-Ueberschrift. */
   heading?: string;
-  /** Absaetze als HTML-Strings (duerfen interne <a href="/..."> enthalten). */
+  /** Absätze als HTML-Strings (dürfen interne <a href="/..."> enthalten). */
   body: string[];
   /** Optionale Aufzaehlung. */
   list?: string[];
@@ -38,11 +38,11 @@ export type Article = {
   /** Meta-Description. */
   description: string;
   category: ArticleCategory;
-  /** ISO-Datum (uebernommen vom alten Beitrag, sonst Migrationsdatum). */
+  /** ISO-Datum (übernommen vom alten Beitrag, sonst Migrationsdatum). */
   publishDate: string;
-  /** ISO-Datum der letzten inhaltlichen Aktualisierung (optional, fuer dateModified). */
+  /** ISO-Datum der letzten inhaltlichen Aktualisierung (optional, für dateModified). */
   dateModified?: string;
-  /** Hue fuer den HueGradient-Hero (0-360). */
+  /** Hue für den HueGradient-Hero (0-360). */
   heroHue: number;
   /** Lead-Absatz (HTML erlaubt). */
   intro: string;
@@ -54,12 +54,12 @@ export type Article = {
   gygQuery?: string;
   gygHeading?: string;
   gygIntro?: string;
-  /** AWIN-Merchant-Keys fuer Angebots-Buttons. */
+  /** AWIN-Merchant-Keys für Angebots-Buttons. */
   awinMerchants?: AwinMerchantKey[];
   awinHeading?: string;
   awinIntro?: string;
 
-  /** Verwandte Beitraege / Seiten (Footer-Navigation). */
+  /** Verwandte Beiträge / Seiten (Footer-Navigation). */
   related?: { href: string; label: string }[];
 };
 

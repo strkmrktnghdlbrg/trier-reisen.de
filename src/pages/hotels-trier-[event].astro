@@ -81,7 +81,7 @@ if (visible.length > 0) {
       <div class="flex flex-wrap items-center gap-3 text-sm mb-6">
         <span class="pill">Anreise {checkinFmt}</span>
         <span class="pill">Abreise {checkoutFmt}</span>
-        <span class="pill">{nights} {nights === 1 ? "Nacht" : "Naechte"}</span>
+        <span class="pill">{nights} {nights === 1 ? "Nacht" : "Nächte"}</span>
       </div>
       <p class="text-body text-lg leading-relaxed">{event.intro}</p>
       {event.longDesc && <p class="text-body mt-4 leading-relaxed">{event.longDesc}</p>}
@@ -102,13 +102,13 @@ if (visible.length > 0) {
           <div class="mb-6 max-w-2xl">
             <p class="eyebrow mb-2">Live von Stay22</p>
             <h2 class="display mb-2">Verfuegbare Hotels - {checkinFmt} bis {checkoutFmt}</h2>
-            <p class="text-body">Echte Preise via Booking.com fuer diesen Zeitraum.</p>
+            <p class="text-body">Echte Preise via Booking.com für diesen Zeitraum.</p>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {visible.map((h) => <Stay22HotelCard hotel={h} showTotal />)}
           </div>
           <p class="text-[11px] mt-6 leading-relaxed max-w-2xl" style="color: var(--color-text-muted);">
-            * Live via Stay22 → Booking.com. Stand: {buildTime}. Provision bei Buchung - kein Mehrpreis fuer dich.
+            * Live via Stay22 → Booking.com. Stand: {buildTime}. Provision bei Buchung - kein Mehrpreis für dich.
           </p>
         </section>
 
@@ -127,8 +127,8 @@ if (visible.length > 0) {
     {upcoming && visible.length === 0 && (
       <div class="card p-6 max-w-3xl">
         <p class="text-body">
-          Aktuell zeigt Stay22 keine verfuegbaren Hotels fuer diesen Zeitraum.
-          Probier unseren <a href="/hotels/" class="link-accent">vollstaendigen Hotel-Index</a>.
+          Aktuell zeigt Stay22 keine verfügbaren Hotels für diesen Zeitraum.
+          Probier unseren <a href="/hotels/" class="link-accent">vollständigen Hotel-Index</a>.
         </p>
       </div>
     )}

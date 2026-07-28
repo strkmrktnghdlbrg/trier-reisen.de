@@ -36,7 +36,7 @@ export type AwinLinkOptions = {
 };
 
 /**
- * Baut einen AWIN-Deeplink. Faellt auf die rohe Ziel-URL zurueck, wenn AWIN
+ * Baut einen AWIN-Deeplink. Faellt auf die rohe Ziel-URL zurück, wenn AWIN
  * (noch) nicht scharfgeschaltet ist - so funktioniert der Link immer.
  */
 export function awinDeeplink(key: AwinMerchantKey, options: AwinLinkOptions = {}): string {

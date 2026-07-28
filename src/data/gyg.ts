@@ -6,16 +6,16 @@
  * (siehe Workflow trier-gyg-research). Keys folgen dem Muster
  * "<typ>:<slug>" bzw. "home" / "index:<bereich>".
  *
- * relevant=true  -> GetYourGuide hat konkret passende Aktivitaeten (spezifische q).
- * relevant=false -> nur eine generische Trier-Stadtfuehrung passt; die Anfrage faellt
- *                   dann auf "Trier" o. ae. zurueck. Copy ist trotzdem auf die Seite
+ * relevant=true  -> GetYourGuide hat konkret passende Aktivitäten (spezifische q).
+ * relevant=false -> nur eine generische Trier-Stadtführung passt; die Anfrage fällt
+ *                   dann auf "Trier" o. ae. zurück. Copy ist trotzdem auf die Seite
  *                   zugeschnitten, daher wird auch hier gerendert.
  */
 
 export type GygPlacement = {
   /** true, wenn GYG konkret passende Touren hat (sonst nicht rendern). */
   relevant: boolean;
-  /** Freitext-Suchanfrage fuer data-gyg-q. */
+  /** Freitext-Suchanfrage für data-gyg-q. */
   q: string;
   /** Sektion-Ueberschrift. */
   heading: string;
@@ -26,7 +26,7 @@ export type GygPlacement = {
 };
 
 export const gygPlacements: Record<string, GygPlacement> = {
-  // === SEHENSWUERDIGKEITEN ===
+  // === SEHENSWÜRDIGKEITEN ===
   "sight:porta-nigra": { relevant: true, q: "Porta Nigra Trier Führung", heading: "Touren rund um die Porta Nigra", intro: "Geführte Erlebnistouren bringen euch die Geschichte des römischen Stadttors näher.", count: 4 },
   "sight:amphitheater": { relevant: true, q: "Trier Römer Führung Amphitheater", heading: "Auf den Spuren der Römer", intro: "Geführte Rundgänge erzählen vom Alltag der Römer und ihren Arenen.", count: 3 },
   "sight:kaiserthermen": { relevant: true, q: "Trier Römer Führung Kaiserthermen", heading: "Römisches Trier entdecken", intro: "Führungen durch die antike Kaiserstadt zeigen die Thermen und das Palastviertel.", count: 3 },
@@ -104,7 +104,7 @@ import enGyg from "./i18n/en/gyg.json";
 /**
  * Platzierung zum Key holen (null, wenn kein Eintrag existiert).
  * Bei lang="en" werden heading/intro aus der englischen Overlay ueberlagert
- * (q, count, relevant bleiben unveraendert).
+ * (q, count, relevant bleiben unverändert).
  */
 export const getGyg = (key: string, lang: "de" | "en" = "de"): GygPlacement | null => {
   const base = gygPlacements[key] ?? null;

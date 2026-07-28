@@ -44,11 +44,11 @@ export const events: CityEvent[] = [
     kind: "event",
     category: "antike",
     intro:
-      "Die Antikenfestspiele machen das roemische Amphitheater jeden Sommer zur groessten Antike-Buehne Deutschlands. Inszenierungen mit Live-Musik, Reiterei und Tausenden Zuschauern unter freiem Himmel.",
+      "Die Antikenfestspiele machen das römische Amphitheater jeden Sommer zur groessten Antike-Bühne Deutschlands. Inszenierungen mit Live-Musik, Reiterei und Tausenden Zuschauern unter freiem Himmel.",
     description:
-      "Trierer Antikenfestspiele 2026 - Termine, Programm, Hotel-Verfuegbarkeit. Inszenierungen im roemischen Amphitheater, Tickets, Hotels in der Naehe.",
+      "Trierer Antikenfestspiele 2026 - Termine, Programm, Hotel-Verfügbarkeit. Inszenierungen im römischen Amphitheater, Tickets, Hotels in der Nähe.",
     longDesc:
-      "Die Trierer Antikenfestspiele sind das groesste Antike-Festival Deutschlands. Seit 1998 wird jeden Sommer das roemische Amphitheater zur Open-Air-Buehne fuer Tragoedien, Komoedien und Konzert-Inszenierungen. Tickets ab ca. 25 Euro, Hauptauffuehrungen im Juli und August.",
+      "Die Trierer Antikenfestspiele sind das groesste Antike-Festival Deutschlands. Seit 1998 wird jeden Sommer das römische Amphitheater zur Open-Air-Bühne für Tragoedien, Komödien und Konzert-Inszenierungen. Tickets ab ca. 25 Euro, Hauptauffuehrungen im Juli und August.",
     checkin: "2026-07-10",
     checkout: "2026-07-12",
     address: "Amphitheater Trier",
@@ -64,11 +64,11 @@ export const events: CityEvent[] = [
     kind: "event",
     category: "wein",
     intro:
-      "Das groesste Weinfest der Region. Sieben Tage Riesling und Elbling, Winzerhoefe, Festumzug am Sonntag und das Kroenung der Trierer Weinkoenigin.",
+      "Das groesste Weinfest der Region. Sieben Tage Riesling und Elbling, Winzerhoefe, Festumzug am Sonntag und das Krönung der Trierer Weinkoenigin.",
     description:
-      "Olewiger Weinfest 2026 - Termine, Programm, Hotel-Verfuegbarkeit in Olewig und Innenstadt. Festumzug am Sonntag, Weinkoenigin-Kroenung.",
+      "Olewiger Weinfest 2026 - Termine, Programm, Hotel-Verfügbarkeit in Olewig und Innenstadt. Festumzug am Sonntag, Weinkoenigin-Krönung.",
     longDesc:
-      "Das Olewiger Weinfest ist das groesste Weinfest des Trierer Landes. Eine Woche lang stehen die Winzerhoefe offen, am ersten Sonntag im August zieht der grosse Festumzug durch Olewig, und die Trierer Weinkoenigin wird gekroent. Tausende Besucher trinken sich durch die Olewiger Riesling-Lagen.",
+      "Das Olewiger Weinfest ist das groesste Weinfest des Trierer Landes. Eine Woche lang stehen die Winzerhoefe offen, am ersten Sonntag im August zieht der grosse Festumzug durch Olewig, und die Trierer Weinkoenigin wird gekrönt. Tausende Besucher trinken sich durch die Olewiger Riesling-Lagen.",
     checkin: "2026-07-31",
     checkout: "2026-08-03",
     address: "Olewig, Trier",
@@ -84,11 +84,11 @@ export const events: CityEvent[] = [
     kind: "event",
     category: "weihnachten",
     intro:
-      "Einer der schoensten Weihnachtsmaerkte Deutschlands. Buden auf dem Hauptmarkt und vor dem Dom, mittelalterliche Kulisse, Gluehwein und roemische Weihnachts-Atmosphaere.",
+      "Einer der schönsten Weihnachtsmärkte Deutschlands. Buden auf dem Hauptmarkt und vor dem Dom, mittelalterliche Kulisse, Glühwein und römische Weihnachts-Atmosphäre.",
     description:
-      "Trierer Weihnachtsmarkt 2026 - Termine, Programm, Hotels in der Innenstadt. Die schoenste Adventskulisse zwischen Dom und Hauptmarkt.",
+      "Trierer Weihnachtsmarkt 2026 - Termine, Programm, Hotels in der Innenstadt. Die schönste Adventskulisse zwischen Dom und Hauptmarkt.",
     longDesc:
-      "Der Trierer Weihnachtsmarkt verteilt sich zwischen Hauptmarkt und Domfreihof - zwischen Marktkreuz und romanischer Domfassade. Rund 95 Buden, Kunsthandwerk, Trierer Spezialitaeten, Mosel-Gluehwein. Geoeffnet Ende November bis kurz vor Weihnachten.",
+      "Der Trierer Weihnachtsmarkt verteilt sich zwischen Hauptmarkt und Domfreihof - zwischen Marktkreuz und romanischer Domfassade. Rund 95 Buden, Kunsthandwerk, Trierer Spezialitäten, Mosel-Glühwein. Geöffnet Ende November bis kurz vor Weihnachten.",
     checkin: "2026-12-04",
     checkout: "2026-12-07",
     address: "Hauptmarkt, Trier",
@@ -104,11 +104,11 @@ export const events: CityEvent[] = [
     kind: "event",
     category: "kultur",
     intro:
-      "Drei Tage Stadtfest mit Buehnen auf Hauptmarkt, Kornmarkt und am Dom. Live-Musik, Kulinarik, Stadtfuehrungen umsonst.",
+      "Drei Tage Stadtfest mit Bühnen auf Hauptmarkt, Kornmarkt und am Dom. Live-Musik, Kulinarik, Stadtführungen umsonst.",
     description:
       "Trierer Altstadtfest 2026 - Programm, Termine, Hotels in Trier. Drei Tage Open-Air-Stadtfest in der UNESCO-Innenstadt.",
     longDesc:
-      "Das Trierer Altstadtfest ist das groesste innerstaedtische Stadtfest des Jahres: drei Tage Buehnen-Programm, kostenlose Konzerte, regionale Kulinarik und Sonderfuehrungen durch UNESCO-Staetten.",
+      "Das Trierer Altstadtfest ist das groesste innerstädtische Stadtfest des Jahres: drei Tage Bühnen-Programm, kostenlose Konzerte, regionale Kulinarik und Sonderfuehrungen durch UNESCO-Stätten.",
     checkin: "2026-06-26",
     checkout: "2026-06-29",
     address: "Hauptmarkt, Trier",
@@ -123,11 +123,11 @@ export const events: CityEvent[] = [
     kind: "event",
     category: "antike",
     intro:
-      "Trier wird fuer ein Wochenende roemisch. Gladiatoren-Kaempfe im Amphitheater, Legionaerslager, antikes Handwerk, Mode-Schau.",
+      "Trier wird für ein Wochenende roemisch. Gladiatoren-Kämpfe im Amphitheater, Legionaerslager, antikes Handwerk, Mode-Schau.",
     description:
       "Brot und Spiele - Trierer Roemerfest 2026. Gladiatoren-Show im Amphitheater, antikes Strassenfest, Hotel-Tipps.",
     longDesc:
-      "Brot und Spiele ist Triers groesstes Roemerfest. Das Amphitheater wird zur Buehne fuer Gladiatorenkaempfe und Reitershows, in der Innenstadt zelten Legionaere, antike Maerkte und Handwerker.",
+      "Brot und Spiele ist Triers groesstes Roemerfest. Das Amphitheater wird zur Bühne für Gladiatorenkaempfe und Reitershows, in der Innenstadt zelten Legionaere, antike Märkte und Handwerker.",
     checkin: "2026-08-14",
     checkout: "2026-08-16",
     address: "Amphitheater Trier",
@@ -146,7 +146,7 @@ export const events: CityEvent[] = [
     description:
       "Trierer Mosel-Wein-Nachts-Bummel 2026 - Termin, Programm, Hotels nahe Mosel.",
     longDesc:
-      "Der Mosel-Wein-Nachts-Bummel verwandelt die Trierer Mosel-Promenade in eine Sommernacht-Weinmeile. Weingueter der Region praesentieren sich an offenen Staenden, Live-Musik begleitet bis Mitternacht.",
+      "Der Mosel-Wein-Nachts-Bummel verwandelt die Trierer Mosel-Promenade in eine Sommernacht-Weinmeile. Weingüter der Region präsentieren sich an offenen Ständen, Live-Musik begleitet bis Mitternacht.",
     checkin: "2026-09-04",
     checkout: "2026-09-06",
     address: "Mosel-Promenade, Trier",
@@ -161,11 +161,11 @@ export const events: CityEvent[] = [
     kind: "event",
     category: "kultur",
     intro:
-      "Eine Nacht - alle Museen offen. Vom Rheinischen Landesmuseum ueber das Karl-Marx-Haus bis zum Spielzeugmuseum. Mit Shuttle-Bus.",
+      "Eine Nacht - alle Museen offen. Vom Rheinischen Landesmuseum über das Karl-Marx-Haus bis zum Spielzeugmuseum. Mit Shuttle-Bus.",
     description:
       "Trierer Lange Nacht der Museen 2026 - Programm, Tickets, alle Museen mit Shuttle-Bus.",
     longDesc:
-      "Die Lange Nacht der Trierer Museen oeffnet alle staedtischen und kirchlichen Museen mit einem Kombi-Ticket. Sonderfuehrungen, Live-Programm, Shuttle-Service zwischen den Haeusern.",
+      "Die Lange Nacht der Trierer Museen öffnet alle städtischen und kirchlichen Museen mit einem Kombi-Ticket. Sonderfuehrungen, Live-Programm, Shuttle-Service zwischen den Häusern.",
     checkin: "2026-10-10",
     checkout: "2026-10-11",
     address: "Innenstadt Trier",
@@ -182,11 +182,11 @@ export const events: CityEvent[] = [
     kind: "season",
     category: "saison",
     intro:
-      "Silvester zwischen Porta Nigra und Mosel - Trier mit antiker Kulisse, Feuerwerk am Hauptmarkt und Late-Night-Weinstuben. Aktuelle Hotel-Preise und Verfuegbarkeit fuer die Jahreswende.",
+      "Silvester zwischen Porta Nigra und Mosel - Trier mit antiker Kulisse, Feuerwerk am Hauptmarkt und Late-Night-Weinstuben. Aktuelle Hotel-Preise und Verfügbarkeit für die Jahreswende.",
     description:
-      "Silvester in Trier 2026/27 - Live-Hotelpreise zwischen Porta Nigra und Mosel. Antike Kulisse, Weihnachtsmarkt bis 28. Dezember, Silvesterparty in Brauhaeusern und Weinstuben.",
+      "Silvester in Trier 2026/27 - Live-Hotelpreise zwischen Porta Nigra und Mosel. Antike Kulisse, Weihnachtsmarkt bis 28. Dezember, Silvesterparty in Brauhäusern und Weinstuben.",
     longDesc:
-      "Trier zu Silvester ist eine ruhige Alternative zu Koeln oder Berlin: kein Massentourismus, dafuer Mosel-Wein, Weinstuben und antike Kulisse. Der Weihnachtsmarkt schliesst um den 28. Dezember, danach ist die Innenstadt noch festlich beleuchtet. Silvester selbst tobt am Hauptmarkt mit Live-Musik und Feuerwerk ueber der Konstantinbasilika.",
+      "Trier zu Silvester ist eine ruhige Alternative zu Koeln oder Berlin: kein Massentourismus, dafür Mosel-Wein, Weinstuben und antike Kulisse. Der Weihnachtsmarkt schliesst um den 28. Dezember, danach ist die Innenstadt noch festlich beleuchtet. Silvester selbst tobt am Hauptmarkt mit Live-Musik und Feuerwerk über der Konstantinbasilika.",
     checkin: "2026-12-30",
     checkout: "2027-01-02",
     address: "Hauptmarkt, Trier",
@@ -202,11 +202,11 @@ export const events: CityEvent[] = [
     kind: "season",
     category: "saison",
     intro:
-      "Pfingsten in Trier - drei Tage Brueckentag mit perfekter Witterung fuer UNESCO-Sightseeing und Mosel-Radweg. Live-Hotelpreise fuer das verlaengerte Wochenende.",
+      "Pfingsten in Trier - drei Tage Brueckentag mit perfekter Witterung für UNESCO-Sightseeing und Mosel-Radweg. Live-Hotelpreise für das verlängerte Wochenende.",
     description:
       "Hotels in Trier zu Pfingsten 2026 - drei Tage Brueckenwochenende mit Mosel-Radweg, Antikenfestspielen-Vorlauf und UNESCO-Welterbe. Live-Preise.",
     longDesc:
-      "Pfingsten ist Triers wettersichere Wochenend-Saison. Mosel-Radweg, Olewig-Weinwanderung und das vollstaendige UNESCO-Welterbe in drei Tagen - ohne Antikenfestspiel-Trubel. Pfingstmontag oft Stadtfuehrungen kostenlos.",
+      "Pfingsten ist Triers wettersichere Wochenend-Saison. Mosel-Radweg, Olewig-Weinwanderung und das vollständige UNESCO-Welterbe in drei Tagen - ohne Antikenfestspiel-Trubel. Pfingstmontag oft Stadtführungen kostenlos.",
     checkin: "2026-05-23",
     checkout: "2026-05-25",
     address: "Trier",
@@ -222,11 +222,11 @@ export const events: CityEvent[] = [
     kind: "season",
     category: "saison",
     intro:
-      "Himmelfahrt-Brueckentag in Trier - vier Tage Mosel-Radweg, UNESCO-Welterbe und fruehe Weinprobe in Olewig. Live-Hotelpreise.",
+      "Himmelfahrt-Brueckentag in Trier - vier Tage Mosel-Radweg, UNESCO-Welterbe und frühe Weinprobe in Olewig. Live-Hotelpreise.",
     description:
-      "Christi Himmelfahrt 2026 in Trier - vier Tage am Stueck dank Brueckenfreitag. Live-Hotelpreise und Reisetipps fuer den Mai-Brueckentag.",
+      "Christi Himmelfahrt 2026 in Trier - vier Tage am Stück dank Brueckenfreitag. Live-Hotelpreise und Reisetipps für den Mai-Brueckentag.",
     longDesc:
-      "Christi Himmelfahrt bietet mit dem Brueckenfreitag vier Tage durchgehend. Der Mai ist die wettersicherste Saison fuer Mosel-Radweg-Touren und Olewig-Weinwanderungen - die Riesling-Pflanzen sind frisch ausgetrieben, die Lagen begehbar.",
+      "Christi Himmelfahrt bietet mit dem Brueckenfreitag vier Tage durchgehend. Der Mai ist die wettersicherste Saison für Mosel-Radweg-Touren und Olewig-Weinwanderungen - die Riesling-Pflanzen sind frisch ausgetrieben, die Lagen begehbar.",
     checkin: "2026-05-13",
     checkout: "2026-05-17",
     address: "Trier",
@@ -244,9 +244,9 @@ export const events: CityEvent[] = [
     intro:
       "Fronleichnam in Trier - vier Tage Brueckenwochenende mit Bischofsstadt-Programm, Altstadtfest-Vorlauf und Mosel-Promenade.",
     description:
-      "Fronleichnam 2026 in Trier - Hotels fuer das katholische Brueckenwochenende. Bischofsstadt mit Prozession, Mosel-Promenade, fruehsommerliche Weinstuben.",
+      "Fronleichnam 2026 in Trier - Hotels für das katholische Brueckenwochenende. Bischofsstadt mit Prozession, Mosel-Promenade, fruehsommerliche Weinstuben.",
     longDesc:
-      "Trier ist Bischofsstadt - Fronleichnam ist hier ein wirklicher Festtag mit Prozession durch die Innenstadt. Im Anschluss laeuft oft das Trierer Altstadtfest auf den Buehnen am Hauptmarkt. Vier Tage durchgehend, ideales Wetter.",
+      "Trier ist Bischofsstadt - Fronleichnam ist hier ein wirklicher Festtag mit Prozession durch die Innenstadt. Im Anschluss läuft oft das Trierer Altstadtfest auf den Bühnen am Hauptmarkt. Vier Tage durchgehend, ideales Wetter.",
     checkin: "2026-06-04",
     checkout: "2026-06-07",
     address: "Trier Dom",
@@ -264,9 +264,9 @@ export const events: CityEvent[] = [
     intro:
       "3. Oktober in Trier - gold-warmer Mosel-Herbst, Weinlese in Olewig, Lange Nacht der Museen am 10. Oktober im Anschluss.",
     description:
-      "Tag der Deutschen Einheit 2026 in Trier - Hotels fuer das Brueckenwochenende mit Olewiger Weinlese und Goldenem Oktober an der Mosel.",
+      "Tag der Deutschen Einheit 2026 in Trier - Hotels für das Brueckenwochenende mit Olewiger Weinlese und Goldenem Oktober an der Mosel.",
     longDesc:
-      "Der 3. Oktober faellt 2026 auf einen Samstag - perfekt fuer einen Mosel-Trip ohne Brueckentag-Planung. Die Olewiger Weinlese laeuft, das Wetter ist haeufig goldbrau, und am 10. Oktober folgt die Lange Nacht der Museen.",
+      "Der 3. Oktober fällt 2026 auf einen Samstag - perfekt für einen Mosel-Trip ohne Brueckentag-Planung. Die Olewiger Weinlese läuft, das Wetter ist häufig goldbrau, und am 10. Oktober folgt die Lange Nacht der Museen.",
     checkin: "2026-10-02",
     checkout: "2026-10-04",
     address: "Trier",
@@ -282,11 +282,11 @@ export const events: CityEvent[] = [
     kind: "season",
     category: "saison",
     intro:
-      "Ostern in Trier - vier Tage Bischofsstadt-Programm, Osterprozession im Dom, fruehe Weinstuben in Olewig.",
+      "Ostern in Trier - vier Tage Bischofsstadt-Programm, Osterprozession im Dom, frühe Weinstuben in Olewig.",
     description:
-      "Ostern 2026 in Trier - Hotels fuer das Vier-Tage-Brueckenwochenende. Karfreitag im Dom, Osterprozession, fruehe Mosel-Saison.",
+      "Ostern 2026 in Trier - Hotels für das Vier-Tage-Brueckenwochenende. Karfreitag im Dom, Osterprozession, frühe Mosel-Saison.",
     longDesc:
-      "Trier ist Bischofsstadt - die Karfreitags-Liturgie und Oster-Prozession im Dom sind besondere Erlebnisse. Olewig oeffnet die Weinstuben in dieser Woche meist erstmals nach der Winterpause.",
+      "Trier ist Bischofsstadt - die Karfreitags-Liturgie und Oster-Prozession im Dom sind besondere Erlebnisse. Olewig öffnet die Weinstuben in dieser Woche meist erstmals nach der Winterpause.",
     checkin: "2026-04-03",
     checkout: "2026-04-06",
     address: "Trier Dom",
@@ -297,16 +297,16 @@ export const events: CityEvent[] = [
   },
   {
     slug: "wochenende",
-    title: "Hotels fuer ein Wochenende in Trier",
+    title: "Hotels für ein Wochenende in Trier",
     eyebrow: "Wochenendreise",
     kind: "season",
     category: "saison",
     intro:
-      "Naechstes Wochenende Trier? Hier sind die aktuellen Live-Preise fuer ein klassisches Zwei-Naechte-Programm zwischen Porta Nigra und Mosel.",
+      "Nächstes Wochenende Trier? Hier sind die aktuellen Live-Preise für ein klassisches Zwei-Nächte-Programm zwischen Porta Nigra und Mosel.",
     description:
-      "Hotels in Trier fuers Wochenende - Live-Preise. UNESCO-Pflicht, Mosel-Promenade, Olewig in zwei Naechten.",
+      "Hotels in Trier fürs Wochenende - Live-Preise. UNESCO-Pflicht, Mosel-Promenade, Olewig in zwei Nächten.",
     longDesc:
-      "Das klassische Trier-Wochenende: Anreise Freitagabend, Samstag UNESCO-Tour, Sonntag Olewig oder Mosel-Radweg, Abreise Sonntagnachmittag. Hier siehst du Preise und Verfuegbarkeit fuer das naechste verfuegbare Wochenende.",
+      "Das klassische Trier-Wochenende: Anreise Freitagabend, Samstag UNESCO-Tour, Sonntag Olewig oder Mosel-Radweg, Abreise Sonntagnachmittag. Hier siehst du Preise und Verfügbarkeit für das nächste verfügbare Wochenende.",
     checkin: nextWeekend().checkin,
     checkout: nextWeekend().checkout,
     address: "Trier",
@@ -318,8 +318,8 @@ export const events: CityEvent[] = [
 ];
 
 /**
- * Liefert das naechste Freitag-Sonntag-Wochenende relativ zu heute.
- * Wird beim Build evaluiert - Cron-Rebuild haelt das frisch.
+ * Liefert das nächste Freitag-Sonntag-Wochenende relativ zu heute.
+ * Wird beim Build evaluiert - Cron-Rebuild hält das frisch.
  */
 function nextWeekend(): { checkin: string; checkout: string } {
   const today = new Date();

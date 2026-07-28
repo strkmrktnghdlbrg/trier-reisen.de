@@ -3,7 +3,7 @@
  * ============================================================
  * Zwei Sprachen: 'de' (default, ohne URL-Praefix) und 'en' (/en/...).
  * Englische Inhalte werden aus src/data/i18n/en/*.json gezogen und
- * fallen pro Feld auf den deutschen Wert zurueck, falls die Uebersetzung
+ * fallen pro Feld auf den deutschen Wert zurück, falls die Übersetzung
  * (noch) fehlt.
  */
 
@@ -44,7 +44,7 @@ export const seg = {
 
 export type SegKey = keyof typeof seg;
 
-/** Vollstaendigen Sprach-Pfad fuer eine Sektion bauen, z. B. ("en","sights") -> "/en/sights/". */
+/** Vollstaendigen Sprach-Pfad für eine Sektion bauen, z. B. ("en","sights") -> "/en/sights/". */
 export const sectionPath = (lang: Lang, key: SegKey) =>
   `${langPrefix(lang)}/${seg[key][lang]}/`;
 
@@ -91,7 +91,7 @@ const EN: Record<string, Translations> = {
   guides: enGuides as any,
 };
 
-/** Felder eines Entity-Eintrags fuer eine Sprache ueberlagern. */
+/** Felder eines Entity-Eintrags für eine Sprache ueberlagern. */
 export function localize<T extends { slug: string }>(
   type: keyof typeof EN,
   item: T,
@@ -114,7 +114,7 @@ export const getEnArticle = (slug: string) =>
 /** Slugs aller englischen Artikel. */
 export const enArticleSlugs = (enArticles as any[]).map((a) => a.slug);
 
-/** hreflang-Alternates fuer die aktuelle Seite bauen. */
+/** hreflang-Alternates für die aktuelle Seite bauen. */
 export function hreflangs(currentPath: string, lang: Lang): { lang: string; href: string }[] {
   const otherLang: Lang = lang === "de" ? "en" : "de";
   return [
