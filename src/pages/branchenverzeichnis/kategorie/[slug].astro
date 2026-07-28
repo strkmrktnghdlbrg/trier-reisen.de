@@ -1,0 +1,143 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../../components/Breadcrumbs.astro";
+import { city } from "../../../data/city";
+import {
+  branchenCategories,
+  getBranchenCategory,
+  listingsByCategory,
+} from "../../../data/branchenverzeichnis";
+import "../../../styles/werben.css";
+
+export function getStaticPaths() {
+  return branchenCategories.map((c) => ({ params: { slug: c.slug } }));
+}
+
+const { slug } = Astro.params;
+const kategorie = getBranchenCategory(slug!)!;
+const listings = listingsByCategory(kategorie.slug);
+
+const initials = (name: string) =>
+  name
+    .replace(/[^A-Za-zÄÖÜäöüß ]/g, "")
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((w) => w[0]?.toUpperCase())
+    .join("");
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: `${kategorie.name} in ${city.name}`,
+  description: kategorie.description,
+  url: `${city.domain}/branchenverzeichnis/kategorie/${kategorie.slug}/`,
+};
+---
+
+<BaseLayout
+  title={`${kategorie.name} in ${city.name}`}
+  description={`${kategorie.name} in ${city.name}: ${listings.length} Einträge aus dem Branchenverzeichnis von Trier Reisen. Kostenloser Eintrag für Betriebe möglich.`}
+>
+  <div class="container-page py-12">
+    <Breadcrumbs items={[
+      { label: city.name, href: "/" },
+      { label: "Branchenverzeichnis", href: "/branchenverzeichnis/" },
+      { label: kategorie.name },
+    ]} />
+
+    <header class="max-w-3xl mb-12">
+      <p class="eyebrow mb-3">{listings.length} {listings.length === 1 ? "Eintrag" : "Einträge"}</p>
+      <h1 class="text-4xl sm:text-5xl font-medium tracking-tight mb-5" style="color: var(--color-text);">
+        {kategorie.name} in {city.name}
+      </h1>
+      <p class="text-lg leading-relaxed mb-6" style="color: var(--color-text-body);">
+        {kategorie.description}
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <a href="/branchenverzeichnis/eintrag-beanspruchen/" class="btn-primary">Kostenlos eintragen &rarr;</a>
+        <a href="/werben/premium-partner/" class="btn-outline">Ganz oben stehen?</a>
+      </div>
+    </header>
+
+    {listings.length > 0 ? (
+      <section class="mb-14 max-w-3xl">
+        <h2 class="text-2xl font-semibold tracking-tight mb-4" style="color: var(--color-text);">
+          Betriebe
+        </h2>
+        <div>
+          {listings.map((l) => (
+            l.premium ? (
+              <div class="werben-mock is-premium" style="margin-bottom:0.9rem;">
+                <div class="flex items-center justify-between mb-3">
+                  <p class="eyebrow">Premium-Partner</p>
+                  <span class="werben-badge">&#9733; Premium</span>
+                </div>
+                <div class="werben-mock-head">
+                  <span class="werben-avatar is-premium">{initials(l.name)}</span>
+                  <div>
+                    <p class="branchen-item-name">{l.name}</p>
+                    <p class="branchen-item-meta">
+                      {[l.address, l.districtLabel].filter(Boolean).join(" · ")}
+                    </p>
+                  </div>
+                </div>
+                {l.description && (
+                  <p class="text-sm mt-3" style="color: var(--color-text-body);">{l.description}</p>
+                )}
+                <div class="werben-mock-actions">
+                  {l.website && (
+                    <a class="werben-mock-btn" href={l.website} target="_blank" rel="noopener">Website</a>
+                  )}
+                  {l.phone && <span class="werben-mock-btn">{l.phone}</span>}
+                  {l.email && (
+                    <span class="werben-mock-btn">
+                      {l.email.split("@")[0]}<span aria-hidden="true">(at)</span><span class="sr-only">@</span>{l.email.split("@")[1]}
+                    </span>
+                  )}
+                </div>
+              </div>
+            ) : (
+              <div class="branchen-item">
+                <span class="branchen-item-name">
+                  {l.href ? <a href={l.href} class="link-accent">{l.name}</a> : l.name}
+                </span>
+                <span class="branchen-item-meta">
+                  {[l.address, l.districtLabel].filter(Boolean).join(" · ")}
+                </span>
+              </div>
+            )
+          ))}
+        </div>
+        <p class="werben-muted-note">
+          Alle Angaben ohne Gewähr. Adressen stammen aus den verlinkten Beiträgen dieses Portals und aus
+          öffentlich zugänglichen Quellen. Fehler bitte an die
+          <a href="/kontakt/" class="link-accent">Redaktion</a> melden.
+        </p>
+      </section>
+    ) : (
+      <section class="werben-card mb-14 max-w-3xl">
+        <h2 class="text-xl font-semibold mb-2" style="color: var(--color-text);">
+          Noch kein Eintrag in dieser Branche
+        </h2>
+        <p class="mb-4">
+          In {kategorie.name} ist bisher kein Betrieb gelistet. Wer sich jetzt einträgt, steht als Erster
+          in dieser Kategorie - der Grundeintrag ist kostenlos.
+        </p>
+        <a href="/branchenverzeichnis/eintrag-beanspruchen/" class="btn-primary">Als Erster eintragen &rarr;</a>
+      </section>
+    )}
+
+    <section class="werben-cta-band">
+      <h2 class="text-2xl font-semibold tracking-tight mb-3" style="color: var(--color-text);">
+        Ihr Betrieb fehlt hier noch?
+      </h2>
+      <p class="mb-6 max-w-xl mx-auto" style="color: var(--color-text-body);">
+        Der Grundeintrag ist kostenlos und dauerhaft. Zwei Minuten Aufwand.
+      </p>
+      <a href="/branchenverzeichnis/eintrag-beanspruchen/" class="btn-primary">Jetzt kostenlos eintragen &rarr;</a>
+    </section>
+
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline></script>
+  </div>
+</BaseLayout>

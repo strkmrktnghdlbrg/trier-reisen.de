@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import Breadcrumbs from "../../../components/Breadcrumbs.astro";
-import HueGradient from "../../../components/HueGradient.astro";
+import ContentImage from "../../../components/ContentImage.astro";
 import GygActivities from "../../../components/GygActivities.astro";
 import { guides } from "../../../data/guides";
 import { getGyg, gygCmp } from "../../../data/gyg";
@@ -33,7 +33,7 @@ const gyg = getGyg("index:reiseplaner", "en");
       {localized.map((g) => (
         <a href={detailPath(lang, "travelPlanner", g.slug)} class="card group block">
           <div class="aspect-[16/10] relative overflow-hidden">
-            <HueGradient hue={g.hue} label={g.title} class="absolute inset-0" />
+            <ContentImage imgKey={g.imageKey} fallbackHue={g.hue} fallbackLabel={g.title} className="w-full h-full" />
           </div>
           <div class="p-5">
             <p class="eyebrow mb-2">{g.eyebrow}</p>

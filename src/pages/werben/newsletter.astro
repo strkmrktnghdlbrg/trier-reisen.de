@@ -1,0 +1,120 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { city } from "../../data/city";
+import "../../styles/werben.css";
+
+const title = "Newsletter-Werbung";
+const description = `Eine Erwähnung im ${city.name}-Newsletter: Ihr Betrieb erreicht Leserinnen und Leser, die sich aktiv für ${city.name} interessieren. Der Verteiler befindet sich im Aufbau.`;
+
+const leistungen = [
+  {
+    eyebrow: "Kurz und konkret",
+    title: "Ihre Erwähnung",
+    body: "Ein kurzer Absatz mit Ihrem Betrieb, einem Satz zum Angebot und einem Link - eingebettet in die redaktionelle Ausgabe.",
+  },
+  {
+    eyebrow: "Passendes Publikum",
+    title: `Menschen, die ${city.name} suchen`,
+    body: `Der Verteiler besteht aus Leserinnen und Lesern, die sich freiwillig für Themen aus ${city.name} angemeldet haben.`,
+  },
+  {
+    eyebrow: "Gekennzeichnet",
+    title: "Klar als Werbung erkennbar",
+    body: "Bezahlte Platzierungen sind als Anzeige gekennzeichnet - das ist Pflicht und erhält die Glaubwürdigkeit des Newsletters.",
+  },
+];
+
+const faqs = [
+  {
+    q: "Gibt es den Newsletter schon?",
+    a: `Der ${city.name}-Newsletter befindet sich im Aufbau. Buchungen sind deshalb nur als Teil des Premium-Pakets sinnvoll: Die Erwähnung ist enthalten und wird mit dem ersten Versand eingelöst. Wir sagen Ihnen vorher, wann es so weit ist.`,
+  },
+  {
+    q: "Was kostet eine Erwähnung?",
+    a: "Im Premium-Paket (199 € pro Jahr netto) ist eine Newsletter-Erwähnung enthalten. Einzelne Platzierungen kalkulieren wir abhängig von Umfang und Verteilergröße auf Anfrage.",
+  },
+  {
+    q: "Bekomme ich Zahlen zur Reichweite?",
+    a: "Ja. Auf Anfrage nennen wir Ihnen vor der Buchung die aktuelle Verteilergröße, damit Sie einschätzen können, ob sich die Platzierung für Sie lohnt.",
+  },
+  {
+    q: "Werden Adressdaten weitergegeben?",
+    a: "Nein. Empfängeradressen werden niemals an Werbekunden weitergegeben. Sie liefern uns den Text, wir versenden - Ihre Daten und die der Leserschaft bleiben getrennt.",
+  },
+];
+
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="container-page py-12">
+    <Breadcrumbs items={[
+      { label: city.name, href: "/" },
+      { label: "Werben", href: "/werben/" },
+      { label: "Newsletter" },
+    ]} />
+
+    <div class="max-w-3xl mb-14">
+      <p class="eyebrow mb-3">Im Aufbau</p>
+      <h1 class="text-4xl sm:text-6xl font-medium tracking-tight mb-6" style="color: var(--color-text);">
+        Direkt in den Posteingang.
+      </h1>
+      <p class="text-lg leading-relaxed mb-8" style="color: var(--color-text-body);">
+        Der {city.name}-Newsletter bringt Themen und Termine aus der Stadt zu Menschen, die sie
+        interessieren. Der Verteiler wird gerade aufgebaut - Erwähnungen buchen Sie deshalb am besten
+        als Teil des Premium-Pakets und lösen sie mit dem ersten Versand ein.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <a href="/kontakt/" class="btn-primary">Platzierung anfragen &rarr;</a>
+        <a href="/werben/premium-partner/" class="btn-outline">Premium-Paket ansehen</a>
+      </div>
+    </div>
+
+    <section class="mb-16">
+      <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight mb-6" style="color: var(--color-text);">Wie eine Platzierung aussieht</h2>
+      <div class="werben-grid werben-grid-3">
+        {leistungen.map((l) => (
+          <div class="werben-card">
+            <p class="eyebrow mb-2">{l.eyebrow}</p>
+            <h3 class="text-lg font-semibold" style="color: var(--color-text);">{l.title}</h3>
+            <p>{l.body}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="mb-16 max-w-3xl">
+      <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight mb-4" style="color: var(--color-text);">Häufige Fragen</h2>
+      <div class="werben-faq">
+        {faqs.map((f) => (
+          <details>
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <section class="werben-cta-band">
+      <h2 class="text-2xl font-semibold tracking-tight mb-3" style="color: var(--color-text);">
+        Vormerken lassen?
+      </h2>
+      <p class="mb-6 max-w-xl mx-auto" style="color: var(--color-text-body);">
+        Schreiben Sie uns - wir melden uns, sobald ein Versandtermin steht.
+        Das Angebot richtet sich ausschließlich an Unternehmer.
+      </p>
+      <a href="/kontakt/" class="btn-primary">Anfrage senden &rarr;</a>
+    </section>
+
+    <script type="application/ld+json" set:html={JSON.stringify(faqLd)} is:inline></script>
+  </div>
+</BaseLayout>

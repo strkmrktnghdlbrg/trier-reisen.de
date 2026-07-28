@@ -16,7 +16,7 @@ import { legal } from "../data/legal";
         {legal.operator.name}<br />
         {legal.operator.person}<br />
         {legal.operator.street}, {legal.operator.zip} {legal.operator.city}<br />
-        E-Mail: <a href={`mailto:${legal.operator.email}`} class="link-accent">{legal.operator.email}</a>
+        E-Mail: {legal.operator.email.split("@")[0]}<span aria-hidden="true">(at)</span><span class="sr-only">@</span>{legal.operator.email.split("@")[1]}
       </p>
     </section>
 

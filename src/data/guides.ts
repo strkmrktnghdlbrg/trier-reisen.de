@@ -7,6 +7,8 @@ export type Guide = {
   /** Markdown-light: Liste von Abschnitten. */
   sections: { heading: string; body: string }[];
   hue: number;
+  /** Optionaler Key aus images.ts. Fehlt er, zeigt ContentImage den Platzhalter. */
+  imageKey?: string;
 };
 
 export const guides: Guide[] = [

@@ -1,0 +1,269 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { city } from "../../data/city";
+import "../../styles/werben.css";
+
+const title = "Premium-Partner werden";
+const description = `Aus dem kostenlosen Eintrag wird ein Premium-Auftritt: ganz oben in der Kategorie, mit Logo, Beschreibung, Kontakt-Buttons und Dofollow-Backlink. 199 € pro Jahr netto, nur für Unternehmer.`;
+
+const PREIS_NETTO = "199 €";
+const PREIS_BRUTTO = "236,81 €";
+
+const paket = [
+  {
+    title: "Hervorgehobenes Listing",
+    body: "Ihr Eintrag steht in seiner Kategorie ganz oben - mit Logo, Beschreibung und Kontakt-Buttons statt nur einer Zeile.",
+    icon: "star",
+  },
+  {
+    title: "1 gesponserter Artikel pro Jahr",
+    body: "Ein redaktionell aufbereiteter Beitrag über Ihren Betrieb, der dauerhaft im Portal bleibt - inklusive Verlinkung.",
+    icon: "doc",
+  },
+  {
+    title: "Newsletter-Erwähnung",
+    body: `Eine Erwähnung im ${city.name}-Newsletter, sobald dieser startet. Der Verteiler befindet sich im Aufbau - die Erwähnung ist im Paket enthalten und wird mit dem ersten Versand eingelöst.`,
+    icon: "mail",
+  },
+  {
+    title: "Dofollow-Backlink",
+    body: "Ein dauerhafter, nicht auf 'sponsored' gesetzter Link auf Ihre Website - direkt aus dem Stadtportal.",
+    icon: "link",
+  },
+];
+
+const vergleich = [
+  { merkmal: "Eintrag im Branchenverzeichnis", frei: true, premium: true },
+  { merkmal: "Position in der Kategorie", freiText: "alphabetisch", premiumText: "ganz oben" },
+  { merkmal: "Firmenlogo", frei: false, premium: true },
+  { merkmal: "Beschreibungstext", frei: false, premium: true },
+  { merkmal: "Website- & E-Mail-Button", frei: false, premium: true },
+  { merkmal: "Dofollow-Backlink", frei: false, premium: true },
+  { merkmal: "Verlinkung aus Ratgeber-Artikeln", frei: false, premium: true },
+  { merkmal: "Dauerhaft sichtbar", frei: true, premium: true },
+];
+
+const sichtbarkeit = [
+  { t: "Oben auf der Kategorie-Seite", b: "Vor allen kostenlosen Einträgen Ihrer Branche - der erste Betrieb, den Suchende sehen." },
+  { t: "In passenden Ratgeber-Artikeln", b: "Wo es redaktionell passt, verlinken wir aus bestehenden Beiträgen auf Ihren Eintrag." },
+  { t: "Als Backlink auf Ihre Website", b: "Ein dauerhafter Dofollow-Link aus einem thematisch passenden lokalen Portal." },
+];
+
+const faqs = [
+  {
+    q: "Was kostet der Premium-Eintrag?",
+    a: `${PREIS_NETTO} pro Jahr zzgl. gesetzlicher Umsatzsteuer (${PREIS_BRUTTO} brutto). Der Preis gilt für das komplette Jahres-Paket inklusive gesponsertem Artikel, Newsletter-Erwähnung und Backlink.`,
+  },
+  {
+    q: "Verlängert sich die Buchung automatisch?",
+    a: "Nein. Die Laufzeit beträgt ein Jahr ab Freischaltung und endet automatisch. Wir fragen rechtzeitig vorher, ob Sie verlängern möchten.",
+  },
+  {
+    q: "Wer kann Premium-Partner werden?",
+    a: "Das Angebot richtet sich ausschließlich an Unternehmerinnen und Unternehmer im Sinne des § 14 BGB. Es ist kein Verbrauchergeschäft, alle Preise sind daher Nettopreise.",
+  },
+  {
+    q: "Was passiert mit meinem kostenlosen Eintrag?",
+    a: "Der bleibt bestehen und wird zum Premium-Auftritt aufgewertet. Ist Ihr Betrieb noch nicht gelistet, tragen Sie ihn zuerst kostenlos ein - das geht in zwei Minuten.",
+  },
+  {
+    q: "Ist der Backlink als 'sponsored' markiert?",
+    a: "Nein. Premium-Partner erhalten einen regulären Dofollow-Link. Gesponserte Artikel werden als Werbung gekennzeichnet, der Link selbst bleibt dofollow.",
+  },
+];
+
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="container-page py-12">
+    <Breadcrumbs items={[
+      { label: city.name, href: "/" },
+      { label: "Werben", href: "/werben/" },
+      { label: "Premium-Partner" },
+    ]} />
+
+    <div class="max-w-3xl mb-14">
+      <p class="eyebrow mb-3">Kostenlos &rarr; Premium</p>
+      <h1 class="text-4xl sm:text-6xl font-medium tracking-tight mb-6" style="color: var(--color-text);">
+        Aus deinem kostenlosen Eintrag wird ein Premium-Auftritt.
+      </h1>
+      <p class="text-lg leading-relaxed mb-8" style="color: var(--color-text-body);">
+        Jeder Betrieb kann sich kostenlos ins Branchenverzeichnis eintragen - eine Zeile mit Name, Branche und
+        Adresse. Als Premium-Partner wird daraus ein vollständiger Auftritt: ganz oben in der Kategorie,
+        mit Logo, Beschreibung, Kontakt-Buttons und einem dauerhaften Link auf Ihre Website.
+      </p>
+      <div class="flex flex-wrap gap-3 mb-4">
+        <a href="/kontakt/" class="btn-primary">Premium-Partner anfragen &rarr;</a>
+      </div>
+      <p class="text-sm" style="color: var(--color-text-muted);">
+        Noch gar nicht gelistet?
+        <a href="/branchenverzeichnis/eintrag-beanspruchen/" class="link-accent">Erst kostenlos eintragen &rarr;</a>
+      </p>
+    </div>
+
+    <section class="mb-16">
+      <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight mb-6" style="color: var(--color-text);">
+        Das steckt im Premium-Paket
+      </h2>
+      <div class="werben-grid werben-grid-4">
+        {paket.map((p) => (
+          <div class="werben-card">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-bottom:0.75rem;">
+              {p.icon === "star" && <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />}
+              {p.icon === "doc" && <><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="8" y1="13" x2="16" y2="13" /><line x1="8" y1="17" x2="13" y2="17" /></>}
+              {p.icon === "mail" && <><rect x="2" y="4" width="20" height="16" rx="2" /><polyline points="22 6 12 13 2 6" /></>}
+              {p.icon === "link" && <><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" /><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" /></>}
+            </svg>
+            <h3 class="text-base font-semibold" style="color: var(--color-text);">{p.title}</h3>
+            <p>{p.body}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="mb-16">
+      <div class="werben-price-band">
+        <div>
+          <p class="eyebrow mb-1">Alles im Jahres-Paket</p>
+          <p class="werben-price">
+            {PREIS_NETTO} <span class="text-base font-medium">/ Jahr zzgl. USt.</span>
+            <small>entspricht {PREIS_BRUTTO} inkl. 19 % USt. &middot; nur für Unternehmer &middot; keine automatische Verlängerung</small>
+          </p>
+        </div>
+        <a href="/kontakt/" class="btn-primary">Premium-Partner anfragen &rarr;</a>
+      </div>
+    </section>
+
+    <section class="mb-16">
+      <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight mb-2" style="color: var(--color-text);">
+        Der direkte Unterschied
+      </h2>
+      <p class="mb-6" style="color: var(--color-text-body);">
+        So sieht derselbe Betrieb im Verzeichnis aus - links kostenlos, rechts als Premium-Partner.
+        <span style="color: var(--color-text-subtle);">(Beispieldarstellung)</span>
+      </p>
+      <div class="werben-grid werben-grid-2">
+        <div class="werben-mock">
+          <p class="eyebrow mb-3">Kostenloser Eintrag</p>
+          <div class="werben-mock-head">
+            <span class="werben-avatar">BM</span>
+            <div>
+              <p class="branchen-item-name">Beispiel Elektro Meyer GmbH</p>
+              <p class="branchen-item-meta">Handwerk &amp; Bau &middot; Simeonstraße 10, 54290 Trier</p>
+            </div>
+          </div>
+          <p class="werben-muted-note">kein Logo &middot; keine Beschreibung &middot; kein Link</p>
+        </div>
+
+        <div class="werben-mock is-premium">
+          <div class="flex items-center justify-between mb-3">
+            <p class="eyebrow">Premium-Eintrag</p>
+            <span class="werben-badge">&#9733; Premium</span>
+          </div>
+          <div class="werben-mock-head">
+            <span class="werben-avatar is-premium">BM</span>
+            <div>
+              <p class="branchen-item-name">Beispiel Elektro Meyer GmbH</p>
+              <p class="branchen-item-meta">Handwerk &amp; Bau &middot; Simeonstraße 10, 54290 Trier</p>
+            </div>
+          </div>
+          <p class="text-sm mt-3" style="color: var(--color-text-body);">
+            Elektroinstallation, Smart Home und E-Ladepunkte für Privat und Gewerbe in {city.name} und
+            Umgebung. Meisterbetrieb mit eigenem Notdienst.
+          </p>
+          <div class="werben-mock-actions">
+            <span class="werben-mock-btn">Website</span>
+            <span class="werben-mock-btn">0651 000000</span>
+            <span class="werben-mock-btn">E-Mail</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-16">
+      <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight mb-6" style="color: var(--color-text);">
+        Kostenlos oder Premium?
+      </h2>
+      <div class="werben-table-wrap">
+        <table class="werben-table">
+          <thead>
+            <tr>
+              <th scope="col">Leistung</th>
+              <th scope="col" class="is-center">Kostenlos</th>
+              <th scope="col" class="is-center werben-col-premium">Premium</th>
+            </tr>
+          </thead>
+          <tbody>
+            {vergleich.map((v) => (
+              <tr>
+                <th scope="row">{v.merkmal}</th>
+                <td class="is-center">
+                  {v.freiText ? <span style="color: var(--color-text-muted);">{v.freiText}</span>
+                    : v.frei ? <span class="werben-yes">&#10003;</span>
+                    : <span class="werben-no">&#10007;</span>}
+                </td>
+                <td class="is-center werben-col-premium">
+                  {v.premiumText ? <strong style="color: var(--color-text);">{v.premiumText}</strong>
+                    : v.premium ? <span class="werben-yes">&#10003;</span>
+                    : <span class="werben-no">&#10007;</span>}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="mb-16">
+      <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight mb-6" style="color: var(--color-text);">
+        Wo Ihr Premium-Eintrag auftaucht
+      </h2>
+      <div class="werben-grid werben-grid-3">
+        {sichtbarkeit.map((s, i) => (
+          <div class="werben-card">
+            <span class="werben-step-num">{i + 1}</span>
+            <h3 class="text-base font-semibold" style="color: var(--color-text);">{s.t}</h3>
+            <p>{s.b}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="mb-16 max-w-3xl">
+      <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight mb-4" style="color: var(--color-text);">Häufige Fragen</h2>
+      <div class="werben-faq">
+        {faqs.map((f) => (
+          <details>
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <section class="werben-cta-band">
+      <h2 class="text-2xl font-semibold tracking-tight mb-3" style="color: var(--color-text);">
+        Ganz oben stehen in {city.name}?
+      </h2>
+      <p class="mb-6 max-w-xl mx-auto" style="color: var(--color-text-body);">
+        Schreiben Sie uns kurz, um welchen Betrieb es geht - Sie bekommen ein konkretes Angebot zurück.
+      </p>
+      <div class="flex flex-wrap gap-3 justify-center">
+        <a href="/kontakt/" class="btn-primary">Premium-Partner anfragen &rarr;</a>
+        <a href="/branchenverzeichnis/" class="btn-outline">Verzeichnis ansehen</a>
+      </div>
+    </section>
+
+    <script type="application/ld+json" set:html={JSON.stringify(faqLd)} is:inline></script>
+  </div>
+</BaseLayout>

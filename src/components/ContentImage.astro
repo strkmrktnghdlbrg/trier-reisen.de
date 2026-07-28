@@ -41,5 +41,10 @@ const entry = getImage(imgKey);
     )}
   </figure>
 ) : (
-  <HueGradient hue={fallbackHue} label={fallbackLabel} class="absolute inset-0" />
+  /*
+   * Fallback war frueher `absolute inset-0` ohne positionierten Elternteil.
+   * Dadurch ist der Platzhalter aus seinem Container ausgebrochen und hat den
+   * folgenden Abschnitt ueberlagert. Jetzt fliesst er normal im Layout mit.
+   */
+  <HueGradient hue={fallbackHue} label={fallbackLabel} class="relative w-full h-full min-h-[220px]" />
 )}

@@ -14,11 +14,11 @@ export const features = {
   },
   /** Werbung & Listings-Marktplatz. Off bis Stripe-Integration steht. */
   werben: {
-    enabled: false,
+    enabled: true,
   },
   /** Branchen-Verzeichnis (Phase 2 - Premium-Listings 49/149). */
   branchen: {
-    enabled: false,
+    enabled: true,
   },
   /** Events-Hub. On - Antikenfestspiele, Olewiger Weinfest, Weihnachtsmarkt. */
   events: {

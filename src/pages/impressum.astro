@@ -24,7 +24,7 @@ import { legal } from "../data/legal";
     <section class="mb-8">
       <h2 class="heading mb-3">Kontakt</h2>
       <p class="text-body">
-        E-Mail: <a href={`mailto:${legal.operator.email}`} class="link-accent">{legal.operator.email}</a>
+        E-Mail: {legal.operator.email.split("@")[0]}<span aria-hidden="true">(at)</span><span class="sr-only">@</span>{legal.operator.email.split("@")[1]}
         {legal.operator.phone && <><br />Telefon: {legal.operator.phone}</>}
       </p>
     </section>

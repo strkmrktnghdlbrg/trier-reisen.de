@@ -1,0 +1,140 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { city } from "../../data/city";
+import { totalListings } from "../../data/branchenverzeichnis";
+import "../../styles/werben.css";
+
+const title = `Werben auf Trier Reisen`;
+const description = `Lokal sichtbar werden in ${city.name}: Premium-Eintrag im Branchenverzeichnis, gesponserte Artikel und Newsletter-Erwähnungen auf Trier Reisen.`;
+
+const werbeformen = [
+  {
+    eyebrow: "Ganzjährig sichtbar",
+    title: "Premium-Partner",
+    body: "Ihr Eintrag steht in seiner Kategorie ganz oben - mit Logo, Beschreibung, Kontakt-Buttons und dauerhaftem Dofollow-Backlink.",
+    href: "/werben/premium-partner/",
+  },
+  {
+    eyebrow: "Redaktioneller Beitrag",
+    title: "Gesponserte Artikel",
+    body: "Ein ausführlicher Beitrag zu Ihrem Betrieb, dauerhaft im Portal - inklusive Verlinkung auf Ihre Website.",
+    href: "/werben/gesponserte-artikel/",
+  },
+  {
+    eyebrow: "Direkt in den Posteingang",
+    title: "Newsletter",
+    body: `Eine Erwähnung im ${city.name}-Newsletter erreicht Leserinnen und Leser, die sich aktiv für die Stadt interessieren. Der Verteiler befindet sich im Aufbau.`,
+    href: "/werben/newsletter/",
+  },
+];
+
+const schritte = [
+  { t: "Anfragen", b: "Sie schreiben uns kurz, worum es geht: Betrieb, Branche und Wunschformat." },
+  { t: "Angebot", b: "Sie erhalten ein konkretes Angebot mit Leistungen, Laufzeit und Preis - ohne automatische Verlängerung." },
+  { t: "Live", b: "Nach Freigabe stellen wir Ihren Auftritt online und schicken Ihnen die Links." },
+];
+
+const faqs = [
+  {
+    q: "An wen richtet sich das Angebot?",
+    a: "Ausschließlich an Unternehmerinnen und Unternehmer im Sinne des § 14 BGB. Alle genannten Preise sind Nettopreise zzgl. der gesetzlichen Umsatzsteuer.",
+  },
+  {
+    q: "Wie lange läuft eine Buchung?",
+    a: "Der Premium-Eintrag läuft ein Jahr ab Freischaltung. Es gibt keine automatische Verlängerung - wir melden uns rechtzeitig vorher.",
+  },
+  {
+    q: "Werden Werbeinhalte gekennzeichnet?",
+    a: "Ja. Gesponserte Artikel und bezahlte Platzierungen werden als Werbung bzw. Anzeige gekennzeichnet, wie es das Trennungsgebot vorsieht.",
+  },
+  {
+    q: "Ist ein kostenloser Eintrag möglich?",
+    a: `Ja. Das Branchenverzeichnis enthält bereits ${totalListings()} Betriebe aus ${city.name}. Ein einfacher Eintrag mit Name, Branche und Adresse ist kostenlos - Sie können ihn jederzeit beanspruchen oder ergänzen lassen.`,
+  },
+];
+
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="container-page py-12">
+    <Breadcrumbs items={[{ label: city.name, href: "/" }, { label: "Werben" }]} />
+
+    <div class="max-w-3xl mb-14">
+      <p class="eyebrow mb-3">Werben auf Trier Reisen</p>
+      <h1 class="text-4xl sm:text-6xl font-medium tracking-tight mb-6" style="color: var(--color-text);">
+        Lokal sichtbar werden - bei Menschen, die {city.name} lieben.
+      </h1>
+      <p class="text-lg leading-relaxed mb-8" style="color: var(--color-text-body);">
+        Trier Reisen ist das Reise- und Stadtportal für die älteste Stadt Deutschlands: Römerbauten, Dom, Moseltal, Weingüter, Restaurants, Hotels und Veranstaltungen. Wer hier liest, sucht etwas in {city.name} - und genau dort kann Ihr Betrieb auftauchen.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <a href="/kontakt/" class="btn-primary">Werbung anfragen &rarr;</a>
+        <a href="/branchenverzeichnis/" class="btn-outline">Branchenverzeichnis ansehen</a>
+      </div>
+    </div>
+
+    <section class="mb-16">
+      <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight mb-6" style="color: var(--color-text);">Werbeformen</h2>
+      <div class="werben-grid werben-grid-3">
+        {werbeformen.map((w) => (
+          <div class="werben-card">
+            <p class="eyebrow mb-2">{w.eyebrow}</p>
+            <h3 class="text-lg font-semibold" style="color: var(--color-text);">{w.title}</h3>
+            <p>{w.body}</p>
+            <div class="werben-card-cta">
+              <a href={w.href} class="link-accent text-sm">Mehr erfahren &rarr;</a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="mb-16">
+      <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight mb-6" style="color: var(--color-text);">So funktioniert's</h2>
+      <div class="werben-grid werben-grid-3">
+        {schritte.map((s, i) => (
+          <div class="werben-card">
+            <span class="werben-step-num">{i + 1}</span>
+            <h3 class="text-base font-semibold" style="color: var(--color-text);">{s.t}</h3>
+            <p>{s.b}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="mb-16 max-w-3xl">
+      <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight mb-4" style="color: var(--color-text);">Häufige Fragen</h2>
+      <div class="werben-faq">
+        {faqs.map((f) => (
+          <details>
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <section class="werben-cta-band">
+      <h2 class="text-2xl font-semibold tracking-tight mb-3" style="color: var(--color-text);">
+        Interesse? Schreiben Sie uns kurz.
+      </h2>
+      <p class="mb-6 max-w-xl mx-auto" style="color: var(--color-text-body);">
+        Sagen Sie uns, was Sie vorhaben - wir melden uns mit einem passenden Angebot zurück.
+        Das Angebot richtet sich ausschließlich an Unternehmer.
+      </p>
+      <a href="/kontakt/" class="btn-primary">Jetzt anfragen &rarr;</a>
+    </section>
+
+    <script type="application/ld+json" set:html={JSON.stringify(faqLd)} is:inline></script>
+  </div>
+</BaseLayout>

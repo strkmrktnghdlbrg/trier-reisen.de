@@ -1,0 +1,179 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { city } from "../../data/city";
+import { legal } from "../../data/legal";
+import { branchenCategories } from "../../data/branchenverzeichnis";
+import "../../styles/werben.css";
+
+const title = "Eintrag beanspruchen";
+const description = `Tragen Sie Ihren Betrieb aus ${city.name} kostenlos ins Branchenverzeichnis ein oder beanspruchen Sie einen bestehenden Eintrag.`;
+
+/**
+ * Formular-Endpunkt: Dieses Repo hat (Stand jetzt) keinen Form-Handler.
+ * Der Key wird per Env gesetzt (PUBLIC_WEB3FORMS_KEY) - fehlt er, zeigen wir
+ * bewusst KEIN totes Formular, sondern den E-Mail-Weg.
+ * TODO: Cloudflare Turnstile ergaenzen, sobald der Endpunkt steht.
+ */
+const formKey = import.meta.env.PUBLIC_WEB3FORMS_KEY;
+const formAktiv = Boolean(formKey);
+
+// Anti-Spam: E-Mail ohne mailto und ohne Klartext-@.
+const mailUser = legal.operator.email.split("@")[0];
+const mailDomain = legal.operator.email.split("@")[1];
+
+const gratis = [
+  "Name des Betriebs",
+  "Branche / Kategorie",
+  "Adresse und Stadtteil",
+  "Dauerhaft gelistet, alphabetisch",
+];
+const premium = [
+  "Ganz oben in der Kategorie",
+  "Logo, Beschreibung und Kontakt-Buttons",
+  "Dofollow-Backlink auf Ihre Website",
+  "1 gesponserter Artikel + Newsletter-Erwähnung",
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="container-page py-12 max-w-3xl">
+    <Breadcrumbs items={[
+      { label: city.name, href: "/" },
+      { label: "Branchenverzeichnis", href: "/branchenverzeichnis/" },
+      { label: "Eintrag beanspruchen" },
+    ]} />
+
+    <p class="eyebrow mb-3">Kostenloser Eintrag</p>
+    <h1 class="text-4xl sm:text-5xl font-medium tracking-tight mb-5" style="color: var(--color-text);">
+      Trag deinen Betrieb kostenlos ein.
+    </h1>
+    <p class="text-lg leading-relaxed mb-10" style="color: var(--color-text-body);">
+      Der Grundeintrag im Branchenverzeichnis kostet nichts und bleibt dauerhaft bestehen. Sie können damit auch
+      einen bereits vorhandenen Eintrag beanspruchen oder Angaben korrigieren lassen.
+    </p>
+
+    <div class="werben-grid werben-grid-2 mb-12">
+      <div class="werben-card">
+        <p class="eyebrow mb-2">Kostenlos</p>
+        <h2 class="text-lg font-semibold mb-3" style="color: var(--color-text);">Grundeintrag</h2>
+        <ul class="text-sm space-y-2" style="color: var(--color-text-body);">
+          {gratis.map((g) => <li>&#10003; {g}</li>)}
+        </ul>
+      </div>
+      <div class="werben-card" style="border-color: var(--color-accent);">
+        <p class="eyebrow mb-2">199 € / Jahr netto</p>
+        <h2 class="text-lg font-semibold mb-3" style="color: var(--color-text);">Premium-Auftritt</h2>
+        <ul class="text-sm space-y-2" style="color: var(--color-text-body);">
+          {premium.map((p) => <li>&#10003; {p}</li>)}
+        </ul>
+        <div class="werben-card-cta">
+          <a href="/werben/premium-partner/" class="link-accent text-sm">Premium ansehen &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold tracking-tight mb-5" style="color: var(--color-text);">
+        Betrieb melden
+      </h2>
+
+      {formAktiv ? (
+        <form class="werben-form" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value={formKey} />
+          <input type="hidden" name="subject" value={`Branchenverzeichnis-Eintrag ${city.name}`} />
+          <input type="hidden" name="from_name" value="Trier Reisen" />
+          <div class="werben-hp" aria-hidden="true">
+            <label for="website-hp">Bitte leer lassen</label>
+            <input id="website-hp" type="text" name="botcheck" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <div class="werben-form werben-form-2">
+            <div class="werben-field">
+              <label for="firma">Name des Betriebs *</label>
+              <input id="firma" name="Firma" type="text" required />
+            </div>
+            <div class="werben-field">
+              <label for="kategorie">Branche *</label>
+              <select id="kategorie" name="Branche" required>
+                {branchenCategories.map((c) => <option value={c.name}>{c.name}</option>)}
+              </select>
+            </div>
+          </div>
+
+          <div class="werben-field">
+            <label for="adresse">Adresse *</label>
+            <input id="adresse" name="Adresse" type="text" required placeholder={`Straße Hausnummer, PLZ ${city.name}`} />
+          </div>
+
+          <div class="werben-form werben-form-2">
+            <div class="werben-field">
+              <label for="telefon">Telefon</label>
+              <input id="telefon" name="Telefon" type="tel" placeholder="0651 ..." />
+            </div>
+            <div class="werben-field">
+              <label for="website">Website</label>
+              <input id="website" name="Website" type="url" placeholder="https://" />
+            </div>
+          </div>
+
+          <div class="werben-field">
+            <label for="email">Ihre E-Mail (für Rückfragen) *</label>
+            <input id="email" name="E-Mail" type="email" required />
+          </div>
+
+          <div class="werben-field">
+            <label for="beschreibung">Kurze Beschreibung</label>
+            <textarea id="beschreibung" name="Beschreibung" rows="4" placeholder="Was bietet Ihr Betrieb an?"></textarea>
+          </div>
+
+          <label class="text-sm flex gap-2 items-start" style="color: var(--color-text-body);">
+            <input type="checkbox" name="Einwilligung" required style="margin-top:0.25rem;" />
+            <span>
+              Ich habe die <a href="/datenschutz/" class="link-accent">Datenschutzhinweise</a> gelesen und
+              bin damit einverstanden, dass meine Angaben zur Bearbeitung gespeichert werden.
+            </span>
+          </label>
+
+          <div>
+            <button type="submit" class="btn-primary">Eintrag absenden &rarr;</button>
+          </div>
+          <p class="werben-muted-note">
+            Der Grundeintrag ist kostenlos. Wir prüfen die Angaben redaktionell, bevor sie erscheinen.
+          </p>
+        </form>
+      ) : (
+        <div class="werben-card">
+          <p class="mb-3">
+            Schicken Sie uns die folgenden Angaben per E-Mail, dann übernehmen wir den Eintrag:
+          </p>
+          <ul class="text-sm space-y-1 mb-4" style="color: var(--color-text-body);">
+            <li>&bull; Name des Betriebs</li>
+            <li>&bull; Branche (siehe Kategorien im Branchenverzeichnis)</li>
+            <li>&bull; Adresse und Stadtteil</li>
+            <li>&bull; Telefon und Website (optional)</li>
+            <li>&bull; kurze Beschreibung (optional, für Premium)</li>
+          </ul>
+          <p class="text-lg font-semibold mb-2" style="color: var(--color-text);">
+            {mailUser}<span aria-hidden="true">(at)</span><span class="sr-only">@</span>{mailDomain}
+          </p>
+          <p class="werben-muted-note">
+            Bitte die Adresse manuell übernehmen - aus Spamschutz-Gründen ohne Klick-Link.
+            Der Grundeintrag ist kostenlos, wir prüfen die Angaben redaktionell.
+          </p>
+        </div>
+      )}
+    </section>
+
+    <section class="werben-cta-band">
+      <h2 class="text-2xl font-semibold tracking-tight mb-3" style="color: var(--color-text);">
+        Lieber gleich ganz oben stehen?
+      </h2>
+      <p class="mb-6 max-w-xl mx-auto" style="color: var(--color-text-body);">
+        Als Premium-Partner steht Ihr Betrieb vor allen kostenlosen Einträgen seiner Kategorie - mit Logo,
+        Beschreibung, Kontakt-Buttons und Dofollow-Backlink. 199 € pro Jahr netto, nur für Unternehmer.
+      </p>
+      <a href="/werben/premium-partner/" class="btn-primary">Premium-Partner werden &rarr;</a>
+    </section>
+  </div>
+</BaseLayout>

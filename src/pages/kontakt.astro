@@ -1,0 +1,89 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import { city } from "../data/city";
+import { legal } from "../data/legal";
+import "../styles/werben.css";
+
+const title = "Kontakt";
+const description = `So erreichst du die Redaktion von Trier Reisen: Hinweise zu Inhalten, Korrekturen, Presseanfragen und Werbung.`;
+
+// Anti-Spam: E-Mail bewusst ohne mailto und ohne Klartext-@ ausgeben.
+const mailUser = legal.operator.email.split("@")[0];
+const mailDomain = legal.operator.email.split("@")[1];
+
+const anliegen = [
+  {
+    t: "Hinweis oder Korrektur",
+    b: "Eine Adresse hat sich geändert, ein Betrieb hat geschlossen, eine Angabe stimmt nicht mehr? Schreib uns kurz - wir prüfen und korrigieren.",
+  },
+  {
+    t: "Eintrag im Branchenverzeichnis",
+    b: "Betriebe aus der Stadt können sich kostenlos eintragen lassen. Am schnellsten geht das über das Formular im Verzeichnis.",
+    href: "/branchenverzeichnis/eintrag-beanspruchen/",
+    hrefLabel: "Zum kostenlosen Eintrag",
+  },
+  {
+    t: "Werbung und Kooperationen",
+    b: "Premium-Eintrag, gesponserter Beitrag oder eine andere Idee? Auf der Werben-Seite steht, was möglich ist und was es kostet.",
+    href: "/werben/",
+    hrefLabel: "Werbemöglichkeiten ansehen",
+  },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="container-page py-12 max-w-3xl">
+    <Breadcrumbs items={[{ label: city.name, href: "/" }, { label: "Kontakt" }]} />
+
+    <p class="eyebrow mb-3">Redaktion</p>
+    <h1 class="text-4xl sm:text-5xl font-medium tracking-tight mb-5" style="color: var(--color-text);">
+      Kontakt
+    </h1>
+    <p class="text-lg leading-relaxed mb-10" style="color: var(--color-text-body);">
+      Trier Reisen wird redaktionell betreut. Für Hinweise, Korrekturen, Einträge und Werbeanfragen
+      erreichst du uns per E-Mail - in der Regel antworten wir innerhalb von zwei Werktagen.
+    </p>
+
+    <section class="werben-card mb-12">
+      <p class="eyebrow mb-2">E-Mail</p>
+      <p class="text-xl font-semibold mb-2" style="color: var(--color-text);">
+        {mailUser}<span aria-hidden="true">(at)</span><span class="sr-only">@</span>{mailDomain}
+      </p>
+      <p class="werben-muted-note">
+        Bitte die Adresse manuell übernehmen - aus Spamschutz-Gründen ohne Klick-Link.
+      </p>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold tracking-tight mb-5" style="color: var(--color-text);">
+        Worum geht es?
+      </h2>
+      <div class="werben-grid werben-grid-3">
+        {anliegen.map((a) => (
+          <div class="werben-card">
+            <h3 class="text-base font-semibold" style="color: var(--color-text);">{a.t}</h3>
+            <p>{a.b}</p>
+            {a.href && (
+              <div class="werben-card-cta">
+                <a href={a.href} class="link-accent text-sm">{a.hrefLabel} &rarr;</a>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-semibold tracking-tight mb-3" style="color: var(--color-text);">
+        Anbieter
+      </h2>
+      <p style="color: var(--color-text-body);">
+        Verantwortliche Stelle, Anschrift und Angaben nach § 5 DDG stehen im
+        <a href="/impressum/" class="link-accent">Impressum</a>. Wie wir mit Daten umgehen, steht in den
+        <a href="/datenschutz/" class="link-accent">Datenschutzhinweisen</a>.
+      </p>
+      <p class="werben-muted-note">Trier Reisen ist ein redaktionelles Reise- und Stadtportal. Es wird keine individuelle Beratung zu Reise, Restaurant oder Veranstaltung angeboten. Buchungen erfolgen direkt beim jeweiligen Anbieter.</p>
+    </section>
+  </div>
+</BaseLayout>

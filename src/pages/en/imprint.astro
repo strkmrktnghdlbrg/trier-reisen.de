@@ -32,7 +32,7 @@ const lang = "en" as const;
     <section class="mb-8">
       <h2 class="heading mb-3">Contact</h2>
       <p class="text-body">
-        Email: <a href={`mailto:${legal.operator.email}`} class="link-accent">{legal.operator.email}</a>
+        Email: {legal.operator.email.split("@")[0]}<span aria-hidden="true">(at)</span><span class="sr-only">@</span>{legal.operator.email.split("@")[1]}
         {legal.operator.phone && <><br />Phone: {legal.operator.phone}</>}
       </p>
     </section>

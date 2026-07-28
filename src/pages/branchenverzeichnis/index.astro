@@ -1,0 +1,84 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { city } from "../../data/city";
+import { branchenCategories, categoryCount, totalListings } from "../../data/branchenverzeichnis";
+import "../../styles/werben.css";
+
+const title = `Branchenverzeichnis ${city.name}`;
+const description = `Betriebe aus ${city.name} nach Branchen: Gastronomie, Hotels, Apotheken, Banken, Weingüter, Handwerk und Dienstleistung. Kostenloser Eintrag für Unternehmen möglich.`;
+
+const kategorien = branchenCategories.map((c) => ({ ...c, count: categoryCount(c.slug) }));
+const gesamt = totalListings();
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="container-page py-12">
+    <Breadcrumbs items={[{ label: city.name, href: "/" }, { label: "Branchenverzeichnis" }]} />
+
+    <div class="max-w-3xl mb-12">
+      <p class="eyebrow mb-3">Branchenverzeichnis</p>
+      <h1 class="text-4xl sm:text-6xl font-medium tracking-tight mb-6" style="color: var(--color-text);">
+        Betriebe aus {city.name} nach Branchen.
+      </h1>
+      <p class="text-lg leading-relaxed mb-6" style="color: var(--color-text-body);">
+        Aktuell {gesamt} Einträge aus der redaktionellen Arbeit von Trier Reisen - Gastronomie, Hotels,
+        Apotheken und Banken, dazu Branchen, in die sich Betriebe kostenlos eintragen können.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <a href="/branchenverzeichnis/eintrag-beanspruchen/" class="btn-primary">Kostenlos eintragen &rarr;</a>
+        <a href="/werben/premium-partner/" class="btn-outline">Ganz oben stehen? Premium-Partner werden</a>
+      </div>
+    </div>
+
+    <section class="mb-14">
+      <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight mb-6" style="color: var(--color-text);">Kategorien</h2>
+      <div class="werben-grid werben-grid-3">
+        {kategorien.map((k) => (
+          <a href={`/branchenverzeichnis/kategorie/${k.slug}/`} class="werben-card" style="text-decoration:none;">
+            <div class="flex items-baseline justify-between gap-3 mb-1">
+              <h3 class="text-lg font-semibold" style="color: var(--color-text);">{k.name}</h3>
+              <span class="pill">{k.count}</span>
+            </div>
+            <p>{k.description}</p>
+            <div class="werben-card-cta">
+              <span class="link-accent text-sm">
+                {k.count > 0 ? "Betriebe ansehen" : "Als Erster eintragen"} &rarr;
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="mb-14 max-w-3xl">
+      <h2 class="text-2xl font-semibold tracking-tight mb-3" style="color: var(--color-text);">
+        Wie kommt ein Betrieb ins Verzeichnis?
+      </h2>
+      <p class="mb-4" style="color: var(--color-text-body);">
+        Die vorhandenen Einträge stammen aus unserer redaktionellen Arbeit: Betriebe, die in den Ratgebern,
+        Restaurant- und Hotelseiten dieses Portals bereits vorkommen. Wer fehlt, kann sich jederzeit
+        kostenlos eintragen lassen - mit Name, Branche und Adresse.
+      </p>
+      <p style="color: var(--color-text-body);">
+        Betriebe, die dauerhaft ganz oben in ihrer Kategorie stehen möchten - mit Logo, Beschreibung,
+        Kontakt-Buttons und Verlinkung - können
+        <a href="/werben/premium-partner/" class="link-accent">Premium-Partner</a> werden.
+      </p>
+      <p class="werben-muted-note">
+        Alle Angaben ohne Gewähr. Adressen und Zuordnungen stammen aus öffentlich zugänglichen Quellen
+        und den verlinkten Beiträgen dieses Portals.
+      </p>
+    </section>
+
+    <section class="werben-cta-band">
+      <h2 class="text-2xl font-semibold tracking-tight mb-3" style="color: var(--color-text);">
+        Ihr Betrieb fehlt noch?
+      </h2>
+      <p class="mb-6 max-w-xl mx-auto" style="color: var(--color-text-body);">
+        Der Grundeintrag ist kostenlos und dauerhaft. Zwei Minuten Aufwand.
+      </p>
+      <a href="/branchenverzeichnis/eintrag-beanspruchen/" class="btn-primary">Jetzt kostenlos eintragen &rarr;</a>
+    </section>
+  </div>
+</BaseLayout>
