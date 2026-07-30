@@ -90,7 +90,7 @@
 .werben-table thead th { border-bottom: 2px solid var(--color-border); }
 .werben-table td.is-center, .werben-table th.is-center { text-align: center; }
 .werben-yes { color: var(--color-emerald, #27a644); font-weight: 700; }
-.werben-no { color: var(--color-text-subtle); }
+.werben-no { color: var(--color-text-subtle, var(--color-text-muted, #6b7280)); }
 .werben-col-premium { background: var(--color-accent-tint, transparent); }
 
 /* --- Listing-Mock (kostenlos vs. Premium) --- */
@@ -110,7 +110,7 @@
   border-radius: 8px;
   font-weight: 700;
   flex-shrink: 0;
-  background: var(--color-surface-elevated, var(--color-border-subtle));
+  background: var(--color-surface-elevated, var(--color-border-subtle, rgba(127,127,127,0.18)));
   color: var(--color-text-muted);
 }
 .werben-avatar.is-premium { background: var(--color-accent); color: var(--color-accent-contrast, #fff); }
@@ -135,7 +135,7 @@
   border: 1px solid var(--color-accent);
   color: var(--color-accent);
 }
-.werben-muted-note { font-size: 0.82rem; color: var(--color-text-subtle); margin-top: 0.75rem; }
+.werben-muted-note { font-size: 0.82rem; color: var(--color-text-subtle, var(--color-text-muted, #6b7280)); margin-top: 0.75rem; }
 
 /* --- Verzeichnis-Liste --- */
 .branchen-item {

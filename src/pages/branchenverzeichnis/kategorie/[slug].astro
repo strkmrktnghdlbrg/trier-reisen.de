@@ -17,6 +17,12 @@ const { slug } = Astro.params;
 const kategorie = getBranchenCategory(slug!)!;
 const listings = listingsByCategory(kategorie.slug);
 
+/*
+ * Leere Kategorien bleiben erreichbar und verlinkt (sie laden zum ersten
+ * Eintrag ein), gehen aber nicht in den Index - sonst waeren es duenne Seiten.
+ */
+const noindex = listings.length === 0;
+
 const initials = (name: string) =>
   name
     .replace(/[^A-Za-zÄÖÜäöüß ]/g, "")
@@ -36,6 +42,7 @@ const schema = {
 ---
 
 <BaseLayout
+  noindex={noindex}
   title={`${kategorie.name} in ${city.name}`}
   description={`${kategorie.name} in ${city.name}: ${listings.length} Einträge aus dem Branchenverzeichnis von Trier Reisen. Kostenloser Eintrag für Betriebe möglich.`}
 >
