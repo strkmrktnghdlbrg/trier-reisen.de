@@ -1,0 +1,165 @@
+---
+/**
+ * Zentraler Bildnachweis - listet jedes verwendete Bild mit Motiv,
+ * Verwendungsort, Urheber, Lizenz (verlinkt) und Commons-Quelle.
+ * Alle Angaben wurden per Wikimedia-Commons-API gegen die Original-
+ * dateien verifiziert (Lizenz-Audit Juli 2026).
+ */
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import { images, type ImageEntry } from "../data/images";
+import { city } from "../data/city";
+import { sights } from "../data/sights";
+import { districts } from "../data/districts";
+import { categories } from "../data/categories";
+import { articles } from "../data/articles";
+
+type Row = {
+  motiv: string;
+  usageLabel: string;
+  usageHref?: string;
+  author: string;
+  license: string;
+  licenseUrl: string;
+  sourceUrl: string;
+};
+
+// Echte Namen statt Slugs in der Verwendungs-Spalte (Umlaute!).
+const nameOf = {
+  sight: (slug: string) => sights.find((s) => s.slug === slug)?.name,
+  district: (slug: string) => districts.find((d) => d.slug === slug)?.name,
+  category: (slug: string) => categories.find((c) => c.slug === slug)?.name,
+  article: (slug: string) => articles.find((a) => a.slug === slug)?.title,
+} as const;
+
+function toRow(key: string, e: ImageEntry): Row | null {
+  if (!e.credit) return null;
+  const [prefix, slug] = [key.slice(0, key.indexOf(":")), key.slice(key.indexOf(":") + 1)];
+  let usageLabel = slug;
+  let usageHref: string | undefined;
+  switch (prefix) {
+    case "sight":
+      usageLabel = nameOf.sight(slug) ?? slug;
+      usageHref = `/sehenswuerdigkeiten/${slug}/`;
+      break;
+    case "district":
+      usageLabel = nameOf.district(slug) ?? slug;
+      usageHref = `/bezirke/${slug}/`;
+      break;
+    case "category":
+      usageLabel = nameOf.category(slug) ?? slug;
+      usageHref = `/kategorien/${slug}/`;
+      break;
+    case "article":
+      usageLabel = nameOf.article(slug) ?? slug;
+      usageHref = `/${slug}/`;
+      break;
+    case "hero":
+      usageLabel = "Startseite";
+      usageHref = "/";
+      break;
+    case "hotel":
+      usageLabel = "Symbolbild-Pool Hotels";
+      break;
+    case "restaurant":
+      usageLabel = "Symbolbild-Pool Restaurants";
+      break;
+  }
+  return {
+    motiv: e.alt,
+    usageLabel,
+    usageHref,
+    author: e.credit.author,
+    license: e.credit.license,
+    licenseUrl: e.credit.licenseUrl,
+    sourceUrl: e.credit.sourceUrl,
+  };
+}
+
+const groups: { title: string; note?: string; prefixes: string[] }[] = [
+  { title: "Startseite", prefixes: ["hero"] },
+  { title: "Sehenswürdigkeiten", prefixes: ["sight"] },
+  { title: "Stadtteile", prefixes: ["district"] },
+  { title: "Themen", prefixes: ["category"] },
+  { title: "Magazin", prefixes: ["article"] },
+  {
+    title: "Symbolbilder Hotels & Restaurants",
+    note:
+      "Für Hotels und Restaurants liegen keine frei lizenzierten Betriebsfotos vor. Ihre Seiten zeigen entweder das oben ausgewiesene Stadtteilfoto (die Bildzeile nennt dann den Stadtteil) oder eines der folgenden generischen Motive - stets mit sichtbarem Symbolbild-Label.",
+    prefixes: ["hotel", "restaurant"],
+  },
+];
+
+const sections = groups.map((g) => ({
+  ...g,
+  rows: Object.entries(images)
+    .filter(([k]) => g.prefixes.includes(k.slice(0, k.indexOf(":"))))
+    .map(([k, e]) => toRow(k, e))
+    .filter((r): r is Row => r !== null),
+}));
+---
+
+<BaseLayout
+  title="Bildnachweis"
+  description={`Alle auf ${city.brandName} verwendeten Bilder mit Urheber, Lizenz und Quelle.`}
+  noindex={true}
+>
+  <article class="container-page py-12">
+    <Breadcrumbs items={[{ href: "/", label: city.name }, { label: "Bildnachweis" }]} />
+    <h1 class="display-xl mb-4">Bildnachweis</h1>
+    <p class="text-body max-w-3xl mb-10">
+      Alle Fotos auf dieser Website stammen von Wikimedia Commons und stehen unter freien
+      Lizenzen (Public Domain, CC0, CC BY oder CC BY-SA). Hier ist jedes Bild mit Motiv,
+      Verwendungsort, Urheber, Lizenz und Quelle ausgewiesen. Vielen Dank an alle
+      Fotografinnen und Fotografen. Logo und Favicon sind Eigenwerk.
+    </p>
+
+    {sections.map((s) => (
+      <section class="mb-12">
+        <h2 class="heading mb-3">{s.title}</h2>
+        {s.note && <p class="text-sm max-w-3xl mb-4" style="color: var(--color-text-muted);">{s.note}</p>}
+        <div class="overflow-x-auto">
+          <table class="credits w-full text-sm">
+            <thead>
+              <tr>
+                <th>Motiv</th>
+                <th>Verwendung</th>
+                <th>Urheber</th>
+                <th>Lizenz</th>
+                <th>Quelle</th>
+              </tr>
+            </thead>
+            <tbody>
+              {s.rows.map((r) => (
+                <tr>
+                  <td>{r.motiv}</td>
+                  <td>
+                    {r.usageHref ? <a href={r.usageHref} class="hover:underline">{r.usageLabel}</a> : r.usageLabel}
+                  </td>
+                  <td>{r.author}</td>
+                  <td><a href={r.licenseUrl} rel="noopener" target="_blank" class="underline">{r.license}</a></td>
+                  <td><a href={r.sourceUrl} rel="noopener" target="_blank" class="underline">Commons</a></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    ))}
+
+  </article>
+</BaseLayout>
+
+<style>
+  .credits th,
+  .credits td {
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--color-border);
+    vertical-align: top;
+  }
+  .credits th {
+    font-weight: 600;
+    background: var(--color-surface);
+  }
+</style>

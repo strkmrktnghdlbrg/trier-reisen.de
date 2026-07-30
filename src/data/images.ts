@@ -191,7 +191,7 @@ function buildRegistry(): Record<string, ImageEntry> {
     { ...BWERNER_4, sourceUrl: "https://commons.wikimedia.org/wiki/File:Trier_BW_2022-06-22_07-30-13.jpg" }));
   add("district:olewig", entry("districts", "olewig",
     "Weinort Trier-Olewig mit umliegenden Weinbergen",
-    { author: "Jeff Croise", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
+    { author: "Jeff Croisé", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:Trier-Olewig.jpg" }));
   add("district:trier-sued", entry("districts", "trier-sued",
     "Kaiserthermen mit Palastgarten in Trier-Süd",
@@ -267,7 +267,7 @@ function buildRegistry(): Record<string, ImageEntry> {
       sourceUrl: "https://commons.wikimedia.org/wiki/File:Hauptmarkt_in_Trier_01.jpg" }));
   add("category:kulinarik", entry("categories", "kulinarik",
     "Ein Glas Weißwein und ein Glas Rotwein nebeneinander auf einem Tisch",
-    { author: "A. Savin", license: "CC BY-SA 3.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0",
+    { author: "A.Savin", license: "CC BY-SA 3.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:Red_and_white_wine_12-2015.jpg" }));
   add("category:aussicht-wandern", entry("categories", "aussicht-wandern",
     "Panoramablick vom Petrisberg über die Stadt Trier und das Moseltal",
@@ -289,7 +289,7 @@ function buildRegistry(): Record<string, ImageEntry> {
       sourceUrl: "https://commons.wikimedia.org/wiki/File:Roman_baths_at_the_Viehmarkt_in_Trier_in_August_2016.jpg" }));
   add("article:judengasse-mittelalter-trier", entry("posts", "judengasse-mittelalter-trier",
     "Blick in die mittelalterliche Judengasse in Trier mit der historischen Judenpforte",
-    { author: "Stefan Kuehn", license: "CC BY-SA 3.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0",
+    { author: "Stefan Kühn", license: "CC BY-SA 3.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:Trier_Judengasse_und_Judenpforte.jpg" }));
   add("article:st-gangolf-kirchenjuwel", entry("posts", "st-gangolf-kirchenjuwel",
     "Die Marktkirche St. Gangolf mit ihrem hohen Turm am Trierer Hauptmarkt",
@@ -300,7 +300,7 @@ function buildRegistry(): Record<string, ImageEntry> {
     { author: "Franzfoto", license: "CC BY-SA 3.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:Trier_-_Sicht_%C3%BCber_die_Mosel_zum_n%C3%B6rdlichen_Stadtteil.jpg" }));
   add("article:mittelalterliche-stadtmauer", entry("posts", "mittelalterliche-stadtmauer",
-    "Erhaltener Turm der mittelalterlichen Stadtbefestigung an der Bastion Suedallee in Trier",
+    "Erhaltener Turm der mittelalterlichen Stadtbefestigung an der Bastion Südallee in Trier",
     { author: "Helge Klaus Rieder", license: "CC0", licenseUrl: "https://creativecommons.org/publicdomain/zero/1.0/",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:TrierSuedalleBastionH2c.jpg" }));
   add("article:augustinerhof", entry("posts", "augustinerhof",
@@ -363,7 +363,7 @@ function buildRegistry(): Record<string, ImageEntry> {
       sourceUrl: "https://commons.wikimedia.org/wiki/File:Weinwanderweg_Pillnitz.jpg" }));
   add("article:weingutfuehrungen", entry("posts", "weingutfuehrungen",
     "Weinberge in leuchtenden Herbstfarben oberhalb der Ortschaft",
-    { author: "Juergen Hamann", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
+    { author: "Jürgen Hamann", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:Weinberg_im_Herbst_%C3%BCber_Heppenheim.jpg" }));
   add("article:bio-weingueter", entry("posts", "bio-weingueter",
     "Ordentliche Rebzeilen eines Weinbergs zur Erntezeit",
@@ -412,7 +412,7 @@ function buildRegistry(): Record<string, ImageEntry> {
       sourceUrl: "https://commons.wikimedia.org/wiki/File:Balcony_of_Hampden_Hotel,_Murchison,_New_Zealand.jpg" }));
   add("hotel:pool-08", entry("hotels", "pool-08", "Wellness- und Spa-Bereich eines Hotels mit Blick in den Garten",
     { author: "User:Mattes", license: "CC BY-SA 2.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0",
-      sourceUrl: "https://commons.wikimedia.org/wiki/File:GER_%E2%80%94_BY_%E2%80%94_Oberbayern" }));
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:GER_%E2%80%94_BY_%E2%80%94_Oberbayern_%E2%80%94_Landkreis_Rosenheim_%E2%80%94_Gemeinde_Oberaudorf_%E2%80%94_Tatzelwurm_1_(Hotel_Feuriger_Tatzlwurm_%C2%B7_Wellness-_und_Spa-Bereich,_Gartenseite)_%E2%80%94_2025-05-01_Mattes.jpg" }));
 
   // === RESTAURANT-STIMMUNGSBILD-POOL (generische Gastronomie-Motive, nicht der konkrete Betrieb) ===
   add("restaurant:pool-01", entry("restaurants", "pool-01", "Eingedeckter Restauranttisch für vier Personen",
@@ -431,7 +431,7 @@ function buildRegistry(): Record<string, ImageEntry> {
     { author: "Shixart1985", license: "CC BY 2.0", licenseUrl: "https://creativecommons.org/licenses/by/2.0",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:Man_sits_at_table_holding_a_glass_of_water_in_a_restaurant_with_wine_bottles_in_the_background.jpg" }));
   add("restaurant:pool-06", entry("restaurants", "pool-06", "Rustikale Weinstube mit Holzeinrichtung und gedeckten Tischen",
-    { author: "Joerg Blobelt", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
+    { author: "Jörg Blobelt", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:20070803110DR_Mei%C3%9Fen_Oberspaar_Weinstube_Bauernh%C3%A4usl.jpg" }));
   add("restaurant:pool-07", entry("restaurants", "pool-07", "Köche bei der Arbeit in einer Restaurantküche",
     { author: "P1898", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",

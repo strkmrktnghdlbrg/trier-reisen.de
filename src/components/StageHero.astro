@@ -41,11 +41,10 @@ const {
 } = Astro.props;
 
 const entry = getImage(imgKey);
-const credit = entry?.credit;
 const symText = lang === "en" ? "Symbolic photo" : "Symbolbild";
-const credLine = [picNote, credit ? `Foto: ${credit.author} · ${credit.license}` : undefined]
-  .filter(Boolean)
-  .join(" · ");
+// Bildnachweise stehen zentral auf /bildnachweis/ - auf der Buehne bleibt nur
+// die Ehrlichkeits-Zeile (picNote, z. B. "Stadtteilfoto: Innenstadt") sichtbar.
+const credLine = picNote;
 ---
 
 <section class="stagehero" style={`min-height:${minHeight}px`}>
