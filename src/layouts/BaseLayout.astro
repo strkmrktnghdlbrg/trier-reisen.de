@@ -47,6 +47,8 @@ const fullTitle = title === city.name ? `${city.name} · ${city.brandName}` : `$
     <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/cormorant-garamond-300-500-latin.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/inter-400-700-latin.woff2" crossorigin />
     {noindex && <meta name="robots" content="noindex,nofollow" />}
 
     {/* hreflang: aktuelle + alternative Sprache + x-default (de) */}
