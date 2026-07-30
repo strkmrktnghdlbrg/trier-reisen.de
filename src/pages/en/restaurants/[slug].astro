@@ -1,9 +1,8 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
-import Breadcrumbs from "../../../components/Breadcrumbs.astro";
-import HueGradient from "../../../components/HueGradient.astro";
-import ContentImage from "../../../components/ContentImage.astro";
-import { restaurantPoolKey } from "../../../data/images";
+import StageHero from "../../../components/StageHero.astro";
+import ActionDock from "../../../components/ActionDock.astro";
+import { heroKey, restaurantPoolKey, getImage } from "../../../data/images";
 import RestaurantCard from "../../../components/RestaurantCard.astro";
 import { restaurants, type Restaurant } from "../../../data/restaurants";
 import { getDistrict } from "../../../data/districts";
@@ -21,6 +20,15 @@ const lang = "en" as const;
 const restaurant = localize("restaurants", src, lang);
 const district = localize("districts", getDistrict(src.district) ?? ({ slug: src.district } as any), lang);
 const related = restaurants.filter((r) => r.slug !== src.slug && r.cuisine === src.cuisine).slice(0, 3).map((r) => localize("restaurants", r, lang));
+
+/* Image strategy: 1. own photo, 2. district photo (caption names the district,
+ * not the restaurant), 3. pool image only with a visible label, 4. placeholder. */
+const stageKey = heroKey(src.imageKey, src.district);
+const isOwnPhoto = Boolean(stageKey && stageKey === src.imageKey);
+const isDistrictPhoto = Boolean(stageKey && !isOwnPhoto);
+const poolKey = !stageKey && getImage(restaurantPoolKey(src.slug)) ? restaurantPoolKey(src.slug) : undefined;
+const usedKey = stageKey ?? poolKey;
+const picNote = isDistrictPhoto ? `District photo: ${district?.name ?? src.district}` : undefined;
 ---
 
 <BaseLayout
@@ -37,94 +45,92 @@ const related = restaurants.filter((r) => r.slug !== src.slug && r.cuisine === s
     ]),
   ]}
 >
-  <article class="container-page py-12">
-    <Breadcrumbs items={[
-      { href: "/en/", label: city.name },
-      { href: "/en/restaurants/", label: t(lang, "breadcrumb.restaurants") },
-      { label: restaurant.name },
-    ]} />
+  <article>
+    <StageHero
+      imgKey={usedKey}
+      fallbackHue={src.imageHue}
+      badge={restaurant.cuisine}
+      title={restaurant.name}
+      lead={restaurant.shortDesc}
+      minHeight={480}
+      crumbs={`Home / Restaurants / ${district?.name ?? src.district}`}
+      symbolbild={Boolean(poolKey)}
+      picNote={picNote}
+      lang={lang}
+    >
+      <div class="pills">
+        <span class="pill-ghost">{district?.name ?? src.district}</span>
+        <span class="pill-ghost">{restaurant.priceLevel}</span>
+      </div>
+    </StageHero>
+    <ActionDock
+      info={{
+        title: restaurant.name,
+        sub: [
+          restaurant.cuisine,
+          restaurant.priceLevel,
+          src.openingHours ? "Hours as stated by the operator, as of July 2026" : undefined,
+        ].filter(Boolean).join(" · "),
+      }}
+      secondary={{ href: `/en/districts/${src.district}/`, label: `${district?.name ?? src.district} district` }}
+      primary={
+        src.websiteUrl
+          ? { href: src.websiteUrl, label: src.reservation ? "Reserve a table ↗" : "Official site ↗", external: true }
+          : { href: "/en/restaurants/", label: "All restaurants" }
+      }
+    />
 
-    <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 mt-4">
-      <div class="lg:col-span-3">
-        <p class="eyebrow mb-3">{restaurant.cuisine} · {restaurant.priceLevel}</p>
-        <h1 class="display-xl mb-4">{restaurant.name}</h1>
-        <p class="text-sm" style="color: var(--color-text-muted);">
-          {district?.name ?? src.district}
-          {src.openingHours && <> · {src.openingHours}</>}
-        </p>
-        <div class="aspect-[16/10] rounded-2xl overflow-hidden mt-6 relative">
-          <ContentImage
-            imgKey={src.imageKey ?? restaurantPoolKey(src.slug)}
-            fallbackHue={src.imageHue}
-            fallbackLabel={restaurant.name}
-            width={960}
-            height={600}
-            imgClass="w-full h-full object-cover"
-          />
+    <div class="container-page py-12">
+      <div class="facts4">
+        <div>
+          <span class="k">Cuisine</span>
+          <b>{restaurant.cuisine}</b>
         </div>
-        <p class="text-body mt-8 text-lg leading-relaxed">{restaurant.longDesc}</p>
+        <div>
+          <span class="k">Price level</span>
+          <b>{restaurant.priceLevel}</b>
+        </div>
+        <div>
+          <span class="k">{t(lang, "sections.district")}</span>
+          <b>{district?.name ?? src.district}</b>
+        </div>
+        {src.openingHours && (
+          <div>
+            <span class="k">Hours (operator)</span>
+            <b>{src.openingHours}</b>
+          </div>
+        )}
+        {!src.openingHours && src.reservation && (
+          <div>
+            <span class="k">Reservation</span>
+            <b>recommended</b>
+          </div>
+        )}
       </div>
 
-      <aside class="lg:col-span-2">
-        <div class="card p-6">
-          <h2 class="text-lg font-light mb-4" style="font-family: var(--font-display);">{t(lang, "sections.practicalInfo")}</h2>
-          <dl class="text-sm space-y-3">
-            <div>
-              <dt style="color: var(--color-text-muted);">Cuisine</dt>
-              <dd style="color: var(--color-text);">{restaurant.cuisine}</dd>
-            </div>
-            <div>
-              <dt style="color: var(--color-text-muted);">Price level</dt>
-              <dd style="color: var(--color-text);">{restaurant.priceLevel}</dd>
-            </div>
-            <div>
-              <dt style="color: var(--color-text-muted);">{t(lang, "sections.district")}</dt>
-              <dd style="color: var(--color-text);">{district?.name ?? src.district}</dd>
-            </div>
-            {src.openingHours && (
-              <div>
-                <dt style="color: var(--color-text-muted);">{t(lang, "sections.openingHours")}</dt>
-                <dd style="color: var(--color-text);">{src.openingHours}</dd>
-              </div>
-            )}
-            {src.reservation && (
-              <div>
-                <dt style="color: var(--color-text-muted);">Reservation</dt>
-                <dd style="color: var(--color-text);">
-                  {src.websiteUrl ? (
-                    <a href={src.websiteUrl} target="_blank" rel="noopener" class="link-accent">
-                      Reserve a table ↗
-                    </a>
-                  ) : (
-                    "recommended (by phone)"
-                  )}
-                </dd>
-              </div>
-            )}
-            {src.websiteUrl && (
-              <div>
-                <dt style="color: var(--color-text-muted);">{t(lang, "sections.website")}</dt>
-                <dd><a href={src.websiteUrl} target="_blank" rel="noopener" class="link-accent text-sm">Official site ↗</a></dd>
-              </div>
-            )}
-          </dl>
+      <div class="max-w-3xl mt-10">
+        <p class="text-body text-lg leading-relaxed">{restaurant.longDesc}</p>
 
-          {src.reservation && src.websiteUrl && (
-            <a href={src.websiteUrl} target="_blank" rel="noopener" class="btn-primary w-full justify-center mt-6">
-              Reserve a table at the restaurant ↗
-            </a>
-          )}
-        </div>
-      </aside>
+        {src.websiteUrl && (
+          <p class="mt-6">
+            <a href={src.websiteUrl} target="_blank" rel="noopener" class="link-accent">Official site ↗</a>
+          </p>
+        )}
+        {src.reservation && !src.websiteUrl && (
+          <p class="mt-6 text-sm" style="color: var(--color-text-muted);">
+            Reservation recommended (by phone).
+          </p>
+        )}
+      </div>
+
+      {related.length > 0 && (
+        <section class="section">
+          <h2 class="display mb-6">More {restaurant.cuisine}</h2>
+          <div class="mosaic m3">
+            {related.map((r) => <RestaurantCard restaurant={r} lang={lang} />)}
+          </div>
+        </section>
+      )}
     </div>
-
-    {related.length > 0 && (
-      <section class="section">
-        <h2 class="display mb-6">More {restaurant.cuisine}</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {related.map((r) => <RestaurantCard restaurant={r} lang={lang} />)}
-        </div>
-      </section>
-    )}
   </article>
 </BaseLayout>

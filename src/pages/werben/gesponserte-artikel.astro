@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import StageHero from "../../components/StageHero.astro";
+import ActionDock from "../../components/ActionDock.astro";
 import { city } from "../../data/city";
 import "../../styles/werben.css";
 
@@ -62,29 +63,23 @@ const faqLd = {
 ---
 
 <BaseLayout title={title} description={description}>
+  <StageHero
+    imgKey="sight:hauptmarkt"
+    badge="Redaktioneller Beitrag"
+    title="Ein Beitrag, der bleibt."
+    lead="Ein gesponserter Artikel erzählt die Geschichte Ihres Betriebs im Stil des Portals - und bleibt dauerhaft online, statt nach zwei Wochen aus dem Werbeblock zu verschwinden. Inklusive Verlinkung auf Ihre Website und interner Verlinkung aus passenden Beiträgen."
+    minHeight={460}
+    crumbs="Start / Werben / Gesponserte Artikel"
+  />
+  <ActionDock
+    info={{
+      title: "Im Premium-Paket enthalten",
+      sub: "199 € pro Jahr netto · 236,81 € brutto · nur für Unternehmer · keine automatische Verlängerung",
+    }}
+    secondary={{ href: "/werben/premium-partner/", label: "Premium-Paket ansehen" }}
+    primary={{ href: "/kontakt/", label: "Beitrag anfragen" }}
+  />
   <div class="container-page py-12">
-    <Breadcrumbs items={[
-      { label: city.name, href: "/" },
-      { label: "Werben", href: "/werben/" },
-      { label: "Gesponserte Artikel" },
-    ]} />
-
-    <div class="max-w-3xl mb-14">
-      <p class="eyebrow mb-3">Redaktioneller Beitrag</p>
-      <h1 class="text-4xl sm:text-6xl font-medium tracking-tight mb-6" style="color: var(--color-text);">
-        Ein Beitrag, der bleibt.
-      </h1>
-      <p class="text-lg leading-relaxed mb-8" style="color: var(--color-text-body);">
-        Ein gesponserter Artikel erzählt die Geschichte Ihres Betriebs im Stil des Portals - und bleibt
-        dauerhaft online, statt nach zwei Wochen aus dem Werbeblock zu verschwinden. Inklusive
-        Verlinkung auf Ihre Website und interner Verlinkung aus passenden Beiträgen.
-      </p>
-      <div class="flex flex-wrap gap-3">
-        <a href="/kontakt/" class="btn-primary">Beitrag anfragen &rarr;</a>
-        <a href="/werben/premium-partner/" class="btn-outline">Im Premium-Paket enthalten</a>
-      </div>
-    </div>
-
     <section class="mb-16">
       <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight mb-6" style="color: var(--color-text);">Was Sie bekommen</h2>
       <div class="werben-grid werben-grid-3">

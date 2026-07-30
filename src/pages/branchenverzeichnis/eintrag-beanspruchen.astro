@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import StageHero from "../../components/StageHero.astro";
+import ActionDock from "../../components/ActionDock.astro";
 import { city } from "../../data/city";
 import { legal } from "../../data/legal";
 import { branchenCategories } from "../../data/branchenverzeichnis";
@@ -37,22 +38,23 @@ const premium = [
 ---
 
 <BaseLayout title={title} description={description}>
+  <StageHero
+    imgKey="sight:hauptmarkt"
+    badge="Kostenloser Eintrag"
+    title="Trag deinen Betrieb kostenlos ein."
+    lead="Der Grundeintrag im Branchenverzeichnis kostet nichts und bleibt dauerhaft bestehen. Sie können damit auch einen bereits vorhandenen Eintrag beanspruchen oder Angaben korrigieren lassen."
+    minHeight={420}
+    crumbs="Start / Branchenverzeichnis / Eintrag beanspruchen"
+  />
+  <ActionDock
+    info={{
+      title: "Grundeintrag kostenlos",
+      sub: "Premium 199 € pro Jahr netto · 236,81 € brutto · nur für Unternehmer · keine automatische Verlängerung",
+    }}
+    secondary={{ href: "/branchenverzeichnis/", label: "Zum Verzeichnis" }}
+    primary={{ href: "#formular", label: "Betrieb melden" }}
+  />
   <div class="container-page py-12 max-w-3xl">
-    <Breadcrumbs items={[
-      { label: city.name, href: "/" },
-      { label: "Branchenverzeichnis", href: "/branchenverzeichnis/" },
-      { label: "Eintrag beanspruchen" },
-    ]} />
-
-    <p class="eyebrow mb-3">Kostenloser Eintrag</p>
-    <h1 class="text-4xl sm:text-5xl font-medium tracking-tight mb-5" style="color: var(--color-text);">
-      Trag deinen Betrieb kostenlos ein.
-    </h1>
-    <p class="text-lg leading-relaxed mb-10" style="color: var(--color-text-body);">
-      Der Grundeintrag im Branchenverzeichnis kostet nichts und bleibt dauerhaft bestehen. Sie können damit auch
-      einen bereits vorhandenen Eintrag beanspruchen oder Angaben korrigieren lassen.
-    </p>
-
     <div class="werben-grid werben-grid-2 mb-12">
       <div class="werben-card">
         <p class="eyebrow mb-2">Kostenlos</p>
@@ -73,7 +75,7 @@ const premium = [
       </div>
     </div>
 
-    <section class="mb-12">
+    <section class="mb-12" id="formular">
       <h2 class="text-2xl font-semibold tracking-tight mb-5" style="color: var(--color-text);">
         Betrieb melden
       </h2>

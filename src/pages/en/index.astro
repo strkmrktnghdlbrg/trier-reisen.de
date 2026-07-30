@@ -1,29 +1,67 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import HueGradient from "../../components/HueGradient.astro";
-import ContentImage from "../../components/ContentImage.astro";
-import SightCard from "../../components/SightCard.astro";
+import StageHero from "../../components/StageHero.astro";
+import ActionDock from "../../components/ActionDock.astro";
+import PhotoMosaic from "../../components/PhotoMosaic.astro";
 import DistrictCard from "../../components/DistrictCard.astro";
 import EventCard from "../../components/EventCard.astro";
 import CategoryCard from "../../components/CategoryCard.astro";
 import Stay22TopHotels from "../../components/Stay22TopHotels.astro";
 import GygActivities from "../../components/GygActivities.astro";
+import { Image } from "astro:assets";
 import { city } from "../../data/city";
-import { sights } from "../../data/sights";
 import { districts } from "../../data/districts";
 import { categories } from "../../data/categories";
 import { realEvents, isUpcoming } from "../../data/events";
 import { features } from "../../data/features";
 import { getGyg, gygCmp } from "../../data/gyg";
+import { getImage } from "../../data/images";
 import { orgSchema, websiteSchema, touristDestinationSchema } from "../../lib/schema";
-import { localize, sectionPath, t } from "../../lib/i18n";
+import { localize, t } from "../../lib/i18n";
 
 const lang = "en" as const;
-const featuredSights = sights.filter((s) => s.unesco).slice(0, 6).map((s) => localize("sights", s, lang));
-const featuredDistricts = districts.slice(0, 4).map((d) => localize("districts", d, lang));
+const featuredDistricts = districts.slice(0, 6).map((d) => localize("districts", d, lang));
 const featuredCategories = categories.slice(0, 6).map((c) => localize("categories", c, lang));
 const upcomingEvents = realEvents.filter(isUpcoming).slice(0, 3).map((e) => localize("events", e as any, lang) as any);
 const gyg = getGyg("home", "en");
+const storyImage = getImage("sight:weinkulturpfad-olewig");
+
+/* "Where to start" - five entry points, all with real photos from the portal. */
+const startMosaic = [
+  {
+    href: "/en/sights/trierer-dom/",
+    imgKey: "sight:trierer-dom",
+    title: "Cathedral of St. Peter",
+    meta: "Germany's oldest episcopal church · free entry",
+    span: "h2" as const,
+  },
+  {
+    href: "/en/sights/kaiserthermen/",
+    imgKey: "sight:kaiserthermen",
+    title: "Imperial Baths",
+    meta: "Trier-Süd · underground service tunnels open",
+    span: "w2" as const,
+  },
+  {
+    href: "/en/districts/olewig/",
+    imgKey: "district:olewig",
+    title: "Olewig",
+    meta: "Wine village inside the city",
+  },
+  {
+    href: "/en/sights/roemerbruecke/",
+    imgKey: "sight:roemerbruecke",
+    title: "Roman Bridge",
+    meta: "Pillars from the 2nd century",
+  },
+  {
+    href: "/en/sights/amphitheater/",
+    imgKey: "sight:amphitheater",
+    title: "Amphitheatre",
+    meta: "Around 20,000 seats · summer festival stage",
+    span: "w2" as const,
+  },
+];
 ---
 
 <BaseLayout
@@ -33,48 +71,36 @@ const gyg = getGyg("home", "en");
   lang={lang}
   altLangPath="/"
 >
-  <section class="container-page pt-12 pb-16 md:pt-20 md:pb-24">
-    <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
-      <div class="lg:col-span-3">
-        <p class="eyebrow mb-4">{t(lang, "home.eyebrow")}</p>
-        <h1 class="display-xl">
-          {t(lang, "home.heroLine1")}<br />
-          <span style="color: var(--color-accent);">{t(lang, "home.heroAccent")}</span><br />
-          {t(lang, "home.heroLine3")}
-        </h1>
-        <p class="text-body mt-6 max-w-xl">{t(lang, "home.heroBody")}</p>
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a href={sectionPath(lang, "sights")} class="btn-primary">{t(lang, "home.ctaSights")}</a>
-          <a href={sectionPath(lang, "travelPlanner")} class="btn-outline">{t(lang, "home.ctaPlanner")}</a>
-        </div>
-      </div>
-      <div class="lg:col-span-2">
-        <div class="aspect-[4/5] rounded-3xl overflow-hidden relative">
-          <ContentImage
-            imgKey="hero:porta-nigra"
-            fallbackHue={1}
-            fallbackLabel="Porta Nigra"
-            width={900}
-            height={1125}
-            imgClass="w-full h-full object-cover"
-          />
-        </div>
-      </div>
+  <!-- STAGE -->
+  <StageHero
+    imgKey="hero:porta-nigra"
+    badge="Germany's oldest city"
+    title="Trier begins at the black gate."
+    lead="Eight UNESCO sites, 23 sights, 12 districts and a wine village inside the city limits. With real photos and details as stated by the operators."
+    minHeight={560}
+    lang={lang}
+  >
+    <div class="pills" style="gap:10px;">
+      <a class="cta-light" href="/en/sights/">Explore the city</a>
+      <a class="cta-ghost" href="/en/themes/wein/">Wine &amp; Mosel</a>
     </div>
-  </section>
+  </StageHero>
+  <ActionDock
+    info={{
+      title: "Porta Nigra",
+      sub: "Innenstadt · UNESCO since 1986 · Hours as stated by the operator, as of July 2026",
+    }}
+    secondary={{ href: "/en/districts/innenstadt/", label: "Innenstadt district" }}
+    primary={{ href: "/en/sights/porta-nigra/", label: "Go to Porta Nigra" }}
+  />
 
+  <!-- WHERE TO START -->
   <section class="container-page section">
-    <div class="flex items-end justify-between mb-8">
-      <div>
-        <p class="eyebrow mb-2">{t(lang, "home.unescoEyebrow")}</p>
-        <h2 class="display">{t(lang, "home.unescoTitle")}</h2>
-        <p class="text-body mt-3 max-w-xl">{t(lang, "home.unescoBody")}</p>
-      </div>
-      <a href={sectionPath(lang, "sights")} class="hidden md:inline-flex link-accent text-sm">{t(lang, "home.allSights")} →</a>
-    </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      {featuredSights.map((s) => <SightCard sight={s} lang={lang} />)}
-    </div>
+    <h2 class="display">Where to start</h2>
+    <p class="text-body mt-3 mb-8 max-w-2xl">
+      Five entry points that cover most of the city. Every image is a real photo from the portal.
+    </p>
+    <PhotoMosaic items={startMosaic} cols={4} lang={lang} />
   </section>
 
   {gyg && (
@@ -87,35 +113,62 @@ const gyg = getGyg("home", "en");
     <Stay22TopHotels limit={8} lang="en" />
   </section>
 
-  <section class="container-page section">
-    <div class="mb-8">
-      <p class="eyebrow mb-2">{t(lang, "nav.districts")}</p>
-      <h2 class="display">{t(lang, "home.districtsTitle")}</h2>
-      <p class="text-body mt-3 max-w-xl">{t(lang, "home.districtsBody")}</p>
+  <!-- STORY BAND: WINE & MOSEL -->
+  <section class="story">
+    <div class="pic">
+      {storyImage && (
+        <Image src={storyImage.src} alt={storyImage.alt} width={1100} height={800} loading="lazy" />
+      )}
+      {storyImage?.credit && (
+        <p class="cred">Foto: {storyImage.credit.author} · {storyImage.credit.license} · Wikimedia Commons</p>
+      )}
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-      {featuredDistricts.map((d) => <DistrictCard district={d} lang={lang} />)}
+    <div class="txt">
+      <span class="badge">Wine &amp; Mosel</span>
+      <h2 class="display" style="margin-top:16px;">The wine village lies inside the city limits.</h2>
+      <p class="text-body mt-4 max-w-xl">
+        Olewig is officially a district and traditionally a wine village. The wine culture trail runs
+        5 km and 14 stations through the steep vineyards above the village centre, with resting spots
+        and views over the old town and the Mosel valley. In early August the Olewig wine festival
+        celebrates the harvest.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href="/en/sights/weinkulturpfad-olewig/" class="btn-primary">Wine culture trail</a>
+        <a href="/en/districts/olewig/" class="btn-outline">Olewig district</a>
+      </div>
     </div>
   </section>
 
+  <!-- DISTRICTS -->
   <section class="container-page section">
     <div class="mb-8">
-      <p class="eyebrow mb-2">Themes</p>
+      <h2 class="display">{t(lang, "home.districtsTitle")}</h2>
+      <p class="text-body mt-3 max-w-xl">{t(lang, "home.districtsBody")}</p>
+    </div>
+    <div class="mosaic m3">
+      {featuredDistricts.map((d) => <DistrictCard district={d} lang={lang} />)}
+    </div>
+    <p class="mt-6"><a href="/en/districts/" class="link-accent text-sm">All 12 districts &rarr;</a></p>
+  </section>
+
+  <!-- THEMES -->
+  <section class="container-page section pt-0">
+    <div class="mb-8">
       <h2 class="display">{t(lang, "home.themesTitle")}</h2>
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+    <div class="mosaic m3">
       {featuredCategories.map((c) => <CategoryCard category={c} lang={lang} />)}
     </div>
   </section>
 
+  <!-- EVENTS -->
   {features.events.enabled && upcomingEvents.length > 0 && (
-    <section class="container-page section">
+    <section class="container-page section pt-0">
       <div class="mb-8">
-        <p class="eyebrow mb-2">{t(lang, "sections.upcoming")}</p>
         <h2 class="display">{t(lang, "home.upcomingTitle")}</h2>
         <p class="text-body mt-3 max-w-xl">{t(lang, "home.upcomingBody")}</p>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div class="mosaic m3">
         {upcomingEvents.map((e) => <EventCard event={e} lang={lang} />)}
       </div>
     </section>

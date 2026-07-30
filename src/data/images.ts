@@ -125,16 +125,16 @@ function buildRegistry(): Record<string, ImageEntry> {
     "Römisches Amphitheater Trier mit Arena",
     { ...FRDR_4, sourceUrl: "https://commons.wikimedia.org/wiki/File:Amphitheater_Trier_05.jpg" }));
   add("sight:roemerbruecke", entry("sights", "roemerbruecke",
-    "Roemerbruecke über die Mosel in Trier",
+    "Römerbrücke über die Mosel in Trier",
     { ...FRDR_4, sourceUrl: "https://commons.wikimedia.org/wiki/File:R%C3%B6merbr%C3%BCcke_Trier_01.jpg" }));
   add("sight:igeler-saeule", entry("sights", "igeler-saeule",
-    "Igeler Säule, roemisches Grabmal bei Trier",
+    "Igeler Säule, römisches Grabmal bei Trier",
     { ...FRDR_4, sourceUrl: "https://commons.wikimedia.org/wiki/File:Igeler_S%C3%A4ule_03.jpg" }));
   add("sight:hauptmarkt", entry("sights", "hauptmarkt",
     "Hauptmarkt in Trier mit historischen Bürgerhäusern",
     { ...GOLIK_4, sourceUrl: "https://commons.wikimedia.org/wiki/File:Hauptmarkt_in_Trier_01.jpg" }));
   add("sight:kurfuerstliches-palais", entry("sights", "kurfuerstliches-palais",
-    "Rokoko-Fassade des Kurfuerstlichen Palais in Trier",
+    "Rokoko-Fassade des Kurfürstlichen Palais in Trier",
     { ...THWOLF_3DE, sourceUrl: "https://commons.wikimedia.org/wiki/File:Kurf%C3%BCrstliches_Palais.jpg" }));
   add("sight:rheinisches-landesmuseum", entry("sights", "rheinisches-landesmuseum",
     "Rheinisches Landesmuseum Trier",
@@ -143,7 +143,7 @@ function buildRegistry(): Record<string, ImageEntry> {
     "Karl-Marx-Haus in Trier, Geburtshaus von Karl Marx",
     { ...FRDR_4, sourceUrl: "https://commons.wikimedia.org/wiki/File:Karl-Marx-Haus_Trier_01.jpg" }));
   add("sight:mariensaeule", entry("sights", "mariensaeule",
-    "Mariensaeule und Kaiser-Wilhelm-Brücke in Trier",
+    "Mariensäule und Kaiser-Wilhelm-Brücke in Trier",
     { author: "Felix König", license: "CC BY 3.0", licenseUrl: "https://creativecommons.org/licenses/by/3.0",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:Kaiser-Wilhelm-Br%C3%BCcke_Mariens%C3%A4ule_Trier_August_2024.JPG" }));
   add("sight:mosel-promenade", entry("sights", "mosel-promenade",
@@ -160,7 +160,7 @@ function buildRegistry(): Record<string, ImageEntry> {
       sourceUrl: "https://commons.wikimedia.org/wiki/File:Trier_Sankt_Paulin_BW_9.jpg" }));
 
   add("sight:dreikoenigenhaus", entry("sights", "dreikoenigenhaus",
-    "Das gotische Dreikoenigenhaus in der Simeonstrasse in Trier",
+    "Das gotische Dreikönigenhaus in der Simeonstraße in Trier",
     { author: "Lothar Spurzem", license: "CC BY-SA 2.0 DE",
       licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0/de/deed.en",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:Trier,_Dreik%C3%B6nigenhaus_2_(2009-09-21_Sp).JPG" }));
@@ -173,7 +173,7 @@ function buildRegistry(): Record<string, ImageEntry> {
     { author: "Palauenc05", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:Trier_Di%C3%B6zesanmuseum_(1).jpg" }));
   add("sight:spielzeugmuseum", entry("sights", "spielzeugmuseum",
-    "Spielzeugmuseum in der Dietrichstrasse in Trier",
+    "Spielzeugmuseum in der Dietrichstraße in Trier",
     { author: "Andreas Praefcke", license: "CC BY 3.0", licenseUrl: "https://creativecommons.org/licenses/by/3.0",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:Trier_Spielzeugmuseum.jpg" }));
   add("sight:petrisberg", entry("sights", "petrisberg",
@@ -181,7 +181,7 @@ function buildRegistry(): Record<string, ImageEntry> {
     { author: "Agnes Monkelbaan", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:Trier,_08-12-2023_(actm.)_01.jpg" }));
   add("sight:weinkulturpfad-olewig", entry("sights", "weinkulturpfad-olewig",
-    "Historisches Weinbergshaeuschen in den Weinbergen von Trier-Olewig",
+    "Historisches Weinbergshäuschen in den Weinbergen von Trier-Olewig",
     { author: "Thomas Holbach", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:Trier-Olewig_Weinbergshaeuschen.jpg" }));
 
@@ -198,7 +198,7 @@ function buildRegistry(): Record<string, ImageEntry> {
     { author: "Gerd Eichmann", license: "CC BY 4.0", licenseUrl: "https://creativecommons.org/licenses/by/4.0",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:Trier-Kaiserthermen-02-Palastgarten-2013-gje.jpg" }));
   add("district:trier-nord", entry("districts", "trier-nord",
-    "Moselufer in Trier-Nord mit Blick auf Mariensaeule",
+    "Moselufer in Trier-Nord mit Blick auf Mariensäule",
     { ...P170_4, sourceUrl: "https://commons.wikimedia.org/wiki/File:Trier,_Weg_am_Moselufer_in_Trier-Nord_mit_Blick_nach_Pallien_20190131.jpg" }));
   add("district:trier-west-pallien", entry("districts", "trier-west-pallien",
     "Stadtteil Pallien an der Mosel in Trier-West",
@@ -217,7 +217,7 @@ function buildRegistry(): Record<string, ImageEntry> {
     "Kirche St. Maria und St. Martin in Trier-Pfalzel",
     { ...P170_4, sourceUrl: "https://commons.wikimedia.org/wiki/File:Trier-Pfalzel,_Kirche_St._Maria_und_St._Martin_20230917.jpg" }));
   add("district:trier-ost", entry("districts", "trier-ost",
-    "Fuss- und Radweg zwischen Palastgarten und Hermesstrasse in Trier-Ost",
+    "Fuß- und Radweg zwischen Palastgarten und Hermesstraße in Trier-Ost",
     { author: "Ben Bender", license: "CC BY-SA 3.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:Trier_Ost,_Trier,_Germany_-_panoramio.jpg" }));
   add("district:mariahof", entry("districts", "mariahof",
@@ -246,11 +246,11 @@ function buildRegistry(): Record<string, ImageEntry> {
     { author: "Dietmar Rabich", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:Trier,_Porta_Nigra_--_2015_--_6123.jpg" }));
   add("category:roemisches-erbe", entry("categories", "roemisches-erbe",
-    "Die römischen Kaiserthermen in Trier mit ihren markanten Mauerboegen",
+    "Die römischen Kaiserthermen in Trier mit ihren markanten Mauerbögen",
     { author: "Gerd Eichmann", license: "CC BY 4.0", licenseUrl: "https://creativecommons.org/licenses/by/4.0",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:Trier-Kaiserthermen-06-2013-gje.jpg" }));
   add("category:wein", entry("categories", "wein",
-    "Weinbergshaenge im Trierer Stadtteil Olewig, dem Weinort von Trier",
+    "Weinbergshänge im Trierer Stadtteil Olewig, dem Weinort von Trier",
     { author: "Michael Fiegle", license: "CC BY-SA 3.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:Weinbergsbrache_Olewig.jpg" }));
   add("category:museen", entry("categories", "museen",
@@ -266,7 +266,7 @@ function buildRegistry(): Record<string, ImageEntry> {
     { author: "Krzysztof Golik", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:Hauptmarkt_in_Trier_01.jpg" }));
   add("category:kulinarik", entry("categories", "kulinarik",
-    "Ein Glas Weisswein und ein Glas Rotwein nebeneinander auf einem Tisch",
+    "Ein Glas Weißwein und ein Glas Rotwein nebeneinander auf einem Tisch",
     { author: "A. Savin", license: "CC BY-SA 3.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:Red_and_white_wine_12-2015.jpg" }));
   add("category:aussicht-wandern", entry("categories", "aussicht-wandern",
@@ -278,7 +278,7 @@ function buildRegistry(): Record<string, ImageEntry> {
     { author: "giggel", license: "CC BY 3.0", licenseUrl: "https://creativecommons.org/licenses/by/3.0",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:Trier-West-Pallien_-_panoramio.jpg" }));
   add("category:shopping", entry("categories", "shopping",
-    "Die Simeonstrasse in Trier, belebte Einkaufsstrasse mit historischen Fassaden",
+    "Die Simeonstraße in Trier, belebte Einkaufsstraße mit historischen Fassaden",
     { author: "Berthold Werner", license: "CC BY-SA 3.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:Trier_Simeonstrasse_BW_2018-05-12_18-07-42.jpg" }));
 
@@ -314,23 +314,23 @@ function buildRegistry(): Record<string, ImageEntry> {
 
   // === MAGAZIN: WEIN-ARTIKEL (thematische Mosel/Wein-Motive) ===
   add("article:weinfeste", entry("posts", "weinfeste",
-    "Froehliche Besucher feiern dicht gedraengt bei einem Weinfest",
+    "Fröhliche Besucher feiern dicht gedrängt bei einem Weinfest",
     { author: "Bogossi Production", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:Crazy_visitors_of_Yerevan_Wine_Days.jpg" }));
   add("article:riesling-routen-mosel", entry("posts", "riesling-routen-mosel",
-    "Weinberge und Bahnstrecke entlang der Mosel bei Puenderich",
+    "Weinberge und Bahnstrecke entlang der Mosel bei Pünderich",
     { author: "Hartmut Schmidt Heidelberg", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:Vineyards_and_railway_track_aside_Mosel_river,_P%C3%BCnderich,_D.jpg" }));
   add("article:sektkellereien-erlebnisse", entry("posts", "sektkellereien-erlebnisse",
-    "Grosses Cuveefass in einer Sektkellerei zur Herstellung von Schaumwein",
+    "Großes Cuvéefass in einer Sektkellerei zur Herstellung von Schaumwein",
     { author: "Je-str", license: "CC BY 3.0", licenseUrl: "https://creativecommons.org/licenses/by/3.0",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:Cuv%C3%A9efass.jpg" }));
   add("article:besten-vinotheken", entry("posts", "besten-vinotheken",
-    "Gut gefuellte Weinregale mit vielen Flaschen in einer Vinothek",
+    "Gut gefüllte Weinregale mit vielen Flaschen in einer Vinothek",
     { author: "WinzervonBaden", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:Blick_ins_Weinregal_der_Vinothek.jpg" }));
   add("article:weinproben-historische-keller", entry("posts", "weinproben-historische-keller",
-    "Alter Weinkeller mit grossen Holzfaessern zur Weinreifung",
+    "Alter Weinkeller mit großen Holzfässern zur Weinreifung",
     { author: "Cheeky76", license: "CC BY-SA 3.0 AT", licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0/at/deed.en",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:F%C3%A4sser_im_alten_Weinkeller.JPG" }));
   add("article:moselwein-touren", entry("posts", "moselwein-touren",
@@ -346,11 +346,11 @@ function buildRegistry(): Record<string, ImageEntry> {
     { author: "Cjp24", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:Tandem_bicycle_near_Sancerre,_France.jpg" }));
   add("article:weinseminare", entry("posts", "weinseminare",
-    "Mehrere gefuellte Weinglaeser nebeneinander bei einer Weinprobe",
+    "Mehrere gefüllte Weingläser nebeneinander bei einer Weinprobe",
     { author: "Amiga11235", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:Gl%C3%A4ser_f%C3%BCr_Weinprobe.JPG" }));
   add("article:weintraditionen", entry("posts", "weintraditionen",
-    "In einer Boettcherei entsteht ein neues Weinfass aus Eichenholz",
+    "In einer Böttcherei entsteht ein neues Weinfass aus Eichenholz",
     { author: "BillBl", license: "CC BY 2.0", licenseUrl: "https://creativecommons.org/licenses/by/2.0",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:Constructing_an_oak_wine_barrel_at_French_cooperage.jpg" }));
   add("article:weinhotels-weinbergen", entry("posts", "weinhotels-weinbergen",
@@ -389,10 +389,10 @@ function buildRegistry(): Record<string, ImageEntry> {
       sourceUrl: "https://commons.wikimedia.org/wiki/File:Tourist_relaxing_along_Fortified_walls..JPG" }));
 
   // === HOTEL-STIMMUNGSBILD-POOL (generische Hospitality-Motive, nicht der konkrete Betrieb) ===
-  add("hotel:pool-01", entry("hotels", "pool-01", "Aufgeraeumtes Hotelzimmer mit gemachtem Doppelbett",
+  add("hotel:pool-01", entry("hotels", "pool-01", "Aufgeräumtes Hotelzimmer mit gemachtem Doppelbett",
     { author: "Kurt Kaiser", license: "CC0", licenseUrl: "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:Bed_in_hotel_room_2.jpg" }));
-  add("hotel:pool-02", entry("hotels", "pool-02", "Fassade eines historischen europäischen Hotelgebaeudes",
+  add("hotel:pool-02", entry("hotels", "pool-02", "Fassade eines historischen europäischen Hotelgebäudes",
     { author: "Dietmar Rabich", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:Nottuln,_Hotel_Steverburg_--_2016_--_1486.jpg" }));
   add("hotel:pool-03", entry("hotels", "pool-03", "Empfangstresen in der Lobby eines Hotels",
@@ -418,13 +418,13 @@ function buildRegistry(): Record<string, ImageEntry> {
   add("restaurant:pool-01", entry("restaurants", "pool-01", "Eingedeckter Restauranttisch für vier Personen",
     { author: "George Ho", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:Bistro_Nas_restaurant_one_dining_table_of_four.jpg" }));
-  add("restaurant:pool-02", entry("restaurants", "pool-02", "Angerichteter Schweinebraten mit Kartoffelknoedeln auf dem Teller",
+  add("restaurant:pool-02", entry("restaurants", "pool-02", "Angerichteter Schweinebraten mit Kartoffelknödeln auf dem Teller",
     { author: "Takeaway", license: "CC BY-SA 3.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:2011_0628_Seefeld_Schweinsbraten_mit_Kartoffelkn%C3%B6del.jpg" }));
-  add("restaurant:pool-03", entry("restaurants", "pool-03", "Gemuetlicher Innenraum eines kleinen Bistros",
+  add("restaurant:pool-03", entry("restaurants", "pool-03", "Gemütlicher Innenraum eines kleinen Bistros",
     { author: "Travis Alber", license: "CC BY 2.0", licenseUrl: "https://creativecommons.org/licenses/by/2.0",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:Cozy_bistro_in_Buenos_Aires.jpg" }));
-  add("restaurant:pool-04", entry("restaurants", "pool-04", "Strassencafes auf einem Platz in einer historischen Altstadt",
+  add("restaurant:pool-04", entry("restaurants", "pool-04", "Straßencafés auf einem Platz in einer historischen Altstadt",
     { author: "Franzfoto", license: "CC BY-SA 3.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:Bischofsplatz_3-9_Limburg_-_Altstadt_mit_Stra%C3%9Fencafes.jpg" }));
   add("restaurant:pool-05", entry("restaurants", "pool-05", "Restauranttisch mit Getränk und Weinflaschen im Hintergrund",
@@ -433,7 +433,7 @@ function buildRegistry(): Record<string, ImageEntry> {
   add("restaurant:pool-06", entry("restaurants", "pool-06", "Rustikale Weinstube mit Holzeinrichtung und gedeckten Tischen",
     { author: "Joerg Blobelt", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:20070803110DR_Mei%C3%9Fen_Oberspaar_Weinstube_Bauernh%C3%A4usl.jpg" }));
-  add("restaurant:pool-07", entry("restaurants", "pool-07", "Köche bei der Arbeit in einer Restaurantkueche",
+  add("restaurant:pool-07", entry("restaurants", "pool-07", "Köche bei der Arbeit in einer Restaurantküche",
     { author: "P1898", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
       sourceUrl: "https://commons.wikimedia.org/wiki/File:Guevarra%E2%80%99s_restaurant_kitchen_San_Juan_Metro_Manila.jpg" }));
   add("restaurant:pool-08", entry("restaurants", "pool-08", "Nahaufnahme eines Desserts aus Brombeeren und Apfel",
@@ -447,6 +447,17 @@ export const images: Record<string, ImageEntry> = buildRegistry();
 
 export const getImage = (key?: string): ImageEntry | undefined =>
   key ? images[key] : undefined;
+
+/**
+ * Bildstrategie der Moselbuehne-Variante fuer Hotels/Restaurants:
+ * 1. eigenes Foto (own), 2. Stadtteilfoto (Bildunterschrift nennt den
+ * Stadtteil, nicht den Betrieb). Gibt es beides nicht, liefert heroKey
+ * undefined - dann greift ein Poolbild NUR mit sichtbarem Symbolbild-Label
+ * oder der designte Platzhalter.
+ */
+export const heroKey = (own: string | undefined, fallbackDistrict?: string) =>
+  getImage(own) ? own : fallbackDistrict && getImage(`district:${fallbackDistrict}`)
+    ? `district:${fallbackDistrict}` : undefined;
 
 /**
  * Zuweisung eines Stimmungsbild-Pools (Hotels/Restaurants), für die es keine

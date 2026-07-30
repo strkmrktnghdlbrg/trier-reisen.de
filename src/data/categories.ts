@@ -22,7 +22,7 @@ export const categories: Category[] = [
     slug: "roemisches-erbe",
     name: "Römisches Erbe",
     shortDesc:
-      "Porta Nigra, Kaiserthermen, Amphitheater, Roemerbruecke - die alte Augusta Treverorum.",
+      "Porta Nigra, Kaiserthermen, Amphitheater, Römerbrücke - die alte Augusta Treverorum.",
     longDesc:
       "Trier ist das römische Kaiserresidenz-Erbe nördlich der Alpen. Gegründet als Augusta Treverorum 17/16 v. Chr., war die Stadt im 4. Jahrhundert eine der wichtigsten Residenzen des Römischen Reiches. Heute ist das Stadtbild geradezu durchwirkt von antiken Bauten in beeindruckendem Erhaltungszustand.",
     icon: "columns",
@@ -82,9 +82,9 @@ export const categories: Category[] = [
     slug: "aussicht-wandern",
     name: "Aussicht & Wandern",
     shortDesc:
-      "Mariensaeule, Petrisberg, Weinkulturpfad Olewig, Mosel-Promenade.",
+      "Mariensäule, Petrisberg, Weinkulturpfad Olewig, Mosel-Promenade.",
     longDesc:
-      "Trier liegt im Moseltal mit Hoehenruecken auf beiden Seiten. Die Mariensaeule auf dem Markusberg ist DER Aussichtspunkt, der Petrisberg bietet Wanderwege oberhalb der Universität, und der Olewiger Weinkulturpfad führt durch die Riesling-Steillagen.",
+      "Trier liegt im Moseltal mit Höhenrücken auf beiden Seiten. Die Mariensäule auf dem Markusberg ist DER Aussichtspunkt, der Petrisberg bietet Wanderwege oberhalb der Universität, und der Olewiger Weinkulturpfad führt durch die Riesling-Steillagen.",
     icon: "mountain",
     hue: 2,
   },
@@ -94,7 +94,7 @@ export const categories: Category[] = [
     shortDesc:
       "Mosel-Radweg, Schiffsrundfahrten, Personenschifffahrt nach Bernkastel.",
     longDesc:
-      "Trier ist Startpunkt vieler Mosel-Aktivitäten. Der Mosel-Radweg führt von hier 248 km nach Koblenz, Personenschiffe starten an der Roemerbruecke Richtung Schweich und Bernkastel-Kues, und Kanu-Anbieter vermieten direkt am Ufer.",
+      "Trier ist Startpunkt vieler Mosel-Aktivitäten. Der Mosel-Radweg führt von hier 248 km nach Koblenz, Personenschiffe starten an der Römerbrücke Richtung Schweich und Bernkastel-Kues, und Kanu-Anbieter vermieten direkt am Ufer.",
     icon: "ship",
     hue: 2,
   },

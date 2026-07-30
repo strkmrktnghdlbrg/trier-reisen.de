@@ -1,25 +1,32 @@
 ---
+/**
+ * Kachel-Optik (Moselbuehne). Events haben keine Fotos in der Registry -
+ * die Kachel nutzt den designten Hue-Platzhalter als Flaeche.
+ */
+import HueGradient from "./HueGradient.astro";
 import type { CityEvent } from "../data/events";
 import { detailPath, localize, type Lang } from "../lib/i18n";
 
 interface Props {
   event: CityEvent;
   lang?: Lang;
+  span?: "w2" | "h2";
 }
 
-const { event: src, lang = "de" } = Astro.props;
+const { event: src, lang = "de", span } = Astro.props;
 const event = localize("events", src as any, lang) as any;
 const checkin = new Date(event.checkin);
 const dateLabel = checkin.toLocaleDateString(lang === "de" ? "de-DE" : "en-GB", { day: "numeric", month: "long", year: "numeric" });
 ---
 
-<a href={detailPath(lang, "events", event.slug)} class="card group block">
-  <div class="p-5">
-    <p class="eyebrow mb-2">{event.eyebrow}</p>
-    <h3 class="text-xl font-light tracking-tight leading-tight mb-2 group-hover:text-[var(--color-accent)] transition-colors" style="color: var(--color-text); font-family: var(--font-display);">
-      {event.title}
-    </h3>
-    <p class="text-sm mb-3" style="color: var(--color-text-muted);">{dateLabel}</p>
-    <p class="text-sm leading-relaxed line-clamp-3" style="color: var(--color-text-body);">{event.intro}</p>
+<a href={detailPath(lang, "events", event.slug)} class={`tile${span ? ` ${span}` : ""}`}>
+  <div class="pic">
+    <HueGradient hue={3} label={event.title} class="w-full h-full" />
+  </div>
+  <div class="veil"></div>
+  <span class="tag">{event.eyebrow}</span>
+  <div class="cap">
+    <h3>{event.title}</h3>
+    <span>{dateLabel}</span>
   </div>
 </a>

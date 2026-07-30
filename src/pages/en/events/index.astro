@@ -36,7 +36,7 @@ const gyg = getGyg("index:events", "en");
   {upcoming.length > 0 && (
     <section class="container-page section pt-0">
       <h2 class="display mb-6">Festivals and markets</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="mosaic m3">
         {upcoming.map((e) => <EventCard event={e} lang={lang} />)}
       </div>
     </section>

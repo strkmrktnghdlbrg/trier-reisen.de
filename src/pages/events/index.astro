@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import HueGradient from "../../components/HueGradient.astro";
 import EventCard from "../../components/EventCard.astro";
 import GygActivities from "../../components/GygActivities.astro";
 import { city } from "../../data/city";
@@ -33,7 +34,7 @@ const gyg = getGyg("index:events");
   {upcomingRealEvents.length > 0 && (
     <section class="container-page section pt-0">
       <h2 class="display mb-6">Festivals und Märkte</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="mosaic m3">
         {upcomingRealEvents.map((e) => <EventCard event={e} />)}
       </div>
     </section>
@@ -49,13 +50,15 @@ const gyg = getGyg("index:events");
           für konkrete Reisetermine in Trier.
         </p>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="mosaic m3">
         {upcomingSeasonal.map((e) => (
-          <a href={`/hotels-trier-${e.slug}/`} class="card group block">
-            <div class="p-5">
-              <p class="eyebrow mb-2">{e.eyebrow}</p>
-              <h3 class="text-xl font-light tracking-tight leading-tight mb-2 group-hover:text-[var(--color-accent)] transition-colors" style="color: var(--color-text); font-family: var(--font-display);">{e.title}</h3>
-              <p class="text-sm leading-relaxed line-clamp-3" style="color: var(--color-text-body);">{e.intro}</p>
+          <a href={`/hotels-trier-${e.slug}/`} class="tile">
+            <div class="pic"><HueGradient hue={2} label={e.title} class="w-full h-full" /></div>
+            <div class="veil"></div>
+            <span class="tag">{e.eyebrow}</span>
+            <div class="cap">
+              <h3>{e.title}</h3>
+              <span>{e.intro}</span>
             </div>
           </a>
         ))}

@@ -33,7 +33,7 @@ const groupList = Array.from(groups.entries()).sort(([a], [b]) => a.localeCompar
   {groupList.map(([cuisine, items]) => (
     <section class="container-page section pt-0">
       <h2 class="display mb-6">{cuisine}</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="mosaic m3">
         {items.map((r) => <RestaurantCard restaurant={r} />)}
       </div>
     </section>

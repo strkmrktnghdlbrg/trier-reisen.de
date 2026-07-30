@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import StageHero from "../../components/StageHero.astro";
+import ActionDock from "../../components/ActionDock.astro";
 import { city } from "../../data/city";
 import { totalListings } from "../../data/branchenverzeichnis";
 import "../../styles/werben.css";
@@ -66,23 +67,23 @@ const faqLd = {
 ---
 
 <BaseLayout title={title} description={description}>
+  <StageHero
+    imgKey="district:innenstadt"
+    badge="Werben auf Trier Reisen"
+    title="Lokal sichtbar werden - bei Menschen, die Trier lieben."
+    lead={`Trier Reisen ist das Reise- und Stadtportal für die älteste Stadt Deutschlands: Römerbauten, Dom, Moseltal, Weingüter, Restaurants, Hotels und Veranstaltungen. Wer hier liest, sucht etwas in ${city.name} - und genau dort kann Ihr Betrieb auftauchen.`}
+    minHeight={460}
+    crumbs="Start / Werben"
+  />
+  <ActionDock
+    info={{
+      title: "199 € pro Jahr netto",
+      sub: "236,81 € brutto · nur für Unternehmer · keine automatische Verlängerung",
+    }}
+    secondary={{ href: "/branchenverzeichnis/", label: "Branchenverzeichnis ansehen" }}
+    primary={{ href: "/kontakt/", label: "Werbung anfragen" }}
+  />
   <div class="container-page py-12">
-    <Breadcrumbs items={[{ label: city.name, href: "/" }, { label: "Werben" }]} />
-
-    <div class="max-w-3xl mb-14">
-      <p class="eyebrow mb-3">Werben auf Trier Reisen</p>
-      <h1 class="text-4xl sm:text-6xl font-medium tracking-tight mb-6" style="color: var(--color-text);">
-        Lokal sichtbar werden - bei Menschen, die {city.name} lieben.
-      </h1>
-      <p class="text-lg leading-relaxed mb-8" style="color: var(--color-text-body);">
-        Trier Reisen ist das Reise- und Stadtportal für die älteste Stadt Deutschlands: Römerbauten, Dom, Moseltal, Weingüter, Restaurants, Hotels und Veranstaltungen. Wer hier liest, sucht etwas in {city.name} - und genau dort kann Ihr Betrieb auftauchen.
-      </p>
-      <div class="flex flex-wrap gap-3">
-        <a href="/kontakt/" class="btn-primary">Werbung anfragen &rarr;</a>
-        <a href="/branchenverzeichnis/" class="btn-outline">Branchenverzeichnis ansehen</a>
-      </div>
-    </div>
-
     <section class="mb-16">
       <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight mb-6" style="color: var(--color-text);">Werbeformen</h2>
       <div class="werben-grid werben-grid-3">

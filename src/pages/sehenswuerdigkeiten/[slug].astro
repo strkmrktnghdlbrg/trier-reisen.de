@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import Breadcrumbs from "../../components/Breadcrumbs.astro";
-import ContentImage from "../../components/ContentImage.astro";
+import StageHero from "../../components/StageHero.astro";
+import ActionDock from "../../components/ActionDock.astro";
 import SightCard from "../../components/SightCard.astro";
 import Stay22NearbyHotels from "../../components/Stay22NearbyHotels.astro";
 import GygActivities from "../../components/GygActivities.astro";
@@ -42,33 +42,64 @@ const moreInfo: string[] = (sightEnrichments as Record<string, string[]>)[sight.
     ...(sight.faq && sight.faq.length > 0 ? [faqSchema(sight.faq)] : []),
   ]}
 >
-  <article class="container-page py-12">
-    <Breadcrumbs items={[
-      { href: "/", label: city.name },
-      { href: "/sehenswuerdigkeiten/", label: "Sehenswürdigkeiten" },
-      { label: sight.name },
-    ]} />
+  <article>
+    <StageHero
+      imgKey={sight.imageKey}
+      fallbackHue={sight.imageHue}
+      badge={sight.unesco ? "UNESCO seit 1986" : sight.type}
+      title={sight.name}
+      lead={sight.shortDesc}
+      minHeight={520}
+      crumbs={`Start / Sehenswürdigkeiten / ${district?.name ?? sight.district}`}
+    >
+      <div class="pills">
+        {sight.unesco && <span class="pill-ghost">{sight.type}</span>}
+        <span class="pill-ghost">{district?.name ?? sight.district}</span>
+      </div>
+    </StageHero>
+    <ActionDock
+      info={{
+        title: priceLabel,
+        sub: [
+          district?.name ?? sight.district,
+          sight.openingHours ? "Öffnung laut Betreiber, Stand Juli 2026" : undefined,
+        ].filter(Boolean).join(" · "),
+      }}
+      secondary={{ href: `/bezirke/${sight.district}/`, label: `Stadtteil ${district?.name ?? sight.district}` }}
+      primary={{ href: "#hotels-nahe", label: "Hotels in der Nähe" }}
+    />
 
-    <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 mt-4">
-      <div class="lg:col-span-3">
-        <p class="eyebrow mb-3">{sight.type}{sight.unesco ? " · UNESCO-Welterbe" : ""}</p>
-        <h1 class="display-xl mb-4">{sight.name}</h1>
-        <p class="text-sm" style="color: var(--color-text-muted);">
-          {district?.name ?? sight.district} · {priceLabel}
-          {sight.openingHours && <> · {sight.openingHours}</>}
-        </p>
-        <div class="aspect-[16/10] rounded-2xl overflow-hidden mt-6 relative">
-          <ContentImage
-            imgKey={sight.imageKey}
-            fallbackHue={sight.imageHue}
-            fallbackLabel={sight.name}
-            imgClass="w-full h-full object-cover"
-            width={1200}
-            height={750}
-          />
+    <div class="container-page py-12">
+      <div class="facts4">
+        <div>
+          <span class="k">Stadtteil</span>
+          <b>{district?.name ?? sight.district}</b>
         </div>
-        <p class="text-body mt-8 text-lg leading-relaxed">{sight.longDesc}</p>
+        <div>
+          <span class="k">Eintritt</span>
+          <b>{priceLabel}</b>
+        </div>
+        {sight.openingHours && (
+          <div>
+            <span class="k">Öffnung laut Betreiber</span>
+            <b>{sight.openingHours}</b>
+          </div>
+        )}
+        {sight.websiteUrl ? (
+          <div>
+            <span class="k">Website</span>
+            <b><a href={sight.websiteUrl} target="_blank" rel="noopener" class="link-accent">Offizielle Seite ↗</a></b>
+          </div>
+        ) : (
+          <div>
+            <span class="k">Kategorie</span>
+            <b>{sight.type}{sight.unesco ? " · UNESCO" : ""}</b>
+          </div>
+        )}
+      </div>
 
+      <div class="max-w-3xl mt-10">
+        <p class="text-body text-lg leading-relaxed">{sight.longDesc}</p>
         {moreInfo.map((para) => (
           <p class="text-body mt-4 leading-relaxed">{para}</p>
         ))}
@@ -83,78 +114,49 @@ const moreInfo: string[] = (sightEnrichments as Record<string, string[]>)[sight.
         )}
       </div>
 
-      <aside class="lg:col-span-2">
-        <div class="card p-6">
-          <h2 class="text-lg font-light mb-4" style="font-family: var(--font-display);">Praktisches</h2>
-          <dl class="text-sm space-y-3">
-            <div>
-              <dt style="color: var(--color-text-muted);">Bezirk</dt>
-              <dd style="color: var(--color-text);">{district?.name ?? sight.district}</dd>
-            </div>
-            <div>
-              <dt style="color: var(--color-text-muted);">Eintritt</dt>
-              <dd style="color: var(--color-text);">{priceLabel}</dd>
-            </div>
-            {sight.openingHours && (
+      {gyg && (
+        <GygActivities
+          q={gyg.q}
+          heading={gyg.heading}
+          intro={gyg.intro}
+          count={gyg.count}
+          cmp={gygCmp(gygKey)}
+        />
+      )}
+
+      <div id="hotels-nahe">
+        <Stay22NearbyHotels
+          lat={sight.coordinates[0]}
+          lng={sight.coordinates[1]}
+          near={sight.name}
+          radius={1500}
+          limit={4}
+        />
+      </div>
+
+      {sight.faq && sight.faq.length > 0 && (
+        <section class="max-w-3xl mt-14">
+          <h2 class="display mb-6">Häufige Fragen zu {sight.name}</h2>
+          <div class="space-y-5">
+            {sight.faq.map((f) => (
               <div>
-                <dt style="color: var(--color-text-muted);">Öffnungszeiten</dt>
-                <dd style="color: var(--color-text);">{sight.openingHours}</dd>
+                <h3 class="text-lg font-medium mb-1" style="color: var(--color-text);">{f.q}</h3>
+                <p class="text-body" set:html={f.a} />
               </div>
-            )}
-            {sight.websiteUrl && (
-              <div>
-                <dt style="color: var(--color-text-muted);">Website</dt>
-                <dd><a href={sight.websiteUrl} target="_blank" rel="noopener" class="link-accent text-sm">Offizielle Seite ↗</a></dd>
-              </div>
-            )}
-            <div>
-              <dt style="color: var(--color-text-muted);">Koordinaten</dt>
-              <dd style="color: var(--color-text);" class="font-mono text-xs">{sight.coordinates[0].toFixed(4)}, {sight.coordinates[1].toFixed(4)}</dd>
-            </div>
-          </dl>
-        </div>
-      </aside>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {related.length > 0 && (
+        <section class="section">
+          <h2 class="display mb-6">In der Umgebung</h2>
+          <p class="text-body mb-6 max-w-2xl">Weiter in {district?.name ?? sight.district}.</p>
+          <div class="mosaic m3">
+            {related.map((s) => <SightCard sight={s} />)}
+          </div>
+        </section>
+      )}
     </div>
-
-    {gyg && (
-      <GygActivities
-        q={gyg.q}
-        heading={gyg.heading}
-        intro={gyg.intro}
-        count={gyg.count}
-        cmp={gygCmp(gygKey)}
-      />
-    )}
-
-    <Stay22NearbyHotels
-      lat={sight.coordinates[0]}
-      lng={sight.coordinates[1]}
-      near={sight.name}
-      radius={1500}
-      limit={4}
-    />
-
-    {sight.faq && sight.faq.length > 0 && (
-      <section class="max-w-3xl mt-14">
-        <h2 class="display mb-6">Häufige Fragen zu {sight.name}</h2>
-        <div class="space-y-5">
-          {sight.faq.map((f) => (
-            <div>
-              <h3 class="text-lg font-medium mb-1" style="color: var(--color-text);">{f.q}</h3>
-              <p class="text-body" set:html={f.a} />
-            </div>
-          ))}
-        </div>
-      </section>
-    )}
-
-    {related.length > 0 && (
-      <section class="section">
-        <h2 class="display mb-6">Weiter in {district?.name ?? sight.district}</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {related.map((s) => <SightCard sight={s} />)}
-        </div>
-      </section>
-    )}
   </article>
 </BaseLayout>

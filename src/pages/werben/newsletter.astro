@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import StageHero from "../../components/StageHero.astro";
+import ActionDock from "../../components/ActionDock.astro";
 import { city } from "../../data/city";
 import "../../styles/werben.css";
 
@@ -56,28 +57,23 @@ const faqLd = {
 ---
 
 <BaseLayout title={title} description={description}>
+  <StageHero
+    imgKey="sight:mosel-promenade"
+    badge="Im Aufbau"
+    title="Direkt in den Posteingang."
+    lead={`Der ${city.name}-Newsletter bringt Themen und Termine aus der Stadt zu Menschen, die sie interessieren. Der Verteiler wird gerade aufgebaut - Erwähnungen buchen Sie deshalb am besten als Teil des Premium-Pakets und lösen sie mit dem ersten Versand ein.`}
+    minHeight={460}
+    crumbs="Start / Werben / Newsletter"
+  />
+  <ActionDock
+    info={{
+      title: "Im Premium-Paket enthalten",
+      sub: "199 € pro Jahr netto · 236,81 € brutto · nur für Unternehmer · keine automatische Verlängerung",
+    }}
+    secondary={{ href: "/werben/premium-partner/", label: "Premium-Paket ansehen" }}
+    primary={{ href: "/kontakt/", label: "Platzierung anfragen" }}
+  />
   <div class="container-page py-12">
-    <Breadcrumbs items={[
-      { label: city.name, href: "/" },
-      { label: "Werben", href: "/werben/" },
-      { label: "Newsletter" },
-    ]} />
-
-    <div class="max-w-3xl mb-14">
-      <p class="eyebrow mb-3">Im Aufbau</p>
-      <h1 class="text-4xl sm:text-6xl font-medium tracking-tight mb-6" style="color: var(--color-text);">
-        Direkt in den Posteingang.
-      </h1>
-      <p class="text-lg leading-relaxed mb-8" style="color: var(--color-text-body);">
-        Der {city.name}-Newsletter bringt Themen und Termine aus der Stadt zu Menschen, die sie
-        interessieren. Der Verteiler wird gerade aufgebaut - Erwähnungen buchen Sie deshalb am besten
-        als Teil des Premium-Pakets und lösen sie mit dem ersten Versand ein.
-      </p>
-      <div class="flex flex-wrap gap-3">
-        <a href="/kontakt/" class="btn-primary">Platzierung anfragen &rarr;</a>
-        <a href="/werben/premium-partner/" class="btn-outline">Premium-Paket ansehen</a>
-      </div>
-    </div>
 
     <section class="mb-16">
       <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight mb-6" style="color: var(--color-text);">Wie eine Platzierung aussieht</h2>

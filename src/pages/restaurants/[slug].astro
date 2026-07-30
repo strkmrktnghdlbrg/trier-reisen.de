@@ -1,9 +1,8 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import Breadcrumbs from "../../components/Breadcrumbs.astro";
-import HueGradient from "../../components/HueGradient.astro";
-import ContentImage from "../../components/ContentImage.astro";
-import { restaurantPoolKey } from "../../data/images";
+import StageHero from "../../components/StageHero.astro";
+import ActionDock from "../../components/ActionDock.astro";
+import { heroKey, restaurantPoolKey, getImage } from "../../data/images";
 import RestaurantCard from "../../components/RestaurantCard.astro";
 import SightCard from "../../components/SightCard.astro";
 import { restaurants, type Restaurant } from "../../data/restaurants";
@@ -21,6 +20,20 @@ const { restaurant } = Astro.props;
 const district = getDistrict(restaurant.district);
 const related = restaurants.filter((r) => r.slug !== restaurant.slug && r.cuisine === restaurant.cuisine).slice(0, 3);
 const nearbySights = sights.filter((s) => s.district === restaurant.district).slice(0, 3);
+
+/*
+ * Bildstrategie: 1. eigenes Foto, 2. Stadtteilfoto (Bildunterschrift nennt den
+ * Stadtteil, nicht den Betrieb), 3. Poolbild NUR mit sichtbarem Symbolbild-Label,
+ * 4. designter Platzhalter.
+ */
+const stageKey = heroKey(restaurant.imageKey, restaurant.district);
+const isOwnPhoto = Boolean(stageKey && stageKey === restaurant.imageKey);
+const isDistrictPhoto = Boolean(stageKey && !isOwnPhoto);
+const poolKey = !stageKey && getImage(restaurantPoolKey(restaurant.slug)) ? restaurantPoolKey(restaurant.slug) : undefined;
+const usedKey = stageKey ?? poolKey;
+const picNote = isDistrictPhoto
+  ? `Stadtteilfoto: ${district?.name ?? restaurant.district}`
+  : undefined;
 ---
 
 <BaseLayout
@@ -36,114 +49,106 @@ const nearbySights = sights.filter((s) => s.district === restaurant.district).sl
     ]),
   ]}
 >
-  <article class="container-page py-12">
-    <Breadcrumbs items={[
-      { href: "/", label: city.name },
-      { href: "/restaurants/", label: "Restaurants" },
-      { label: restaurant.name },
-    ]} />
+  <article>
+    <StageHero
+      imgKey={usedKey}
+      fallbackHue={restaurant.imageHue}
+      badge={restaurant.cuisine}
+      title={restaurant.name}
+      lead={restaurant.shortDesc}
+      minHeight={480}
+      crumbs={`Start / Restaurants / ${district?.name ?? restaurant.district}`}
+      symbolbild={Boolean(poolKey)}
+      picNote={picNote}
+    >
+      <div class="pills">
+        <span class="pill-ghost">{district?.name ?? restaurant.district}</span>
+        <span class="pill-ghost">{restaurant.priceLevel}</span>
+      </div>
+    </StageHero>
+    <ActionDock
+      info={{
+        title: restaurant.name,
+        sub: [
+          restaurant.cuisine,
+          restaurant.priceLevel,
+          restaurant.openingHours ? "Zeiten laut Betreiber, Stand Juli 2026" : undefined,
+        ].filter(Boolean).join(" · "),
+      }}
+      secondary={{ href: `/bezirke/${restaurant.district}/`, label: `Stadtteil ${district?.name ?? restaurant.district}` }}
+      primary={
+        restaurant.websiteUrl
+          ? { href: restaurant.websiteUrl, label: restaurant.reservation ? "Tisch beim Restaurant reservieren ↗" : "Offizielle Seite ↗", external: true }
+          : { href: "/restaurants/", label: "Alle Restaurants" }
+      }
+    />
 
-    <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 mt-4">
-      <div class="lg:col-span-3">
-        <p class="eyebrow mb-3">{restaurant.cuisine} · {restaurant.priceLevel}</p>
-        <h1 class="display-xl mb-4">{restaurant.name}</h1>
-        <p class="text-sm" style="color: var(--color-text-muted);">
-          {district?.name ?? restaurant.district}
-          {restaurant.openingHours && <> · {restaurant.openingHours}</>}
-        </p>
-        <div class="aspect-[16/10] rounded-2xl overflow-hidden mt-6 relative">
-          <ContentImage
-            imgKey={restaurant.imageKey ?? restaurantPoolKey(restaurant.slug)}
-            fallbackHue={restaurant.imageHue}
-            fallbackLabel={restaurant.name}
-            width={960}
-            height={600}
-            imgClass="w-full h-full object-cover"
-          />
+    <div class="container-page py-12">
+      <div class="facts4">
+        <div>
+          <span class="k">Küche</span>
+          <b>{restaurant.cuisine}</b>
         </div>
-        <p class="text-body mt-8 text-lg leading-relaxed">{restaurant.longDesc}</p>
+        <div>
+          <span class="k">Preisniveau</span>
+          <b>{restaurant.priceLevel}</b>
+        </div>
+        <div>
+          <span class="k">Stadtteil</span>
+          <b>
+            {district ? (
+              <a href={`/bezirke/${district.slug}/`} class="link-accent">{district.name}</a>
+            ) : (
+              restaurant.district
+            )}
+          </b>
+        </div>
+        {restaurant.openingHours && (
+          <div>
+            <span class="k">Zeiten laut Betreiber</span>
+            <b>{restaurant.openingHours}</b>
+          </div>
+        )}
+        {!restaurant.openingHours && restaurant.reservation && (
+          <div>
+            <span class="k">Reservierung</span>
+            <b>empfohlen</b>
+          </div>
+        )}
       </div>
 
-      <aside class="lg:col-span-2">
-        <div class="card p-6">
-          <h2 class="text-lg font-light mb-4" style="font-family: var(--font-display);">Praktisches</h2>
-          <dl class="text-sm space-y-3">
-            <div>
-              <dt style="color: var(--color-text-muted);">Küche</dt>
-              <dd style="color: var(--color-text);">{restaurant.cuisine}</dd>
-            </div>
-            <div>
-              <dt style="color: var(--color-text-muted);">Preisniveau</dt>
-              <dd style="color: var(--color-text);">{restaurant.priceLevel}</dd>
-            </div>
-            <div>
-              <dt style="color: var(--color-text-muted);">Bezirk</dt>
-              <dd style="color: var(--color-text);">
-                {district ? (
-                  <a href={`/bezirke/${district.slug}/`} class="link-accent">{district.name}</a>
-                ) : (
-                  restaurant.district
-                )}
-              </dd>
-            </div>
-            {restaurant.openingHours && (
-              <div>
-                <dt style="color: var(--color-text-muted);">Öffnungszeiten</dt>
-                <dd style="color: var(--color-text);">{restaurant.openingHours}</dd>
-              </div>
-            )}
-            {restaurant.reservation && (
-              <div>
-                <dt style="color: var(--color-text-muted);">Reservierung</dt>
-                <dd style="color: var(--color-text);">
-                  {restaurant.websiteUrl ? (
-                    <a href={restaurant.websiteUrl} target="_blank" rel="noopener" class="link-accent">
-                      Tisch reservieren ↗
-                    </a>
-                  ) : (
-                    "empfohlen (telefonisch)"
-                  )}
-                </dd>
-              </div>
-            )}
-            {restaurant.websiteUrl && (
-              <div>
-                <dt style="color: var(--color-text-muted);">Website</dt>
-                <dd><a href={restaurant.websiteUrl} target="_blank" rel="noopener" class="link-accent text-sm">Offizielle Seite ↗</a></dd>
-              </div>
-            )}
-          </dl>
+      <div class="max-w-3xl mt-10">
+        <p class="text-body text-lg leading-relaxed">{restaurant.longDesc}</p>
 
-          {restaurant.reservation && restaurant.websiteUrl && (
-            <a
-              href={restaurant.websiteUrl}
-              target="_blank"
-              rel="noopener"
-              class="btn-primary w-full justify-center mt-6"
-            >
-              Tisch beim Restaurant reservieren ↗
-            </a>
-          )}
-        </div>
-      </aside>
+        {restaurant.websiteUrl && (
+          <p class="mt-6">
+            <a href={restaurant.websiteUrl} target="_blank" rel="noopener" class="link-accent">Offizielle Seite ↗</a>
+          </p>
+        )}
+        {restaurant.reservation && !restaurant.websiteUrl && (
+          <p class="mt-6 text-sm" style="color: var(--color-text-muted);">
+            Reservierung empfohlen (telefonisch).
+          </p>
+        )}
+      </div>
+
+      {nearbySights.length > 0 && (
+        <section class="section">
+          <h2 class="display mb-6">Sehenswürdigkeiten in der Nähe</h2>
+          <div class="mosaic m3">
+            {nearbySights.map((s) => <SightCard sight={s} />)}
+          </div>
+        </section>
+      )}
+
+      {related.length > 0 && (
+        <section class="section pt-0">
+          <h2 class="display mb-6">Mehr {restaurant.cuisine}</h2>
+          <div class="mosaic m3">
+            {related.map((r) => <RestaurantCard restaurant={r} />)}
+          </div>
+        </section>
+      )}
     </div>
-
-    {nearbySights.length > 0 && (
-      <section class="section">
-        <h2 class="display mb-6">Sehenswürdigkeiten in der Nähe</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {nearbySights.map((s) => <SightCard sight={s} />)}
-        </div>
-      </section>
-    )}
-
-    {related.length > 0 && (
-      <section class="section">
-        <h2 class="display mb-6">Mehr {restaurant.cuisine}</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {related.map((r) => <RestaurantCard restaurant={r} />)}
-        </div>
-      </section>
-    )}
   </article>
 </BaseLayout>

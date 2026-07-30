@@ -1,0 +1,69 @@
+---
+/**
+ * StageHero - Vollbild-Buehne der Moselbuehne-Variante.
+ * Bild aus der Registry (images.ts), .veil-Verlauf, Typo unten links.
+ * Fehlt das Bild, rendert die Buehne einen designten Hue-Platzhalter.
+ * Poolbilder duerfen NUR mit symbolbild={true} (sichtbares Label) auf die
+ * Buehne - siehe Bildstrategie im Projekt-Brief.
+ */
+import { Image } from "astro:assets";
+import { getImage } from "../data/images";
+import HueGradient from "./HueGradient.astro";
+import type { Lang } from "../lib/i18n";
+
+interface Props {
+  imgKey?: string;
+  badge?: string;
+  title: string;
+  lead?: string;
+  minHeight?: number;
+  fallbackHue?: number;
+  /** Sichtbares Symbolbild-Label auf generischen Poolbildern. */
+  symbolbild?: boolean;
+  /** Zusatz in der Bildzeile, z. B. "Stadtteil Innenstadt" bei Fallback-Fotos. */
+  picNote?: string;
+  /** Kleine Mono-Zeile ueber dem Badge (z. B. Breadcrumb-Pfad). */
+  crumbs?: string;
+  lang?: Lang;
+}
+
+const {
+  imgKey,
+  badge,
+  title,
+  lead,
+  minHeight = 520,
+  fallbackHue = 1,
+  symbolbild = false,
+  picNote,
+  crumbs,
+  lang = "de",
+} = Astro.props;
+
+const entry = getImage(imgKey);
+const credit = entry?.credit;
+const symText = lang === "en" ? "Symbolic photo" : "Symbolbild";
+const credLine = [picNote, credit ? `Foto: ${credit.author} · ${credit.license}` : undefined]
+  .filter(Boolean)
+  .join(" · ");
+---
+
+<section class="stagehero" style={`min-height:${minHeight}px`}>
+  <div class="pic">
+    {entry ? (
+      <Image src={entry.src} alt={entry.alt} width={1600} height={1000} loading="eager" />
+    ) : (
+      <HueGradient hue={fallbackHue} label={title} class="w-full h-full" />
+    )}
+  </div>
+  <div class="veil"></div>
+  {symbolbild && entry && <span class="symlabel">{symText}</span>}
+  <div class="in">
+    {crumbs && <p class="crumbs">{crumbs}</p>}
+    {badge && <span class="badge">{badge}</span>}
+    <h1>{title}</h1>
+    {lead && <p class="lead">{lead}</p>}
+    <slot />
+  </div>
+  {credLine && <p class="cred">{credLine}</p>}
+</section>

@@ -1,4 +1,5 @@
 ---
+/** Kachel-Optik (Moselbuehne): Bild vollflaechig, Verlauf, Typo im Bild. */
 import ContentImage from "./ContentImage.astro";
 import type { District } from "../data/districts";
 import { detailPath, localize, type Lang } from "../lib/i18n";
@@ -6,32 +7,25 @@ import { detailPath, localize, type Lang } from "../lib/i18n";
 interface Props {
   district: District;
   lang?: Lang;
+  span?: "w2" | "h2";
 }
 
-const { district: src, lang = "de" } = Astro.props;
+const { district: src, lang = "de", span } = Astro.props;
 const district = localize("districts", src, lang);
 ---
 
-<a href={detailPath(lang, "districts", district.slug)} class="card group block">
-  <div class="aspect-[4/3] relative overflow-hidden">
+<a href={detailPath(lang, "districts", district.slug)} class={`tile${span ? ` ${span}` : ""}`}>
+  <div class="pic">
     <ContentImage
       imgKey={district.imageKey}
       fallbackHue={district.hue}
       fallbackLabel={district.name}
-      imgClass="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+      imgClass="w-full h-full object-cover"
     />
   </div>
-  <div class="p-4">
-    <h3 class="text-xl font-light tracking-tight leading-tight mb-2 group-hover:text-[var(--color-accent)] transition-colors" style="color: var(--color-text); font-family: var(--font-display);">
-      {district.name}
-    </h3>
-    <p class="text-sm leading-relaxed line-clamp-3 mb-3" style="color: var(--color-text-body);">
-      {district.shortDesc}
-    </p>
-    <div class="flex flex-wrap gap-1.5">
-      {district.characterTags.slice(0, 3).map((tag) => (
-        <span class="pill">{tag}</span>
-      ))}
-    </div>
+  <div class="veil"></div>
+  <div class="cap">
+    <h3>{district.name}</h3>
+    <span>{district.characterTags.slice(0, 3).join(" · ")}</span>
   </div>
 </a>

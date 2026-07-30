@@ -1,9 +1,8 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import Breadcrumbs from "../../components/Breadcrumbs.astro";
-import HueGradient from "../../components/HueGradient.astro";
-import ContentImage from "../../components/ContentImage.astro";
-import { hotelPoolKey } from "../../data/images";
+import StageHero from "../../components/StageHero.astro";
+import ActionDock from "../../components/ActionDock.astro";
+import { heroKey, hotelPoolKey, getImage } from "../../data/images";
 import HotelCard from "../../components/HotelCard.astro";
 import SightCard from "../../components/SightCard.astro";
 import Stay22NearbyHotels from "../../components/Stay22NearbyHotels.astro";
@@ -23,6 +22,20 @@ const district = getDistrict(hotel.district);
 const related = hotels.filter((h) => h.slug !== hotel.slug && h.district === hotel.district).slice(0, 3);
 const nearbySights = sights.filter((s) => s.district === hotel.district).slice(0, 3);
 const stars = "★".repeat(hotel.stars);
+
+/*
+ * Bildstrategie: 1. eigenes Foto, 2. Stadtteilfoto (Bildunterschrift nennt den
+ * Stadtteil, nicht den Betrieb), 3. Poolbild NUR mit sichtbarem Symbolbild-Label,
+ * 4. designter Platzhalter.
+ */
+const stageKey = heroKey(hotel.imageKey, hotel.district);
+const isOwnPhoto = Boolean(stageKey && stageKey === hotel.imageKey);
+const isDistrictPhoto = Boolean(stageKey && !isOwnPhoto);
+const poolKey = !stageKey && getImage(hotelPoolKey(hotel.slug)) ? hotelPoolKey(hotel.slug) : undefined;
+const usedKey = stageKey ?? poolKey;
+const picNote = isDistrictPhoto
+  ? `Stadtteilfoto: ${district?.name ?? hotel.district}`
+  : undefined;
 ---
 
 <BaseLayout
@@ -38,31 +51,54 @@ const stars = "★".repeat(hotel.stars);
     ]),
   ]}
 >
-  <article class="container-page py-12">
-    <Breadcrumbs items={[
-      { href: "/", label: city.name },
-      { href: "/hotels/", label: "Hotels" },
-      { label: hotel.name },
-    ]} />
+  <article>
+    <StageHero
+      imgKey={usedKey}
+      fallbackHue={hotel.imageHue}
+      badge={stars}
+      title={hotel.name}
+      lead={hotel.shortDesc}
+      minHeight={480}
+      crumbs={`Start / Hotels / ${district?.name ?? hotel.district}`}
+      symbolbild={Boolean(poolKey)}
+      picNote={picNote}
+    >
+      <div class="pills">
+        <span class="pill-ghost">{district?.name ?? hotel.district}</span>
+        <span class="pill-ghost">⭐ {hotel.rating}/10 · {hotel.reviews} Bewertungen</span>
+      </div>
+    </StageHero>
+    <ActionDock
+      info={{
+        title: `ab ${hotel.priceFrom} €`,
+        sub: "Preise und Verfügbarkeit live auf Booking.com · Wir erhalten beim Klick eine Provision - der Preis bleibt für dich gleich.",
+      }}
+      secondary={{ href: `/bezirke/${hotel.district}/`, label: `Stadtteil ${district?.name ?? hotel.district}` }}
+      primary={{ href: hotel.bookingUrl, label: "Auf Booking.com prüfen", external: true }}
+    />
 
-    <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 mt-4">
-      <div class="lg:col-span-3">
-        <p class="eyebrow mb-3">{stars} · {district?.name ?? hotel.district}</p>
-        <h1 class="display-xl mb-4">{hotel.name}</h1>
-        <p class="text-sm" style="color: var(--color-text-muted);">
-          ⭐ {hotel.rating}/10 · {hotel.reviews} Bewertungen · ab {hotel.priceFrom} €
-        </p>
-        <div class="aspect-[16/10] rounded-2xl overflow-hidden mt-6 relative">
-          <ContentImage
-            imgKey={hotel.imageKey ?? hotelPoolKey(hotel.slug)}
-            fallbackHue={hotel.imageHue}
-            fallbackLabel={hotel.name}
-            width={960}
-            height={600}
-            imgClass="w-full h-full object-cover"
-          />
+    <div class="container-page py-12">
+      <div class="facts4">
+        <div>
+          <span class="k">Stadtteil</span>
+          <b>{district?.name ?? hotel.district}</b>
         </div>
-        <p class="text-body mt-8 text-lg leading-relaxed">{hotel.longDesc}</p>
+        <div>
+          <span class="k">Kategorie</span>
+          <b>{stars}</b>
+        </div>
+        <div>
+          <span class="k">Bewertung</span>
+          <b>{hotel.rating}/10 · {hotel.reviews} Bewertungen</b>
+        </div>
+        <div>
+          <span class="k">Preis</span>
+          <b>ab {hotel.priceFrom} €</b>
+        </div>
+      </div>
+
+      <div class="max-w-3xl mt-10">
+        <p class="text-body text-lg leading-relaxed">{hotel.longDesc}</p>
 
         <div class="mt-8">
           <p class="eyebrow mb-3">Ausstattung</p>
@@ -72,48 +108,33 @@ const stars = "★".repeat(hotel.stars);
         </div>
       </div>
 
-      <aside class="lg:col-span-2">
-        <div class="card p-6">
-          <h2 class="text-lg font-light mb-3" style="font-family: var(--font-display);">Verfügbarkeit</h2>
-          <p class="text-sm mb-5" style="color: var(--color-text-body);">
-            Preise und Verfügbarkeit live auf Booking.com.
-          </p>
-          <a href={hotel.bookingUrl} target="_blank" rel="noopener" class="btn-primary w-full justify-center">
-            Auf Booking.com prüfen
-          </a>
-          <p class="text-xs mt-3" style="color: var(--color-text-muted);">
-            Wir erhalten beim Klick eine Provision - der Preis bleibt für dich gleich.
-          </p>
-        </div>
-      </aside>
+      {district && (
+        <Stay22NearbyHotels
+          lat={district.coordinates[0]}
+          lng={district.coordinates[1]}
+          near={district.name}
+          radius={1500}
+          limit={4}
+        />
+      )}
+
+      {nearbySights.length > 0 && (
+        <section class="section">
+          <h2 class="display mb-6">Sehenswürdigkeiten in der Nähe</h2>
+          <div class="mosaic m3">
+            {nearbySights.map((s) => <SightCard sight={s} />)}
+          </div>
+        </section>
+      )}
+
+      {related.length > 0 && (
+        <section class="section pt-0">
+          <h2 class="display mb-6">Weitere Hotels in {district?.name ?? hotel.district}</h2>
+          <div class="mosaic m3">
+            {related.map((h) => <HotelCard hotel={h} />)}
+          </div>
+        </section>
+      )}
     </div>
-
-    {district && (
-      <Stay22NearbyHotels
-        lat={district.coordinates[0]}
-        lng={district.coordinates[1]}
-        near={district.name}
-        radius={1500}
-        limit={4}
-      />
-    )}
-
-    {nearbySights.length > 0 && (
-      <section class="section">
-        <h2 class="display mb-6">Sehenswürdigkeiten in der Nähe</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {nearbySights.map((s) => <SightCard sight={s} />)}
-        </div>
-      </section>
-    )}
-
-    {related.length > 0 && (
-      <section class="section">
-        <h2 class="display mb-6">Weitere Hotels in {district?.name ?? hotel.district}</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {related.map((h) => <HotelCard hotel={h} />)}
-        </div>
-      </section>
-    )}
   </article>
 </BaseLayout>

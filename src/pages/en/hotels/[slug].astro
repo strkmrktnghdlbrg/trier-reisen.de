@@ -1,9 +1,8 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
-import Breadcrumbs from "../../../components/Breadcrumbs.astro";
-import HueGradient from "../../../components/HueGradient.astro";
-import ContentImage from "../../../components/ContentImage.astro";
-import { hotelPoolKey } from "../../../data/images";
+import StageHero from "../../../components/StageHero.astro";
+import ActionDock from "../../../components/ActionDock.astro";
+import { heroKey, hotelPoolKey, getImage } from "../../../data/images";
 import HotelCard from "../../../components/HotelCard.astro";
 import Stay22NearbyHotels from "../../../components/Stay22NearbyHotels.astro";
 import { city } from "../../../data/city";
@@ -23,6 +22,15 @@ const hotel = localize("hotels", src, lang);
 const district = localize("districts", getDistrict(src.district) ?? ({ slug: src.district } as any), lang);
 const related = hotels.filter((h) => h.slug !== src.slug && h.district === src.district).slice(0, 3).map((h) => localize("hotels", h, lang));
 const stars = "★".repeat(hotel.stars);
+
+/* Image strategy: 1. own photo, 2. district photo (caption names the district,
+ * not the property), 3. pool image only with a visible label, 4. placeholder. */
+const stageKey = heroKey(src.imageKey, src.district);
+const isOwnPhoto = Boolean(stageKey && stageKey === src.imageKey);
+const isDistrictPhoto = Boolean(stageKey && !isOwnPhoto);
+const poolKey = !stageKey && getImage(hotelPoolKey(src.slug)) ? hotelPoolKey(src.slug) : undefined;
+const usedKey = stageKey ?? poolKey;
+const picNote = isDistrictPhoto ? `District photo: ${district?.name ?? src.district}` : undefined;
 ---
 
 <BaseLayout
@@ -39,31 +47,55 @@ const stars = "★".repeat(hotel.stars);
     ]),
   ]}
 >
-  <article class="container-page py-12">
-    <Breadcrumbs items={[
-      { href: "/en/", label: city.name },
-      { href: "/en/hotels/", label: t(lang, "breadcrumb.hotels") },
-      { label: hotel.name },
-    ]} />
+  <article>
+    <StageHero
+      imgKey={usedKey}
+      fallbackHue={hotel.imageHue}
+      badge={stars}
+      title={hotel.name}
+      lead={hotel.shortDesc}
+      minHeight={480}
+      crumbs={`Home / Hotels / ${district?.name ?? src.district}`}
+      symbolbild={Boolean(poolKey)}
+      picNote={picNote}
+      lang={lang}
+    >
+      <div class="pills">
+        <span class="pill-ghost">{district?.name ?? src.district}</span>
+        <span class="pill-ghost">⭐ {hotel.rating}/10 · {hotel.reviews} reviews</span>
+      </div>
+    </StageHero>
+    <ActionDock
+      info={{
+        title: `${t(lang, "sections.priceFrom")} ${hotel.priceFrom} €`,
+        sub: "Live prices and availability on Booking.com · We earn a commission, at no extra cost to you.",
+      }}
+      secondary={{ href: `/en/districts/${src.district}/`, label: `${district?.name ?? src.district} district` }}
+      primary={{ href: hotel.bookingUrl, label: "Check on Booking.com", external: true }}
+    />
 
-    <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 mt-4">
-      <div class="lg:col-span-3">
-        <p class="eyebrow mb-3">{stars} · {district?.name ?? src.district}</p>
-        <h1 class="display-xl mb-4">{hotel.name}</h1>
-        <p class="text-sm" style="color: var(--color-text-muted);">
-          ⭐ {hotel.rating}/10 · {hotel.reviews} reviews · {t(lang, "sections.priceFrom")} {hotel.priceFrom} €
-        </p>
-        <div class="aspect-[16/10] rounded-2xl overflow-hidden mt-6 relative">
-          <ContentImage
-            imgKey={src.imageKey ?? hotelPoolKey(src.slug)}
-            fallbackHue={hotel.imageHue}
-            fallbackLabel={hotel.name}
-            width={960}
-            height={600}
-            imgClass="w-full h-full object-cover"
-          />
+    <div class="container-page py-12">
+      <div class="facts4">
+        <div>
+          <span class="k">District</span>
+          <b>{district?.name ?? src.district}</b>
         </div>
-        <p class="text-body mt-8 text-lg leading-relaxed">{hotel.longDesc}</p>
+        <div>
+          <span class="k">Category</span>
+          <b>{stars}</b>
+        </div>
+        <div>
+          <span class="k">Rating</span>
+          <b>{hotel.rating}/10 · {hotel.reviews} reviews</b>
+        </div>
+        <div>
+          <span class="k">Price</span>
+          <b>{t(lang, "sections.priceFrom")} {hotel.priceFrom} €</b>
+        </div>
+      </div>
+
+      <div class="max-w-3xl mt-10">
+        <p class="text-body text-lg leading-relaxed">{hotel.longDesc}</p>
 
         <div class="mt-8">
           <p class="eyebrow mb-3">Amenities</p>
@@ -73,40 +105,25 @@ const stars = "★".repeat(hotel.stars);
         </div>
       </div>
 
-      <aside class="lg:col-span-2">
-        <div class="card p-6">
-          <h2 class="text-lg font-light mb-3" style="font-family: var(--font-display);">Availability</h2>
-          <p class="text-sm mb-5" style="color: var(--color-text-body);">
-            Live prices and availability on Booking.com.
-          </p>
-          <a href={hotel.bookingUrl} target="_blank" rel="noopener" class="btn-primary w-full justify-center">
-            Check on Booking.com
-          </a>
-          <p class="text-xs mt-3" style="color: var(--color-text-muted);">
-            We earn a commission, at no extra cost to you.
-          </p>
-        </div>
-      </aside>
+      {getDistrict(src.district) && (
+        <Stay22NearbyHotels
+          lat={getDistrict(src.district)!.coordinates[0]}
+          lng={getDistrict(src.district)!.coordinates[1]}
+          near={district?.name ?? src.district}
+          radius={1500}
+          limit={4}
+          lang="en"
+        />
+      )}
+
+      {related.length > 0 && (
+        <section class="section">
+          <h2 class="display mb-6">More hotels in {district?.name ?? src.district}</h2>
+          <div class="mosaic m3">
+            {related.map((h) => <HotelCard hotel={h} lang={lang} />)}
+          </div>
+        </section>
+      )}
     </div>
-
-    {getDistrict(src.district) && (
-      <Stay22NearbyHotels
-        lat={getDistrict(src.district)!.coordinates[0]}
-        lng={getDistrict(src.district)!.coordinates[1]}
-        near={district?.name ?? src.district}
-        radius={1500}
-        limit={4}
-        lang="en"
-      />
-    )}
-
-    {related.length > 0 && (
-      <section class="section">
-        <h2 class="display mb-6">More hotels in {district?.name ?? src.district}</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {related.map((h) => <HotelCard hotel={h} lang={lang} />)}
-        </div>
-      </section>
-    )}
   </article>
 </BaseLayout>

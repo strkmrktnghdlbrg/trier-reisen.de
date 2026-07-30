@@ -1,4 +1,5 @@
 ---
+/** Kachel-Optik (Moselbuehne): Bild vollflaechig, Verlauf, Typo im Bild. */
 import ContentImage from "./ContentImage.astro";
 import type { Sight } from "../data/sights";
 import { getDistrict } from "../data/districts";
@@ -7,9 +8,11 @@ import { detailPath, localize, t, type Lang } from "../lib/i18n";
 interface Props {
   sight: Sight;
   lang?: Lang;
+  /** Kachelgroesse im Mosaik: "w2" = doppelt breit, "h2" = doppelt hoch. */
+  span?: "w2" | "h2";
 }
 
-const { sight: src, lang = "de" } = Astro.props;
+const { sight: src, lang = "de", span } = Astro.props;
 const sight = localize("sights", src, lang);
 const district = localize("districts", getDistrict(sight.district) ?? ({ slug: sight.district } as any), lang);
 const priceLabel =
@@ -18,33 +21,19 @@ const priceLabel =
     : `${t(lang, "sections.priceFrom")} ${sight.priceFrom} €`;
 ---
 
-<a href={detailPath(lang, "sights", sight.slug)} class="card group block">
-  <div class="aspect-[4/3] relative overflow-hidden">
+<a href={detailPath(lang, "sights", sight.slug)} class={`tile${span ? ` ${span}` : ""}`}>
+  <div class="pic">
     <ContentImage
       imgKey={sight.imageKey}
       fallbackHue={sight.imageHue}
       fallbackLabel={sight.name}
-      imgClass="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+      imgClass="w-full h-full object-cover"
     />
-    <div class="absolute top-3 left-3">
-      <span class="pill bg-white/95 backdrop-blur-sm">{sight.type}</span>
-    </div>
-    {sight.unesco && (
-      <div class="absolute top-3 right-3">
-        <span class="pill-accent">UNESCO</span>
-      </div>
-    )}
   </div>
-  <div class="p-4">
-    <p class="text-xs font-medium mb-1" style="color: var(--color-text-muted);">
-      {district?.name ?? sight.district}
-    </p>
-    <h3 class="text-lg font-light tracking-tight leading-tight mb-2 group-hover:text-[var(--color-accent)] transition-colors" style="color: var(--color-text); font-family: var(--font-display);">
-      {sight.name}
-    </h3>
-    <p class="text-sm leading-relaxed line-clamp-2 mb-3" style="color: var(--color-text-body);">
-      {sight.shortDesc}
-    </p>
-    <p class="text-xs font-medium" style="color: var(--color-accent);">{priceLabel}</p>
+  <div class="veil"></div>
+  {sight.unesco && <span class="tag">UNESCO</span>}
+  <div class="cap">
+    <h3>{sight.name}</h3>
+    <span>{district?.name ?? sight.district} · {priceLabel}</span>
   </div>
 </a>

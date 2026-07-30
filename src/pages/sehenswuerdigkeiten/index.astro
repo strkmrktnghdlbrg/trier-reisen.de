@@ -32,14 +32,14 @@ const gyg = getGyg("index:sehenswuerdigkeiten");
     <h2 class="display mb-6">UNESCO-Welterbe</h2>
     <p class="text-body mb-8 max-w-2xl">Seit 1986 stehen Triers römische Baudenkmäler, Dom und Liebfrauenkirche
       gemeinsam auf der UNESCO-Welterbe-Liste.</p>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+    <div class="mosaic m3 vary">
       {unesco.map((s) => <SightCard sight={s} />)}
     </div>
   </section>
 
   <section class="container-page section pt-0">
     <h2 class="display mb-6">Weitere Sehenswürdigkeiten</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+    <div class="mosaic m3 vary">
       {otherSights.map((s) => <SightCard sight={s} />)}
     </div>
   </section>

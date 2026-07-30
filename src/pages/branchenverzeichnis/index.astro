@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import StageHero from "../../components/StageHero.astro";
+import ActionDock from "../../components/ActionDock.astro";
 import { city } from "../../data/city";
 import { branchenCategories, categoryCount, totalListings } from "../../data/branchenverzeichnis";
 import "../../styles/werben.css";
@@ -13,24 +14,23 @@ const gesamt = totalListings();
 ---
 
 <BaseLayout title={title} description={description}>
+  <StageHero
+    imgKey="district:innenstadt"
+    badge="Branchenverzeichnis"
+    title={`Betriebe aus ${city.name} nach Branchen.`}
+    lead={`Aktuell ${gesamt} Einträge aus der redaktionellen Arbeit von Trier Reisen - Gastronomie, Hotels, Apotheken und Banken, dazu Branchen, in die sich Betriebe kostenlos eintragen können.`}
+    minHeight={460}
+    crumbs="Start / Branchenverzeichnis"
+  />
+  <ActionDock
+    info={{
+      title: "Grundeintrag kostenlos",
+      sub: "Premium 199 € pro Jahr netto · 236,81 € brutto · nur für Unternehmer · keine automatische Verlängerung",
+    }}
+    secondary={{ href: "/werben/premium-partner/", label: "Premium-Partner werden" }}
+    primary={{ href: "/branchenverzeichnis/eintrag-beanspruchen/", label: "Kostenlos eintragen" }}
+  />
   <div class="container-page py-12">
-    <Breadcrumbs items={[{ label: city.name, href: "/" }, { label: "Branchenverzeichnis" }]} />
-
-    <div class="max-w-3xl mb-12">
-      <p class="eyebrow mb-3">Branchenverzeichnis</p>
-      <h1 class="text-4xl sm:text-6xl font-medium tracking-tight mb-6" style="color: var(--color-text);">
-        Betriebe aus {city.name} nach Branchen.
-      </h1>
-      <p class="text-lg leading-relaxed mb-6" style="color: var(--color-text-body);">
-        Aktuell {gesamt} Einträge aus der redaktionellen Arbeit von Trier Reisen - Gastronomie, Hotels,
-        Apotheken und Banken, dazu Branchen, in die sich Betriebe kostenlos eintragen können.
-      </p>
-      <div class="flex flex-wrap gap-3">
-        <a href="/branchenverzeichnis/eintrag-beanspruchen/" class="btn-primary">Kostenlos eintragen &rarr;</a>
-        <a href="/werben/premium-partner/" class="btn-outline">Ganz oben stehen? Premium-Partner werden</a>
-      </div>
-    </div>
-
     <section class="mb-14">
       <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight mb-6" style="color: var(--color-text);">Kategorien</h2>
       <div class="werben-grid werben-grid-3">

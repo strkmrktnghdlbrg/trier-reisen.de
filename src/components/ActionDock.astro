@@ -1,0 +1,52 @@
+---
+/**
+ * ActionDock - klebende Aktionsleiste der Moselbuehne-Variante.
+ * position:sticky am unteren Viewport-Rand, Info links, Buttons rechts.
+ * rel-Attribute werden 1:1 durchgereicht, damit Affiliate-Links ihre
+ * bestehende Auszeichnung behalten (Client-Links bleiben dofollow).
+ */
+type DockLink = {
+  href: string;
+  label: string;
+  external?: boolean;
+  rel?: string;
+};
+
+interface Props {
+  info: { title: string; sub?: string };
+  primary?: DockLink;
+  secondary?: DockLink;
+}
+
+const { info, primary, secondary } = Astro.props;
+
+const relFor = (l: DockLink) => l.rel ?? (l.external ? "noopener" : undefined);
+---
+
+<div class="dock">
+  <div class="p">
+    {info.title}
+    {info.sub && <small>{info.sub}</small>}
+  </div>
+  <span class="sp"></span>
+  {secondary && (
+    <a
+      class="btn-outline"
+      href={secondary.href}
+      target={secondary.external ? "_blank" : undefined}
+      rel={relFor(secondary)}
+    >
+      {secondary.label}
+    </a>
+  )}
+  {primary && (
+    <a
+      class="btn-primary"
+      href={primary.href}
+      target={primary.external ? "_blank" : undefined}
+      rel={relFor(primary)}
+    >
+      {primary.label}
+    </a>
+  )}
+</div>

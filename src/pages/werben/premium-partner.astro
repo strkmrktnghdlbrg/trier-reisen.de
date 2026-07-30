@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import StageHero from "../../components/StageHero.astro";
+import ActionDock from "../../components/ActionDock.astro";
 import { city } from "../../data/city";
 import "../../styles/werben.css";
 
@@ -85,32 +86,23 @@ const faqLd = {
 ---
 
 <BaseLayout title={title} description={description}>
+  <StageHero
+    imgKey="district:innenstadt"
+    badge="Kostenlos oder Premium"
+    title="Ganz oben in Ihrer Branche."
+    lead="Aus dem kostenlosen Grundeintrag wird ein vollständiger Auftritt: ganz oben in der Kategorie, mit Logo, Beschreibung, Website- und E-Mail-Button, Dofollow-Backlink und einem gesponserten Artikel pro Jahr."
+    minHeight={460}
+    crumbs="Start / Werben / Premium-Partner"
+  />
+  <ActionDock
+    info={{
+      title: `${PREIS_NETTO} pro Jahr netto`,
+      sub: `${PREIS_BRUTTO} brutto · nur für Unternehmer · keine automatische Verlängerung`,
+    }}
+    secondary={{ href: "/branchenverzeichnis/eintrag-beanspruchen/", label: "Kostenlos eintragen" }}
+    primary={{ href: "/kontakt/", label: "Premium anfragen" }}
+  />
   <div class="container-page py-12">
-    <Breadcrumbs items={[
-      { label: city.name, href: "/" },
-      { label: "Werben", href: "/werben/" },
-      { label: "Premium-Partner" },
-    ]} />
-
-    <div class="max-w-3xl mb-14">
-      <p class="eyebrow mb-3">Kostenlos &rarr; Premium</p>
-      <h1 class="text-4xl sm:text-6xl font-medium tracking-tight mb-6" style="color: var(--color-text);">
-        Aus deinem kostenlosen Eintrag wird ein Premium-Auftritt.
-      </h1>
-      <p class="text-lg leading-relaxed mb-8" style="color: var(--color-text-body);">
-        Jeder Betrieb kann sich kostenlos ins Branchenverzeichnis eintragen - eine Zeile mit Name, Branche und
-        Adresse. Als Premium-Partner wird daraus ein vollständiger Auftritt: ganz oben in der Kategorie,
-        mit Logo, Beschreibung, Kontakt-Buttons und einem dauerhaften Link auf Ihre Website.
-      </p>
-      <div class="flex flex-wrap gap-3 mb-4">
-        <a href="/kontakt/" class="btn-primary">Premium-Partner anfragen &rarr;</a>
-      </div>
-      <p class="text-sm" style="color: var(--color-text-muted);">
-        Noch gar nicht gelistet?
-        <a href="/branchenverzeichnis/eintrag-beanspruchen/" class="link-accent">Erst kostenlos eintragen &rarr;</a>
-      </p>
-    </div>
-
     <section class="mb-16">
       <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight mb-6" style="color: var(--color-text);">
         Das steckt im Premium-Paket

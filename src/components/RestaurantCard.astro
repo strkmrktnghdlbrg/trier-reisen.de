@@ -1,6 +1,10 @@
 ---
+/**
+ * Kachel-Optik (Moselbuehne). Restaurants haben nur generische Poolbilder -
+ * Poolbilder laufen deshalb IMMER mit sichtbarem Symbolbild-Label.
+ */
 import ContentImage from "./ContentImage.astro";
-import { restaurantPoolKey } from "../data/images";
+import { restaurantPoolKey, getImage } from "../data/images";
 import type { Restaurant } from "../data/restaurants";
 import { getDistrict } from "../data/districts";
 import { detailPath, localize, type Lang } from "../lib/i18n";
@@ -8,37 +12,31 @@ import { detailPath, localize, type Lang } from "../lib/i18n";
 interface Props {
   restaurant: Restaurant;
   lang?: Lang;
+  span?: "w2" | "h2";
 }
 
-const { restaurant: src, lang = "de" } = Astro.props;
+const { restaurant: src, lang = "de", span } = Astro.props;
 const restaurant = localize("restaurants", src, lang);
 const district = localize("districts", getDistrict(restaurant.district) ?? ({ slug: restaurant.district } as any), lang);
+const ownImage = Boolean(restaurant.imageKey && getImage(restaurant.imageKey));
+const imgKey = ownImage ? restaurant.imageKey : restaurantPoolKey(restaurant.slug);
+const symText = lang === "en" ? "Symbolic photo" : "Symbolbild";
 ---
 
-<a href={detailPath(lang, "restaurants", restaurant.slug)} class="card group block">
-  <div class="aspect-[4/3] relative overflow-hidden">
+<a href={detailPath(lang, "restaurants", restaurant.slug)} class={`tile${span ? ` ${span}` : ""}`}>
+  <div class="pic">
     <ContentImage
-      imgKey={restaurant.imageKey ?? restaurantPoolKey(restaurant.slug)}
+      imgKey={imgKey}
       fallbackHue={restaurant.imageHue}
       fallbackLabel={restaurant.name}
-      imgClass="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+      imgClass="w-full h-full object-cover"
     />
-    <div class="absolute top-3 left-3">
-      <span class="pill bg-white/95 backdrop-blur-sm">{restaurant.cuisine}</span>
-    </div>
-    <div class="absolute top-3 right-3">
-      <span class="pill bg-white/95 backdrop-blur-sm">{restaurant.priceLevel}</span>
-    </div>
   </div>
-  <div class="p-4">
-    <p class="text-xs font-medium mb-1" style="color: var(--color-text-muted);">
-      {district?.name ?? restaurant.district}
-    </p>
-    <h3 class="text-lg font-light tracking-tight leading-tight mb-2 group-hover:text-[var(--color-accent)] transition-colors" style="color: var(--color-text); font-family: var(--font-display);">
-      {restaurant.name}
-    </h3>
-    <p class="text-sm leading-relaxed line-clamp-2" style="color: var(--color-text-body);">
-      {restaurant.shortDesc}
-    </p>
+  <div class="veil"></div>
+  {!ownImage && getImage(imgKey) && <span class="symlabel">{symText}</span>}
+  <span class="tag">{restaurant.priceLevel}</span>
+  <div class="cap">
+    <h3>{restaurant.name}</h3>
+    <span>{district?.name ?? restaurant.district} · {restaurant.cuisine}</span>
   </div>
 </a>

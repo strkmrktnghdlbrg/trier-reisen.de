@@ -1,0 +1,56 @@
+---
+/**
+ * PhotoMosaic - Kachelmosaik der Moselbuehne-Variante.
+ * Liste aus {href, imgKey, title, meta, span} - Bild vollflaechig,
+ * Verlauf, Typo im Bild. Spans NUR ueber Klassen (Media-Queries!).
+ */
+import { Image } from "astro:assets";
+import { getImage } from "../data/images";
+import HueGradient from "./HueGradient.astro";
+import type { Lang } from "../lib/i18n";
+
+export type MosaicItem = {
+  href: string;
+  imgKey?: string;
+  title: string;
+  meta?: string;
+  span?: "w2" | "h2";
+  hue?: number;
+  tag?: string;
+  /** Sichtbares Symbolbild-Label fuer generische Poolbilder. */
+  symbolbild?: boolean;
+};
+
+interface Props {
+  items: MosaicItem[];
+  cols?: 3 | 4;
+  lang?: Lang;
+}
+
+const { items, cols = 4, lang = "de" } = Astro.props;
+const symText = lang === "en" ? "Symbolic photo" : "Symbolbild";
+---
+
+<div class={`mosaic${cols === 3 ? " m3" : ""}`}>
+  {items.map((it) => {
+    const entry = getImage(it.imgKey);
+    return (
+      <a class={`tile${it.span ? ` ${it.span}` : ""}`} href={it.href}>
+        <div class="pic">
+          {entry ? (
+            <Image src={entry.src} alt={entry.alt} width={900} height={620} loading="lazy" />
+          ) : (
+            <HueGradient hue={it.hue ?? 1} label={it.title} class="w-full h-full" />
+          )}
+        </div>
+        <div class="veil"></div>
+        {it.tag && <span class="tag">{it.tag}</span>}
+        {it.symbolbild && entry && <span class="symlabel">{symText}</span>}
+        <div class="cap">
+          <h3>{it.title}</h3>
+          {it.meta && <span>{it.meta}</span>}
+        </div>
+      </a>
+    );
+  })}
+</div>

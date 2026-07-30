@@ -1,27 +1,65 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import HueGradient from "../components/HueGradient.astro";
-import ContentImage from "../components/ContentImage.astro";
-import SightCard from "../components/SightCard.astro";
+import StageHero from "../components/StageHero.astro";
+import ActionDock from "../components/ActionDock.astro";
+import PhotoMosaic from "../components/PhotoMosaic.astro";
 import DistrictCard from "../components/DistrictCard.astro";
 import EventCard from "../components/EventCard.astro";
 import CategoryCard from "../components/CategoryCard.astro";
 import Stay22TopHotels from "../components/Stay22TopHotels.astro";
 import GygActivities from "../components/GygActivities.astro";
+import { Image } from "astro:assets";
 import { city } from "../data/city";
-import { sights } from "../data/sights";
 import { districts } from "../data/districts";
 import { categories } from "../data/categories";
 import { realEvents, isUpcoming } from "../data/events";
 import { features } from "../data/features";
 import { getGyg, gygCmp } from "../data/gyg";
+import { getImage } from "../data/images";
 import { orgSchema, websiteSchema, touristDestinationSchema } from "../lib/schema";
 
-const featuredSights = sights.filter((s) => s.unesco).slice(0, 6);
-const featuredDistricts = districts.slice(0, 4);
+const featuredDistricts = districts.slice(0, 6);
 const featuredCategories = categories.slice(0, 6);
 const upcomingEvents = realEvents.filter(isUpcoming).slice(0, 3);
 const gyg = getGyg("home");
+const storyImage = getImage("sight:weinkulturpfad-olewig");
+
+/* "Wo man anfaengt" - fuenf Einstiege, alle mit echten Fotos aus dem Portal. */
+const startMosaic = [
+  {
+    href: "/sehenswuerdigkeiten/trierer-dom/",
+    imgKey: "sight:trierer-dom",
+    title: "Dom St. Peter",
+    meta: "Älteste Bischofskirche Deutschlands · Eintritt frei",
+    span: "h2" as const,
+  },
+  {
+    href: "/sehenswuerdigkeiten/kaiserthermen/",
+    imgKey: "sight:kaiserthermen",
+    title: "Kaiserthermen",
+    meta: "Trier-Süd · Servicegänge begehbar",
+    span: "w2" as const,
+  },
+  {
+    href: "/bezirke/olewig/",
+    imgKey: "district:olewig",
+    title: "Olewig",
+    meta: "Weinort in der Stadt",
+  },
+  {
+    href: "/sehenswuerdigkeiten/roemerbruecke/",
+    imgKey: "sight:roemerbruecke",
+    title: "Römerbrücke",
+    meta: "Pfeiler aus dem 2. Jahrhundert",
+  },
+  {
+    href: "/sehenswuerdigkeiten/amphitheater/",
+    imgKey: "sight:amphitheater",
+    title: "Amphitheater",
+    meta: "Rund 20.000 Plätze · Antikenfestspiele im Sommer",
+    span: "w2" as const,
+  },
+];
 ---
 
 <BaseLayout
@@ -30,54 +68,35 @@ const gyg = getGyg("home");
   altLangPath="/en/"
   schema={[orgSchema(), websiteSchema(), touristDestinationSchema()]}
 >
-  <!-- HERO -->
-  <section class="container-page pt-12 pb-16 md:pt-20 md:pb-24">
-    <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
-      <div class="lg:col-span-3">
-        <p class="eyebrow mb-4">Älteste Stadt Deutschlands · UNESCO-Welterbe</p>
-        <h1 class="display-xl">
-          {city.name},<br />
-          <span style="color: var(--color-accent);">antike Würde</span><br />
-          an der Mosel.
-        </h1>
-        <p class="text-body mt-6 max-w-xl">
-          Von der Porta Nigra zum Trierer Dom, vom Amphitheater in die Olewiger Weingüter.
-          Trier-Reisen ist dein Stadtportal für UNESCO-Welterbe, Mosel-Wein und römisches Erbe.
-        </p>
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a href="/sehenswuerdigkeiten/" class="btn-primary">Sehenswürdigkeiten</a>
-          <a href="/reiseplaner/" class="btn-outline">Reiseplaner</a>
-        </div>
-      </div>
-      <div class="lg:col-span-2">
-        <div class="aspect-[4/5] rounded-3xl overflow-hidden relative">
-          <ContentImage
-            imgKey="hero:porta-nigra"
-            fallbackHue={1}
-            fallbackLabel="Porta Nigra Vellum-Stimmung"
-            width={900}
-            height={1125}
-            imgClass="w-full h-full object-cover"
-          />
-        </div>
-      </div>
+  <!-- BÜHNE -->
+  <StageHero
+    imgKey="hero:porta-nigra"
+    badge="Älteste Stadt Deutschlands"
+    title="Trier beginnt am schwarzen Tor."
+    lead="Acht UNESCO-Stätten, 23 Sehenswürdigkeiten, 12 Stadtteile und ein Weinort innerhalb der Stadtgrenzen. Mit echten Fotos und Angaben laut Betreiber."
+    minHeight={560}
+  >
+    <div class="pills" style="gap:10px;">
+      <a class="cta-light" href="/sehenswuerdigkeiten/">Stadt entdecken</a>
+      <a class="cta-ghost" href="/kategorien/wein/">Wein &amp; Mosel</a>
     </div>
-  </section>
+  </StageHero>
+  <ActionDock
+    info={{
+      title: "Porta Nigra",
+      sub: "Innenstadt · UNESCO seit 1986 · Öffnung laut Betreiber, Stand Juli 2026",
+    }}
+    secondary={{ href: "/bezirke/innenstadt/", label: "Stadtteil Innenstadt" }}
+    primary={{ href: "/sehenswuerdigkeiten/porta-nigra/", label: "Zur Porta Nigra" }}
+  />
 
-  <!-- UNESCO-PFLICHT -->
+  <!-- WO MAN ANFÄNGT -->
   <section class="container-page section">
-    <div class="flex items-end justify-between mb-8">
-      <div>
-        <p class="eyebrow mb-2">UNESCO-Welterbe</p>
-        <h2 class="display">Die Pflicht-Tour</h2>
-        <p class="text-body mt-3 max-w-xl">Acht UNESCO-Stätten verteilen sich über wenige Quadratkilometer.
-          Hier sind die sechs Wahrzeichen, die jeden Trier-Besuch tragen.</p>
-      </div>
-      <a href="/sehenswuerdigkeiten/" class="hidden md:inline-flex link-accent text-sm">Alle Sehenswürdigkeiten →</a>
-    </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      {featuredSights.map((s) => <SightCard sight={s} />)}
-    </div>
+    <h2 class="display">Wo man anfängt</h2>
+    <p class="text-body mt-3 mb-8 max-w-2xl">
+      Fünf Einstiege, die den größten Teil der Stadt abdecken. Alle Motive sind echte Fotos aus dem Portal.
+    </p>
+    <PhotoMosaic items={startMosaic} cols={4} />
   </section>
 
   <!-- GETYOURGUIDE TOP-ERLEBNISSE -->
@@ -92,40 +111,94 @@ const gyg = getGyg("home");
     <Stay22TopHotels limit={8} />
   </section>
 
-  <!-- BEZIRKE -->
-  <section class="container-page section">
-    <div class="mb-8">
-      <p class="eyebrow mb-2">Bezirke</p>
-      <h2 class="display">Trier in Vierteln</h2>
-      <p class="text-body mt-3 max-w-xl">Von der UNESCO-Innenstadt zum Weinort Olewig, von der Mosel-Promenade zum Universitätsviertel Kürenz.</p>
+  <!-- STORY-BAND: WEIN & MOSEL -->
+  <section class="story">
+    <div class="pic">
+      {storyImage && (
+        <Image src={storyImage.src} alt={storyImage.alt} width={1100} height={800} loading="lazy" />
+      )}
+      {storyImage?.credit && (
+        <p class="cred">Foto: {storyImage.credit.author} · {storyImage.credit.license} · Wikimedia Commons</p>
+      )}
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-      {featuredDistricts.map((d) => <DistrictCard district={d} />)}
+    <div class="txt">
+      <span class="badge">Wein &amp; Mosel</span>
+      <h2 class="display" style="margin-top:16px;">Der Weinort liegt innerhalb der Stadtgrenzen.</h2>
+      <p class="text-body mt-4 max-w-xl">
+        Olewig ist offiziell Stadtteil und traditionell Weinort. Der Weinkulturpfad führt auf 5 km und
+        14 Stationen durch die Steillagen oberhalb des Ortskerns, mit Rastplätzen und Blick auf
+        Innenstadt und Moseltal. Anfang August feiert das Olewiger Weinfest die Ernte.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href="/sehenswuerdigkeiten/weinkulturpfad-olewig/" class="btn-primary">Weinkulturpfad</a>
+        <a href="/bezirke/olewig/" class="btn-outline">Stadtteil Olewig</a>
+      </div>
     </div>
   </section>
 
-  <!-- THEMEN -->
+  <!-- STADTTEILE -->
   <section class="container-page section">
     <div class="mb-8">
-      <p class="eyebrow mb-2">Themen</p>
+      <h2 class="display">Stadtteile</h2>
+      <p class="text-body mt-3 max-w-xl">
+        Zwölf Stadtteile, vom antiken Kern bis zu den Riesling-Steillagen im Ruwertal.
+      </p>
+    </div>
+    <div class="mosaic m3">
+      {featuredDistricts.map((d) => <DistrictCard district={d} />)}
+    </div>
+    <p class="mt-6"><a href="/bezirke/" class="link-accent text-sm">Alle 12 Stadtteile ansehen &rarr;</a></p>
+  </section>
+
+  <!-- THEMEN -->
+  <section class="container-page section pt-0">
+    <div class="mb-8">
       <h2 class="display">Trier nach Interesse</h2>
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+    <div class="mosaic m3">
       {featuredCategories.map((c) => <CategoryCard category={c} />)}
     </div>
   </section>
 
   <!-- EVENTS -->
   {features.events.enabled && upcomingEvents.length > 0 && (
-    <section class="container-page section">
+    <section class="container-page section pt-0">
       <div class="mb-8">
-        <p class="eyebrow mb-2">Termine</p>
         <h2 class="display">Was kommt</h2>
-        <p class="text-body mt-3 max-w-xl">Antikenfestspiele, Olewiger Weinfest, Weihnachtsmarkt - Triers grosse Termine.</p>
+        <p class="text-body mt-3 max-w-xl">Antikenfestspiele, Olewiger Weinfest, Weihnachtsmarkt - Triers große Termine.</p>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div class="mosaic m3">
         {upcomingEvents.map((e) => <EventCard event={e} />)}
       </div>
     </section>
   )}
+
+  <!-- ABSCHLUSSBAND: FÜR BETRIEBE -->
+  <section class="container-page section pt-0">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="card p-7">
+        <p class="eyebrow mb-2">Für Betriebe</p>
+        <h2 class="heading mb-3">Grundeintrag kostenlos</h2>
+        <p class="text-body">
+          Der kostenlose Eintrag im Branchenverzeichnis entsteht aus redaktionellen Inhalten,
+          ist dauerhaft und bleibt alphabetisch sortiert.
+        </p>
+        <div class="mt-5">
+          <a href="/branchenverzeichnis/eintrag-beanspruchen/" class="btn-outline">Kostenlos eintragen</a>
+        </div>
+      </div>
+      <div class="card p-7" style="border-color: var(--color-accent); background: var(--color-accent-tint, #fff1ec); box-shadow: none;">
+        <p class="eyebrow mb-2">Premium</p>
+        <h2 class="heading mb-3">199 € pro Jahr netto</h2>
+        <p class="text-body">
+          236,81 € brutto, nur für Unternehmer, keine automatische Verlängerung. Position ganz oben,
+          Logo, Beschreibung, Kontakt-Buttons, Dofollow-Backlink und ein gesponserter Artikel pro Jahr.
+        </p>
+        <div class="mt-5 flex items-center gap-3 flex-wrap">
+          <a href="/werben/" class="btn-primary">Werbemöglichkeiten</a>
+          <span class="text-xs font-mono" style="color: var(--color-text-subtle);">/werben/</span>
+        </div>
+      </div>
+    </div>
+  </section>
 </BaseLayout>

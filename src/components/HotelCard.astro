@@ -1,6 +1,11 @@
 ---
+/**
+ * Kachel-Optik (Moselbuehne). Hotels haben nur generische Poolbilder,
+ * kein Foto des Hauses - Poolbilder laufen deshalb IMMER mit sichtbarem
+ * Symbolbild-Label. Eigene Fotos (imageKey) ohne Label.
+ */
 import ContentImage from "./ContentImage.astro";
-import { hotelPoolKey } from "../data/images";
+import { hotelPoolKey, getImage } from "../data/images";
 import type { Hotel } from "../data/hotels";
 import { getDistrict } from "../data/districts";
 import { detailPath, localize, t, type Lang } from "../lib/i18n";
@@ -8,43 +13,32 @@ import { detailPath, localize, t, type Lang } from "../lib/i18n";
 interface Props {
   hotel: Hotel;
   lang?: Lang;
+  span?: "w2" | "h2";
 }
 
-const { hotel: src, lang = "de" } = Astro.props;
+const { hotel: src, lang = "de", span } = Astro.props;
 const hotel = localize("hotels", src, lang);
 const district = localize("districts", getDistrict(hotel.district) ?? ({ slug: hotel.district } as any), lang);
 const starString = "★".repeat(hotel.stars);
-const reviewsLabel = lang === "de" ? "Bewertungen" : "reviews";
+const ownImage = Boolean(hotel.imageKey && getImage(hotel.imageKey));
+const imgKey = ownImage ? hotel.imageKey : hotelPoolKey(hotel.slug);
+const symText = lang === "en" ? "Symbolic photo" : "Symbolbild";
 ---
 
-<a href={detailPath(lang, "hotels", hotel.slug)} class="card group block">
-  <div class="aspect-[4/3] relative overflow-hidden">
+<a href={detailPath(lang, "hotels", hotel.slug)} class={`tile${span ? ` ${span}` : ""}`}>
+  <div class="pic">
     <ContentImage
-      imgKey={hotel.imageKey ?? hotelPoolKey(hotel.slug)}
+      imgKey={imgKey}
       fallbackHue={hotel.imageHue}
       fallbackLabel={hotel.name}
-      imgClass="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+      imgClass="w-full h-full object-cover"
     />
-    <div class="absolute top-3 left-3">
-      <span class="pill bg-white/95 backdrop-blur-sm">{starString}</span>
-    </div>
-    {hotel.guestFavorite && (
-      <div class="absolute top-3 right-3">
-        <span class="pill-accent">{lang === "de" ? "Gast-Favorit" : "Guest favourite"}</span>
-      </div>
-    )}
   </div>
-  <div class="p-4">
-    <p class="text-xs font-medium mb-1" style="color: var(--color-text-muted);">
-      {district?.name ?? hotel.district}
-    </p>
-    <h3 class="text-lg font-light tracking-tight leading-tight mb-2 group-hover:text-[var(--color-accent)] transition-colors" style="color: var(--color-text); font-family: var(--font-display);">
-      {hotel.name}
-    </h3>
-    <p class="text-sm leading-relaxed line-clamp-2 mb-3" style="color: var(--color-text-body);">{hotel.shortDesc}</p>
-    <div class="flex items-center justify-between text-xs">
-      <span style="color: var(--color-text-muted);">⭐ {hotel.rating}/10 · {hotel.reviews} {reviewsLabel}</span>
-      <span style="color: var(--color-accent); font-weight: 500;">{t(lang, "sections.priceFrom")} {hotel.priceFrom} €</span>
-    </div>
+  <div class="veil"></div>
+  {!ownImage && getImage(imgKey) && <span class="symlabel">{symText}</span>}
+  <span class="tag">{starString}</span>
+  <div class="cap">
+    <h3>{hotel.name}</h3>
+    <span>{district?.name ?? hotel.district} · {t(lang, "sections.priceFrom")} {hotel.priceFrom} €</span>
   </div>
 </a>

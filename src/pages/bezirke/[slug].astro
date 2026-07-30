@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import Breadcrumbs from "../../components/Breadcrumbs.astro";
-import ContentImage from "../../components/ContentImage.astro";
+import StageHero from "../../components/StageHero.astro";
+import ActionDock from "../../components/ActionDock.astro";
 import SightCard from "../../components/SightCard.astro";
 import HotelCard from "../../components/HotelCard.astro";
 import RestaurantCard from "../../components/RestaurantCard.astro";
@@ -52,38 +52,40 @@ const gyg = getGyg(gygKey);
   ]}
 >
   <article>
-    <div class="container-page py-12">
-      <Breadcrumbs items={[
-        { href: "/", label: city.name },
-        { href: "/bezirke/", label: "Bezirke" },
-        { label: district.name },
-      ]} />
-      <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 mt-4 items-center">
-        <div class="lg:col-span-3">
-          <p class="eyebrow mb-3">{city.name} · Bezirk</p>
-          <h1 class="display-xl mb-4">{district.name}</h1>
-          <p class="text-body text-lg leading-relaxed max-w-2xl">{district.longDesc}</p>
-          <div class="mt-6 flex flex-wrap gap-2">
-            {district.characterTags.map((t) => <span class="pill">{t}</span>)}
-          </div>
-        </div>
-        <div class="lg:col-span-2 aspect-[4/5] rounded-3xl overflow-hidden relative">
-          <ContentImage
-            imgKey={district.imageKey}
-            fallbackHue={district.hue}
-            fallbackLabel={district.name}
-            imgClass="w-full h-full object-cover"
-            width={800}
-            height={1000}
-          />
-        </div>
+    <StageHero
+      imgKey={`district:${district.slug}`}
+      fallbackHue={district.hue}
+      badge={`${city.name} · Stadtteil`}
+      title={district.name}
+      lead={district.shortDesc}
+      minHeight={520}
+      crumbs={`Start / Bezirke / ${district.name}`}
+    >
+      <div class="pills">
+        {district.characterTags.map((tag) => <span class="pill-ghost">{tag}</span>)}
       </div>
+    </StageHero>
+    <ActionDock
+      info={{
+        title: district.name,
+        sub: [
+          districtSights.length > 0 ? `${districtSights.length} Sehenswürdigkeiten` : undefined,
+          districtHotels.length > 0 ? `${districtHotels.length} Hotels` : undefined,
+          districtRestaurants.length > 0 ? `${districtRestaurants.length} Restaurants` : undefined,
+        ].filter(Boolean).join(" · ") || undefined,
+      }}
+      secondary={{ href: "#karte", label: "Auf der Karte" }}
+      primary={{ href: "#hotels-nahe", label: `Hotels in ${district.name}` }}
+    />
+
+    <div class="container-page py-12">
+      <p class="text-body text-lg leading-relaxed max-w-3xl">{district.longDesc}</p>
     </div>
 
     {districtSights.length > 0 && (
-      <section class="container-page section">
+      <section class="container-page section pt-0">
         <h2 class="display mb-6">Sehenswürdigkeiten in {district.name}</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="mosaic m3">
           {districtSights.map((s) => <SightCard sight={s} />)}
         </div>
       </section>
@@ -92,7 +94,7 @@ const gyg = getGyg(gygKey);
     {districtHotels.length > 0 && (
       <section class="container-page section pt-0">
         <h2 class="display mb-6">Hotels in {district.name}</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="mosaic m3">
           {districtHotels.map((h) => <HotelCard hotel={h} />)}
         </div>
       </section>
@@ -103,27 +105,31 @@ const gyg = getGyg(gygKey);
         <GygActivities q={gyg.q} heading={gyg.heading} intro={gyg.intro} count={gyg.count} cmp={gygCmp(gygKey)} />
       )}
 
-      <Stay22NearbyHotels
-        lat={district.coordinates[0]}
-        lng={district.coordinates[1]}
-        near={district.name}
-        radius={2000}
-        limit={4}
-      />
+      <div id="hotels-nahe">
+        <Stay22NearbyHotels
+          lat={district.coordinates[0]}
+          lng={district.coordinates[1]}
+          near={district.name}
+          radius={2000}
+          limit={4}
+        />
+      </div>
 
-      <Stay22Map
-        lat={district.coordinates[0]}
-        lng={district.coordinates[1]}
-        zoom={14}
-        title={`Hotels in ${district.name} - Live-Karte`}
-        lead="Aktuelle Preise via Booking. Zoom rein, Marker antippen, buchen."
-      />
+      <div id="karte">
+        <Stay22Map
+          lat={district.coordinates[0]}
+          lng={district.coordinates[1]}
+          zoom={14}
+          title={`Hotels in ${district.name} - Live-Karte`}
+          lead="Aktuelle Preise via Booking. Zoom rein, Marker antippen, buchen."
+        />
+      </div>
     </div>
 
     {districtRestaurants.length > 0 && (
       <section class="container-page section pt-0">
         <h2 class="display mb-6">Restaurants in {district.name}</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="mosaic m3">
           {districtRestaurants.map((r) => <RestaurantCard restaurant={r} />)}
         </div>
       </section>

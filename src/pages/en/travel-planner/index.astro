@@ -29,16 +29,17 @@ const gyg = getGyg("index:reiseplaner", "en");
   </section>
 
   <section class="container-page section pt-0">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+    <div class="mosaic m3">
       {localized.map((g) => (
-        <a href={detailPath(lang, "travelPlanner", g.slug)} class="card group block">
-          <div class="aspect-[16/10] relative overflow-hidden">
-            <ContentImage imgKey={g.imageKey} fallbackHue={g.hue} fallbackLabel={g.title} className="w-full h-full" />
+        <a href={detailPath(lang, "travelPlanner", g.slug)} class="tile">
+          <div class="pic">
+            <ContentImage imgKey={g.imageKey} fallbackHue={g.hue} fallbackLabel={g.title} imgClass="w-full h-full object-cover" />
           </div>
-          <div class="p-5">
-            <p class="eyebrow mb-2">{g.eyebrow}</p>
-            <h2 class="text-xl font-light tracking-tight leading-tight mb-2 group-hover:text-[var(--color-accent)] transition-colors" style="color: var(--color-text); font-family: var(--font-display);">{g.title}</h2>
-            <p class="text-sm leading-relaxed line-clamp-3" style="color: var(--color-text-body);">{g.intro}</p>
+          <div class="veil"></div>
+          <span class="tag">{g.eyebrow}</span>
+          <div class="cap">
+            <h3>{g.title}</h3>
+            <span>{g.intro}</span>
           </div>
         </a>
       ))}

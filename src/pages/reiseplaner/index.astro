@@ -1,13 +1,22 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
-import ContentImage from "../../components/ContentImage.astro";
+import PhotoMosaic from "../../components/PhotoMosaic.astro";
 import GygActivities from "../../components/GygActivities.astro";
 import { guides } from "../../data/guides";
 import { getGyg, gygCmp } from "../../data/gyg";
 import { city } from "../../data/city";
 
 const gyg = getGyg("index:reiseplaner");
+
+const items = guides.map((g) => ({
+  href: `/reiseplaner/${g.slug}/`,
+  imgKey: g.imageKey,
+  title: g.title,
+  meta: g.intro,
+  hue: g.hue,
+  tag: g.eyebrow,
+}));
 ---
 
 <BaseLayout
@@ -26,20 +35,7 @@ const gyg = getGyg("index:reiseplaner");
   </section>
 
   <section class="container-page section pt-0">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-      {guides.map((g) => (
-        <a href={`/reiseplaner/${g.slug}/`} class="card group block">
-          <div class="aspect-[16/10] relative overflow-hidden">
-            <ContentImage imgKey={g.imageKey} fallbackHue={g.hue} fallbackLabel={g.title} className="w-full h-full" />
-          </div>
-          <div class="p-5">
-            <p class="eyebrow mb-2">{g.eyebrow}</p>
-            <h2 class="text-xl font-light tracking-tight leading-tight mb-2 group-hover:text-[var(--color-accent)] transition-colors" style="color: var(--color-text); font-family: var(--font-display);">{g.title}</h2>
-            <p class="text-sm leading-relaxed line-clamp-3" style="color: var(--color-text-body);">{g.intro}</p>
-          </div>
-        </a>
-      ))}
-    </div>
+    <PhotoMosaic items={items} cols={3} />
   </section>
 
   {gyg && (

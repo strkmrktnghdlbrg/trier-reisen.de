@@ -33,7 +33,7 @@ export const sights: Sight[] = [
     shortDesc:
       "Das schwarze Tor - Triers Wahrzeichen. Das besterhaltene römische Stadttor nördlich der Alpen.",
     longDesc:
-      "Die Porta Nigra entstand um 170 n. Chr. als Nordtor der römischen Stadt Augusta Treverorum. Aus rund 7200 Sandsteinquadern errichtet, im Mittelalter zur Doppelkirche umgebaut und unter Napoleon wieder freigelegt. Begehbar in zwei Stockwerken, mit Aussicht auf die Simeonstrasse.",
+      "Die Porta Nigra entstand um 170 n. Chr. als Nordtor der römischen Stadt Augusta Treverorum. Aus rund 7200 Sandsteinquadern errichtet, im Mittelalter zur Doppelkirche umgebaut und unter Napoleon wieder freigelegt. Begehbar in zwei Stockwerken, mit Aussicht auf die Simeonstraße.",
     imageHue: 1,
     coordinates: [49.7597, 6.6440],
     openingHours: "Apr-Sep 9-18, Mar/Okt 9-17, Nov-Feb 9-16",
@@ -105,7 +105,7 @@ export const sights: Sight[] = [
     shortDesc:
       "Eine der ältesten gotischen Kirchen Deutschlands, direkt neben dem Dom.",
     longDesc:
-      "Die Liebfrauenkirche entstand 1227-1260 nach franzoesischem Vorbild und gilt als eine der frühesten gotischen Kirchen auf deutschem Boden. Zentralbau auf einem zwoelfblaettrigen Grundriss, gemeinsam mit dem Dom UNESCO-Welterbe.",
+      "Die Liebfrauenkirche entstand 1227-1260 nach französischem Vorbild und gilt als eine der frühesten gotischen Kirchen auf deutschem Boden. Zentralbau auf einem zwölfblättrigen Grundriss, gemeinsam mit dem Dom UNESCO-Welterbe.",
     imageHue: 1,
     coordinates: [49.7551, 6.6433],
   },
@@ -119,9 +119,9 @@ export const sights: Sight[] = [
     priceFrom: null,
     unesco: true,
     shortDesc:
-      "Antiker Thronsaal Kaiser Konstantins, heute evangelische Hauptkirche. 27 m hoher Saal ohne Stuetzen.",
+      "Antiker Thronsaal Kaiser Konstantins, heute evangelische Hauptkirche. 27 m hoher Saal ohne Stützen.",
     longDesc:
-      "Die Aula Palatina war Thronsaal des spaetroemischen Kaisers Konstantin. Mit 67 m Länge, 27 m Breite und 33 m Höhe einer der groessten erhaltenen Saalbauten der Antike. Heute evangelische Erloeserkirche, jeden Sonntag Gottesdienst im antiken Raum.",
+      "Die Aula Palatina war Thronsaal des spätrömischen Kaisers Konstantin. Mit 67 m Länge, 27 m Breite und 33 m Höhe einer der größten erhaltenen Saalbauten der Antike. Heute evangelische Erlöserkirche, jeden Sonntag Gottesdienst im antiken Raum.",
     imageHue: 1,
     coordinates: [49.7531, 6.6448],
     openingHours: "Apr-Okt Mo-Sa 10-18, So 13-18; Nov-Mar verkürzt",
@@ -136,9 +136,9 @@ export const sights: Sight[] = [
     priceFrom: 6,
     unesco: true,
     shortDesc:
-      "Monumentale römische Thermenruine. Apsiden, Heizkanaele, unterirdische Bediengaenge begehbar.",
+      "Monumentale römische Thermenruine. Apsiden, Heizkanäle, unterirdische Bediengänge begehbar.",
     longDesc:
-      "Die Kaiserthermen entstanden im 4. Jahrhundert als Repraesentations-Thermen der Kaiserresidenz. Nie als Badebetrieb vollendet, später Kaserne und Stadtmauer-Festung. Heute UNESCO-Welterbe, die unterirdischen Servicegaenge sind komplett begehbar.",
+      "Die Kaiserthermen entstanden im 4. Jahrhundert als Repräsentations-Thermen der Kaiserresidenz. Nie als Badebetrieb vollendet, später Kaserne und Stadtmauer-Festung. Heute UNESCO-Welterbe, die unterirdischen Servicegänge sind komplett begehbar.",
     imageHue: 1,
     coordinates: [49.7497, 6.6437],
     openingHours: "Apr-Sep 9-18, Mar/Okt 9-17, Nov-Feb 9-16",
@@ -171,9 +171,9 @@ export const sights: Sight[] = [
     priceFrom: null,
     unesco: true,
     shortDesc:
-      "Ältere und groessere Schwester der Kaiserthermen. Ruinenfeld unter freiem Himmel.",
+      "Ältere und größere Schwester der Kaiserthermen. Ruinenfeld unter freiem Himmel.",
     longDesc:
-      "Die Barbarathermen wurden im 2. Jahrhundert errichtet und zählten zu den groessten Thermen des Römischen Reichs. Heute sind weite Teile der Substruktion zu sehen, ein Besuchersteg führt in neun Stationen über die Anlage. Weniger touristisch als die Kaiserthermen - und beeindruckender in der Fläche.",
+      "Die Barbarathermen wurden im 2. Jahrhundert errichtet und zählten zu den größten Thermen des Römischen Reichs. Heute sind weite Teile der Substruktion zu sehen, ein Besuchersteg führt in neun Stationen über die Anlage. Weniger touristisch als die Kaiserthermen - und beeindruckender in der Fläche.",
     imageHue: 1,
     coordinates: [49.7464, 6.6354],
     openingHours: "Apr-Sep 9-18, Mar/Okt 9-17, Nov-Feb 9-16",
@@ -202,9 +202,9 @@ export const sights: Sight[] = [
     priceFrom: 6,
     unesco: true,
     shortDesc:
-      "UNESCO-Amphitheater mit Keller-Hebebuehnen. Im Sommer Bühne der Antikenfestspiele.",
+      "UNESCO-Amphitheater mit Keller-Hebebühnen. Im Sommer Bühne der Antikenfestspiele.",
     longDesc:
-      "Das Trierer Amphitheater entstand um 100 n. Chr. für rund 20.000 Zuschauer. Erhalten sind die Tribuenenboeschungen und die unterirdischen Keller mit Hebebuehnen, durch die Gladiatoren und Tiere in die Arena gelangten. Jeden Sommer Spielort der Antikenfestspiele.",
+      "Das Trierer Amphitheater entstand um 100 n. Chr. für rund 20.000 Zuschauer. Erhalten sind die Tribünenböschungen und die unterirdischen Keller mit Hebebühnen, durch die Gladiatoren und Tiere in die Arena gelangten. Jeden Sommer Spielort der Antikenfestspiele.",
     imageHue: 1,
     coordinates: [49.7464, 6.6479],
     openingHours: "Apr-Sep 9-18, Mar/Okt 9-17, Nov-Feb 9-16",
@@ -230,7 +230,7 @@ export const sights: Sight[] = [
   {
     slug: "roemerbruecke",
     imageKey: "sight:roemerbruecke",
-    name: "Roemerbruecke",
+    name: "Römerbrücke",
     categories: ["unesco-welterbe", "roemisches-erbe"],
     district: "innenstadt",
     type: "Antike",
@@ -239,7 +239,7 @@ export const sights: Sight[] = [
     shortDesc:
       "Älteste Brücke Deutschlands nördlich der Alpen. Römische Pfeiler von 144 n. Chr.",
     longDesc:
-      "Die Roemerbruecke ist die älteste noch in Funktion befindliche Brücke Deutschlands. Die fünf basaltenen Brueckenpfeiler stammen aus dem 2. Jahrhundert n. Chr., der Brueckenbelag wurde mehrfach erneuert. UNESCO-Welterbe, täglich befahren.",
+      "Die Römerbrücke ist die älteste noch in Funktion befindliche Brücke Deutschlands. Die fünf basaltenen Brückenpfeiler stammen aus dem 2. Jahrhundert n. Chr., der Brückenbelag wurde mehrfach erneuert. UNESCO-Welterbe, täglich befahren.",
     imageHue: 1,
     coordinates: [49.7522, 6.6273],
   },
@@ -253,9 +253,9 @@ export const sights: Sight[] = [
     priceFrom: null,
     unesco: true,
     shortDesc:
-      "Römische Grabsaeule im Trierer Ortsteil Igel. 23 m hoch, reich verziert.",
+      "Römische Grabsäule im Trierer Ortsteil Igel. 23 m hoch, reich verziert.",
     longDesc:
-      "Die Igeler Säule ist ein roemisches Grabmal aus dem 3. Jahrhundert, errichtet von der Familie Secundinii. 23 m hoch, vollständig erhalten und mit detailliertem Reliefdekor - ein einzigartiges Zeugnis römischer Grabarchitektur, UNESCO-Welterbe.",
+      "Die Igeler Säule ist ein römisches Grabmal aus dem 3. Jahrhundert, errichtet von der Familie Secundinii. 23 m hoch, vollständig erhalten und mit detailliertem Reliefdekor - ein einzigartiges Zeugnis römischer Grabarchitektur, UNESCO-Welterbe.",
     imageHue: 1,
     coordinates: [49.7016, 6.5519],
   },
@@ -269,7 +269,7 @@ export const sights: Sight[] = [
     type: "Markt",
     priceFrom: null,
     shortDesc:
-      "Triers Marktplatz seit 958. Steipe, Petrusbrunnen, Marktkreuz, Roetelhausen.",
+      "Triers Marktplatz seit 958. Steipe, Petrusbrunnen, Marktkreuz, Rotes Haus.",
     longDesc:
       "Der Trierer Hauptmarkt ist einer der schönsten Marktplätze Deutschlands. Das Marktkreuz von 958 markiert den juristischen Mittelpunkt der Stadt, die Steipe diente als Festhaus, der Petrusbrunnen ist Trierer Renaissancearbeit. Heute Bühne für Wochenmarkt und Weihnachtsmarkt.",
     imageHue: 4,
@@ -278,30 +278,30 @@ export const sights: Sight[] = [
   {
     slug: "kurfuerstliches-palais",
     imageKey: "sight:kurfuerstliches-palais",
-    name: "Kurfuerstliches Palais",
+    name: "Kurfürstliches Palais",
     categories: ["museen"],
     district: "innenstadt",
     type: "Wahrzeichen",
     priceFrom: null,
     shortDesc:
-      "Rosa Rokoko-Palais zwischen Konstantinbasilika und Palastgarten. Eines der schönsten Rokokoschloesser Deutschlands.",
+      "Rosa Rokoko-Palais zwischen Konstantinbasilika und Palastgarten. Eines der schönsten Rokokoschlösser Deutschlands.",
     longDesc:
-      "Das Kurfuerstliche Palais geht auf einen Renaissance-Kurfuerstenbau zurück, der im 18. Jahrhundert von Johannes Seiz im Rokokostil umgestaltet wurde. Heute Behoerdensitz, der Palastgarten ist öffentlich begehbar und im Sommer Schauplatz von Open-Air-Konzerten.",
+      "Das Kurfürstliche Palais geht auf einen Renaissance-Kurfürstenbau zurück, der im 18. Jahrhundert von Johannes Seiz im Rokokostil umgestaltet wurde. Heute Behördensitz, der Palastgarten ist öffentlich begehbar und im Sommer Schauplatz von Open-Air-Konzerten.",
     imageHue: 4,
     coordinates: [49.7536, 6.6452],
   },
   {
     slug: "dreikoenigenhaus",
     imageKey: "sight:dreikoenigenhaus",
-    name: "Dreikoenigenhaus",
+    name: "Dreikönigenhaus",
     categories: ["roemisches-erbe"],
     district: "innenstadt",
     type: "Wahrzeichen",
     priceFrom: null,
     shortDesc:
-      "Mittelalterlicher Wohnturm in der Simeonstrasse. Eingang im ersten Stock - typisch Wehrhaus.",
+      "Mittelalterlicher Wohnturm in der Simeonstraße. Eingang im ersten Stock - typisch Wehrhaus.",
     longDesc:
-      "Das Dreikoenigenhaus von 1230 ist eines der besterhaltenen romanischen Patrizierwohntuerme in Deutschland. Eingang im ersten Obergeschoss, ursprünglich nur über eine Hochzieh-Treppe erreichbar. Heute Café im Erdgeschoss, Fassade ein Foto-Hotspot.",
+      "Das Dreikönigenhaus von 1230 ist eines der besterhaltenen romanischen Patrizierwohntürme in Deutschland. Eingang im ersten Obergeschoss, ursprünglich nur über eine Hochzieh-Treppe erreichbar. Heute Café im Erdgeschoss, Fassade ein Foto-Hotspot.",
     imageHue: 4,
     coordinates: [49.7580, 6.6428],
   },
@@ -315,9 +315,9 @@ export const sights: Sight[] = [
     type: "Museum",
     priceFrom: 10,
     shortDesc:
-      "Eines der wichtigsten Antikenmuseen Europas. Mosaike, Goldmuenzen, Trierer Stadtmodell.",
+      "Eines der wichtigsten Antikenmuseen Europas. Mosaike, Goldmünzen, Trierer Stadtmodell.",
     longDesc:
-      "Das Rheinisches Landesmuseum am Palastgarten besitzt eine der bedeutendsten Sammlungen römischer Funde nördlich der Alpen. Höhepunkte: das Neumagener Schiff, das berühmte Neumagener Weinschiff-Grabmal, riesige Mosaikboeden und der Goldmuenzenschatz von 1993.",
+      "Das Rheinische Landesmuseum am Palastgarten besitzt eine der bedeutendsten Sammlungen römischer Funde nördlich der Alpen. Höhepunkte: das Neumagener Schiff, das berühmte Neumagener Weinschiff-Grabmal, riesige Mosaikböden und der Goldmünzenschatz von 1993.",
     imageHue: 4,
     coordinates: [49.7530, 6.6464],
     openingHours: "Di-So 10-17, Mo geschlossen",
@@ -366,10 +366,10 @@ export const sights: Sight[] = [
     shortDesc:
       "Geburtshaus von Karl Marx (1818). Dauerausstellung zu Leben, Werk und Wirkung.",
     longDesc:
-      "Karl Marx wurde 1818 in der Brueckenstrasse 10 geboren. Das spaetbarocke Wohnhaus ist heute Museum mit Dauerausstellung der Friedrich-Ebert-Stiftung. 2018 zum 200. Geburtstag komplett ueberarbeitet - moderne Inszenierung statt Reliquien-Schaukasten.",
+      "Karl Marx wurde 1818 in der Brückenstraße 10 geboren. Das spätbarocke Wohnhaus ist heute Museum mit Dauerausstellung der Friedrich-Ebert-Stiftung. 2018 zum 200. Geburtstag komplett überarbeitet - moderne Inszenierung statt Reliquien-Schaukasten.",
     imageHue: 4,
     coordinates: [49.7506, 6.6342],
-    openingHours: "Apr-Okt taegl. 10-18, Nov-Mar Di-So 11-17",
+    openingHours: "Apr-Okt tägl. 10-18, Nov-Mar Di-So 11-17",
     websiteUrl: "https://www.fes.de/karl-marx-haus",
   },
   {
@@ -383,7 +383,7 @@ export const sights: Sight[] = [
     shortDesc:
       "Drei Etagen Spielzeug von 1900 bis heute. Familien-Favorit mitten am Hauptmarkt.",
     longDesc:
-      "Das Spielzeugmuseum direkt am Hauptmarkt ist Triers Familien-Hit. Drei Etagen mit Puppenstuben, Eisenbahnen, Plueschtieren, Kaufladen und Computerspielen. Vom Jugendstil bis Game Boy - auch für Eltern ein nostalgisches Spaziergang.",
+      "Das Spielzeugmuseum direkt am Hauptmarkt ist Triers Familien-Hit. Drei Etagen mit Puppenstuben, Eisenbahnen, Plüschtieren, Kaufladen und Computerspielen. Vom Jugendstil bis Game Boy - auch für Eltern ein nostalgischer Spaziergang.",
     imageHue: 2,
     coordinates: [49.7559, 6.6411],
     openingHours: "Mo-Sa 11-17, So 11-17",
@@ -423,7 +423,7 @@ export const sights: Sight[] = [
   {
     slug: "mariensaeule",
     imageKey: "sight:mariensaeule",
-    name: "Mariensaeule auf dem Markusberg",
+    name: "Mariensäule auf dem Markusberg",
     categories: ["aussicht-wandern"],
     district: "trier-west-pallien",
     type: "Aussicht",
@@ -431,7 +431,7 @@ export const sights: Sight[] = [
     shortDesc:
       "40 m hohe Säule mit Marienfigur. Vom Plateau bester Blick auf die Trierer Silhouette.",
     longDesc:
-      "Die Mariensaeule auf dem Markusberg wurde 1859-66 als Dank für die Befreiung der Stadt von den Franzosen errichtet. 40 m hoch, in Sichtweite über der Mosel. Vom Pumpwerk-Plateau hat man den Postkarten-Blick auf Dom, Liebfrauenkirche und Roemerbruecke.",
+      "Die Mariensäule auf dem Markusberg wurde 1859-66 als Dank für die Befreiung der Stadt von den Franzosen errichtet. 40 m hoch, in Sichtweite über der Mosel. Vom Pumpwerk-Plateau hat man den Postkarten-Blick auf Dom, Liebfrauenkirche und Römerbrücke.",
     imageHue: 2,
     coordinates: [49.7575, 6.6168],
   },
@@ -446,7 +446,7 @@ export const sights: Sight[] = [
     shortDesc:
       "Höhenzug östlich der Stadt. Aussichtspunkt, Spielplatz, Wandergebiet auf alten Landesgartenschau-Flächen.",
     longDesc:
-      "Der Petrisberg liegt östlich der Innenstadt und war 2004 Standort der Landesgartenschau. Heute Aussichtsplattform mit Blick auf Trier, grosser Familienspielplatz, Skulpturenweg und Wanderwege Richtung Olewig. Mit dem Aufzug ab Karl-Marx-Strasse erreichbar.",
+      "Der Petrisberg liegt östlich der Innenstadt und war 2004 Standort der Landesgartenschau. Heute Aussichtsplattform mit Blick auf Trier, großer Familienspielplatz, Skulpturenweg und Wanderwege Richtung Olewig. Mit dem Aufzug ab Karl-Marx-Straße erreichbar.",
     imageHue: 2,
     coordinates: [49.7551, 6.6649],
   },
@@ -459,9 +459,9 @@ export const sights: Sight[] = [
     type: "Park",
     priceFrom: null,
     shortDesc:
-      "Lehrpfad durch die Olewiger Weinberge. 5 km, 14 Stationen, Rastplaetze mit Mosel-Blick.",
+      "Lehrpfad durch die Olewiger Weinberge. 5 km, 14 Stationen, Rastplätze mit Mosel-Blick.",
     longDesc:
-      "Der Olewiger Weinkulturpfad ist ein 5 km langer Rundweg durch die Steillagen oberhalb des Weinortes. 14 Stationen erklären Rebsorten, Bodenarten und Trier-Weinbaugeschichte. Rastplaetze, Schutzhuetten und ein Aussichtspunkt mit Blick auf Innenstadt und Moseltal.",
+      "Der Olewiger Weinkulturpfad ist ein 5 km langer Rundweg durch die Steillagen oberhalb des Weinortes. 14 Stationen erklären Rebsorten, Bodenarten und Trier-Weinbaugeschichte. Rastplätze, Schutzhütten und ein Aussichtspunkt mit Blick auf Innenstadt und Moseltal.",
     imageHue: 3,
     coordinates: [49.7411, 6.6720],
   },
@@ -474,9 +474,9 @@ export const sights: Sight[] = [
     type: "Park",
     priceFrom: null,
     shortDesc:
-      "Uferweg zwischen Zurlauben und Roemerbruecke. Beste Spaziermeile, Schiffsanleger, Restaurants.",
+      "Uferweg zwischen Zurlauben und Römerbrücke. Beste Spaziermeile, Schiffsanleger, Restaurants.",
     longDesc:
-      "Die Mosel-Promenade verbindet das ehemalige Fischerviertel Zurlauben mit der Roemerbruecke. Spaziermeile, Bauernmarkt, Schiffsanleger der Personenschifffahrt, eine Reihe von Mosel-Restaurants. Bei Sommerabenden Triers gemuetlichste Adresse.",
+      "Die Mosel-Promenade verbindet das ehemalige Fischerviertel Zurlauben mit der Römerbrücke. Spaziermeile, Bauernmarkt, Schiffsanleger der Personenschifffahrt, eine Reihe von Mosel-Restaurants. Bei Sommerabenden Triers gemütlichste Adresse.",
     imageHue: 2,
     coordinates: [49.7593, 6.6261],
   },

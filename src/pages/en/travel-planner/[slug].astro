@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
-import Breadcrumbs from "../../../components/Breadcrumbs.astro";
-import ContentImage from "../../../components/ContentImage.astro";
+import StageHero from "../../../components/StageHero.astro";
+import ActionDock from "../../../components/ActionDock.astro";
 import GygActivities from "../../../components/GygActivities.astro";
 import AwinOffer from "../../../components/AwinOffer.astro";
 import { guides, type Guide } from "../../../data/guides";
@@ -33,25 +33,28 @@ const gyg = getGyg(gygKey, "en");
     { name: guide.title },
   ])}
 >
-  <article class="container-page py-12">
-    <Breadcrumbs items={[
-      { href: "/en/", label: city.name },
-      { href: "/en/travel-planner/", label: t(lang, "breadcrumb.travelPlanner") },
-      { label: guide.title },
-    ]} />
+  <article>
+    <StageHero
+      imgKey={src.imageKey}
+      fallbackHue={src.hue}
+      badge={guide.eyebrow}
+      title={guide.title}
+      lead={guide.intro}
+      minHeight={480}
+      crumbs={`Home / Travel planner / ${guide.eyebrow}`}
+      lang={lang}
+    />
+    <ActionDock
+      info={{
+        title: guide.eyebrow,
+        sub: `${guide.sections.length} stages · editorially curated`,
+      }}
+      secondary={{ href: "/en/travel-planner/", label: "All planners" }}
+      primary={{ href: "/en/sights/", label: "Sights" }}
+    />
 
-    <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 mt-4 items-center">
-      <div class="lg:col-span-3">
-        <p class="eyebrow mb-3">{guide.eyebrow}</p>
-        <h1 class="display-xl mb-4">{guide.title}</h1>
-        <p class="text-body text-lg leading-relaxed">{guide.intro}</p>
-      </div>
-      <div class="lg:col-span-2 aspect-[4/3] rounded-3xl overflow-hidden">
-        <ContentImage imgKey={src.imageKey} fallbackHue={src.hue} fallbackLabel={guide.title} className="w-full h-full" loading="eager" />
-      </div>
-    </div>
-
-    <div class="section pt-12 max-w-3xl">
+    <div class="container-page py-12">
+    <div class="max-w-3xl">
       {guide.sections.map((sec: any, i: number) => (
         <section class="mb-10">
           <p class="eyebrow mb-2">Step {i + 1}</p>
@@ -74,5 +77,6 @@ const gyg = getGyg(gygKey, "en");
     {gyg && (
       <GygActivities q={gyg.q} heading={gyg.heading} intro={gyg.intro} count={gyg.count} cmp={gygCmp(gygKey)} lang="en" />
     )}
+    </div>
   </article>
 </BaseLayout>

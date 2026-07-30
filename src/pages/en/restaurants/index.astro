@@ -25,7 +25,7 @@ const localized = restaurants.map((r) => localize("restaurants", r, lang));
   </section>
 
   <section class="container-page section pt-0">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+    <div class="mosaic m3">
       {localized.map((r) => <RestaurantCard restaurant={r} lang={lang} />)}
     </div>
   </section>
