@@ -2,15 +2,17 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import StageHero from "../../components/StageHero.astro";
 import ActionDock from "../../components/ActionDock.astro";
+import OsmAttribution from "../../components/OsmAttribution.astro";
 import { city } from "../../data/city";
-import { branchenCategories, categoryCount, totalListings } from "../../data/branchenverzeichnis";
+import { branchenCategories, categoryCount, totalListings, osmCount } from "../../data/branchenverzeichnis";
 import "../../styles/werben.css";
 
 const title = `Branchenverzeichnis ${city.name}`;
-const description = `Betriebe aus ${city.name} nach Branchen: Gastronomie, Hotels, Apotheken, Banken, Weingüter, Handwerk und Dienstleistung. Kostenloser Eintrag für Unternehmen möglich.`;
+const description = `Betriebe aus ${city.name} nach Branchen: Gastronomie, Hotels, Apotheken, Banken, Weingüter, Handwerk, Freizeit und Dienstleistung. Kostenloser Eintrag für Unternehmen möglich.`;
 
 const kategorien = branchenCategories.map((c) => ({ ...c, count: categoryCount(c.slug) }));
 const gesamt = totalListings();
+const ausOsm = osmCount();
 ---
 
 <BaseLayout title={title} description={description}>
@@ -18,7 +20,7 @@ const gesamt = totalListings();
     imgKey="district:innenstadt"
     badge="Branchenverzeichnis"
     title={`Betriebe aus ${city.name} nach Branchen.`}
-    lead={`Aktuell ${gesamt} Einträge aus der redaktionellen Arbeit von Trier Reisen - Gastronomie, Hotels, Apotheken und Banken, dazu Branchen, in die sich Betriebe kostenlos eintragen können.`}
+    lead={`Aktuell ${gesamt} Einträge: Betriebe aus der redaktionellen Arbeit von Trier Reisen und ${ausOsm} Adressen aus OpenStreetMap - Gastronomie, Hotels, Apotheken, Banken, Weingüter, Handwerk und mehr.`}
     minHeight={460}
     crumbs="Start / Branchenverzeichnis"
   />
@@ -56,9 +58,11 @@ const gesamt = totalListings();
         Wie kommt ein Betrieb ins Verzeichnis?
       </h2>
       <p class="mb-4" style="color: var(--color-text-body);">
-        Die vorhandenen Einträge stammen aus unserer redaktionellen Arbeit: Betriebe, die in den Ratgebern,
-        Restaurant- und Hotelseiten dieses Portals bereits vorkommen. Wer fehlt, kann sich jederzeit
-        kostenlos eintragen lassen - mit Name, Branche und Adresse.
+        Ein Teil der Einträge stammt aus unserer redaktionellen Arbeit: Betriebe, die in den Ratgebern,
+        Restaurant- und Hotelseiten dieses Portals bereits vorkommen. Dazu kommen {ausOsm} Adressen aus
+        OpenStreetMap, dem freien Kartenprojekt. Diese Einträge sind reine Listungen ohne eigene Seite
+        und ohne Verlinkung. Wer fehlt, kann sich jederzeit kostenlos eintragen lassen - mit Name,
+        Branche und Adresse.
       </p>
       <p style="color: var(--color-text-body);">
         Betriebe, die dauerhaft ganz oben in ihrer Kategorie stehen möchten - mit Logo, Beschreibung,
@@ -67,8 +71,10 @@ const gesamt = totalListings();
       </p>
       <p class="werben-muted-note">
         Alle Angaben ohne Gewähr. Adressen und Zuordnungen stammen aus öffentlich zugänglichen Quellen
-        und den verlinkten Beiträgen dieses Portals.
+        und den verlinkten Beiträgen dieses Portals. Wer einen Eintrag korrigieren oder löschen lassen
+        möchte, meldet sich bei der <a href="/kontakt/" class="link-accent">Redaktion</a>.
       </p>
+      <OsmAttribution />
     </section>
 
     <section class="werben-cta-band">
