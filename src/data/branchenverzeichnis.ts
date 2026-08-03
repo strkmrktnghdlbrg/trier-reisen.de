@@ -26,6 +26,7 @@ import { restaurants } from "./restaurants";
 import { hotels } from "./hotels";
 import { getDistrict } from "./districts";
 import osmRaw from "./partners.osm.json";
+import { isOsmBlocked } from "./osm-blocklist";
 
 export type BranchenCategory = {
   slug: string;
@@ -188,22 +189,30 @@ type OsmRaw = {
   city?: string;
   phone?: string;
   website?: string;
+  osmId?: string;
 };
 
-export const osmPartners: Listing[] = (osmRaw as OsmRaw[]).map((p) => ({
-  slug: p.slug,
-  name: p.name,
-  category: p.category,
-  label: p.label,
-  address: [p.street, [p.zip, p.city || "Trier"].filter(Boolean).join(" ")]
-    .filter(Boolean)
-    .join(", "),
-  phone: p.phone || undefined,
-  website: p.website || undefined,
-  plan: "free",
-  verified: false,
-  source: "osm",
-}));
+/**
+ * Sperrliste (src/data/osm-blocklist.json): Betriebe, die ihre Loeschung
+ * verlangt haben, werden hier ein zweites Mal herausgefiltert - auch dann,
+ * wenn partners.osm.json noch veraltet ist.
+ */
+export const osmPartners: Listing[] = (osmRaw as OsmRaw[])
+  .filter((p) => !isOsmBlocked({ osmId: p.osmId, name: p.name, street: p.street }))
+  .map((p) => ({
+    slug: p.slug,
+    name: p.name,
+    category: p.category,
+    label: p.label,
+    address: [p.street, [p.zip, p.city || "Trier"].filter(Boolean).join(" ")]
+      .filter(Boolean)
+      .join(", "),
+    phone: p.phone || undefined,
+    website: p.website || undefined,
+    plan: "free",
+    verified: false,
+    source: "osm",
+  }));
 
 const collator = new Intl.Collator("de", { sensitivity: "base" });
 
