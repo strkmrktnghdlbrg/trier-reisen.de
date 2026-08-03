@@ -11,12 +11,14 @@ const title = "Eintrag beanspruchen";
 const description = `Tragen Sie Ihren Betrieb aus ${city.name} kostenlos ins Branchenverzeichnis ein oder beanspruchen Sie einen bestehenden Eintrag.`;
 
 /**
- * Formular-Endpunkt: Dieses Repo hat (Stand jetzt) keinen Form-Handler.
- * Der Key wird per Env gesetzt (PUBLIC_WEB3FORMS_KEY) - fehlt er, zeigen wir
- * bewusst KEIN totes Formular, sondern den E-Mail-Weg.
- * TODO: Cloudflare Turnstile ergaenzen, sobald der Endpunkt steht.
+ * Formular-Endpunkt: Web3Forms nimmt die Zuschrift entgegen und verschickt sie.
+ * Der Access-Key ist oeffentlich - er steht im ausgelieferten Formular-HTML.
+ * Ueber PUBLIC_WEB3FORMS_KEY laesst er sich pro Domain ueberschreiben, falls
+ * die Zuschriften spaeter in getrennten Postfaechern landen sollen.
+ * Fehlt beides, zeigen wir bewusst KEIN totes Formular, sondern den E-Mail-Weg.
  */
-const formKey = import.meta.env.PUBLIC_WEB3FORMS_KEY;
+const formKey =
+  import.meta.env.PUBLIC_WEB3FORMS_KEY ?? "b65f4e95-6ac7-4003-a46a-fe4e08b120e2";
 const formAktiv = Boolean(formKey);
 
 // Anti-Spam: E-Mail ohne mailto und ohne Klartext-@.
