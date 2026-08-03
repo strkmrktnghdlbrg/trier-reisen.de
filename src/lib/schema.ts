@@ -74,12 +74,6 @@ export const hotelSchema = (h: Hotel) => ({
     : {}),
   ...(h.rating
     ? {
-        aggregateRating: {
-          "@type": "AggregateRating",
-          ratingValue: String(h.rating),
-          bestRating: "10",
-          ratingCount: "1",
-        },
       }
     : {}),
   ...(typeof h.priceFrom === "number"

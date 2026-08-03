@@ -1,12 +1,27 @@
+/*
+ * KEINE Gaeste-Bewertungen in dieser Datei.
+ *
+ * Bis 2026-08-03 trug jeder Eintrag ein handgepflegtes `rating`, `reviews`
+ * und teils `guestFavorite: true`. Diese Zahlen hatten keine Quelle. Auf
+ * bad-duerkheim-interaktiv.de wurden zwei davon gegen Booking.com geprueft:
+ *   Mercure an den Salinen  -> Datei 8.6 / 1120,  real 7.9 / 1035
+ *   Kurpark-Hotel           -> Datei 8.7 /  980,  real 7.8 / 1092
+ * Beide zugunsten des Hauses geschoent, und sie gingen zusaetzlich als
+ * schema.org/AggregateRating an Google (§ 5a UWG, Anhang Nr. 23b UWG).
+ *
+ * Der Live-Score der Stay22-v1-API taugt NICHT als Ersatz: er ist
+ * ganzzahlig und schneidet ab statt zu runden (real 7.9 -> API 7).
+ * Echte Bewertungen zeigt der Stay22-Block auf denselben Seiten.
+ *
+ * Wer hier wieder Bewertungen einbauen will: nur mit belegter Quelle UND
+ * Stand-Datum.
+ */
 export type Hotel = {
   slug: string;
   name: string;
   district: string;
   stars: 2 | 3 | 4 | 5;
   priceFrom: number;
-  rating: number; // 0-10
-  reviews: number;
-  guestFavorite?: boolean;
   shortDesc: string;
   longDesc: string;
   imageHue: number;
@@ -23,9 +38,6 @@ export const hotels: Hotel[] = [
     district: "innenstadt",
     stars: 4,
     priceFrom: 119,
-    rating: 8.6,
-    reviews: 2104,
-    guestFavorite: true,
     shortDesc:
       "Komfortables 4-Sterne-Hotel am Kornmarkt, drei Minuten zur Porta Nigra und zum Dom.",
     longDesc:
@@ -40,8 +52,6 @@ export const hotels: Hotel[] = [
     district: "innenstadt",
     stars: 4,
     priceFrom: 109,
-    rating: 8.4,
-    reviews: 1872,
     shortDesc:
       "4-Sterne-Hotel direkt an der Porta Nigra. Lage genauso gut wie der Name verspricht.",
     longDesc:
@@ -56,9 +66,6 @@ export const hotels: Hotel[] = [
     district: "trier-sued",
     stars: 4,
     priceFrom: 165,
-    rating: 9.0,
-    reviews: 1483,
-    guestFavorite: true,
     shortDesc:
       "Boutique-Hotel in einer Jugendstilvilla oberhalb der Stadt. Spa, Sterne-Niveau, Aussicht.",
     longDesc:
@@ -73,8 +80,6 @@ export const hotels: Hotel[] = [
     district: "innenstadt",
     stars: 4,
     priceFrom: 99,
-    rating: 8.5,
-    reviews: 1290,
     shortDesc:
       "Modernes 4-Sterne-Hotel am Rand der Innenstadt. Frische Zimmer, Frühstücksbuffet, Fitness.",
     longDesc:
@@ -89,8 +94,6 @@ export const hotels: Hotel[] = [
     district: "innenstadt",
     stars: 4,
     priceFrom: 115,
-    rating: 8.7,
-    reviews: 980,
     shortDesc:
       "Familiengefuehrtes 4-Sterne-Hotel direkt am Hauptmarkt. Klassischer Trierer Charme.",
     longDesc:
@@ -105,8 +108,6 @@ export const hotels: Hotel[] = [
     district: "innenstadt",
     stars: 4,
     priceFrom: 110,
-    rating: 8.5,
-    reviews: 850,
     shortDesc:
       "Traditionshaus direkt an der Porta Nigra. Gemütlich, regional, ohne Schickimicki.",
     longDesc:
@@ -121,8 +122,6 @@ export const hotels: Hotel[] = [
     district: "innenstadt",
     stars: 3,
     priceFrom: 79,
-    rating: 8.4,
-    reviews: 720,
     shortDesc:
       "Kleines Stadthotel in der Glockenstrasse. Persoenlich geführt, fairer Preis, Innenstadt-Lage.",
     longDesc:
@@ -137,8 +136,6 @@ export const hotels: Hotel[] = [
     district: "innenstadt",
     stars: 3,
     priceFrom: 89,
-    rating: 8.6,
-    reviews: 590,
     shortDesc:
       "Modernes Boutique-Hotel direkt hinter dem Dom. Klare Linien, fairer Preis, Top-Lage.",
     longDesc:
@@ -153,8 +150,6 @@ export const hotels: Hotel[] = [
     district: "trier-nord",
     stars: 3,
     priceFrom: 69,
-    rating: 8.2,
-    reviews: 2350,
     shortDesc:
       "Markenstandard mit fairen Preisen am Hauptbahnhof. Ankommen, einchecken, in die Stadt.",
     longDesc:
@@ -169,9 +164,6 @@ export const hotels: Hotel[] = [
     district: "innenstadt",
     stars: 2,
     priceFrom: 32,
-    rating: 8.4,
-    reviews: 1980,
-    guestFavorite: true,
     shortDesc:
       "Budget-Adresse mit Mehrbettzimmern und Privatzimmern, fünf Gehminuten zur Porta.",
     longDesc:
@@ -187,8 +179,6 @@ export const hotels: Hotel[] = [
     district: "trier-nord",
     stars: 4,
     priceFrom: 99,
-    rating: 8.3,
-    reviews: 1620,
     shortDesc:
       "Grosses 4-Sterne-Hotel am Mosel-Ufer. Pool, Spa, Konferenzräume, Familienzimmer.",
     longDesc:
@@ -203,8 +193,6 @@ export const hotels: Hotel[] = [
     district: "innenstadt",
     stars: 4,
     priceFrom: 95,
-    rating: 8.5,
-    reviews: 1340,
     shortDesc:
       "Traditionsadresse am Suedrand der Innenstadt. Solider 4-Sterne-Komfort, Restaurant, Bar.",
     longDesc:
@@ -219,9 +207,6 @@ export const hotels: Hotel[] = [
     district: "kuerenz",
     stars: 4,
     priceFrom: 99,
-    rating: 9.1,
-    reviews: 890,
-    guestFavorite: true,
     shortDesc:
       "Familiengefuehrtes 4-Sterne-Hotel mit Triers bester Aussicht. Hoch oben, ruhig, weinaffin.",
     longDesc:
@@ -236,8 +221,6 @@ export const hotels: Hotel[] = [
     district: "euren",
     stars: 4,
     priceFrom: 105,
-    rating: 8.8,
-    reviews: 920,
     shortDesc:
       "Ehrwuerdiger Gasthof in Euren. Wellness, Restaurant, Familienorientiert.",
     longDesc:
@@ -252,8 +235,6 @@ export const hotels: Hotel[] = [
     district: "trier-nord",
     stars: 3,
     priceFrom: 79,
-    rating: 8.5,
-    reviews: 720,
     shortDesc:
       "Kleines Hotel garni am Moselufer. Persoenlich, fair, frisches Frühstück.",
     longDesc:
@@ -269,9 +250,6 @@ export const hotels: Hotel[] = [
     district: "olewig",
     stars: 4,
     priceFrom: 145,
-    rating: 9.2,
-    reviews: 480,
-    guestFavorite: true,
     shortDesc:
       "Boutique-Weinhaus mit Sterne-Restaurant Becker's in Olewig. Kulinarik und Wein auf höchstem Niveau.",
     longDesc:
@@ -286,8 +264,6 @@ export const hotels: Hotel[] = [
     district: "olewig",
     stars: 3,
     priceFrom: 89,
-    rating: 8.8,
-    reviews: 540,
     shortDesc:
       "Familiengefuehrtes Weinhaus mitten in Olewig. Eigene Weine, traditionelle Stube, kurze Wege.",
     longDesc:
