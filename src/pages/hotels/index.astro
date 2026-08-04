@@ -10,7 +10,7 @@ import { city } from "../../data/city";
 import { hotels } from "../../data/hotels";
 import { seasonalStays, isUpcoming } from "../../data/events";
 
-const sorted = [...hotels].sort((a, b) => b.rating - a.rating);
+const sorted = [...hotels].sort((a, b) => b.stars - a.stars || a.priceFrom - b.priceFrom);
 const fiveStar = sorted.filter((h) => h.stars === 5);
 const fourStar = sorted.filter((h) => h.stars === 4);
 const threeStar = sorted.filter((h) => h.stars === 3);

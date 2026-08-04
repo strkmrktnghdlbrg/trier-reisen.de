@@ -39,7 +39,14 @@ const eyebrowLabel = lang === "en" ? "Live from Stay22" : "Live von Stay22";
 
 let hotels: Stay22Accommodation[] | null = null;
 try {
-  hotels = await getTopHotels(address, affiliate.stay22.lmaId, { limit, minguestrating: minGuestRating });
+  hotels = await getTopHotels(address, affiliate.stay22.lmaId, {
+    limit,
+    minguestrating: minGuestRating,
+    lat: city.coordinates[0],
+    lng: city.coordinates[1],
+    radius,
+    cityName: city.name.split(" ")[0],
+  });
 } catch (err) {
   console.error("[Stay22TopHotels] Fetch:", err);
 }

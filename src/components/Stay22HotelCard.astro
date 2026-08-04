@@ -2,6 +2,12 @@
 /**
  * Wiederverwendbare Karte fuer einen Stay22-Live-Hotel-Eintrag.
  * Wird intern von Stay22TopHotels, Stay22NearbyHotels, Saison-Pages benutzt.
+ *
+ * KEIN Gaeste-Score. Der rating.value der Stay22-v1-API ist ganzzahlig und
+ * schneidet ab statt zu runden (real 7.9 -> API 7). Zusammen mit dem Filter
+ * minguestrating:8 kam auf jeder Karte dieselbe "8.0 / 10" heraus - eine
+ * Zahl, die weder stimmt noch differenziert (§ 5a UWG). Wer sie zurueckholen
+ * will, braucht eine Quelle mit Nachkommastelle UND ein Stand-Datum.
  */
 import type { Stay22Accommodation } from "../lib/stay22";
 
@@ -46,9 +52,6 @@ const priceSuffix = showTotal
         <span class="text-xs font-medium" style="color: var(--color-accent);">
           {"★".repeat(Math.round(h.starRating))}
         </span>
-      )}
-      {h.rating?.score !== undefined && (
-        <span class="pill-accent text-[10px]">{h.rating.score.toFixed(1)} / 10</span>
       )}
     </div>
     <h3 class="text-sm font-medium tracking-tight leading-tight mb-2 line-clamp-2 group-hover:text-[var(--color-accent)] transition-colors" style="color: var(--color-text);">

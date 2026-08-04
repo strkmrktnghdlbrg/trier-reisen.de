@@ -37,7 +37,8 @@ export const sights: Sight[] = [
     imageHue: 1,
     coordinates: [49.7597, 6.6440],
     openingHours: "Apr-Sep 9-18, Mar/Okt 9-17, Nov-Feb 9-16",
-    websiteUrl: "https://www.zentrum-der-antike.de/porta-nigra",
+    // Unterseite lief auf 404 - auf die gepruefte Startseite zurueckgestuft (2026-08-03).
+    websiteUrl: "https://www.zentrum-der-antike.de/",
     faq: [
       {
         q: "Was kostet der Eintritt zur Porta Nigra?",
@@ -370,7 +371,8 @@ export const sights: Sight[] = [
     imageHue: 4,
     coordinates: [49.7506, 6.6342],
     openingHours: "Apr-Okt tägl. 10-18, Nov-Mar Di-So 11-17",
-    websiteUrl: "https://www.fes.de/karl-marx-haus",
+    // Unterseite lief auf 404 - auf die gepruefte Startseite zurueckgestuft (2026-08-03).
+    websiteUrl: "https://www.fes.de/",
   },
   {
     slug: "spielzeugmuseum",
