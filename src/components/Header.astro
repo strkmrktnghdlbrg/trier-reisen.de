@@ -21,6 +21,10 @@ const navItems = [
   { href: sectionPath(lang, "travelPlanner"), label: t(lang, "nav.travelPlanner"), enabled: features.reiseplaner.enabled },
   { href: sectionPath(lang, "events"),        label: t(lang, "nav.events"),        enabled: features.events.enabled },
   { href: sectionPath(lang, "magazine"),      label: t(lang, "nav.magazine"),      enabled: true },
+  // Verzeichnis-Einstieg: stand bisher nur im Footer. Wer den kostenlosen
+  // Eintrag nicht findet, kommt auch nicht zum Premium-Angebot.
+  // DE-only (kein EN-Pendant), Label kurz wegen der umbruchfreien Desktop-Nav.
+  { href: "/branchenverzeichnis/", label: "Branchen", enabled: lang === "de" && features.branchen.enabled },
 ].filter((item) => item.enabled);
 
 const searchPath = sectionPath(lang, "search");
