@@ -1,12 +1,13 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+import UnverifiedNotice from "../../../components/UnverifiedNotice.astro";
 import StageHero from "../../../components/StageHero.astro";
 import ActionDock from "../../../components/ActionDock.astro";
 import { heroKey, hotelPoolKey, getImage } from "../../../data/images";
 import HotelCard from "../../../components/HotelCard.astro";
 import Stay22NearbyHotels from "../../../components/Stay22NearbyHotels.astro";
 import { city } from "../../../data/city";
-import { hotels, type Hotel } from "../../../data/hotels";
+import { hotels, type Hotel, isUnverifiedHotel } from "../../../data/hotels";
 import { getDistrict } from "../../../data/districts";
 import { hotelSchema, breadcrumbSchema } from "../../../lib/schema";
 import { localize, t } from "../../../lib/i18n";
@@ -31,7 +32,22 @@ const isDistrictPhoto = Boolean(stageKey && !isOwnPhoto);
 const poolKey = !stageKey && getImage(hotelPoolKey(src.slug)) ? hotelPoolKey(src.slug) : undefined;
 const usedKey = stageKey ?? poolKey;
 const picNote = isDistrictPhoto ? `District photo: ${district?.name ?? src.district}` : undefined;
+
+/**
+ * Zurueckgezogener Eintrag: die URL loest weiter auf, aber es gehen weder
+ * Name noch Beschreibung noch schema.org-Daten raus, und die Seite bekommt
+ * noindex. Siehe die Notiz in src/data/hotels.ts.
+ */
+const unverified = isUnverifiedHotel(src.slug);
 ---
+
+{unverified ? (
+  <BaseLayout title="Entry not available" description="This entry is currently being verified and is temporarily unavailable." noindex>
+    <div class="container-page py-12">
+      <UnverifiedNotice locale="en" backHref="/en/hotels/" backLabel="Back to hotels" />
+    </div>
+  </BaseLayout>
+) : (
 
 <BaseLayout
   title={`${hotel.name} - ${city.name}`}
@@ -125,3 +141,4 @@ const picNote = isDistrictPhoto ? `District photo: ${district?.name ?? src.distr
     </div>
   </article>
 </BaseLayout>
+)}

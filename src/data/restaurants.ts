@@ -389,6 +389,15 @@ export const restaurants: Restaurant[] = [
  */
 export const unverifiedRestaurantSlugs = new Set<string>([
   "weinstube-fwg",
+
+  // --- Nachtrag 2026-08-05 -------------------------------------------------
+  // Zweite Pruefrunde: fuer diese Eintraege gab es weder einen OpenStreetMap-
+  // Datensatz noch eine erreichbare Website noch einen Treffer bei gezielter
+  // Suche auf unabhaengigen Quellen. Drei unabhaengige Fehlanzeigen - dieselbe
+  // Beweislage wie bei den oben bereits zurueckgezogenen Eintraegen.
+  "weingut-rummel", // Weingut Rummel
+  "weinstube-palais-kesselstatt", // Weinstube Palais Kesselstatt (Olewig)
+  "trierer-weinhaus", // Trierer Weinhaus
 ]);
 
 export const isUnverifiedRestaurant = (slug: string) =>

@@ -1,6 +1,6 @@
 import type { APIRoute } from "astro";
 import { sights } from "../../data/sights";
-import { hotels } from "../../data/hotels";
+import { publishedHotels as hotels } from "../../data/hotels";
 import { publishedRestaurants as restaurants } from "../../data/restaurants";
 import { districts } from "../../data/districts";
 import { categories } from "../../data/categories";

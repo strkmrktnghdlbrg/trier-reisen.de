@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import UnverifiedNotice from "../../components/UnverifiedNotice.astro";
 import StageHero from "../../components/StageHero.astro";
 import ActionDock from "../../components/ActionDock.astro";
 import { heroKey, hotelPoolKey, getImage } from "../../data/images";
@@ -7,7 +8,7 @@ import HotelCard from "../../components/HotelCard.astro";
 import SightCard from "../../components/SightCard.astro";
 import Stay22NearbyHotels from "../../components/Stay22NearbyHotels.astro";
 import { city } from "../../data/city";
-import { hotels, type Hotel } from "../../data/hotels";
+import { hotels, type Hotel, isUnverifiedHotel } from "../../data/hotels";
 import { sights } from "../../data/sights";
 import { getDistrict } from "../../data/districts";
 import { hotelSchema, breadcrumbSchema } from "../../lib/schema";
@@ -36,7 +37,22 @@ const usedKey = stageKey ?? poolKey;
 const picNote = isDistrictPhoto
   ? `Stadtteilfoto: ${district?.name ?? hotel.district}`
   : undefined;
+
+/**
+ * Zurueckgezogener Eintrag: die URL loest weiter auf, aber es gehen weder
+ * Name noch Beschreibung noch schema.org-Daten raus, und die Seite bekommt
+ * noindex. Siehe die Notiz in src/data/hotels.ts.
+ */
+const unverified = isUnverifiedHotel(hotel.slug);
 ---
+
+{unverified ? (
+  <BaseLayout title="Eintrag nicht verfügbar" description="Dieser Eintrag wird derzeit überprüft und ist vorübergehend nicht verfügbar." noindex>
+    <div class="container-page py-12">
+      <UnverifiedNotice backHref="/hotels/" backLabel="Zur Hotel-Übersicht" />
+    </div>
+  </BaseLayout>
+) : (
 
 <BaseLayout
   title={`${hotel.name} - ${city.name}`}
@@ -136,3 +152,4 @@ const picNote = isDistrictPhoto
     </div>
   </article>
 </BaseLayout>
+)}

@@ -23,7 +23,7 @@
  *   - Keine E-Mail-Adressen im Klartext.
  */
 import { publishedRestaurants as restaurants } from "./restaurants";
-import { hotels } from "./hotels";
+import { publishedHotels as hotels } from "./hotels";
 import { getDistrict } from "./districts";
 import osmRaw from "./partners.osm.json";
 import { isOsmBlocked } from "./osm-blocklist";

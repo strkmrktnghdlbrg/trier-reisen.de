@@ -274,8 +274,38 @@ export const hotels: Hotel[] = [
   },
 ];
 
+/**
+ * Zurueckgezogene Eintraege (Pruefung 2026-08-03, zweite Runde 2026-08-05).
+ *
+ * Fuer diese Eintraege gab es drei unabhaengige Fehlanzeigen: kein Datensatz
+ * in OpenStreetMap, keine erreichbare Website, kein Treffer bei gezielter
+ * Suche auf unabhaengigen Quellen (Betreiber-Seiten, Booking/HRS-Property-
+ * Seiten, Gastro-Verzeichnisse der Stadt). Vollstaendig ausgestaltete
+ * Eintraege ohne Adresse - der Typ hat gar kein Adressfeld, deshalb faellt
+ * beim Lesen nichts auf.
+ *
+ * "Aurelius am Dom" und "Hostel Hille" sind in Trier nirgends belegt.
+ * Das Hotel Moselpark dagegen existiert (143 Zimmer) und bleibt drin.
+ *
+ * Nicht geloescht, sondern nicht mehr veroeffentlicht: raus aus allen Listen,
+ * Bezirks- und Kategorieseiten, der Suche und der Sitemap. Die Detailseite
+ * bleibt unter ihrer URL erreichbar (kein 404 fuer bestehende Links), traegt
+ * aber noindex und einen Hinweis statt Name, Text und schema.org. Zum
+ * Wiederherstellen genuegt es, den Slug hier aus der Menge zu nehmen.
+ */
+export const unverifiedHotelSlugs = new Set<string>([
+  "aurelius-am-dom", // Aurelius am Dom
+  "hostel-hille", // Hostel Hille
+]);
+
+export const isUnverifiedHotel = (slug: string) => unverifiedHotelSlugs.has(slug);
+
+/** Alles, was oeffentlich gelistet werden darf. Listen nutzen ausschliesslich das. */
+export const publishedHotels = hotels.filter((h) => !isUnverifiedHotel(h.slug));
+
+/** Ungefiltert - die Detailseite muss ihre URL weiter aufloesen koennen. */
 export const getHotel = (slug: string) =>
   hotels.find((h) => h.slug === slug);
 
 export const hotelsByDistrict = (districtSlug: string) =>
-  hotels.filter((h) => h.district === districtSlug);
+  publishedHotels.filter((h) => h.district === districtSlug);
