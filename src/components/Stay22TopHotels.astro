@@ -16,6 +16,8 @@ interface Props {
   lead?: string;
   minGuestRating?: number;
   lang?: "de" | "en";
+  /** Suchradius in Metern rund um das Stadtzentrum. */
+  radius?: number;
 }
 
 const {
@@ -23,6 +25,10 @@ const {
   limit = 8,
   minGuestRating = 8.0,
   lang = "de",
+  // Fehlte bisher komplett: `radius` wurde unten an getTopHotels durchgereicht,
+  // war aber nirgends definiert. Der ReferenceError landete im catch, damit war
+  // die Live-Hotelliste bei jedem Build leer.
+  radius = 15000,
 } = Astro.props;
 
 const title =

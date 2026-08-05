@@ -3,7 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import RestaurantCard from "../../components/RestaurantCard.astro";
 import { city } from "../../data/city";
-import { restaurants } from "../../data/restaurants";
+import { publishedRestaurants as restaurants } from "../../data/restaurants";
 
 // Cuisine-Gruppierung
 const groups = new Map<string, typeof restaurants>();

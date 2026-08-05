@@ -22,7 +22,7 @@
  *     verlinken auf ihre bestehende Seite (kein Duplicate Content).
  *   - Keine E-Mail-Adressen im Klartext.
  */
-import { restaurants } from "./restaurants";
+import { publishedRestaurants as restaurants } from "./restaurants";
 import { hotels } from "./hotels";
 import { getDistrict } from "./districts";
 import osmRaw from "./partners.osm.json";

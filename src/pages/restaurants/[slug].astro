@@ -1,11 +1,12 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import UnverifiedNotice from "../../components/UnverifiedNotice.astro";
 import StageHero from "../../components/StageHero.astro";
 import ActionDock from "../../components/ActionDock.astro";
 import { heroKey, restaurantPoolKey, getImage } from "../../data/images";
 import RestaurantCard from "../../components/RestaurantCard.astro";
 import SightCard from "../../components/SightCard.astro";
-import { restaurants, type Restaurant } from "../../data/restaurants";
+import { restaurants, publishedRestaurants, type Restaurant, isUnverifiedRestaurant } from "../../data/restaurants";
 import { sights } from "../../data/sights";
 import { getDistrict } from "../../data/districts";
 import { restaurantSchema, breadcrumbSchema } from "../../lib/schema";
@@ -18,7 +19,7 @@ export function getStaticPaths() {
 interface Props { restaurant: Restaurant }
 const { restaurant } = Astro.props;
 const district = getDistrict(restaurant.district);
-const related = restaurants.filter((r) => r.slug !== restaurant.slug && r.cuisine === restaurant.cuisine).slice(0, 3);
+const related = publishedRestaurants.filter((r) => r.slug !== restaurant.slug && r.cuisine === restaurant.cuisine).slice(0, 3);
 const nearbySights = sights.filter((s) => s.district === restaurant.district).slice(0, 3);
 
 /*
@@ -34,7 +35,22 @@ const usedKey = stageKey ?? poolKey;
 const picNote = isDistrictPhoto
   ? `Stadtteilfoto: ${district?.name ?? restaurant.district}`
   : undefined;
+
+/**
+ * Zurueckgezogener Eintrag: die URL loest weiter auf, aber es gehen weder
+ * Name noch Beschreibung noch schema.org-Daten raus, und die Seite bekommt
+ * noindex. Siehe die Notiz in src/data/restaurants.ts.
+ */
+const unverified = isUnverifiedRestaurant(restaurant.slug);
 ---
+
+{unverified ? (
+  <BaseLayout title="Eintrag nicht verfügbar" description="Dieser Eintrag wird derzeit überprüft und ist vorübergehend nicht verfügbar." noindex>
+    <div class="container-page py-12">
+      <UnverifiedNotice backHref="/restaurants/" backLabel="Zur Restaurant-Übersicht" />
+    </div>
+  </BaseLayout>
+) : (
 
 <BaseLayout
   title={`${restaurant.name} - ${city.name}`}
@@ -152,3 +168,4 @@ const picNote = isDistrictPhoto
     </div>
   </article>
 </BaseLayout>
+)}

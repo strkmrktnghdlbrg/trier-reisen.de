@@ -371,11 +371,40 @@ export const restaurants: Restaurant[] = [
   },
 ];
 
+/**
+ * Zurueckgezogener Eintrag (Pruefung 2026-08-03).
+ *
+ * Eine "Weinstube Friedrich-Wilhelm-Gymnasium" gibt es nicht. In Trier
+ * existieren das Weingut Friedrich-Wilhelm-Gymnasium (Stiftungsweingut seit
+ * 1561) und, im alten Kelterhaus, die Weinwirtschaft Friedrich-Wilhelm - der
+ * Eintrag mischt beides zu einem dritten, so nicht vorhandenen Betrieb und
+ * setzt ihn nach Olewig. Gegengeprueft gegen OpenStreetMap (alle benannten
+ * Gastro-POIs im Stadtgebiet) und die Seiten der beiden echten Betriebe.
+ *
+ * Nicht geloescht, sondern nicht mehr veroeffentlicht: raus aus allen Listen,
+ * Bezirks- und Kategorieseiten, der Suche, dem Branchenverzeichnis und der
+ * Sitemap. Die Detailseite bleibt unter ihrer URL erreichbar (kein 404 fuer
+ * bestehende Links), traegt aber noindex und einen Hinweis statt Name, Text
+ * und schema.org.
+ */
+export const unverifiedRestaurantSlugs = new Set<string>([
+  "weinstube-fwg",
+]);
+
+export const isUnverifiedRestaurant = (slug: string) =>
+  unverifiedRestaurantSlugs.has(slug);
+
+/** Alles, was oeffentlich gelistet werden darf. Listen nutzen ausschliesslich das. */
+export const publishedRestaurants = restaurants.filter(
+  (r) => !isUnverifiedRestaurant(r.slug),
+);
+
+/** Ungefiltert - die Detailseite muss ihre URL weiter aufloesen koennen. */
 export const getRestaurant = (slug: string) =>
   restaurants.find((r) => r.slug === slug);
 
 export const restaurantsByDistrict = (districtSlug: string) =>
-  restaurants.filter((r) => r.district === districtSlug);
+  publishedRestaurants.filter((r) => r.district === districtSlug);
 
 export const restaurantsByCuisine = (cuisine: string) =>
-  restaurants.filter((r) => r.cuisine.toLowerCase().includes(cuisine.toLowerCase()));
+  publishedRestaurants.filter((r) => r.cuisine.toLowerCase().includes(cuisine.toLowerCase()));

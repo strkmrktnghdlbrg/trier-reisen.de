@@ -1,10 +1,11 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+import UnverifiedNotice from "../../../components/UnverifiedNotice.astro";
 import StageHero from "../../../components/StageHero.astro";
 import ActionDock from "../../../components/ActionDock.astro";
 import { heroKey, restaurantPoolKey, getImage } from "../../../data/images";
 import RestaurantCard from "../../../components/RestaurantCard.astro";
-import { restaurants, type Restaurant } from "../../../data/restaurants";
+import { restaurants, publishedRestaurants, type Restaurant, isUnverifiedRestaurant } from "../../../data/restaurants";
 import { getDistrict } from "../../../data/districts";
 import { restaurantSchema, breadcrumbSchema } from "../../../lib/schema";
 import { localize, t } from "../../../lib/i18n";
@@ -19,7 +20,7 @@ const { restaurant: src } = Astro.props;
 const lang = "en" as const;
 const restaurant = localize("restaurants", src, lang);
 const district = localize("districts", getDistrict(src.district) ?? ({ slug: src.district } as any), lang);
-const related = restaurants.filter((r) => r.slug !== src.slug && r.cuisine === src.cuisine).slice(0, 3).map((r) => localize("restaurants", r, lang));
+const related = publishedRestaurants.filter((r) => r.slug !== src.slug && r.cuisine === src.cuisine).slice(0, 3).map((r) => localize("restaurants", r, lang));
 
 /* Image strategy: 1. own photo, 2. district photo (caption names the district,
  * not the restaurant), 3. pool image only with a visible label, 4. placeholder. */
@@ -29,7 +30,22 @@ const isDistrictPhoto = Boolean(stageKey && !isOwnPhoto);
 const poolKey = !stageKey && getImage(restaurantPoolKey(src.slug)) ? restaurantPoolKey(src.slug) : undefined;
 const usedKey = stageKey ?? poolKey;
 const picNote = isDistrictPhoto ? `District photo: ${district?.name ?? src.district}` : undefined;
+
+/**
+ * Zurueckgezogener Eintrag: die URL loest weiter auf, aber es gehen weder
+ * Name noch Beschreibung noch schema.org-Daten raus, und die Seite bekommt
+ * noindex. Siehe die Notiz in src/data/restaurants.ts.
+ */
+const unverified = isUnverifiedRestaurant(src.slug);
 ---
+
+{unverified ? (
+  <BaseLayout title="Entry not available" description="This entry is currently being verified and is temporarily unavailable." noindex>
+    <div class="container-page py-12">
+      <UnverifiedNotice locale="en" backHref="/en/restaurants/" backLabel="Back to restaurants" />
+    </div>
+  </BaseLayout>
+) : (
 
 <BaseLayout
   title={`${restaurant.name} - ${city.name}`}
@@ -134,3 +150,4 @@ const picNote = isDistrictPhoto ? `District photo: ${district?.name ?? src.distr
     </div>
   </article>
 </BaseLayout>
+)}
