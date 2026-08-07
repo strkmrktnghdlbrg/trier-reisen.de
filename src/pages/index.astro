@@ -160,6 +160,16 @@ const startMosaic = [
     </div>
   </section>
 
+  <!-- Apotheken & Gesundheit -->
+  <section class="container-page section">
+    <div class="apo-home">
+      <p class="apo-home-eyebrow">Gesundheit</p>
+      <h2 class="apo-home-h2">Apotheken in Trier: Innenstadt, Stadtteile, Versand</h2>
+      <p>In der Innenstadt zwischen Hauptmarkt und Porta Nigra ist die Auswahl gut, in Olewig, Pallien und Kürenz überschaubar. Der Notdienst umfasst Stadt und Umland, was am Wochenende längere Wege bedeuten kann. Adressen nach Stadtteil stehen bei den <a href="/apotheken-trier/">Apotheken in Trier</a>.</p>
+      <p>Planbares kommt günstiger per Post. Versandapotheken liefern rezeptfreie Medikamente meist in ein bis drei Werktagen an die Mosel und sind bei regelmäßigem Bedarf spürbar billiger. Konditionen und Lieferzeiten stehen im <a href="/online-apotheke-trier/">Vergleich der Online-Apotheken</a>.</p>
+    </div>
+  </section>
+
   <!-- EVENTS -->
   {features.events.enabled && upcomingEvents.length > 0 && (
     <section class="container-page section pt-0">
@@ -202,3 +212,23 @@ const startMosaic = [
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  /* Apotheken-Teaser (Startseite) */
+  .apo-home { max-width: 70ch; }
+  .apo-home-eyebrow {
+    font-size: 12px; font-weight: 700; letter-spacing: .14em;
+    text-transform: uppercase; opacity: .6; margin: 0 0 8px;
+  }
+  .apo-home-h2 {
+    font-size: clamp(24px, 3.2vw, 32px); font-weight: 600; line-height: 1.15;
+    letter-spacing: -.02em; margin: 0 0 14px;
+  }
+  .apo-home p { font-size: 1rem; line-height: 1.75; margin: 0 0 12px; opacity: .88; }
+  .apo-home p:last-child { margin-bottom: 0; }
+  .apo-home a {
+    color: inherit; font-weight: 600; text-decoration: underline;
+    text-underline-offset: 3px; text-decoration-thickness: 1px;
+  }
+  .apo-home a:hover { text-decoration-thickness: 2px; }
+</style>
