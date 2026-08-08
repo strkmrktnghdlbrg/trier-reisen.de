@@ -45,6 +45,7 @@
     "privacyLinkText": "privacy policy"
   },
   "footer": {
+    "description": "Trier, the oldest city in Germany. UNESCO World Heritage, Mosel wine and Roman heritage: sights, hotels and travel guides in one place.",
     "aboutUs": "About us",
     "imprint": "Imprint",
     "privacy": "Privacy",
@@ -87,6 +88,26 @@
     "themesTitle": "Trier by interest",
     "upcomingTitle": "Coming up",
     "upcomingBody": "Antikenfestspiele (Roman theater festival), Olewiger Weinfest (wine festival) and the Christmas market: Trier's major events."
+  },
+  "hotelEvent": {
+    "titlePrefix": "Hotels in Trier for",
+    "liveEyebrow": "Live via Stay22",
+    "availableHeading": "Available hotels: {range}",
+    "availableLead": "Live rates and availability from Booking.com for this exact date window, {nights}.",
+    "priceNote": "* Rates and availability come live from Stay22 and Booking.com. Last updated {date}. We earn a commission on bookings, at no extra cost to you.",
+    "pastBody": "These dates are in the past. Until the next edition is confirmed, browse our",
+    "noResultsBody": "Stay22 is not showing any available hotels for this date window right now. Try our",
+    "hotelIndexLink": "full hotel index",
+    "mapEyebrow": "Hotel map",
+    "mapHeading": "Hotels around {address}",
+    "mapLead": "Every hotel in this part of Trier with live rates. Zoom and pan to compare locations before you book.",
+    "orientationHeading": "Getting to Trier",
+    "orientationBody": "Trier sits in the far west of Germany, on the Mosel (Moselle) river and close to the Luxembourg border. Most visitors coming from the US fly into Frankfurt and drive the rest of the way, roughly two hours by car. The old town itself is compact and walkable: Porta Nigra (the Black Gate), the Hauptmarkt (the main market square), the Cathedral of St. Peter and the Roman baths all sit within a few hundred meters of one another, so nearly any hotel in the center leaves the UNESCO sites within walking distance.",
+    "neighborhoodsHeading": "Which part of Trier to book",
+    "neighborhoodsBody": "The Innenstadt (city center) is the default choice: pedestrian streets, restaurants and four UNESCO sites on foot. Olewig, a wine village that belongs to Trier, makes sense when wine is the point of the trip, and it is where the Olewiger Weinfest is held. Along the Mosel promenade you trade a few extra minutes of walking for river views and quieter nights. Hotels on the southern edge of the old town are typically about a ten-minute walk from the Hauptmarkt.",
+    "eventDetailLead": "Program, dates and what to expect:",
+    "moreHotels": "Browse all hotels in Trier",
+    "moreEvents": "See all events in Trier"
   },
   "breadcrumb": {
     "home": "Home",

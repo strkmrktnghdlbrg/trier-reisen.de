@@ -4,77 +4,88 @@
     "cuisine": "Michelin-starred",
     "priceLevel": "Upscale",
     "shortDesc": "Michelin-starred restaurant run by the Becker family in Olewig (a wine village within Trier). Modern cuisine, estate wines, wine-led pairings.",
-    "longDesc": "Becker's Restaurant sits at the top tier of German Michelin-starred dining and is housed inside the family's Weinhaus Becker in Olewig. Wolfgang Becker composes modern tasting menus closely tied to the in-house wine selection. Reservations required."
+    "longDesc": "Becker's Restaurant sits at the top tier of German Michelin-starred dining and is housed inside the family's Weinhaus Becker in Olewig. Wolfgang Becker composes modern tasting menus closely tied to the in-house wine selection. Reservations required.",
+    "openingHours": "Tue-Sat from 6:30pm"
   },
   "schlemmereule": {
     "name": "Schlemmereule",
     "cuisine": "Mediterranean-Regional",
     "priceLevel": "Upscale",
     "shortDesc": "Set in the cathedral cellar on the Domfreihof. Mediterranean accents on a regional foundation.",
-    "longDesc": "Schlemmereule occupies a historic vaulted cellar on the Domfreihof, the square next to the Trier Cathedral. Petra and Hubert Scheid have been cooking Mediterranean-regional cuisine at a consistently high level here for decades. Excellent wine list focused on the Mosel, with a calm atmosphere."
+    "longDesc": "Schlemmereule occupies a historic vaulted cellar on the Domfreihof, the square next to the Trier Cathedral. Petra and Hubert Scheid have been cooking Mediterranean-regional cuisine at a consistently high level here for decades. Excellent wine list focused on the Mosel, with a calm atmosphere.",
+    "openingHours": "Tue-Sat 12pm-2pm, 6pm-10pm"
   },
   "bagatelle": {
     "name": "Bagatelle",
     "cuisine": "Bistro",
     "priceLevel": "Upscale",
     "shortDesc": "Charming bistro with a French slant on Zuckerbergstraße.",
-    "longDesc": "Bagatelle is Trier's top address for bistro cooking: a tight menu, carefully built sauces, and a wine recommendation for every course. Lovely summer terrace, intimate interior. Reservations recommended."
+    "longDesc": "Bagatelle is Trier's top address for bistro cooking: a tight menu, carefully built sauces, and a wine recommendation for every course. Lovely summer terrace, intimate interior. Reservations recommended.",
+    "openingHours": "Tue-Sat 6pm-11pm"
   },
   "weinstube-kesselstatt": {
     "name": "Weinstube Kesselstatt",
     "cuisine": "Regional / Wine Tavern",
     "priceLevel": "Mid-range",
     "shortDesc": "Classic wine tavern on Liebfrauenplatz. Regional cooking, Mosel wines, and a wonderful terrace.",
-    "longDesc": "Weinstube Kesselstatt inside the Palais Kesselstatt on Liebfrauenplatz is Trier at its purest: a courtyard terrace looking onto the cathedral and the Liebfrauenkirche (Church of Our Lady), a regional menu with Moselle classics, and wines from Reichsgraf von Kesselstatt. On a sunny day, the prettiest seat in town."
+    "longDesc": "Weinstube Kesselstatt inside the Palais Kesselstatt on Liebfrauenplatz is Trier at its purest: a courtyard terrace looking onto the cathedral and the Liebfrauenkirche (Church of Our Lady), a regional menu with Moselle classics, and wines from Reichsgraf von Kesselstatt. On a sunny day, the prettiest seat in town.",
+    "openingHours": "Daily 11am-11pm"
   },
   "zum-domstein": {
     "name": "Zum Domstein",
     "cuisine": "Regional / Roman",
     "priceLevel": "Mid-range",
     "shortDesc": "Restaurant built over a Roman wine press. Regional cuisine plus historical Roman menus.",
-    "longDesc": "Zum Domstein stands over an original 4th-century Roman wine press, which guests can visit in the cellar. The menu features regional dishes and, on request, a historical Roman menu reconstructed from ancient Apicius recipes. Touristy, but well done."
+    "longDesc": "Zum Domstein stands over an original 4th-century Roman wine press, which guests can visit in the cellar. The menu features regional dishes and, on request, a historical Roman menu reconstructed from ancient Apicius recipes. Touristy, but well done.",
+    "openingHours": "Daily 9am-11pm"
   },
   "kartoffelkiste": {
     "name": "Kartoffelkiste",
     "cuisine": "Regional",
     "priceLevel": "Mid-range",
     "shortDesc": "A Trier classic built around potato dishes. Family-friendly, generous portions, cozy.",
-    "longDesc": "Kartoffelkiste on the Hauptmarkt (the main market square) is a Trier classic for anyone who likes potatoes in every form: from potato pancakes to jacket potatoes, paired with Moselle sides. Family-friendly with fair portions."
+    "longDesc": "Kartoffelkiste on the Hauptmarkt (the main market square) is a Trier classic for anyone who likes potatoes in every form: from potato pancakes to jacket potatoes, paired with Moselle sides. Family-friendly with fair portions.",
+    "openingHours": "Daily 11:30am-11pm"
   },
   "pfeffermuehle": {
     "name": "Pfeffermühle",
     "cuisine": "Modern Regional",
     "priceLevel": "Upscale",
     "shortDesc": "Restaurant with a modern take on Moselle cuisine in the Zurlauben fishermen's quarter.",
-    "longDesc": "Pfeffermühle on the Zurlaubener Ufer pairs a romantic riverside setting on the Moselle with modern regional cooking. A lovely terrace right by the water, a seasonal menu, and an elevated wine list. Also a good pick for a birthday dinner."
+    "longDesc": "Pfeffermühle on the Zurlaubener Ufer pairs a romantic riverside setting on the Moselle with modern regional cooking. A lovely terrace right by the water, a seasonal menu, and an elevated wine list. Also a good pick for a birthday dinner.",
+    "openingHours": "Tue-Sun 12pm-2pm, 6pm-10pm"
   },
   "bei-joh-und-otto": {
     "name": "Bei Joh und Otto",
     "cuisine": "Modern",
     "priceLevel": "Upscale",
     "shortDesc": "Young restaurant with modern cuisine, a short menu, and a thoughtful wine selection.",
-    "longDesc": "Bei Joh und Otto represents Trier's younger high-end kitchen: a short, frequently changing menu, modern takes on classics, and a curated wine selection. The place to go if you want to experience Trier's food scene beyond the tourist drag."
+    "longDesc": "Bei Joh und Otto represents Trier's younger high-end kitchen: a short, frequently changing menu, modern takes on classics, and a curated wine selection. The place to go if you want to experience Trier's food scene beyond the tourist drag.",
+    "openingHours": "Wed-Sat 6pm-11pm"
   },
   "weingut-reverchon": {
     "name": "Weingut Reverchon",
     "cuisine": "Winery / Wine Tavern",
     "priceLevel": "Mid-range",
     "shortDesc": "Winery with a courtyard wine tavern. Estate wines plus Moselle platters, tarte flambée, and winemaker's bread.",
-    "longDesc": "Weingut Reverchon in Olewig opens its courtyard wine tavern to guests. The menu features estate wines by the glass and by the bottle, Moselle platters, tarte flambée, and house-made winemaker salads. Summer terrace and on-site wine sales."
+    "longDesc": "Weingut Reverchon in Olewig opens its courtyard wine tavern to guests. The menu features estate wines by the glass and by the bottle, Moselle platters, tarte flambée, and house-made winemaker salads. Summer terrace and on-site wine sales.",
+    "openingHours": "Wed-Sun 4pm-11pm (seasonal)"
   },
   "weingut-rummel": {
     "name": "Weingut Rummel",
     "cuisine": "Winery / Straußwirtschaft",
     "priceLevel": "Budget",
     "shortDesc": "A classic Olewig Straußwirtschaft (seasonal tavern run by a winery). Estate wine, a simple menu, and a local atmosphere.",
-    "longDesc": "Weingut Rummel is Olewig in its purest form: a Straußwirtschaft in the courtyard, estate Riesling and Elbling wines, and a menu of platters, vintner's soup, and fried potatoes. Local, honest, and fairly priced."
+    "longDesc": "Weingut Rummel is Olewig in its purest form: a Straußwirtschaft in the courtyard, estate Riesling and Elbling wines, and a menu of platters, vintner's soup, and fried potatoes. Local, honest, and fairly priced.",
+    "openingHours": "Strausswirtschaft season Apr-Oct, Thu-Sun 4pm-11pm"
   },
   "weinstube-palais-kesselstatt": {
     "name": "Weinstube Palais Kesselstatt (Olewig)",
     "cuisine": "Wine Tavern",
     "priceLevel": "Mid-range",
     "shortDesc": "The wine tavern of Weingut Kesselstatt, with tastings and a small menu.",
-    "longDesc": "Weingut Reichsgraf von Kesselstatt offers tastings and wine-tavern service in Olewig. Riesling from Spätlese to dry, charcuterie platters, a cheese selection, and on-site wine sales. A quiet insider tip."
+    "longDesc": "Weingut Reichsgraf von Kesselstatt offers tastings and wine-tavern service in Olewig. Riesling from Spätlese to dry, charcuterie platters, a cheese selection, and on-site wine sales. A quiet insider tip.",
+    "openingHours": "Seasonal Wed-Sun 2pm-10pm"
   },
   "trierer-weinhaus": {
     "name": "Trierer Weinhaus",
@@ -88,77 +99,88 @@
     "cuisine": "Italian",
     "priceLevel": "Mid-range",
     "shortDesc": "Italian chain serving oversized pizzas on the Hauptmarkt. Reliable and family-friendly.",
-    "longDesc": "L'Osteria on Trier's Hauptmarkt (the main market square) reliably turns out oversized pizzas, classic pastas, and a small wine list. Family-friendly and quick. Reservations are a good idea on weekends."
+    "longDesc": "L'Osteria on Trier's Hauptmarkt (the main market square) reliably turns out oversized pizzas, classic pastas, and a small wine list. Family-friendly and quick. Reservations are a good idea on weekends.",
+    "openingHours": "Daily 11:30am-11pm"
   },
   "ristorante-la-bottega": {
     "name": "Ristorante La Bottega",
     "cuisine": "Italian",
     "priceLevel": "Upscale",
     "shortDesc": "Ambitious Italian on Glockenstraße. Seasonal menu and a good wine list.",
-    "longDesc": "La Bottega is Trier's ambitious Italian. House-made pasta, fresh antipasti, seasonal specialties, and a genuinely respectable Italian wine list. A small dining room, so reservations are advised."
+    "longDesc": "La Bottega is Trier's ambitious Italian. House-made pasta, fresh antipasti, seasonal specialties, and a genuinely respectable Italian wine list. A small dining room, so reservations are advised.",
+    "openingHours": "Mon-Sat 12pm-2pm, 6pm-11pm"
   },
   "pizzeria-donna-margherita": {
     "name": "Pizzeria Donna Margherita",
     "cuisine": "Italian",
     "priceLevel": "Mid-range",
     "shortDesc": "Small pizzeria on Sichelstraße. Wood-fired Neapolitan pizza at fair prices.",
-    "longDesc": "Donna Margherita fires Neapolitan-style pizzas in a wood oven. Small, often packed, and very reasonably priced. Classics over experiments."
+    "longDesc": "Donna Margherita fires Neapolitan-style pizzas in a wood oven. Small, often packed, and very reasonably priced. Classics over experiments.",
+    "openingHours": "Tue-Sun 5pm-10pm"
   },
   "vapiano-trier": {
     "name": "Vapiano Trier",
     "cuisine": "Italian",
     "priceLevel": "Mid-range",
     "shortDesc": "Italian chain with live-cooking stations on the Viehmarkt.",
-    "longDesc": "Vapiano on the Viehmarkt runs the familiar concept of live-cooking stations for pasta, pizza, and salad. Modern interior, well suited to quick lunch breaks and groups."
+    "longDesc": "Vapiano on the Viehmarkt runs the familiar concept of live-cooking stations for pasta, pizza, and salad. Modern interior, well suited to quick lunch breaks and groups.",
+    "openingHours": "Daily 11am-11pm"
   },
   "akito-sushi": {
     "name": "Akito Sushi",
     "cuisine": "Japanese / Sushi",
     "priceLevel": "Mid-range",
     "shortDesc": "Sushi spot on Bruchhausenstraße. Fresh fish, fair prices, delivery available.",
-    "longDesc": "Akito Sushi is Trier's established sushi address. Classic maki, nigiri, and bowls, a well-priced lunch menu, and a thoughtfully chosen Japanese beer and sake selection in the evenings."
+    "longDesc": "Akito Sushi is Trier's established sushi address. Classic maki, nigiri, and bowls, a well-priced lunch menu, and a thoughtfully chosen Japanese beer and sake selection in the evenings.",
+    "openingHours": "Mon-Sat 12pm-2pm, 5:30pm-10pm"
   },
   "bambus-vietnamesisch": {
     "name": "Bambus",
     "cuisine": "Vietnamese",
     "priceLevel": "Mid-range",
     "shortDesc": "Small Vietnamese restaurant. Pho, bun bo nam bo, and summer rolls.",
-    "longDesc": "Bambus serves Vietnamese classics, pho, bun, summer rolls, and grilled skewers, in a relaxed setting. Fair prices, house-made sauces, and a friendly family-run feel."
+    "longDesc": "Bambus serves Vietnamese classics, pho, bun, summer rolls, and grilled skewers, in a relaxed setting. Fair prices, house-made sauces, and a friendly family-run feel.",
+    "openingHours": "Tue-Sun 11:30am-10pm"
   },
   "saigon-thai": {
     "name": "Saigon",
     "cuisine": "Thai",
     "priceLevel": "Mid-range",
     "shortDesc": "Thai cuisine on Brückenstraße. Curries, glass noodles, and heat to order.",
-    "longDesc": "Saigon cooks classic Thai: red and green curries, pad thai, and glass-noodle salads. Heat level to taste, a nice lunch menu, and a well-kept dining room."
+    "longDesc": "Saigon cooks classic Thai: red and green curries, pad thai, and glass-noodle salads. Heat level to taste, a nice lunch menu, and a well-kept dining room.",
+    "openingHours": "Mon-Sat 11:30am-10pm"
   },
   "bistro-quo-vadis": {
     "name": "Bistro Quo Vadis",
     "cuisine": "Bistro",
     "priceLevel": "Mid-range",
     "shortDesc": "Bistro with a rotating daily menu and a solid wine list on Stockplatz.",
-    "longDesc": "Quo Vadis is an honest bistro for lunch and relaxed evenings. A daily menu with three or four mains, always fairly priced, and a solid wine list."
+    "longDesc": "Quo Vadis is an honest bistro for lunch and relaxed evenings. A daily menu with three or four mains, always fairly priced, and a solid wine list.",
+    "openingHours": "Mon-Sat 11:30am-10pm"
   },
   "lieblingsstube": {
     "name": "Lieblingsstube",
     "cuisine": "Café & Bistro",
     "priceLevel": "Mid-range",
     "shortDesc": "Café-bistro serving breakfast all day. Homemade cakes and a small hot menu.",
-    "longDesc": "Lieblingsstube is a meeting point for locals who like a good breakfast that stretches past noon. Homemade cakes, a sandwich menu, a small hot daily menu, and a lovely atmosphere."
+    "longDesc": "Lieblingsstube is a meeting point for locals who like a good breakfast that stretches past noon. Homemade cakes, a sandwich menu, a small hot daily menu, and a lovely atmosphere.",
+    "openingHours": "Daily 9am-7pm"
   },
   "burgerlich": {
     "name": "Burgerlich",
     "cuisine": "Burgers",
     "priceLevel": "Mid-range",
     "shortDesc": "Burger spot offering several patty options, a fries menu, and craft beer.",
-    "longDesc": "Burgerlich serves burgers beyond the chain template: beef patties, pulled pork, and a vegetarian patty made with beans and quinoa. Several fries variations and craft beer from regional breweries."
+    "longDesc": "Burgerlich serves burgers beyond the chain template: beef patties, pulled pork, and a vegetarian patty made with beans and quinoa. Several fries variations and craft beer from regional breweries.",
+    "openingHours": "Daily 12pm-10pm"
   },
   "tabula-rasa": {
     "name": "Tabula Rasa",
     "cuisine": "Modern",
     "priceLevel": "Upscale",
     "shortDesc": "Young, modern restaurant with rotating menus and bold flavors.",
-    "longDesc": "Tabula Rasa is one of Trier's newer restaurants with a clear modern identity: a rotating four- to six-course menu, bold flavors, and a strong natural-wine list. Reservations recommended."
+    "longDesc": "Tabula Rasa is one of Trier's newer restaurants with a clear modern identity: a rotating four- to six-course menu, bold flavors, and a strong natural-wine list. Reservations recommended.",
+    "openingHours": "Wed-Sat 6:30pm-10:30pm"
   },
   "weinstube-fwg": {
     "name": "Weinstube Friedrich-Wilhelm-Gymnasium",

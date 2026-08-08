@@ -9,7 +9,7 @@ import { sights, type Sight } from "../../../data/sights";
 import { getDistrict } from "../../../data/districts";
 import { getCategory } from "../../../data/categories";
 import { getGyg, gygCmp } from "../../../data/gyg";
-import { sightSchema, breadcrumbSchema } from "../../../lib/schema";
+import { sightSchema, breadcrumbSchema, faqSchema } from "../../../lib/schema";
 import { localize, sightEnrichmentsByLang, t } from "../../../lib/i18n";
 import { city } from "../../../data/city";
 
@@ -45,6 +45,7 @@ const moreInfo: string[] = (sightEnrichmentsByLang(lang) ?? {})[sight.slug] ?? [
       { name: t(lang, "breadcrumb.sights"), url: "/en/sights/" },
       { name: sight.name },
     ]),
+    ...(sight.faq && sight.faq.length > 0 ? [faqSchema(sight.faq)] : []),
   ]}
 >
   <article>
@@ -85,10 +86,10 @@ const moreInfo: string[] = (sightEnrichmentsByLang(lang) ?? {})[sight.slug] ?? [
           <span class="k">{t(lang, "sections.admission")}</span>
           <b>{priceLabel}</b>
         </div>
-        {src.openingHours && (
+        {sight.openingHours && (
           <div>
             <span class="k">Hours (operator)</span>
-            <b>{src.openingHours}</b>
+            <b>{sight.openingHours}</b>
           </div>
         )}
         {src.websiteUrl ? (
@@ -127,6 +128,20 @@ const moreInfo: string[] = (sightEnrichmentsByLang(lang) ?? {})[sight.slug] ?? [
       <div id="hotels-nearby">
         <Stay22NearbyHotels lat={src.coordinates[0]} lng={src.coordinates[1]} near={sight.name} radius={1500} limit={4} lang="en" />
       </div>
+
+      {sight.faq && sight.faq.length > 0 && (
+        <section class="max-w-3xl mt-14">
+          <h2 class="display mb-6">Frequently asked questions about {sight.name}</h2>
+          <div class="space-y-5">
+            {sight.faq.map((f) => (
+              <div>
+                <h3 class="text-lg font-medium mb-1" style="color: var(--color-text);">{f.q}</h3>
+                <p class="text-body" set:html={f.a} />
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       {related.length > 0 && (
         <section class="section">

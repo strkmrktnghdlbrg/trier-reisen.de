@@ -25,6 +25,13 @@ const navItems = [
 
 const searchPath = sectionPath(lang, "search");
 const otherLang: Lang = lang === "de" ? "en" : "de";
+// Logo und aria-Label sprachabhaengig: DE bleibt woertlich wie bisher.
+const homeHref = lang === "de" ? "/" : "/en/";
+const homeLabel = lang === "de" ? `${city.brandName} Startseite` : `${city.brandName} home`;
+const mainNavLabel = lang === "de" ? "Hauptnavigation" : "Main navigation";
+const mobileNavLabel = lang === "de" ? "Hauptnavigation mobil" : "Mobile main navigation";
+const menuOpenLabel = lang === "de" ? "Menü öffnen" : "Open menu";
+const menuCloseLabel = lang === "de" ? "Menü schließen" : "Close menu";
 // Fallback: zur Startseite der anderen Sprache, wenn kein Mapping uebergeben wurde.
 const switcherHref = altLangPath ?? (otherLang === "de" ? "/" : "/en/");
 ---
@@ -32,11 +39,11 @@ const switcherHref = altLangPath ?? (otherLang === "de" ? "/" : "/en/");
 <header class="sticky top-0 z-40 backdrop-blur-md border-b" style="background: color-mix(in oklab, var(--color-bg) 92%, transparent); border-color: var(--color-border);">
   <div class="container-page">
     <div class="flex items-center justify-between h-16 gap-6">
-      <a href="/" class="flex items-center shrink-0" style="color: var(--color-accent);" aria-label={`${city.brandName} Startseite`}>
+      <a href={homeHref} class="flex items-center shrink-0" style="color: var(--color-accent);" aria-label={homeLabel}>
         <Image src={logo} alt={city.brandName} width={320} height={64} class="h-10 w-auto" />
       </a>
 
-      <nav class="hidden lg:flex items-center gap-1" aria-label="Hauptnavigation">
+      <nav class="hidden lg:flex items-center gap-1" aria-label={mainNavLabel}>
         {navItems.map((item) => (
           <a href={item.href} class="px-3 py-2 text-sm font-medium rounded-full transition-colors hover:bg-[var(--color-surface)]" style="color: var(--color-text);">
             {item.label}
@@ -65,14 +72,14 @@ const switcherHref = altLangPath ?? (otherLang === "de" ? "/" : "/en/");
           </svg>
         </a>
         {features.werben.enabled && (
-          <a href="/werben/" class="btn-outline hidden lg:inline-flex">Werben</a>
+          <a href="/werben/" class="btn-outline hidden lg:inline-flex">{lang === "de" ? "Werben" : "Advertise"}</a>
         )}
         <button
           type="button"
           data-mobile-menu-toggle
           aria-expanded="false"
           aria-controls="mobile-menu"
-          aria-label="Menü öffnen"
+          aria-label={menuOpenLabel}
           class="lg:hidden inline-flex items-center justify-center w-11 h-11 rounded-xl border hover:bg-[var(--color-surface)] transition-colors"
           style="color: var(--color-text); border-color: var(--color-border);"
         >
@@ -97,13 +104,13 @@ const switcherHref = altLangPath ?? (otherLang === "de" ? "/" : "/en/");
     aria-hidden="true"
   >
     <div class="flex items-center justify-between px-5 py-4 border-b shrink-0" style="border-color: var(--color-border);">
-      <a href="/" class="flex items-center shrink-0" style="color: var(--color-accent);" aria-label={`${city.brandName} Startseite`}>
+      <a href={homeHref} class="flex items-center shrink-0" style="color: var(--color-accent);" aria-label={homeLabel}>
         <Image src={logo} alt={city.brandName} width={320} height={64} class="h-8 w-auto" />
       </a>
       <button
         type="button"
         data-mobile-menu-close
-        aria-label="Menü schließen"
+        aria-label={menuCloseLabel}
         class="inline-flex items-center justify-center w-10 h-10 rounded-lg hover:bg-[var(--color-surface)] transition-colors"
         style="color: var(--color-text);"
       >
@@ -113,7 +120,7 @@ const switcherHref = altLangPath ?? (otherLang === "de" ? "/" : "/en/");
       </button>
     </div>
 
-    <nav class="flex-1 overflow-y-auto px-3 py-4" aria-label="Hauptnavigation mobil">
+    <nav class="flex-1 overflow-y-auto px-3 py-4" aria-label={mobileNavLabel}>
       <ul class="space-y-1">
         {navItems.map((item) => (
           <li>

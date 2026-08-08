@@ -33,7 +33,7 @@ const gyg = getGyg("index:reiseplaner", "en");
       {localized.map((g) => (
         <a href={detailPath(lang, "travelPlanner", g.slug)} class="tile">
           <div class="pic">
-            <ContentImage imgKey={g.imageKey} fallbackHue={g.hue} fallbackLabel={g.title} imgClass="w-full h-full object-cover" />
+            <ContentImage imgKey={g.imageKey} fallbackHue={g.hue} fallbackLabel={g.title} imgClass="w-full h-full object-cover" lang="en" />
           </div>
           <div class="veil"></div>
           <span class="tag">{g.eyebrow}</span>

@@ -1,0 +1,187 @@
+---
+/**
+ * English season/event hotel landing pages (Stay22).
+ * Schema:  /en/hotels-trier-<german-slug>/
+ *   /en/hotels-trier-weihnachtsmarkt-2026/
+ *   /en/hotels-trier-antikenfestspiele-2026/
+ *   /en/hotels-trier-silvester-2026/
+ *   ...
+ * Slugs stay German on purpose - only the path segments are translated,
+ * exactly like every other /en/ route in this repo.
+ */
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import Stay22HotelCard from "../../components/Stay22HotelCard.astro";
+import Stay22Map from "../../components/Stay22Map.astro";
+import { events, isUpcoming, type CityEvent } from "../../data/events";
+import { searchAccommodations, type Stay22Accommodation } from "../../lib/stay22";
+import { affiliate } from "../../data/affiliate";
+import { city } from "../../data/city";
+import { localize, t } from "../../lib/i18n";
+import { breadcrumbSchema } from "../../lib/schema";
+
+export function getStaticPaths() {
+  return events.map((e) => ({ params: { event: e.slug }, props: { event: e } }));
+}
+
+interface Props { event: CityEvent }
+const { event: src } = Astro.props;
+const lang = "en" as const;
+const event = localize("events", src as any, lang) as any;
+
+const upcoming = isUpcoming(src);
+const lmaId = affiliate.stay22.lmaId;
+
+let hotels: Stay22Accommodation[] | null = null;
+if (upcoming) {
+  try {
+    hotels = await searchAccommodations({
+      provider: "booking",
+      ...(src.lat && src.lng
+        ? { lat: src.lat, lng: src.lng, radius: src.radius ?? 2500 }
+        : { address: src.address }),
+      type: "hotel",
+      checkin: src.checkin,
+      checkout: src.checkout,
+      minguestrating: 7.5,
+      max: src.maxPricePerNight,
+      limit: src.limit ?? 12,
+      currency: "EUR",
+      lang: "en",
+      aid: lmaId,
+      campaign: lmaId,
+    });
+  } catch (err) {
+    console.error(`[EN hotels-trier-${src.slug}] Stay22 fetch:`, err);
+  }
+}
+const visible = hotels && hotels.length > 0 ? hotels.slice(0, src.limit ?? 12) : [];
+
+// US date and time conventions throughout.
+const US_DATE = { month: "long", day: "numeric", year: "numeric" } as const;
+const checkin = new Date(src.checkin);
+const checkout = new Date(src.checkout);
+const checkinFmt = checkin.toLocaleDateString("en-US", US_DATE);
+const checkoutFmt = checkout.toLocaleDateString("en-US", US_DATE);
+const nights = Math.round((checkout.getTime() - checkin.getTime()) / (1000 * 60 * 60 * 24));
+const nightsLabel = `${nights} ${t(lang, nights === 1 ? "sections.nightsLabelSingular" : "sections.nightsLabelPlural")}`;
+const dateRange = `${checkinFmt} to ${checkoutFmt}`;
+const buildTime = new Date().toLocaleDateString("en-US", US_DATE);
+
+/**
+ * Season entries already carry a finished English headline ("Hotels in Trier
+ * for Easter 2026"). Real events carry the festival name plus an English
+ * gloss in parentheses, so the headline is assembled around it.
+ */
+const glossMatch = String(event.title).match(/^(.*?)\s*\(([^)]+)\)\s*$/);
+const bareTitle = glossMatch ? glossMatch[1] : String(event.title);
+const gloss = glossMatch ? glossMatch[2] : null;
+const coreName = bareTitle.replace(/^Trier\s+/, "");
+const title =
+  src.kind === "season"
+    ? String(event.title)
+    : `${t(lang, "hotelEvent.titlePrefix")} ${coreName}${gloss ? ` (${gloss})` : ""}`;
+
+const availableHeading = t(lang, "hotelEvent.availableHeading").replace("{range}", dateRange);
+const availableLead = t(lang, "hotelEvent.availableLead").replace("{nights}", nightsLabel);
+const priceNote = t(lang, "hotelEvent.priceNote").replace("{date}", buildTime);
+const mapHeading = t(lang, "hotelEvent.mapHeading").replace("{address}", src.address);
+---
+
+<BaseLayout
+  title={title}
+  description={event.description}
+  lang={lang}
+  altLangPath={`/hotels-trier-${src.slug}/`}
+  schema={breadcrumbSchema([
+    { name: city.name, url: "/en/" },
+    { name: t(lang, "breadcrumb.hotels"), url: "/en/hotels/" },
+    { name: title },
+  ])}
+>
+  <article class="container-page py-12">
+    <Breadcrumbs items={[
+      { href: "/en/", label: city.name },
+      { href: "/en/hotels/", label: t(lang, "breadcrumb.hotels") },
+      { label: event.eyebrow },
+    ]} />
+
+    <div class="max-w-3xl mb-8">
+      <p class="eyebrow mb-3">{event.eyebrow}</p>
+      <h1 class="display-xl mb-4">{title}</h1>
+      <div class="flex flex-wrap items-center gap-3 text-sm mb-6">
+        <span class="pill">{t(lang, "sections.checkin")} {checkinFmt}</span>
+        <span class="pill">{t(lang, "sections.checkout")} {checkoutFmt}</span>
+        <span class="pill">{nightsLabel}</span>
+      </div>
+      <p class="text-body text-lg leading-relaxed">{event.intro}</p>
+      {event.longDesc && <p class="text-body mt-4 leading-relaxed">{event.longDesc}</p>}
+      {src.kind !== "season" && (
+        <p class="text-body mt-4">
+          {t(lang, "hotelEvent.eventDetailLead")}{" "}
+          <a href={`/en/events/${src.slug}/`} class="link-accent">{bareTitle}</a>
+        </p>
+      )}
+    </div>
+
+    {!upcoming && (
+      <div class="card p-6 max-w-3xl">
+        <p class="text-body">
+          {t(lang, "hotelEvent.pastBody")}{" "}
+          <a href="/en/hotels/" class="link-accent">{t(lang, "hotelEvent.hotelIndexLink")}</a>.
+        </p>
+      </div>
+    )}
+
+    {upcoming && visible.length > 0 && (
+      <>
+        <section>
+          <div class="mb-6 max-w-2xl">
+            <p class="eyebrow mb-2">{t(lang, "hotelEvent.liveEyebrow")}</p>
+            <h2 class="display mb-2">{availableHeading}</h2>
+            <p class="text-body">{availableLead}</p>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {visible.map((h) => <Stay22HotelCard hotel={h} showTotal />)}
+          </div>
+          <p class="text-[11px] mt-6 leading-relaxed max-w-2xl" style="color: var(--color-text-muted);">
+            {priceNote}
+          </p>
+        </section>
+
+        {src.lat && src.lng && (
+          <section class="mt-12">
+            <div class="mb-6 max-w-2xl">
+              <p class="eyebrow mb-2">{t(lang, "hotelEvent.mapEyebrow")}</p>
+              <h2 class="display mb-2">{mapHeading}</h2>
+              <p class="text-body">{t(lang, "hotelEvent.mapLead")}</p>
+            </div>
+            <Stay22Map lat={src.lat} lng={src.lng} zoom={14} />
+          </section>
+        )}
+      </>
+    )}
+
+    {upcoming && visible.length === 0 && (
+      <div class="card p-6 max-w-3xl">
+        <p class="text-body">
+          {t(lang, "hotelEvent.noResultsBody")}{" "}
+          <a href="/en/hotels/" class="link-accent">{t(lang, "hotelEvent.hotelIndexLink")}</a>.
+        </p>
+      </div>
+    )}
+
+    <section class="mt-14 max-w-3xl">
+      <h2 class="display mb-3">{t(lang, "hotelEvent.orientationHeading")}</h2>
+      <p class="text-body leading-relaxed">{t(lang, "hotelEvent.orientationBody")}</p>
+
+      <h2 class="display mt-10 mb-3">{t(lang, "hotelEvent.neighborhoodsHeading")}</h2>
+      <p class="text-body leading-relaxed">{t(lang, "hotelEvent.neighborhoodsBody")}</p>
+
+      <p class="mt-8 flex flex-wrap gap-4 text-sm">
+        <a href="/en/hotels/" class="link-accent">{t(lang, "hotelEvent.moreHotels")}</a>
+        <a href="/en/events/" class="link-accent">{t(lang, "hotelEvent.moreEvents")}</a>
+      </p>
+    </section>
+  </article>
+</BaseLayout>

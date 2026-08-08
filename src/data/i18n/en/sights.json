@@ -2,12 +2,50 @@
   "porta-nigra": {
     "name": "Porta Nigra (the Black Gate)",
     "shortDesc": "The Black Gate, Trier's landmark and the best-preserved Roman city gate north of the Alps.",
-    "longDesc": "The Porta Nigra was built around 170 AD as the north gate of the Roman city of Augusta Treverorum. Constructed from roughly 7,200 sandstone blocks, it was converted into a double church in the Middle Ages and stripped back to its Roman form under Napoleon. Two upper levels are open to visitors, with views down the Simeonstrasse."
+    "longDesc": "The Porta Nigra was built around 170 AD as the north gate of the Roman city of Augusta Treverorum. Constructed from roughly 7,200 sandstone blocks, it was converted into a double church in the Middle Ages and stripped back to its Roman form under Napoleon. Two upper levels are open to visitors, with views down the Simeonstrasse.",
+    "faq": [
+      {
+        "q": "How much does it cost to visit the Porta Nigra?",
+        "a": "Going inside and climbing the two upper levels costs 6 euros for adults, 5 euros reduced, and 3 euros for children and teens ages 6 to 18. Seeing the gate from the outside is free at any hour. If you plan to visit several Roman monuments, the AntikenCard saves money: the Basic card (18 euros) covers two Roman sites plus the Rheinisches Landesmuseum, the Premium card (28 euros) covers all four Roman sites and the museum."
+      },
+      {
+        "q": "What are the opening hours of the Porta Nigra?",
+        "a": "The Porta Nigra is open year round: daily 9am to 6pm from April through September, until 5pm in March and October, and until 4pm from November through February. Current times are listed on the official site."
+      },
+      {
+        "q": "Why is it called the Porta Nigra?",
+        "a": "Porta Nigra is Latin for black gate, a name that comes from the dark weathering of the sandstone. The gate went up around 170 AD as the north entrance to Augusta Treverorum, the Roman city on the Moselle river that grew into today's Trier, and it was built from roughly 7,200 stone blocks."
+      },
+      {
+        "q": "Is the Porta Nigra a UNESCO World Heritage Site?",
+        "a": "Yes. The Porta Nigra has been part of the UNESCO World Heritage listing of the Roman monuments of Trier since 1986, and it is the best-preserved Roman city gate north of the Alps. The <a href=\"/en/sights/kaiserthermen/\">Kaiserthermen (Imperial Baths)</a> and the <a href=\"/en/sights/amphitheater/\">amphitheater</a> are only a few minutes' walk away."
+      }
+    ],
+    "openingHours": "Apr-Sep 9am-6pm, Mar/Oct 9am-5pm, Nov-Feb 9am-4pm"
   },
   "trierer-dom": {
     "name": "Trier Cathedral (Dom St. Peter)",
     "shortDesc": "Germany's oldest bishop's church. Home to the Holy Robe, the cathedral treasury, and Romanesque mass right on the Hauptmarkt (the main market square).",
-    "longDesc": "At its core, Trier Cathedral goes back to the Constantinian church complex of the 4th century. It combines a Romanesque twin-tower facade, a Gothic reliquary ambulatory, and a Baroque chapel housing the Holy Robe. The relic itself is shown only during rare pilgrimages, the most recent of which drew more than half a million pilgrims in 2012."
+    "longDesc": "At its core, Trier Cathedral goes back to the Constantinian church complex of the 4th century. It combines a Romanesque twin-tower facade, a Gothic reliquary ambulatory, and a Baroque chapel housing the Holy Robe. The relic itself is shown only during rare pilgrimages, the most recent of which drew more than half a million pilgrims in 2012.",
+    "faq": [
+      {
+        "q": "Is there an admission charge for Trier Cathedral?",
+        "a": "Trier Cathedral (Dom St. Peter) is open to visitors and admission is free. The cathedral treasury may charge a separate fee. Visitors are asked to be considerate when services are underway."
+      },
+      {
+        "q": "What are the opening hours of Trier Cathedral?",
+        "a": "The cathedral is open daily from 6:30am to 6pm from April through October, and from 6:30am to 5:30pm in the winter months. Sightseeing is only partly possible while services are being held."
+      },
+      {
+        "q": "What is the Heiliger Rock (the Holy Robe) in Trier Cathedral?",
+        "a": "The Heiliger Rock (the Holy Robe) is venerated as the garment of Christ and is the cathedral's most important relic. It goes on public display only during rare pilgrimages; the last one, in 2012, brought more than half a million pilgrims to Trier."
+      },
+      {
+        "q": "Is Trier Cathedral a UNESCO World Heritage Site?",
+        "a": "Yes. Dom St. Peter has been part of Trier's UNESCO World Heritage listing since 1986 and is the oldest bishop's church in Germany. The early Gothic <a href=\"/en/sights/liebfrauenkirche/\">Liebfrauenkirche (Church of Our Lady)</a> stands directly beside it."
+      }
+    ],
+    "openingHours": "Apr-Oct 6:30am-6pm, Nov-Mar 6:30am-5:30pm"
   },
   "liebfrauenkirche": {
     "name": "Liebfrauenkirche (Church of Our Lady)",
@@ -17,22 +55,76 @@
   "konstantinbasilika": {
     "name": "Konstantinbasilika (Basilica of Constantine)",
     "shortDesc": "The ancient throne hall of Emperor Constantine, today the city's main Protestant church. A 27 m high hall with no internal supports.",
-    "longDesc": "The Aula Palatina was the throne hall of the late Roman emperor Constantine. At 67 m long, 27 m wide, and 33 m high, it is one of the largest surviving single-room buildings of antiquity. Today it serves as the Protestant Church of the Redeemer, with services held every Sunday inside the ancient hall."
+    "longDesc": "The Aula Palatina was the throne hall of the late Roman emperor Constantine. At 67 m long, 27 m wide, and 33 m high, it is one of the largest surviving single-room buildings of antiquity. Today it serves as the Protestant Church of the Redeemer, with services held every Sunday inside the ancient hall.",
+    "openingHours": "Apr-Oct Mon-Sat 10am-6pm, Sun 1pm-6pm; shorter hours Nov-Mar"
   },
   "kaiserthermen": {
     "name": "Imperial Baths (Kaiserthermen)",
     "shortDesc": "Monumental Roman bath ruins. Visitors can explore apses, hypocaust channels, and the underground service tunnels.",
-    "longDesc": "The Imperial Baths were built in the 4th century as the prestige thermae of the imperial residence. They were never completed as a working bath, and later served as barracks and as part of the city wall fortification. Today they are a UNESCO World Heritage site, and the underground service corridors are fully accessible."
+    "longDesc": "The Imperial Baths were built in the 4th century as the prestige thermae of the imperial residence. They were never completed as a working bath, and later served as barracks and as part of the city wall fortification. Today they are a UNESCO World Heritage site, and the underground service corridors are fully accessible.",
+    "faq": [
+      {
+        "q": "How much do the Kaiserthermen in Trier cost?",
+        "a": "Admission to the Kaiserthermen (Imperial Baths) is 6 euros for adults, 5 euros reduced, and 3 euros for children and teens. If you are seeing several Roman sites, the AntikenCard pays off: Basic (18 euros) covers two Roman monuments plus the Rheinisches Landesmuseum, Premium (28 euros) covers all four Roman monuments and the museum."
+      },
+      {
+        "q": "When are the Kaiserthermen open?",
+        "a": "The Kaiserthermen are open daily 9am to 6pm from April through September, until 5pm in March and October, and until 4pm from November through February."
+      },
+      {
+        "q": "What is there to see at the Kaiserthermen?",
+        "a": "The site preserves the massive apses of the 4th-century imperial baths, along with the underground service tunnels, which you can walk from end to end. The complex was never finished as a working bath and later served as barracks and as a fortress. Less visited, but larger in sheer area, are the nearby <a href=\"/en/sights/barbarathermen/\">Barbarathermen (Barbara Baths)</a>."
+      },
+      {
+        "q": "Are the Kaiserthermen a UNESCO World Heritage Site?",
+        "a": "Yes. The Kaiserthermen have been part of the UNESCO World Heritage listing of the Roman monuments of Trier since 1986."
+      }
+    ],
+    "openingHours": "Apr-Sep 9am-6pm, Mar/Oct 9am-5pm, Nov-Feb 9am-4pm"
   },
   "barbarathermen": {
     "name": "Barbara Baths (Barbarathermen)",
     "shortDesc": "The older and larger sibling of the Imperial Baths. An open-air field of ruins.",
-    "longDesc": "The Barbara Baths were built in the 2nd century and ranked among the largest thermae in the Roman Empire. Large sections of the substructures remain visible today, and the walking tour is freely accessible. Less touristy than the Imperial Baths, and more impressive in sheer scale."
+    "longDesc": "The Barbara Baths were built in the 2nd century and ranked among the largest thermae in the Roman Empire. Large sections of the substructures remain visible today, and the walking tour is freely accessible. Less touristy than the Imperial Baths, and more impressive in sheer scale.",
+    "faq": [
+      {
+        "q": "Is there an admission charge for the Barbarathermen?",
+        "a": "No. The visitor walkway over the Barbarathermen (Barbara Baths) is free during opening hours. Nine stations along the route explain the architecture, the fittings, and how Roman bathing worked. The site sits on the Südallee, a few minutes' walk from the <a href=\"/en/sights/kaiserthermen/\">Kaiserthermen (Imperial Baths)</a>."
+      },
+      {
+        "q": "When are the Barbarathermen open?",
+        "a": "The Barbarathermen are open daily 9am to 6pm from April through September, until 5pm in March and October, and until 4pm from November through February. Last admission is 30 minutes before closing."
+      },
+      {
+        "q": "What is the difference between the Barbarathermen and the Kaiserthermen?",
+        "a": "The Barbarathermen are the older and, in floor area, the larger complex, built in the 2nd century, and today they are an open field of ruins you can walk through for free. The <a href=\"/en/sights/kaiserthermen/\">Kaiserthermen (Imperial Baths)</a> date from the 4th century, are better preserved, and charge admission. Both have been part of the UNESCO World Heritage listing of the Roman monuments of Trier since 1986."
+      }
+    ],
+    "openingHours": "Apr-Sep 9am-6pm, Mar/Oct 9am-5pm, Nov-Feb 9am-4pm"
   },
   "amphitheater": {
     "name": "Trier Amphitheater",
     "shortDesc": "UNESCO-listed amphitheater with underground lift shafts. In summer it hosts the Antikenfestspiele (ancient world festival).",
-    "longDesc": "The Trier Amphitheater was built around 100 AD and seated roughly 20,000 spectators. The tiered embankments survive, along with the underground cellar with lift shafts through which gladiators and animals were brought into the arena. Each summer it serves as the venue for the Antikenfestspiele."
+    "longDesc": "The Trier Amphitheater was built around 100 AD and seated roughly 20,000 spectators. The tiered embankments survive, along with the underground cellar with lift shafts through which gladiators and animals were brought into the arena. Each summer it serves as the venue for the Antikenfestspiele.",
+    "faq": [
+      {
+        "q": "How much is admission to the Trier amphitheater?",
+        "a": "Admission to the Roman amphitheater is 6 euros for adults, 5 euros reduced, and 3 euros for children and teens. The AntikenCard brings down the price per site: Basic (18 euros) covers two Roman monuments plus the Rheinisches Landesmuseum, Premium (28 euros) covers all four Roman monuments and the museum. In the summer of 2026, children and teens under 18 get in free from June 26 through August 9."
+      },
+      {
+        "q": "When is the Trier amphitheater open?",
+        "a": "The amphitheater is open daily 9am to 6pm from April through September, until 5pm in March and October, and until 4pm from November through February."
+      },
+      {
+        "q": "How many spectators was the amphitheater built for?",
+        "a": "Built around 100 AD, the amphitheater held roughly 20,000 spectators. What survives are the tiered seating embankments and the underground cellars with their lift shafts, which brought gladiators and animals up into the arena."
+      },
+      {
+        "q": "Are events held in the amphitheater?",
+        "a": "Yes. Every summer the amphitheater is the stage for the Antikenfestspiele Trier, the city's ancient world festival. It has been part of the UNESCO World Heritage listing of the Roman monuments of Trier since 1986."
+      }
+    ],
+    "openingHours": "Apr-Sep 9am-6pm, Mar/Oct 9am-5pm, Nov-Feb 9am-4pm"
   },
   "roemerbruecke": {
     "name": "Roman Bridge (Römerbrücke)",
@@ -62,27 +154,32 @@
   "rheinisches-landesmuseum": {
     "name": "Rheinisches Landesmuseum (Rhineland State Museum)",
     "shortDesc": "One of Europe's most important museums of antiquity. Mosaics, gold coins, and the model of Roman Trier.",
-    "longDesc": "The Rheinisches Landesmuseum next to the palace gardens holds one of the most significant collections of Roman finds north of the Alps. Highlights include the Neumagen ship, the famous Neumagen wine ship tomb relief, vast mosaic floors, and the gold coin hoard discovered in 1993."
+    "longDesc": "The Rheinisches Landesmuseum next to the palace gardens holds one of the most significant collections of Roman finds north of the Alps. Highlights include the Neumagen ship, the famous Neumagen wine ship tomb relief, vast mosaic floors, and the gold coin hoard discovered in 1993.",
+    "openingHours": "Tue-Sun 10am-5pm, closed Mon"
   },
   "stadtmuseum-simeonstift": {
     "name": "Stadtmuseum Simeonstift (Simeonstift City Museum)",
     "shortDesc": "City history right next to the Porta Nigra. Includes a Romanesque cloister.",
-    "longDesc": "The Simeonstift was founded in the 11th century by Archbishop Poppo and built onto the Porta Nigra, which then served as a double church. Today it houses the city museum, with collections ranging from the Middle Ages to the 20th century. Its inner courtyard is a Romanesque cloister."
+    "longDesc": "The Simeonstift was founded in the 11th century by Archbishop Poppo and built onto the Porta Nigra, which then served as a double church. Today it houses the city museum, with collections ranging from the Middle Ages to the 20th century. Its inner courtyard is a Romanesque cloister.",
+    "openingHours": "Tue-Sun 10am-5pm"
   },
   "museum-am-dom": {
     "name": "Museum am Dom (Cathedral Museum)",
     "shortDesc": "The cathedral treasury, early Christian finds, and a calm curatorial setting next to the cathedral.",
-    "longDesc": "The Museum am Dom displays the cathedral treasury, with reliquaries, liturgical implements, and manuscripts, alongside early Christian finds from the excavations beneath the cathedral. Trier is the oldest episcopal city north of the Alps. A quiet atmosphere makes it an ideal pairing with a visit to the cathedral itself."
+    "longDesc": "The Museum am Dom displays the cathedral treasury, with reliquaries, liturgical implements, and manuscripts, alongside early Christian finds from the excavations beneath the cathedral. Trier is the oldest episcopal city north of the Alps. A quiet atmosphere makes it an ideal pairing with a visit to the cathedral itself.",
+    "openingHours": "Mon-Sat 9am-5pm, Sun 1pm-5pm"
   },
   "karl-marx-haus": {
     "name": "Karl Marx House",
     "shortDesc": "Karl Marx's birthplace (1818). Permanent exhibition on his life, work, and influence.",
-    "longDesc": "Karl Marx was born in 1818 at Brückenstrasse 10. The late Baroque townhouse is now a museum with a permanent exhibition run by the Friedrich Ebert Foundation. It was completely overhauled in 2018 for the bicentenary, replacing a relic-style display with a modern presentation."
+    "longDesc": "Karl Marx was born in 1818 at Brückenstrasse 10. The late Baroque townhouse is now a museum with a permanent exhibition run by the Friedrich Ebert Foundation. It was completely overhauled in 2018 for the bicentenary, replacing a relic-style display with a modern presentation.",
+    "openingHours": "Apr-Oct daily 10am-6pm, Nov-Mar Tue-Sun 11am-5pm"
   },
   "spielzeugmuseum": {
     "name": "Trier Toy Museum (Spielzeugmuseum)",
     "shortDesc": "Three floors of toys from 1900 to today. A family favorite right on the Hauptmarkt.",
-    "longDesc": "The Toy Museum on the Hauptmarkt (the main market square) is Trier's family hit. Three floors filled with dollhouses, model trains, plush animals, miniature shops, and computer games. From Art Nouveau to the Game Boy, it's a nostalgic walk for parents too."
+    "longDesc": "The Toy Museum on the Hauptmarkt (the main market square) is Trier's family hit. Three floors filled with dollhouses, model trains, plush animals, miniature shops, and computer games. From Art Nouveau to the Game Boy, it's a nostalgic walk for parents too.",
+    "openingHours": "Mon-Sat 11am-5pm, Sun 11am-5pm"
   },
   "st-matthias": {
     "name": "St. Matthias Basilica",

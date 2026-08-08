@@ -40,7 +40,7 @@ const unverified = isUnverifiedRestaurant(src.slug);
 ---
 
 {unverified ? (
-  <BaseLayout title="Entry not available" description="This entry is currently being verified and is temporarily unavailable." noindex>
+  <BaseLayout title="Entry not available" description="This entry is currently being verified and is temporarily unavailable." noindex lang={lang} altLangPath={`/restaurants/${src.slug}/`}>
     <div class="container-page py-12">
       <UnverifiedNotice locale="en" backHref="/en/restaurants/" backLabel="Back to restaurants" />
     </div>
@@ -110,10 +110,10 @@ const unverified = isUnverifiedRestaurant(src.slug);
           <span class="k">{t(lang, "sections.district")}</span>
           <b>{district?.name ?? src.district}</b>
         </div>
-        {src.openingHours && (
+        {restaurant.openingHours && (
           <div>
             <span class="k">Hours (operator)</span>
-            <b>{src.openingHours}</b>
+            <b>{restaurant.openingHours}</b>
           </div>
         )}
         {!src.openingHours && src.reservation && (

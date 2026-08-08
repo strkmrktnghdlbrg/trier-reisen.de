@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import { getImage } from "../data/images";
 import HueGradient from "./HueGradient.astro";
+import type { Lang } from "../lib/i18n";
 
 interface Props {
   imgKey?: string;
@@ -10,6 +11,7 @@ interface Props {
   imgClass?: string;
   width?: number;
   height?: number;
+  lang?: Lang;
 }
 
 const {
@@ -19,6 +21,7 @@ const {
   imgClass = "w-full h-full object-cover",
   width = 800,
   height = 600,
+  lang = "de",
 } = Astro.props;
 
 const entry = getImage(imgKey);
@@ -34,11 +37,15 @@ const entry = getImage(imgKey);
       class={imgClass}
       loading="lazy"
     />
-    {entry.credit && (
+    {entry.credit && (lang === "de" ? (
       <figcaption class="sr-only">
         Foto: {entry.credit.author}, {entry.credit.license}
       </figcaption>
-    )}
+    ) : (
+      <figcaption class="sr-only">
+        Photo: {entry.credit.author}, {entry.credit.license}
+      </figcaption>
+    ))}
   </figure>
 ) : (
   /*

@@ -42,7 +42,7 @@ const unverified = isUnverifiedHotel(src.slug);
 ---
 
 {unverified ? (
-  <BaseLayout title="Entry not available" description="This entry is currently being verified and is temporarily unavailable." noindex>
+  <BaseLayout title="Entry not available" description="This entry is currently being verified and is temporarily unavailable." noindex lang={lang} altLangPath={`/hotels/${src.slug}/`}>
     <div class="container-page py-12">
       <UnverifiedNotice locale="en" backHref="/en/hotels/" backLabel="Back to hotels" />
     </div>
