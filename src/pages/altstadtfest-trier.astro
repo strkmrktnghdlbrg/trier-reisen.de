@@ -1,0 +1,116 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const title = "Altstadtfest Trier: Termin, Programm und Tipps";
+const description = "Das Altstadtfest in Trier: Termin im Sommer, Bühnen zwischen Hauptmarkt und Domfreihof, Eintritt, Anreise und die besten Zeiten für einen Besuch.";
+const faqLd = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Wann ist das Altstadtfest in Trier?", "acceptedAnswer": {"@type": "Answer", "text": "An einem Wochenende im Sommer. Den genauen Termin gibt die Stadt Trier jedes Jahr neu bekannt, üblicherweise mit einigem Vorlauf."}}, {"@type": "Question", "name": "Was kostet der Eintritt zum Altstadtfest Trier?", "acceptedAnswer": {"@type": "Answer", "text": "Nichts. Das Fest findet in der öffentlichen Innenstadt statt, der Zugang ist frei. Bezahlt wird nur für Essen und Getränke an den Ständen."}}, {"@type": "Question", "name": "Wo findet das Altstadtfest in Trier statt?", "acceptedAnswer": {"@type": "Answer", "text": "In der gesamten Innenstadt zwischen Hauptmarkt, Domfreihof, Kornmarkt und den angrenzenden Gassen. An mehreren Plätzen stehen Bühnen mit unterschiedlichem Programm, sodass sich das Publikum verteilt."}}, {"@type": "Question", "name": "Wie kommt man zum Altstadtfest Trier?", "acceptedAnswer": {"@type": "Answer", "text": "Am besten mit Bahn oder Bus: Vom Hauptbahnhof sind es gut zehn Minuten zu Fuß bis zur Porta Nigra und weiter in die Fußgängerzone. Die Innenstadt ist während des Festes für den Autoverkehr weitgehend gesperrt, die randständigen Parkhäuser sind abends voll."}}, {"@type": "Question", "name": "Wann ist das Altstadtfest am vollsten?", "acceptedAnswer": {"@type": "Answer", "text": "Am Samstagabend und generell nach Einbruch der Dunkelheit. Wer es ruhiger mag oder mit Kindern kommt, geht am Nachmittag oder am Freitagabend hin."}}]};
+---
+
+<BaseLayout title={title} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />
+  <div class="pf-wrap">
+    <div class="pf-surface">
+      <h1>Altstadtfest Trier: Termin, Programm und Tipps</h1>
+      <p class="pf-lead">Das Altstadtfest ist Triers großes Innenstadtfest: An einem Wochenende im Sommer wird die komplette Fußgängerzone zwischen Hauptmarkt, Domfreihof und Kornmarkt zur Festfläche, mit Bühnen an mehreren Plätzen und Gastronomie in den Gassen. Diese Seite fasst zusammen, wann es stattfindet, wie das Programm aufgebaut ist und wie man ohne Stress hinkommt.</p>
+      <h2>Das Wichtigste in Kürze</h2>
+      <ul>
+        <li>Das Altstadtfest findet an einem Wochenende im Sommer statt; der Termin wird jährlich von der Stadt bekannt gegeben.</li>
+        <li>Bespielt wird die gesamte Innenstadt zwischen Hauptmarkt, Domfreihof, Kornmarkt und den angrenzenden Gassen.</li>
+        <li>Der Eintritt ist frei – bezahlt wird nur für Essen und Getränke.</li>
+        <li>An mehreren Plätzen stehen Bühnen mit unterschiedlichem musikalischem Profil.</li>
+        <li>Die Innenstadt ist während des Festes für den Autoverkehr weitgehend gesperrt.</li>
+        <li>Am vollsten sind der Samstagabend und die Zeit nach Einbruch der Dunkelheit.</li>
+      </ul>
+      <h2>Wie das Fest aufgebaut ist</h2>
+      <p>Der Reiz des Altstadtfests liegt darin, dass es keine abgeschlossene Festfläche gibt: Man läuft durch die normale Innenstadt, und an jedem größeren Platz steht eine Bühne. Die Programme unterscheiden sich bewusst, sodass sich das Publikum über die Stadt verteilt statt sich an einem Punkt zu stauen.</p>
+      <p>Zwischen den Plätzen liegen die Gassen der Altstadt mit Ständen und der regulären Gastronomie, die an diesem Wochenende meist nach draußen erweitert. Trier ist an dieser Stelle im Vorteil: Die römischen und mittelalterlichen Bauten stehen direkt neben den Bühnen, was dem Fest eine Kulisse gibt, die man nicht aufbauen muss.</p>
+      <h2>Anreise und beste Zeit</h2>
+      <ul class="ph-list">
+        <li class="ph">
+          <span class="ph-name">Zu Fuß aus der Innenstadt</span>
+          <span class="ph-lage">Alle Festflächen liegen fußläufig beieinander</span>
+          <span class="ph-meta">Die einzige sinnvolle Fortbewegung vor Ort</span>
+          <span class="ph-hint">Vom Hauptmarkt zum Domfreihof und weiter zum Kornmarkt sind es jeweils wenige Minuten. Wer die Bühnen abgehen will, sollte festes Schuhwerk tragen – Kopfsteinpflaster.</span>
+        </li>
+        <li class="ph">
+          <span class="ph-name">Mit Bus und Bahn</span>
+          <span class="ph-lage">Trier Hauptbahnhof, Busse in die Innenstadt</span>
+          <span class="ph-meta">Die entspannteste Anreise</span>
+          <span class="ph-hint">Vom Hauptbahnhof läuft man in gut zehn Minuten zur Porta Nigra und von dort in die Fußgängerzone.</span>
+        </li>
+        <li class="ph">
+          <span class="ph-name">Mit dem Auto</span>
+          <span class="ph-lage">Innenstadtparkhäuser am Rand der Sperrzone</span>
+          <span class="ph-meta">Früh anreisen oder außerhalb parken</span>
+          <span class="ph-hint">Die Innenstadt ist gesperrt, die randständigen Parkhäuser sind am Abend voll. Wer spät kommt, parkt weiter draußen.</span>
+        </li>
+        <li class="ph">
+          <span class="ph-name">Am ruhigsten</span>
+          <span class="ph-lage">Freitagabend und Samstagnachmittag</span>
+          <span class="ph-meta">Vor dem großen Andrang</span>
+          <span class="ph-hint">Wer das Fest mit Kindern oder in Ruhe erleben will, kommt am Nachmittag. Der Samstagabend ist der volle Termin.</span>
+        </li>
+      </ul>
+      <h2>Praktische Hinweise</h2>
+      <ul>
+        <li>Bargeld einpacken: an den Ständen ist Kartenzahlung nicht überall möglich.</li>
+        <li>Die Innenstadtgassen sind eng – mit Kinderwagen ist es am Abend schwierig.</li>
+        <li>Das Fest findet bei fast jedem Wetter statt; Regenschutz ist im Zweifel sinnvoller als der Blick auf die Absage.</li>
+        <li>Wer im Anschluss übernachten will, sollte früh buchen – die Innenstadthotels sind am Festwochenende schnell weg.</li>
+      </ul>
+      <h2>Häufige Fragen</h2>
+      <div class="faq-item">
+        <h3>Wann ist das Altstadtfest in Trier?</h3>
+        <p>An einem Wochenende im Sommer. Den genauen Termin gibt die Stadt Trier jedes Jahr neu bekannt, üblicherweise mit einigem Vorlauf.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Was kostet der Eintritt zum Altstadtfest Trier?</h3>
+        <p>Nichts. Das Fest findet in der öffentlichen Innenstadt statt, der Zugang ist frei. Bezahlt wird nur für Essen und Getränke an den Ständen.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Wo findet das Altstadtfest in Trier statt?</h3>
+        <p>In der gesamten Innenstadt zwischen Hauptmarkt, Domfreihof, Kornmarkt und den angrenzenden Gassen. An mehreren Plätzen stehen Bühnen mit unterschiedlichem Programm, sodass sich das Publikum verteilt.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Wie kommt man zum Altstadtfest Trier?</h3>
+        <p>Am besten mit Bahn oder Bus: Vom Hauptbahnhof sind es gut zehn Minuten zu Fuß bis zur Porta Nigra und weiter in die Fußgängerzone. Die Innenstadt ist während des Festes für den Autoverkehr weitgehend gesperrt, die randständigen Parkhäuser sind abends voll.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Wann ist das Altstadtfest am vollsten?</h3>
+        <p>Am Samstagabend und generell nach Einbruch der Dunkelheit. Wer es ruhiger mag oder mit Kindern kommt, geht am Nachmittag oder am Freitagabend hin.</p>
+      </div>
+      <h2>Weiterlesen</h2>
+      <ul>
+        <li><a href="/events/">Veranstaltungen in Trier</a></li>
+        <li><a href="/trierer-dom/">Trierer Dom St. Peter</a></li>
+        <li><a href="/hotels/">Hotels in Trier</a></li>
+      </ul>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .pf-wrap { max-width: 900px; margin: 0 auto; padding: 2.5rem 1rem 3rem; }
+  .pf-surface {
+    background: #ffffff; color: #33313f; border-radius: 16px;
+    padding: clamp(20px, 4vw, 40px);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 8px 30px rgba(0,0,0,0.05);
+    font-size: 16.5px; line-height: 1.7;
+  }
+  .pf-surface h1 { color: #20233a; font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.5px; margin: 0 0 1rem; }
+  .pf-surface .pf-lead { font-size: 1.12rem; color: #4a4858; margin: 0 0 1.6rem; }
+  .pf-surface h2 { color: #20233a; font-size: 1.55rem; font-weight: 800; line-height: 1.25; letter-spacing: -0.3px; margin: 2.2rem 0 0.8rem; }
+  .pf-surface h3 { color: #20233a; font-size: 1.2rem; font-weight: 700; line-height: 1.3; margin: 1.5rem 0 0.5rem; }
+  .pf-surface p { margin: 0 0 1.05rem; }
+  .pf-surface ul, .pf-surface ol { margin: 0 0 1.15rem; padding-left: 1.4rem; }
+  .pf-surface li { margin-bottom: 0.5rem; }
+  .pf-surface strong { color: #20233a; font-weight: 700; }
+  .pf-surface a { color: #365DA3; text-decoration: underline; text-underline-offset: 3px; }
+  .pf-surface .ph-list { list-style: none; padding-left: 0; }
+  .pf-surface .ph { display: block; border: 1px solid #e6e6ef; border-radius: 12px; padding: 14px 16px; margin-bottom: 12px; background: #fafafd; }
+  .pf-surface .ph-name { display: block; font-weight: 800; color: #20233a; font-size: 1.05rem; }
+  .pf-surface .ph-lage { display: block; color: #4a4858; margin-top: 2px; }
+  .pf-surface .ph-meta { display: block; color: #33313f; margin-top: 6px; font-size: 0.97rem; }
+  .pf-surface .ph-hint { display: block; color: #6b7280; margin-top: 4px; font-size: 0.94rem; }
+  .pf-surface .faq-item { border-top: 1px solid #e6e6ef; padding-top: 1.1rem; margin-top: 1.1rem; }
+  .pf-surface .faq-item h3 { margin-top: 0; font-size: 18px; }
+</style>
