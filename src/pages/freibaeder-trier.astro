@@ -1,0 +1,124 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const title = "Freibäder in Trier: Nordbad, Südbad und Baden an der Mosel";
+const description = "Freibäder in Trier: Nordbad und Südbad im Überblick, dazu Hallenbäder für die kalte Jahreszeit und Badestellen an Mosel und Umland – mit Saison, Anfahrt und Tipps.";
+const faqLd = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Welche Freibäder gibt es in Trier?", "acceptedAnswer": {"@type": "Answer", "text": "Trier hat zwei Freibäder: das Nordbad im Norden und das Südbad im Süden der Stadt. Beide sind in der Sommersaison geöffnet, die üblicherweise von Mai bis September läuft und wetterabhängig terminiert wird."}}, {"@type": "Question", "name": "Wann öffnen die Freibäder in Trier?", "acceptedAnswer": {"@type": "Answer", "text": "Der Saisonstart liegt normalerweise im Mai und wird jährlich neu festgelegt, weil er vom Wetter abhängt. Das Saisonende liegt in der Regel im September. Die konkreten Öffnungszeiten stehen bei den jeweiligen Bädern."}}, {"@type": "Question", "name": "Kann man in Trier in der Mosel schwimmen?", "acceptedAnswer": {"@type": "Answer", "text": "Nein. Die Mosel ist kein ausgewiesenes Badegewässer: Strömung und Berufsschifffahrt machen sie zum Schwimmen ungeeignet. Zum Baden gibt es die beiden Freibäder in der Stadt und Badeseen im Umland Richtung Eifel und Hunsrück."}}, {"@type": "Question", "name": "Wann ist es in den Trierer Freibädern am ruhigsten?", "acceptedAnswer": {"@type": "Answer", "text": "Vormittags an Werktagen. An heißen Wochenenden füllt es sich ab dem frühen Nachmittag. Weil sich das Moseltal stark aufheizt und abends langsam abkühlt, sind auch die späten Nachmittagsstunden angenehm – dann lässt der Andrang nach, das Wasser bleibt warm."}}, {"@type": "Question", "name": "Wo kann man in Trier im Winter schwimmen?", "acceptedAnswer": {"@type": "Answer", "text": "In den Hallenbadangeboten im Stadtgebiet; die Freibäder sind außerhalb der Saison geschlossen. Die öffentlichen Schwimmzeiten sind durch Vereins- und Kursbelegung eingeschränkt, ein Blick in den Zeitplan vor der Fahrt lohnt sich."}}]};
+const itemListLd = {"@context": "https://schema.org", "@type": "ItemList", "name": "Bäder in Trier", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Nordbad Trier"}, {"@type": "ListItem", "position": 2, "name": "Südbad Trier"}, {"@type": "ListItem", "position": 3, "name": "Hallenbadangebot Trier"}, {"@type": "ListItem", "position": 4, "name": "Badeseen im Umland"}]};
+---
+
+<BaseLayout title={title} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(itemListLd)} />
+  <div class="pf-wrap">
+    <div class="pf-surface">
+      <h1>Freibäder in Trier: Nordbad, Südbad und Baden an der Mosel</h1>
+      <p class="pf-lead">Trier liegt im Moseltal, und das heißt im Sommer: heiß. Die Stadt hat mit Nord- und Südbad zwei Freibäder in unterschiedlichen Stadtteilen, dazu Hallenbäder für die kalte Jahreszeit und die Badestellen im Umland. Diese Übersicht sortiert, welches Bad für wen taugt, wann die Saison läuft und wo man an heißen Wochenenden noch einen Platz bekommt.</p>
+      <h2>Das Wichtigste in Kürze</h2>
+      <ul>
+        <li>Trier hat zwei Freibäder: das Nordbad im Norden der Stadt und das Südbad im Süden.</li>
+        <li>Die Freibadsaison läuft üblicherweise von Mai bis September und hängt am Wetter – der Start wird jährlich neu festgelegt.</li>
+        <li>Für die kalte Jahreszeit gibt es Hallenbadangebote im Stadtgebiet; die Freibäder sind dann geschlossen.</li>
+        <li>An heißen Wochenenden sind beide Bäder ab dem frühen Nachmittag voll, vormittags ist es deutlich entspannter.</li>
+        <li>Die Mosel selbst ist kein ausgewiesenes Badegewässer – Strömung und Schiffsverkehr machen sie zum Schwimmen ungeeignet.</li>
+        <li>Badeseen findet man im Umland Richtung Eifel und Hunsrück, dort aber überwiegend ohne Aufsicht.</li>
+      </ul>
+      <h2>Die Bäder im Überblick</h2>
+      <ul class="ph-list">
+        <li class="ph">
+          <span class="ph-name">Nordbad Trier</span>
+          <span class="ph-lage">Norden der Stadt, Stadtteil Trier-Nord</span>
+          <span class="ph-meta">Freibad, Saison Mai bis September</span>
+          <span class="ph-hint">Das größere der beiden Freibäder mit Liegewiesen und Becken für unterschiedliche Ansprüche. Gut mit dem Bus erreichbar, an heißen Tagen entsprechend gut besucht.</span>
+        </li>
+        <li class="ph">
+          <span class="ph-name">Südbad Trier</span>
+          <span class="ph-lage">Süden der Stadt</span>
+          <span class="ph-meta">Freibad, Saison Mai bis September</span>
+          <span class="ph-hint">Die Alternative auf der anderen Stadtseite. Wer im Süden wohnt oder übernachtet, spart sich die Fahrt quer durch das Moseltal.</span>
+        </li>
+        <li class="ph">
+          <span class="ph-name">Hallenbadangebot</span>
+          <span class="ph-lage">Stadtgebiet Trier</span>
+          <span class="ph-meta">Ganzjährig, außerhalb der Freibadsaison</span>
+          <span class="ph-hint">Für Bahnenschwimmen im Winter und an Regentagen. Die öffentlichen Schwimmzeiten sind durch Vereins- und Kursbelegung eingeschränkt – vorher in den Zeitplan schauen.</span>
+        </li>
+        <li class="ph">
+          <span class="ph-name">Badeseen im Umland</span>
+          <span class="ph-lage">Richtung Eifel und Hunsrück</span>
+          <span class="ph-meta">Kostenlos, meist ohne Aufsicht</span>
+          <span class="ph-hint">Die Ausweichlösung an überfüllten Wochenenden. Ohne Bademeister und mit teils schnell abfallenden Ufern – Wassertiefe und eigene Kondition realistisch einschätzen.</span>
+        </li>
+        <li class="ph">
+          <span class="ph-name">Mosel</span>
+          <span class="ph-lage">Durch das gesamte Stadtgebiet</span>
+          <span class="ph-meta">Kein Badegewässer</span>
+          <span class="ph-hint">So einladend das Wasser an heißen Tagen aussieht: Strömung und Berufsschifffahrt machen die Mosel zum Schwimmen ungeeignet. Am Ufer sitzen ja, hineinspringen nein.</span>
+        </li>
+      </ul>
+      <h2>Wann man hingehen sollte</h2>
+      <p>Die Freibadsaison in Trier startet je nach Wetterlage im Mai und endet im September. Innerhalb der Saison gilt die übliche Regel: Vormittags an Werktagen ist es leer, an heißen Wochenenden füllt sich alles ab dem frühen Nachmittag. Wer mit Kindern kommt und Platz auf der Liegewiese braucht, sollte vor Mittag da sein.</p>
+      <p>Ein Trierer Sonderfall ist die Kessellage im Moseltal: Die Stadt heizt sich im Sommer stärker auf als das Umland und kühlt abends langsamer ab. Die späten Nachmittagsstunden im Freibad sind deshalb oft die angenehmsten – dann lässt der Andrang nach, das Wasser ist aber noch warm.</p>
+      <h2>Anfahrt und Praktisches</h2>
+      <ul>
+        <li>Beide Freibäder sind mit dem Stadtbus erreichbar; an heißen Tagen ist das die bessere Wahl, weil die Parkflächen begrenzt sind.</li>
+        <li>Öffnungszeiten und Saisonstart werden jährlich neu festgelegt – vor der ersten Fahrt im Jahr kurz prüfen.</li>
+        <li>Die Eintrittspreise sind nach Personengruppe gestaffelt; für regelmäßige Besuche gibt es Mehrfachkarten.</li>
+        <li>Bei Gewitter werden die Becken geräumt – im Moseltal ziehen Sommergewitter oft schnell auf.</li>
+      </ul>
+      <h2>Häufige Fragen</h2>
+      <div class="faq-item">
+        <h3>Welche Freibäder gibt es in Trier?</h3>
+        <p>Trier hat zwei Freibäder: das Nordbad im Norden und das Südbad im Süden der Stadt. Beide sind in der Sommersaison geöffnet, die üblicherweise von Mai bis September läuft und wetterabhängig terminiert wird.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Wann öffnen die Freibäder in Trier?</h3>
+        <p>Der Saisonstart liegt normalerweise im Mai und wird jährlich neu festgelegt, weil er vom Wetter abhängt. Das Saisonende liegt in der Regel im September. Die konkreten Öffnungszeiten stehen bei den jeweiligen Bädern.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Kann man in Trier in der Mosel schwimmen?</h3>
+        <p>Nein. Die Mosel ist kein ausgewiesenes Badegewässer: Strömung und Berufsschifffahrt machen sie zum Schwimmen ungeeignet. Zum Baden gibt es die beiden Freibäder in der Stadt und Badeseen im Umland Richtung Eifel und Hunsrück.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Wann ist es in den Trierer Freibädern am ruhigsten?</h3>
+        <p>Vormittags an Werktagen. An heißen Wochenenden füllt es sich ab dem frühen Nachmittag. Weil sich das Moseltal stark aufheizt und abends langsam abkühlt, sind auch die späten Nachmittagsstunden angenehm – dann lässt der Andrang nach, das Wasser bleibt warm.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Wo kann man in Trier im Winter schwimmen?</h3>
+        <p>In den Hallenbadangeboten im Stadtgebiet; die Freibäder sind außerhalb der Saison geschlossen. Die öffentlichen Schwimmzeiten sind durch Vereins- und Kursbelegung eingeschränkt, ein Blick in den Zeitplan vor der Fahrt lohnt sich.</p>
+      </div>
+      <h2>Weiterlesen</h2>
+      <ul>
+        <li><a href="/sehenswuerdigkeiten/">Sehenswürdigkeiten in Trier</a></li>
+        <li><a href="/altstadtfest-trier/">Altstadtfest Trier</a></li>
+        <li><a href="/hotels/">Hotels in Trier</a></li>
+      </ul>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .pf-wrap { max-width: 900px; margin: 0 auto; padding: 2.5rem 1rem 3rem; }
+  .pf-surface {
+    background: #ffffff; color: #33313f; border-radius: 16px;
+    padding: clamp(20px, 4vw, 40px);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 8px 30px rgba(0,0,0,0.05);
+    font-size: 16.5px; line-height: 1.7;
+  }
+  .pf-surface h1 { color: #20233a; font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.5px; margin: 0 0 1rem; }
+  .pf-surface .pf-lead { font-size: 1.12rem; color: #4a4858; margin: 0 0 1.6rem; }
+  .pf-surface h2 { color: #20233a; font-size: 1.55rem; font-weight: 800; line-height: 1.25; letter-spacing: -0.3px; margin: 2.2rem 0 0.8rem; }
+  .pf-surface h3 { color: #20233a; font-size: 1.2rem; font-weight: 700; line-height: 1.3; margin: 1.5rem 0 0.5rem; }
+  .pf-surface p { margin: 0 0 1.05rem; }
+  .pf-surface ul, .pf-surface ol { margin: 0 0 1.15rem; padding-left: 1.4rem; }
+  .pf-surface li { margin-bottom: 0.5rem; }
+  .pf-surface strong { color: #20233a; font-weight: 700; }
+  .pf-surface a { color: #365DA3; text-decoration: underline; text-underline-offset: 3px; }
+  .pf-surface .ph-list { list-style: none; padding-left: 0; }
+  .pf-surface .ph { display: block; border: 1px solid #e6e6ef; border-radius: 12px; padding: 14px 16px; margin-bottom: 12px; background: #fafafd; }
+  .pf-surface .ph-name { display: block; font-weight: 800; color: #20233a; font-size: 1.05rem; }
+  .pf-surface .ph-lage { display: block; color: #4a4858; margin-top: 2px; }
+  .pf-surface .ph-meta { display: block; color: #33313f; margin-top: 6px; font-size: 0.97rem; }
+  .pf-surface .ph-hint { display: block; color: #6b7280; margin-top: 4px; font-size: 0.94rem; }
+  .pf-surface .faq-item { border-top: 1px solid #e6e6ef; padding-top: 1.1rem; margin-top: 1.1rem; }
+  .pf-surface .faq-item h3 { margin-top: 0; font-size: 18px; }
+</style>
