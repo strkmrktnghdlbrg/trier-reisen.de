@@ -27,5 +27,5 @@ curl -sI https://kath-akademie-trier.de/                       # -> 301, Locatio
 curl -sI https://www.kath-akademie-trier.de/excel-summe-berechnen/   # -> 301, gleiches Ziel
 curl -sI http://kath-akademie-trier.de/irgendein-alt-pfad.html # -> 301, gleiches Ziel
 ```
-Erwartet: `HTTP/…​ 301` mit
+Erwartet: `HTTP/… 301` mit
 `Location: https://trier-reisen.de/fachtagung-diversity-management-antidiskriminierung/`
