@@ -46,7 +46,7 @@ export type AwinMerchant = {
 
 export const awin = {
   /** AWIN-Publisher-ID (awinaffid). Einmal eintragen, dann tracken alle Links. */
-  publisherId: "",
+  publisherId: "514869",
   /** Master-Schalter. */
   enabled: true,
   /** Standard-clickref für Sub-Tracking (pro Platzierung ueberschreibbar). */
@@ -57,6 +57,18 @@ export const awin = {
    * Alle vorerst active:false - nach Annahme einzeln auf true stellen.
    */
   merchants: {
+    // === FERIENPARK (zugelassen auf Konto 514869, Stand 21.08.2026) ===
+    "center-parcs": {
+      name: "Center Parcs",
+      mid: "13639",
+      homepage: "https://www.centerparcs.de/de-de/ferienparks-deutschland_sck",
+      intent: "ferienunterkunft",
+      active: true,
+      commission: "Dashboard-Stand 21.08.2026: Conversion 1,89 %, Approval 76,7 %, EPC 1,01 EUR.",
+      relevance: "medium",
+      applyUrl: "https://ui.awin.com/merchant-profile/13639",
+    },
+
     // === ANREISE / TRANSPORT ===
     "deutsche-bahn": {
       name: "Deutsche Bahn (bahn.de)",

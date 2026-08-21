@@ -50,6 +50,15 @@ const gyg = getGyg(gygKey);
       </div>
 
       <div class="max-w-3xl">
+        {guide.slug === "trier-mit-kindern" && (
+          <AwinOffer
+            merchants={["center-parcs"]}
+            heading="Ferienpark im Umland"
+            intro="Wer den Stadtbesuch zu einem Kurzurlaub ausbaut: Die Center Parcs in der Eifel und am Bostalsee liegen jeweils rund eine Autostunde von Trier entfernt, mit Ferienhaus, überdachtem Badeparadies und Kinderprogramm."
+            clickref="reiseplaner-mit-kindern"
+          />
+        )}
+
         <AwinOffer
           merchants={["deutsche-bahn", "flixbus"]}
           heading="Anreise nach Trier"
