@@ -85,6 +85,7 @@ const premium = [
       {formAktiv ? (
         <form class="werben-form" action="https://api.web3forms.com/submit" method="POST">
           <input type="hidden" name="access_key" value={formKey} />
+          <input type="hidden" name="site_domain" value="trier-reisen.de" />
           <input type="hidden" name="subject" value={`Branchenverzeichnis-Eintrag ${city.name}`} />
           <input type="hidden" name="from_name" value="Trier Reisen" />
           <div class="werben-hp" aria-hidden="true">
